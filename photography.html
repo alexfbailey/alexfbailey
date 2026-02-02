@@ -15,51 +15,71 @@
             background: #fff;
             color: #000;
         }
-        header {
+
+        /* ── Desktop sidebar ── */
+        .sidebar {
             position: fixed;
             top: 0;
             left: 0;
-            right: 0;
+            width: 260px;
+            height: 100vh;
+            padding: 40px 40px 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
             z-index: 1000;
             background: #fff;
-            padding: 20px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
         }
-        .logo {
-            font-size: 24px;
+        .sidebar .logo {
+            font-size: 28px;
             font-weight: 700;
             text-decoration: none;
             color: #000;
             font-family: Helvetica, Arial, sans-serif;
             letter-spacing: -0.5px;
-        }
-        .menu-toggle {
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 5px;
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-            z-index: 1001;
-        }
-        .menu-toggle span {
+            line-height: 1.15;
             display: block;
-            width: 20px;
-            height: 2px;
-            background: #000;
-            transition: all 0.3s ease;
+            margin-bottom: 30px;
         }
-        .menu-toggle.active span:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
+        .sidebar nav ul {
+            list-style: none;
         }
-        .menu-toggle.active span:nth-child(2) {
-            opacity: 0;
+        .sidebar nav ul li {
+            margin: 10px 0;
         }
-        .menu-toggle.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(6px, -6px);
+        .sidebar nav ul li a {
+            text-decoration: none;
+            color: #000;
+            font-size: 17px;
+            font-weight: 400;
+            transition: opacity 0.2s;
+        }
+        .sidebar nav ul li a:hover {
+            opacity: 0.5;
+        }
+        .sidebar-bottom {
+            margin-top: auto;
+        }
+        .sidebar-bottom hr {
+            border: none;
+            border-top: 2px solid #000;
+            width: 40px;
+            margin-bottom: 15px;
+        }
+        .sidebar-bottom p {
+            font-size: 11px;
+            line-height: 1.7;
+            font-style: italic;
+        }
+        .sidebar-bottom .copyright {
+            font-style: normal;
+            margin-top: 12px;
+            font-size: 11px;
+        }
+
+        /* ── Mobile header (hidden on desktop) ── */
+        .mobile-header {
+            display: none;
         }
         .menu-overlay {
             position: fixed;
@@ -98,62 +118,123 @@
         .menu-overlay nav ul li a:hover {
             opacity: 0.7;
         }
+
+        /* ── Main content ── */
         main {
-            margin-top: 74px;
-            padding: 40px;
+            margin-left: 260px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            height: 100vh;
+            overflow-x: auto;
+            overflow-y: hidden;
+            gap: 6px;
+            padding: 0 20px;
+            scrollbar-width: none;
         }
-        .page-header {
-            margin-bottom: 40px;
+        main::-webkit-scrollbar {
+            display: none;
         }
-        .page-header h1 {
-            font-size: 32px;
-            font-weight: 700;
-            margin-bottom: 15px;
-        }
-        .page-header .credits {
-            font-size: 18px;
-            font-style: italic;
-            font-weight: 300;
-            line-height: 1.6;
-        }
-        img {
+        main img {
             display: block;
-            width: 100%;
-            height: auto;
+            height: 88vh;
+            width: auto;
+            flex-shrink: 0;
         }
-        footer {
-            background: #fff;
-            padding: 40px 30px;
-            text-align: center;
-            border-top: 1px solid #000;
-        }
-        footer p {
-            font-size: 12px;
-            line-height: 1.8;
-            margin: 5px 0;
-        }
+
+        /* ── Mobile ── */
         @media (max-width: 768px) {
-            header {
-                padding: 15px 20px;
+            .sidebar {
+                display: none;
             }
-            .logo {
+            .mobile-header {
+                display: flex;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 1000;
+                background: #fff;
+                padding: 15px 20px;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .mobile-header .logo {
                 font-size: 20px;
+                font-weight: 700;
+                text-decoration: none;
+                color: #000;
+                font-family: Helvetica, Arial, sans-serif;
+                letter-spacing: -0.5px;
+            }
+            .menu-toggle {
+                background: none;
+                border: none;
+                cursor: pointer;
+                padding: 5px;
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+                z-index: 1001;
+            }
+            .menu-toggle span {
+                display: block;
+                width: 20px;
+                height: 2px;
+                background: #000;
+                transition: all 0.3s ease;
+            }
+            .menu-toggle.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+            .menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+            .menu-toggle.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(6px, -6px);
             }
             main {
+                margin-left: 0;
                 margin-top: 60px;
                 padding: 20px;
+                flex-direction: column;
+                height: auto;
+                overflow-x: visible;
+                overflow-y: visible;
+                gap: 10px;
             }
-            .page-header h1 {
-                font-size: 28px;
-            }
-            .page-header .credits {
-                font-size: 16px;
+            main img {
+                height: auto;
+                width: 100%;
             }
         }
     </style>
 </head>
 <body>
-    <header>
+    <!-- Desktop sidebar -->
+    <aside class="sidebar">
+        <div>
+            <a href="index.html" class="logo">Alex<br>Bailey</a>
+            <nav>
+                <ul>
+                    <li><a href="photography.html">Photography</a></li>
+                    <li><a href="film-tv.html">Film/TV</a></li>
+                    <li><a href="commercial.html">Commercial</a></li>
+                    <li><a href="social.html">Social</a></li>
+                    <li><a href="vocals-acting.html">Vocals + Acting</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="sidebar-bottom">
+            <hr>
+            <p>All content copyright the artist. No commercial use without express written permission.</p>
+            <p class="copyright">&copy; 2026 Alex Bailey.</p>
+        </div>
+    </aside>
+
+    <!-- Mobile header -->
+    <header class="mobile-header">
         <a href="index.html" class="logo">Alex Bailey</a>
         <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
             <span></span>
@@ -177,32 +258,30 @@
     </div>
 
     <main>
-        <div class="page-header">
-            <h1>Photography</h1>
-            <div class="credits">Published by: Vogue Germany, VICE, CBC Radio Canada & 50+ publications</div>
-        </div>
-
-        <!-- Add your photography images here -->
-        <!-- Example: <img src="images/photo1.jpg" alt="Photography work"> -->
-
+        <img src="./images/1.jpg" alt="Photography - 1">
+        <img src="./images/2.jpg" alt="Photography - 2">
+        <img src="./images/3.jpg" alt="Photography - 3">
+        <img src="./images/4.jpg" alt="Photography - 4">
+        <img src="./images/5.jpg" alt="Photography - 5">
+        <img src="./images/6.jpg" alt="Photography - 6">
+        <img src="./images/7.jpg" alt="Photography - 7">
+        <img src="./images/8.jpg" alt="Photography - 8">
+        <img src="./images/9.jpg" alt="Photography - 9">
     </main>
-
-    <footer>
-        <p>All content copyright the artist. No commercial use without express written permission.</p>
-        <p>© 2026 Alex Bailey.</p>
-    </footer>
 
     <script>
         const menuToggle = document.querySelector('.menu-toggle');
         const menuOverlay = document.querySelector('.menu-overlay');
         const menuLinks = document.querySelectorAll('.menu-overlay a');
 
-        menuToggle.addEventListener('click', () => {
-            const isActive = menuToggle.classList.toggle('active');
-            menuOverlay.classList.toggle('active');
-            menuToggle.setAttribute('aria-expanded', isActive);
-            document.body.style.overflow = isActive ? 'hidden' : '';
-        });
+        if (menuToggle) {
+            menuToggle.addEventListener('click', () => {
+                const isActive = menuToggle.classList.toggle('active');
+                menuOverlay.classList.toggle('active');
+                menuToggle.setAttribute('aria-expanded', isActive);
+                document.body.style.overflow = isActive ? 'hidden' : '';
+            });
+        }
 
         menuLinks.forEach(link => {
             link.addEventListener('click', () => {
@@ -212,6 +291,17 @@
                 document.body.style.overflow = '';
             });
         });
+
+        // Horizontal scroll on desktop: convert vertical wheel to horizontal
+        const main = document.querySelector('main');
+        if (window.innerWidth > 768) {
+            main.addEventListener('wheel', (e) => {
+                if (e.deltaY !== 0) {
+                    e.preventDefault();
+                    main.scrollLeft += e.deltaY;
+                }
+            }, { passive: false });
+        }
 
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && menuOverlay.classList.contains('active')) {
