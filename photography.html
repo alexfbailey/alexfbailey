@@ -308,10 +308,12 @@
         // Horizontal scroll on desktop: convert vertical wheel to horizontal
         const gallery = document.querySelector('.gallery-scroll');
         if (window.innerWidth > 768) {
+            gallery.style.scrollBehavior = 'auto';
             gallery.addEventListener('wheel', (e) => {
-                if (e.deltaY !== 0) {
+                const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+                if (delta !== 0) {
                     e.preventDefault();
-                    gallery.scrollLeft += e.deltaY;
+                    gallery.scrollBy({ left: delta, behavior: 'auto' });
                 }
             }, { passive: false });
         }

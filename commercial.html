@@ -381,10 +381,12 @@
     <script>
         const scroll = document.querySelector('.videos-scroll');
         if (window.innerWidth > 768) {
+            scroll.style.scrollBehavior = 'auto';
             scroll.addEventListener('wheel', (e) => {
-                if (e.deltaY !== 0) {
+                const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+                if (delta !== 0) {
                     e.preventDefault();
-                    scroll.scrollLeft += e.deltaY;
+                    scroll.scrollBy({ left: delta, behavior: 'auto' });
                 }
             }, { passive: false });
         }
