@@ -136,73 +136,48 @@
         /* ── Main content ── */
         main {
             margin-left: 260px;
-            display: flex;
             height: 100vh;
-            overflow: hidden;
-        }
-        .content-left {
-            flex: 1;
-            padding: 40px 50px 60px;
             overflow-y: auto;
+            padding: 40px 60px 60px;
             scrollbar-width: none;
         }
-        .content-left::-webkit-scrollbar {
+        main::-webkit-scrollbar {
             display: none;
-        }
-        .content-right {
-            flex-shrink: 0;
-            width: 38%;
-            height: 100vh;
-        }
-        .content-right img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
         }
         h1 {
             font-size: 32px;
             font-weight: 700;
-            margin-bottom: 30px;
-        }
-        .stats {
-            font-size: 16px;
             margin-bottom: 40px;
-            line-height: 1.8;
         }
-        .social-links {
-            margin-bottom: 50px;
+        .section {
+            margin-bottom: 40px;
         }
-        .social-links h2 {
-            font-size: 18px;
+        .section-title {
+            font-size: 13px;
             font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
             margin-bottom: 15px;
         }
-        .social-links a {
-            display: inline-block;
-            font-size: 16px;
+        .section-item {
+            margin-bottom: 8px;
+            font-size: 15px;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+        .section-item a {
             color: #000;
             text-decoration: none;
-            margin-right: 20px;
-            border-bottom: 2px solid #ff6600;
-            padding-bottom: 2px;
         }
-        .social-links a:hover {
-            opacity: 0.6;
-        }
-        .collaborations {
-            margin-top: 50px;
-        }
-        .collaborations h2 {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 30px;
+        .section-item a:hover {
+            opacity: 0.5;
         }
         .brand-logos {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 20px;
             align-items: center;
+            margin-top: 15px;
         }
         .brand-logo {
             display: flex;
@@ -271,15 +246,7 @@
                 margin-left: 0;
                 margin-top: 60px;
                 height: auto;
-                flex-direction: column;
-                overflow: auto;
-            }
-            .content-left {
                 padding: 20px 20px 40px;
-            }
-            .content-right {
-                width: 100%;
-                height: 50vh;
             }
             .brand-logos {
                 grid-template-columns: repeat(2, 1fr);
@@ -319,35 +286,31 @@
     </aside>
 
     <main>
-        <div class="content-left">
-            <h1>Social</h1>
+        <h1>Social</h1>
 
-            <div class="stats">
-                Alex's short form content has been viewed over 150 million times online with a growing audience of 140,000 followers across platforms.
-            </div>
-
-            <div class="social-links">
-                <h2>Links</h2>
-                <a href="https://www.instagram.com/alexfbailey" target="_blank">Instagram</a>
-                <a href="https://www.tiktok.com/@alexfbailey" target="_blank">TikTok</a>
-                <a href="https://www.youtube.com/@alexfbailey" target="_blank">YouTube</a>
-                <a href="https://www.facebook.com/share/17qSmUW3v4/?mibextid=wwXIfr" target="_blank">Facebook</a>
-            </div>
-
-            <div class="collaborations">
-                <h2>Select social collaborations:</h2>
-                <div class="brand-logos">
-                    <div class="brand-logo"><img src="./images/social-media-3.png" alt="Brand collaboration 1"></div>
-                    <div class="brand-logo"><img src="./images/social-media-4.png" alt="Brand collaboration 2"></div>
-                    <div class="brand-logo"><img src="./images/social-media-5.png" alt="Brand collaboration 3"></div>
-                    <div class="brand-logo"><img src="./images/social-media-6.png" alt="Brand collaboration 4"></div>
-                    <div class="brand-logo"><img src="./images/social-media-7.png" alt="Brand collaboration 5"></div>
-                    <div class="brand-logo"><img src="./images/social-media-8.png" alt="Brand collaboration 6"></div>
-                </div>
-            </div>
+        <div class="section">
+            <div class="section-title">About</div>
+            <div class="section-item">Alex's short form content has been viewed over 150 million times online with a growing audience of 140,000 followers across platforms.</div>
         </div>
-        <div class="content-right">
-            <img src="./images/social-media-1.jpg" alt="Alex Bailey">
+
+        <div class="section">
+            <div class="section-title">Links</div>
+            <div class="section-item"><a href="https://www.instagram.com/alexfbailey" target="_blank">Instagram</a></div>
+            <div class="section-item"><a href="https://www.tiktok.com/@alexfbailey" target="_blank">TikTok</a></div>
+            <div class="section-item"><a href="https://www.youtube.com/@alexfbailey" target="_blank">YouTube</a></div>
+            <div class="section-item"><a href="https://www.facebook.com/share/17qSmUW3v4/?mibextid=wwXIfr" target="_blank">Facebook</a></div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Select Collaborations</div>
+            <div class="brand-logos">
+                <div class="brand-logo"><img src="./images/social-media-3.png" alt="Brand collaboration 1"></div>
+                <div class="brand-logo"><img src="./images/social-media-4.png" alt="Brand collaboration 2"></div>
+                <div class="brand-logo"><img src="./images/social-media-5.png" alt="Brand collaboration 3"></div>
+                <div class="brand-logo"><img src="./images/social-media-6.png" alt="Brand collaboration 4"></div>
+                <div class="brand-logo"><img src="./images/social-media-7.png" alt="Brand collaboration 5"></div>
+                <div class="brand-logo"><img src="./images/social-media-8.png" alt="Brand collaboration 6"></div>
+            </div>
         </div>
     </main>
 
