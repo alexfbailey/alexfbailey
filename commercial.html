@@ -15,51 +15,71 @@
             background: #fff;
             color: #000;
         }
-        header {
+
+        /* ── Desktop sidebar ── */
+        .sidebar {
             position: fixed;
             top: 0;
             left: 0;
-            right: 0;
+            width: 260px;
+            height: 100vh;
+            padding: 40px 40px 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
             z-index: 1000;
             background: #fff;
-            padding: 20px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
         }
-        .logo {
-            font-size: 24px;
+        .sidebar .logo {
+            font-size: 28px;
             font-weight: 700;
             text-decoration: none;
             color: #000;
             font-family: Helvetica, Arial, sans-serif;
             letter-spacing: -0.5px;
-        }
-        .menu-toggle {
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 5px;
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-            z-index: 1001;
-        }
-        .menu-toggle span {
+            line-height: 1.15;
             display: block;
-            width: 20px;
-            height: 2px;
-            background: #000;
-            transition: all 0.3s ease;
+            margin-bottom: 30px;
         }
-        .menu-toggle.active span:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
+        .sidebar nav ul {
+            list-style: none;
         }
-        .menu-toggle.active span:nth-child(2) {
-            opacity: 0;
+        .sidebar nav ul li {
+            margin: 10px 0;
         }
-        .menu-toggle.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(6px, -6px);
+        .sidebar nav ul li a {
+            text-decoration: none;
+            color: #000;
+            font-size: 17px;
+            font-weight: 400;
+            transition: opacity 0.2s;
+        }
+        .sidebar nav ul li a:hover {
+            opacity: 0.5;
+        }
+        .sidebar-bottom {
+            margin-top: auto;
+        }
+        .sidebar-bottom hr {
+            border: none;
+            border-top: 2px solid #000;
+            width: 40px;
+            margin-bottom: 15px;
+        }
+        .sidebar-bottom p {
+            font-size: 11px;
+            line-height: 1.7;
+            font-style: italic;
+        }
+        .sidebar-bottom .copyright {
+            font-style: normal;
+            margin-top: 12px;
+            font-size: 11px;
+        }
+
+        /* ── Mobile header (hidden on desktop) ── */
+        .mobile-header {
+            display: none;
         }
         .menu-overlay {
             position: fixed;
@@ -98,68 +118,102 @@
         .menu-overlay nav ul li a:hover {
             opacity: 0.7;
         }
+
+        /* ── Main content ── */
         main {
-            margin-top: 74px;
-            padding: 40px;
+            margin-left: 260px;
+            height: 100vh;
+            overflow-y: auto;
+            padding: 40px 60px 60px;
+            scrollbar-width: none;
+        }
+        main::-webkit-scrollbar {
+            display: none;
         }
         .project {
-            margin-bottom: 60px;
+            margin-bottom: 50px;
+            max-width: 720px;
         }
-        .video-container {
+        .project .video-container {
             position: relative;
             width: 100%;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            margin-bottom: 20px;
+            aspect-ratio: 16 / 9;
+            margin-bottom: 12px;
         }
-        .video-container iframe {
+        .project .video-container iframe {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            border: none;
+            border: 0;
         }
         .project-title {
-            font-family: Helvetica, Arial, sans-serif;
             font-size: 18px;
             font-weight: 400;
-            margin-bottom: 8px;
-            line-height: 1.6;
+            margin-bottom: 4px;
+            line-height: 1.4;
         }
-        .page-header {
-            margin-bottom: 40px;
-        }
-        .page-header h1 {
-            font-size: 32px;
-            font-weight: 700;
-            margin-bottom: 15px;
-        }
-        footer {
-            background: #fff;
-            padding: 40px 30px;
-            text-align: center;
-            border-top: 1px solid #000;
-        }
-        footer p {
-            font-size: 12px;
-            line-height: 1.8;
-            margin: 5px 0;
-        }
+
+        /* ── Mobile ── */
         @media (max-width: 768px) {
-            .page-header h1 {
-                font-size: 28px;
+            .sidebar {
+                display: none;
             }
-            header {
+            .mobile-header {
+                display: flex;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 1000;
+                background: #fff;
                 padding: 15px 20px;
+                justify-content: space-between;
+                align-items: center;
             }
-            .logo {
+            .mobile-header .logo {
                 font-size: 20px;
+                font-weight: 700;
+                text-decoration: none;
+                color: #000;
+                font-family: Helvetica, Arial, sans-serif;
+                letter-spacing: -0.5px;
+            }
+            .menu-toggle {
+                background: none;
+                border: none;
+                cursor: pointer;
+                padding: 5px;
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+                z-index: 1001;
+            }
+            .menu-toggle span {
+                display: block;
+                width: 20px;
+                height: 2px;
+                background: #000;
+                transition: all 0.3s ease;
+            }
+            .menu-toggle.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+            .menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+            .menu-toggle.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(6px, -6px);
             }
             main {
+                margin-left: 0;
                 margin-top: 60px;
-                padding: 20px;
+                height: auto;
+                padding: 20px 20px 40px;
+            }
+            .project {
+                max-width: 100%;
             }
             .project-title {
                 font-size: 16px;
@@ -168,7 +222,30 @@
     </style>
 </head>
 <body>
-    <header>
+    <!-- Desktop sidebar -->
+    <aside class="sidebar">
+        <div>
+            <a href="index.html" class="logo">Alex<br>Bailey</a>
+            <nav>
+                <ul>
+                    <li><a href="photography.html">Photography</a></li>
+                    <li><a href="film-tv.html">Film/TV</a></li>
+                    <li><a href="commercial.html">Commercial</a></li>
+                    <li><a href="social.html">Social</a></li>
+                    <li><a href="vocals-acting.html">Vocals + Acting</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="sidebar-bottom">
+            <hr>
+            <p>All content copyright the artist. No commercial use without express written permission.</p>
+            <p class="copyright">&copy; 2026 Alex Bailey.</p>
+        </div>
+    </aside>
+
+    <!-- Mobile header -->
+    <header class="mobile-header">
         <a href="index.html" class="logo">Alex Bailey</a>
         <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
             <span></span>
@@ -192,98 +269,69 @@
     </div>
 
     <main>
-        <div class="page-header">
-            <h1>Commercial</h1>
-        </div>
-
         <div class="project">
             <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/hbj4uoz2UKE?controls=1&modestbranding=1&rel=0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-                </iframe>
+                <iframe src="https://www.youtube.com/embed/hbj4uoz2UKE?controls=1&modestbranding=1&rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
             <div class="project-title">Walmart Easter 01 campaign directed by Alex Bailey</div>
         </div>
 
         <div class="project">
             <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/a0qZB_aRb8s?controls=1&modestbranding=1&rel=0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-                </iframe>
+                <iframe src="https://www.youtube.com/embed/a0qZB_aRb8s?controls=1&modestbranding=1&rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
             <div class="project-title">Walmart Easter 02 campaign directed by Alex Bailey</div>
         </div>
 
         <div class="project">
             <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/iT1hNIP-adw?controls=1&modestbranding=1&rel=0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-                </iframe>
+                <iframe src="https://www.youtube.com/embed/iT1hNIP-adw?controls=1&modestbranding=1&rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
             <div class="project-title">Walmart Easter 03 campaign directed by Alex Bailey</div>
         </div>
 
         <div class="project">
             <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/n7uFzE5gLzA?controls=1&modestbranding=1&rel=0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-                </iframe>
+                <iframe src="https://www.youtube.com/embed/n7uFzE5gLzA?controls=1&modestbranding=1&rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
             <div class="project-title">Walmart Easter 04 campaign directed by Alex Bailey</div>
         </div>
 
         <div class="project">
             <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/MEW1fK3fYdQ?controls=1&modestbranding=1&rel=0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-                </iframe>
+                <iframe src="https://www.youtube.com/embed/MEW1fK3fYdQ?controls=1&modestbranding=1&rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
             <div class="project-title">Walmart Easter 05 campaign directed by Alex Bailey</div>
         </div>
 
         <div class="project">
             <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/ztLQ4hblOq4?controls=1&modestbranding=1&rel=0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-                </iframe>
+                <iframe src="https://www.youtube.com/embed/ztLQ4hblOq4?controls=1&modestbranding=1&rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
             <div class="project-title">Walmart Easter 06 campaign directed by Alex Bailey</div>
         </div>
 
         <div class="project">
             <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/hwRLHxZRwxc?controls=1&modestbranding=1&rel=0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-                </iframe>
+                <iframe src="https://www.youtube.com/embed/hwRLHxZRwxc?controls=1&modestbranding=1&rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
             <div class="project-title">Walmart Easter 07 campaign directed by Alex Bailey</div>
         </div>
-
     </main>
-
-    <footer>
-        <p>All content copyright the artist. No commercial use without express written permission.</p>
-        <p>© 2026 Alex Bailey.</p>
-    </footer>
 
     <script>
         const menuToggle = document.querySelector('.menu-toggle');
         const menuOverlay = document.querySelector('.menu-overlay');
         const menuLinks = document.querySelectorAll('.menu-overlay a');
 
-        menuToggle.addEventListener('click', () => {
-            const isActive = menuToggle.classList.toggle('active');
-            menuOverlay.classList.toggle('active');
-            menuToggle.setAttribute('aria-expanded', isActive);
-            document.body.style.overflow = isActive ? 'hidden' : '';
-        });
+        if (menuToggle) {
+            menuToggle.addEventListener('click', () => {
+                const isActive = menuToggle.classList.toggle('active');
+                menuOverlay.classList.toggle('active');
+                menuToggle.setAttribute('aria-expanded', isActive);
+                document.body.style.overflow = isActive ? 'hidden' : '';
+            });
+        }
 
         menuLinks.forEach(link => {
             link.addEventListener('click', () => {
