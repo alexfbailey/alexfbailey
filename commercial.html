@@ -267,7 +267,8 @@
                 margin-left: 0;
                 margin-top: 60px;
                 height: auto;
-                overflow-y: auto;
+                min-height: 0;
+                overflow: visible;
             }
             h1 {
                 padding: 20px 20px 10px;
@@ -283,6 +284,10 @@
             }
             .project-title {
                 font-size: 16px;
+            }
+            html, body {
+                height: auto;
+                overflow-x: hidden;
             }
         }
     </style>

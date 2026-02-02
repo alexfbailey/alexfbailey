@@ -289,8 +289,9 @@
                 margin-left: 0;
                 margin-top: 60px;
                 height: auto;
+                min-height: 0;
                 flex-direction: column;
-                overflow: auto;
+                overflow: visible;
             }
             .content-left {
                 padding: 20px 20px 40px;
@@ -303,6 +304,10 @@
                 grid-template-columns: repeat(2, 1fr);
                 gap: 10px;
                 max-width: 100%;
+            }
+            html, body {
+                height: auto;
+                overflow-x: hidden;
             }
         }
     </style>
