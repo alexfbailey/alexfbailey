@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Bailey • Artist and Director</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Helvetica, Arial, sans-serif;
+            background: #fff;
+            color: #000;
+        }
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: #fff;
+            padding: 20px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            text-decoration: none;
+            color: #000;
+            font-family: Helvetica, Arial, sans-serif;
+            letter-spacing: -0.5px;
+        }
+        .menu-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            z-index: 1001;
+        }
+        .menu-toggle span {
+            display: block;
+            width: 20px;
+            height: 2px;
+            background: #000;
+            transition: all 0.3s ease;
+        }
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: #ff6600;
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .menu-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+        .menu-overlay nav ul {
+            list-style: none;
+            text-align: left;
+            padding-left: 40px;
+        }
+        .menu-overlay nav ul li {
+            margin: 25px 0;
+        }
+        .menu-overlay nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 32px;
+            font-weight: 300;
+            transition: opacity 0.2s;
+        }
+        .menu-overlay nav ul li a:hover {
+            opacity: 0.7;
+        }
+        main {
+            margin-top: 74px;
+            padding: 0 40px;
+        }
+        img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        footer {
+            background: #fff;
+            padding: 40px 30px;
+            text-align: center;
+        }
+        footer p {
+            font-size: 12px;
+            line-height: 1.8;
+            margin: 5px 0;
+        }
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 20px;
+            }
+            .logo {
+                font-size: 20px;
+            }
+            main {
+                margin-top: 60px;
+                padding: 0 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">Alex Bailey</a>
+        <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </header>
+
+    <div class="menu-overlay">
+        <nav>
+            <ul>
+                <li><a href="photography.html">Photography</a></li>
+                <li><a href="film-tv.html">Film/TV</a></li>
+                <li><a href="commercial.html">Commercial</a></li>
+                <li><a href="social.html">Social</a></li>
+                <li><a href="vocals-acting.html">Vocals + Acting</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <main>
+        <!-- Add your homepage images here -->
+        <!-- Example: <img src="images/hero-image.jpg" alt="Hero image"> -->
+    </main>
+
+    <footer>
+        <p>All content copyright the artist. No commercial use without express written permission.</p>
+        <p>© 2026 Alex Bailey.</p>
+    </footer>
+
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const menuOverlay = document.querySelector('.menu-overlay');
+        const menuLinks = document.querySelectorAll('.menu-overlay a');
+
+        menuToggle.addEventListener('click', () => {
+            const isActive = menuToggle.classList.toggle('active');
+            menuOverlay.classList.toggle('active');
+            menuToggle.setAttribute('aria-expanded', isActive);
+            document.body.style.overflow = isActive ? 'hidden' : '';
+        });
+
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                menuOverlay.classList.remove('active');
+                menuToggle.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+            });
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && menuOverlay.classList.contains('active')) {
+                menuToggle.classList.remove('active');
+                menuOverlay.classList.remove('active');
+                menuToggle.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+            }
+        });
+    </script>
+</body>
+</html>
