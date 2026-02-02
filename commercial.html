@@ -136,17 +136,22 @@
         /* ── Main content ── */
         main {
             margin-left: 260px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
             height: 100vh;
-            overflow-y: auto;
-            padding: 40px 60px 60px;
+            overflow-x: auto;
+            overflow-y: hidden;
+            gap: 30px;
+            padding: 0 40px;
             scrollbar-width: none;
         }
         main::-webkit-scrollbar {
             display: none;
         }
         .project {
-            margin-bottom: 50px;
-            max-width: 720px;
+            flex-shrink: 0;
+            width: 55vh;
         }
         .project .video-container {
             position: relative;
@@ -168,11 +173,13 @@
             margin-bottom: 4px;
             line-height: 1.4;
         }
-
-        h1 {
+        .page-title {
+            flex-shrink: 0;
             font-size: 32px;
             font-weight: 700;
-            margin-bottom: 40px;
+            writing-mode: vertical-rl;
+            align-self: center;
+            margin-right: 10px;
         }
 
         /* ── Mobile ── */
@@ -230,10 +237,20 @@
                 margin-left: 0;
                 margin-top: 60px;
                 height: auto;
+                flex-direction: column;
+                align-items: stretch;
+                overflow-x: hidden;
+                overflow-y: auto;
                 padding: 20px 20px 40px;
+                gap: 30px;
+            }
+            .page-title {
+                writing-mode: horizontal-tb;
+                margin-right: 0;
+                margin-bottom: 0;
             }
             .project {
-                max-width: 100%;
+                width: 100%;
             }
             .project-title {
                 font-size: 16px;
@@ -272,7 +289,7 @@
     </aside>
 
     <main>
-        <h1>Commercial</h1>
+        <div class="page-title">Commercial</div>
         <div class="project">
             <div class="video-container">
                 <iframe src="https://www.youtube.com/embed/hbj4uoz2UKE?controls=1&modestbranding=1&rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -354,6 +371,17 @@
                 document.body.style.overflow = '';
             }
         });
+    </script>
+    <script>
+        const main = document.querySelector('main');
+        if (window.innerWidth > 768) {
+            main.addEventListener('wheel', (e) => {
+                if (e.deltaY !== 0) {
+                    e.preventDefault();
+                    main.scrollLeft += e.deltaY;
+                }
+            }, { passive: false });
+        }
     </script>
 </body>
 </html>
