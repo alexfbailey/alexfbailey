@@ -144,15 +144,27 @@
         main::-webkit-scrollbar {
             display: none;
         }
-        .hero-images {
-            display: flex;
-            gap: 6px;
+        h1 {
+            font-size: 32px;
+            font-weight: 700;
             margin-bottom: 40px;
         }
-        .hero-images img {
-            width: 35%;
+        .content-layout {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        .content-left {
+            flex: 1;
+        }
+        .content-right {
+            flex-shrink: 0;
+            width: 340px;
+        }
+        .content-right img {
+            width: 100%;
             height: auto;
-            object-fit: contain;
+            display: block;
         }
         .stats {
             font-size: 18px;
@@ -201,12 +213,6 @@
             height: auto;
             object-fit: contain;
             mix-blend-mode: multiply;
-        }
-
-        h1 {
-            font-size: 32px;
-            font-weight: 700;
-            margin-bottom: 40px;
         }
 
         /* ── Mobile ── */
@@ -266,11 +272,11 @@
                 height: auto;
                 padding: 20px 20px 40px;
             }
-            .hero-images {
-                gap: 4px;
+            .content-layout {
+                flex-direction: column;
             }
-            .hero-images img {
-                height: 30vh;
+            .content-right {
+                width: 100%;
             }
             .brand-logos {
                 grid-template-columns: repeat(2, 1fr);
@@ -311,20 +317,23 @@
 
     <main>
         <h1>Social</h1>
-        <div class="hero-images">
-            <img src="./images/social-media-1.jpg" alt="Social Media 1">
-        </div>
+        <div class="content-layout">
+            <div class="content-left">
+                <div class="stats">
+                    Alex's short form content has been viewed over 150 million times online with a growing audience of 140,000 followers across platforms.
+                </div>
 
-        <div class="stats">
-            Alex's short form content has been viewed over 150 million times online with a growing audience of 140,000 followers across platforms.
-        </div>
-
-        <div class="social-links">
-            <h2>Links</h2>
-            <a href="https://www.instagram.com/alexfbailey" target="_blank">Instagram</a>
-            <a href="https://www.tiktok.com/@alexfbailey" target="_blank">TikTok</a>
-            <a href="https://www.youtube.com/@alexfbailey" target="_blank">YouTube</a>
-            <a href="https://www.facebook.com/share/17qSmUW3v4/?mibextid=wwXIfr" target="_blank">Facebook</a>
+                <div class="social-links">
+                    <h2>Links</h2>
+                    <a href="https://www.instagram.com/alexfbailey" target="_blank">Instagram</a>
+                    <a href="https://www.tiktok.com/@alexfbailey" target="_blank">TikTok</a>
+                    <a href="https://www.youtube.com/@alexfbailey" target="_blank">YouTube</a>
+                    <a href="https://www.facebook.com/share/17qSmUW3v4/?mibextid=wwXIfr" target="_blank">Facebook</a>
+                </div>
+            </div>
+            <div class="content-right">
+                <img src="./images/social-media-1.jpg" alt="Alex Bailey">
+            </div>
         </div>
 
         <div class="collaborations">
