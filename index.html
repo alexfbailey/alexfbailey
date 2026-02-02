@@ -100,22 +100,27 @@
         }
         main {
             margin-top: 74px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            height: calc(100vh - 74px);
+            overflow-x: auto;
+            overflow-y: hidden;
+            gap: 20px;
             padding: 0 40px;
+            scrollbar-width: none;
         }
-        img {
+        main::-webkit-scrollbar {
+            display: none;
+        }
+        main img {
             display: block;
-            width: 100%;
-            height: auto;
+            height: 75vh;
+            width: auto;
+            flex-shrink: 0;
         }
         footer {
-            background: #fff;
-            padding: 40px 30px;
-            text-align: center;
-        }
-        footer p {
-            font-size: 12px;
-            line-height: 1.8;
-            margin: 5px 0;
+            display: none;
         }
         @media (max-width: 768px) {
             header {
@@ -126,7 +131,27 @@
             }
             main {
                 margin-top: 60px;
-                padding: 0 20px;
+                padding: 20px;
+                flex-direction: column;
+                height: auto;
+                overflow-x: visible;
+                overflow-y: visible;
+                gap: 10px;
+            }
+            main img {
+                height: auto;
+                width: 100%;
+            }
+            footer {
+                display: block;
+                background: #fff;
+                padding: 40px 30px;
+                text-align: center;
+            }
+            footer p {
+                font-size: 12px;
+                line-height: 1.8;
+                margin: 5px 0;
             }
         }
     </style>
@@ -191,6 +216,17 @@
                 document.body.style.overflow = '';
             });
         });
+
+        // Horizontal scroll on desktop: convert vertical wheel to horizontal
+        const main = document.querySelector('main');
+        if (window.innerWidth > 768) {
+            main.addEventListener('wheel', (e) => {
+                if (e.deltaY !== 0) {
+                    e.preventDefault();
+                    main.scrollLeft += e.deltaY;
+                }
+            }, { passive: false });
+        }
 
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && menuOverlay.classList.contains('active')) {
