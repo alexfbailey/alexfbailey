@@ -144,6 +144,16 @@
         main::-webkit-scrollbar {
             display: none;
         }
+        .hero-images {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 40px;
+        }
+        .hero-images img {
+            width: 50%;
+            height: 50vh;
+            object-fit: cover;
+        }
         .stats {
             font-size: 18px;
             margin-bottom: 40px;
@@ -177,20 +187,18 @@
         }
         .brand-logos {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px 40px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
             align-items: center;
         }
         .brand-logo {
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px;
         }
         .brand-logo img {
             max-width: 100%;
             height: auto;
-            max-height: 150px;
             object-fit: contain;
             mix-blend-mode: multiply;
         }
@@ -252,12 +260,15 @@
                 height: auto;
                 padding: 20px 20px 40px;
             }
+            .hero-images {
+                gap: 4px;
+            }
+            .hero-images img {
+                height: 30vh;
+            }
             .brand-logos {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 15px 30px;
-            }
-            .brand-logo img {
-                max-height: 120px;
+                gap: 15px;
             }
         }
     </style>
@@ -293,6 +304,11 @@
     </aside>
 
     <main>
+        <div class="hero-images">
+            <img src="./images/social-media-1.jpg" alt="Social Media 1">
+            <img src="./images/social-media-2.jpg" alt="Social Media 2">
+        </div>
+
         <div class="stats">
             Alex's short form content has been viewed over 150 million times online with a growing audience of 140,000 followers across platforms.
         </div>
@@ -308,7 +324,12 @@
         <div class="collaborations">
             <h2>Select social collaborations:</h2>
             <div class="brand-logos">
-                <!-- Add your brand logo images here -->
+                <div class="brand-logo"><img src="./images/social-media-3.jpg" alt="Brand collaboration 1"></div>
+                <div class="brand-logo"><img src="./images/social-media-4.jpg" alt="Brand collaboration 2"></div>
+                <div class="brand-logo"><img src="./images/social-media-5.jpg" alt="Brand collaboration 3"></div>
+                <div class="brand-logo"><img src="./images/social-media-6.jpg" alt="Brand collaboration 4"></div>
+                <div class="brand-logo"><img src="./images/social-media-7.jpg" alt="Brand collaboration 5"></div>
+                <div class="brand-logo"><img src="./images/social-media-8.jpg" alt="Brand collaboration 6"></div>
             </div>
         </div>
     </main>
