@@ -4,10 +4,10 @@
    ========================================== */
 
 :root {
-  --primary: #E60023;
-  --primary-dark: #AD081B;
-  --primary-light: #FF5C5C;
-  --primary-glow: rgba(230, 0, 35, 0.08);
+  --primary: #FF6B00;
+  --primary-dark: #E05E00;
+  --primary-light: #FF9A45;
+  --primary-glow: rgba(255, 107, 0, 0.08);
   --black: #111111;
   --white: #FFFFFF;
   --bg: #FFFFFF;
@@ -40,7 +40,7 @@
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-family: Helvetica, 'Helvetica Neue', Arial, sans-serif;
   background: var(--bg);
   color: var(--text);
   overflow: hidden;
@@ -403,7 +403,7 @@ body {
   padding: 16px 12px;
   position: relative;
   background-image:
-    radial-gradient(circle at 20% 30%, rgba(230, 0, 35, 0.04) 0%, transparent 50%),
+    radial-gradient(circle at 20% 30%, rgba(255, 107, 0, 0.04) 0%, transparent 50%),
     radial-gradient(circle at 80% 70%, rgba(139, 90, 210, 0.04) 0%, transparent 50%);
 }
 
@@ -424,7 +424,7 @@ body {
 .bulletin-card:active { transform: scale(0.96) rotate(0deg) !important; }
 
 .bulletin-card.pinned {
-  box-shadow: 2px 3px 14px rgba(230, 0, 35, 0.15);
+  box-shadow: 2px 3px 14px rgba(255, 107, 0, 0.15);
   border: 2px solid var(--primary);
 }
 
@@ -450,7 +450,7 @@ body {
 .pin-btn:active { transform: scale(0.85); }
 
 .pin-btn.pinned {
-  background: rgba(230, 0, 35, 0.12);
+  background: rgba(255, 107, 0, 0.12);
 }
 
 .bulletin-image {
@@ -1041,40 +1041,141 @@ body {
 }
 
 /* ==========================================
-   SETTINGS PAGE
+   PROFILE PAGE (IG/TikTok style)
    ========================================== */
-.profile-card {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  background: var(--bg-card);
-  border-radius: var(--radius-md);
-  padding: 16px;
-  margin: 8px 0 24px;
-  cursor: pointer;
-  box-shadow: var(--shadow-sm);
+.profile-header-area {
+  text-align: center;
+  padding: 12px 0 24px;
 }
 
-.avatar {
-  width: 48px;
-  height: 48px;
+.profile-avatar-lg {
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   background: var(--primary);
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 0 auto 12px;
+  border: 3px solid var(--bg);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.1);
 }
 
-.profile-info { flex: 1; }
-
-.profile-info h3 {
-  font-size: 16px;
-  font-weight: 700;
+.profile-display-name {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.3px;
 }
 
-.profile-info p {
+.profile-handle {
   font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+.profile-stats-row {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin: 16px 0;
+}
+
+.profile-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-stat-num {
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.profile-stat-label {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.profile-bio {
+  font-size: 14px;
   color: var(--text-secondary);
+  font-style: italic;
+}
+
+/* Customize UI */
+.customize-section {
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  margin-bottom: 10px;
+  box-shadow: var(--shadow-sm);
+}
+
+.customize-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.color-picker-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.color-swatch {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.color-swatch:active { transform: scale(0.9); }
+
+.color-swatch.active {
+  border-color: var(--text);
+  box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--text);
+}
+
+.bg-picker-row {
+  display: flex;
+  gap: 10px;
+}
+
+.bg-swatch {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: 2px solid transparent;
+  border-radius: var(--radius-sm);
+  padding: 8px 4px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  transition: all 0.15s;
+}
+
+.bg-swatch:active { transform: scale(0.95); }
+
+.bg-swatch.active {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.bg-preview {
+  width: 100%;
+  height: 32px;
+  border-radius: 6px;
 }
 
 .settings-group { margin-bottom: 24px; }
@@ -1386,12 +1487,12 @@ body {
   justify-content: center;
   color: var(--white);
   margin-top: -14px;
-  box-shadow: 0 2px 10px rgba(230, 0, 35, 0.3);
+  box-shadow: 0 2px 10px rgba(255, 107, 0, 0.3);
   border: none;
 }
 
 .camera-nav:active .camera-btn-wrap { transform: scale(0.9); }
-.camera-nav.active .camera-btn-wrap { box-shadow: 0 4px 16px rgba(230, 0, 35, 0.4); }
+.camera-nav.active .camera-btn-wrap { box-shadow: 0 4px 16px rgba(255, 107, 0, 0.4); }
 
 /* ==========================================
    MODAL — iOS sheet style

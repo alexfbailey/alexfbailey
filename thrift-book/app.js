@@ -985,46 +985,58 @@ function filterByTag(btn, tag) {
 
 
 // ==========================================
-// SETTINGS
+// PROFILE / CUSTOMIZATION
 // ==========================================
 
-function toggleDarkMode() {
-  const isChecked = document.getElementById('dark-mode-toggle').checked;
-  if (isChecked) {
-    document.documentElement.style.setProperty('--bg', '#1E1E1E');
-    document.documentElement.style.setProperty('--bg-card', '#2C2C2C');
-    document.documentElement.style.setProperty('--bg-card-hover', '#363636');
-    document.documentElement.style.setProperty('--bg-elevated', '#3A3A3A');
-    document.documentElement.style.setProperty('--text', '#EFEFEF');
-    document.documentElement.style.setProperty('--text-secondary', '#A0A0A0');
-    document.documentElement.style.setProperty('--text-muted', '#6B6B6B');
-    document.documentElement.style.setProperty('--border', '#3A3A3A');
-    document.documentElement.style.setProperty('--border-light', '#444444');
-    document.documentElement.style.setProperty('--black', '#EFEFEF');
-    document.documentElement.style.setProperty('--white', '#1E1E1E');
-    document.documentElement.style.setProperty('--shadow-sm', '0 1px 4px rgba(0,0,0,0.2)');
-    document.documentElement.style.setProperty('--shadow-md', '0 2px 12px rgba(0,0,0,0.3)');
-    document.documentElement.style.setProperty('--shadow-lg', '0 4px 24px rgba(0,0,0,0.4)');
-  } else {
-    document.documentElement.style.setProperty('--bg', '#FFFFFF');
-    document.documentElement.style.setProperty('--bg-card', '#FFFFFF');
-    document.documentElement.style.setProperty('--bg-card-hover', '#F9F9F9');
-    document.documentElement.style.setProperty('--bg-elevated', '#EFEFEF');
-    document.documentElement.style.setProperty('--text', '#111111');
-    document.documentElement.style.setProperty('--text-secondary', '#767676');
-    document.documentElement.style.setProperty('--text-muted', '#B5B5B5');
-    document.documentElement.style.setProperty('--border', '#EFEFEF');
-    document.documentElement.style.setProperty('--border-light', '#E2E2E2');
-    document.documentElement.style.setProperty('--black', '#111111');
-    document.documentElement.style.setProperty('--white', '#FFFFFF');
-    document.documentElement.style.setProperty('--shadow-sm', '0 1px 4px rgba(0,0,0,0.06)');
-    document.documentElement.style.setProperty('--shadow-md', '0 2px 12px rgba(0,0,0,0.08)');
-    document.documentElement.style.setProperty('--shadow-lg', '0 4px 24px rgba(0,0,0,0.12)');
-  }
+function setAccentColor(btn, primary, dark, light, glow) {
+  document.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('active'));
+  btn.classList.add('active');
+  document.documentElement.style.setProperty('--primary', primary);
+  document.documentElement.style.setProperty('--primary-dark', dark);
+  document.documentElement.style.setProperty('--primary-light', light);
+  document.documentElement.style.setProperty('--primary-glow', glow);
 }
 
-function showAllCategories() {
-  document.querySelectorAll('.filter-pills .pill').forEach(p => p.classList.remove('active'));
-  document.querySelector('.filter-pills .pill').classList.add('active');
-  document.querySelectorAll('.topic-card').forEach(c => c.classList.remove('hidden'));
+const bgThemes = {
+  light: {
+    '--bg': '#FFFFFF', '--bg-card': '#FFFFFF', '--bg-card-hover': '#F9F9F9',
+    '--bg-elevated': '#EFEFEF', '--text': '#111111', '--text-secondary': '#767676',
+    '--text-muted': '#B5B5B5', '--border': '#EFEFEF', '--border-light': '#E2E2E2',
+    '--black': '#111111', '--white': '#FFFFFF',
+    '--shadow-sm': '0 1px 4px rgba(0,0,0,0.06)', '--shadow-md': '0 2px 12px rgba(0,0,0,0.08)',
+    '--shadow-lg': '0 4px 24px rgba(0,0,0,0.12)'
+  },
+  dark: {
+    '--bg': '#1E1E1E', '--bg-card': '#2C2C2C', '--bg-card-hover': '#363636',
+    '--bg-elevated': '#3A3A3A', '--text': '#EFEFEF', '--text-secondary': '#A0A0A0',
+    '--text-muted': '#6B6B6B', '--border': '#3A3A3A', '--border-light': '#444444',
+    '--black': '#EFEFEF', '--white': '#1E1E1E',
+    '--shadow-sm': '0 1px 4px rgba(0,0,0,0.2)', '--shadow-md': '0 2px 12px rgba(0,0,0,0.3)',
+    '--shadow-lg': '0 4px 24px rgba(0,0,0,0.4)'
+  },
+  cream: {
+    '--bg': '#FAF6F1', '--bg-card': '#FFFFFF', '--bg-card-hover': '#F5F0EA',
+    '--bg-elevated': '#EDE7DF', '--text': '#2D2418', '--text-secondary': '#8A7D6E',
+    '--text-muted': '#BEB4A6', '--border': '#EDE7DF', '--border-light': '#DDD5C9',
+    '--black': '#2D2418', '--white': '#FFFFFF',
+    '--shadow-sm': '0 1px 4px rgba(0,0,0,0.05)', '--shadow-md': '0 2px 12px rgba(0,0,0,0.07)',
+    '--shadow-lg': '0 4px 24px rgba(0,0,0,0.1)'
+  },
+  midnight: {
+    '--bg': '#0F172A', '--bg-card': '#1E293B', '--bg-card-hover': '#273548',
+    '--bg-elevated': '#334155', '--text': '#F1F5F9', '--text-secondary': '#94A3B8',
+    '--text-muted': '#64748B', '--border': '#1E293B', '--border-light': '#334155',
+    '--black': '#F1F5F9', '--white': '#0F172A',
+    '--shadow-sm': '0 1px 4px rgba(0,0,0,0.3)', '--shadow-md': '0 2px 12px rgba(0,0,0,0.4)',
+    '--shadow-lg': '0 4px 24px rgba(0,0,0,0.5)'
+  }
+};
+
+function setBgTheme(btn, theme) {
+  document.querySelectorAll('.bg-swatch').forEach(s => s.classList.remove('active'));
+  btn.classList.add('active');
+  const vars = bgThemes[theme];
+  Object.entries(vars).forEach(([key, val]) => {
+    document.documentElement.style.setProperty(key, val);
+  });
 }
