@@ -1673,3 +1673,312 @@ body {
 
 /* Live banner — not used */
 .live-banner { display: none; }
+
+/* ==========================================
+   VIEW TOGGLE (Vision Board / List)
+   ========================================== */
+.view-toggle-row {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.view-toggle-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 12px;
+  border-radius: var(--radius-full);
+  border: 2px solid var(--border-light);
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+
+.view-toggle-btn.active {
+  background: var(--black);
+  color: var(--white);
+  border-color: var(--black);
+}
+
+.view-toggle-btn:active { transform: scale(0.97); }
+
+/* ==========================================
+   THRIFT LIST — List View (one per row)
+   ========================================== */
+.thrift-list-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.thrift-list-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  cursor: pointer;
+  transition: background 0.15s;
+  border-bottom: 1px solid var(--border);
+}
+
+.thrift-list-row:last-child { border-bottom: none; }
+.thrift-list-row:active { background: var(--bg-elevated); }
+
+.thrift-list-row.found { opacity: 0.55; }
+
+.thrift-row-image {
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.thrift-row-check {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: var(--success);
+  color: var(--white);
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.thrift-row-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.thrift-row-info h4 {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.thrift-row-info p {
+  font-size: 12px;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.thrift-list-row.found .thrift-row-info h4 {
+  text-decoration: line-through;
+  color: var(--text-muted);
+}
+
+.thrift-row-arrow {
+  flex-shrink: 0;
+  color: var(--text-muted);
+}
+
+/* ==========================================
+   THRIFT ITEM DETAIL PAGE
+   ========================================== */
+.item-detail-image {
+  width: 100%;
+  height: 160px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.item-detail-image svg {
+  width: 48px;
+  height: 48px;
+}
+
+.item-detail-note {
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 20px;
+}
+
+.item-detail-note h3 {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-bottom: 6px;
+}
+
+.item-detail-note p {
+  font-size: 15px;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.price-breakdown {
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.price-row:last-child { border-bottom: none; }
+
+.price-row-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.price-row-value {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.price-row-value.saved {
+  color: var(--success);
+}
+
+.price-row-value.spent {
+  color: var(--primary);
+}
+
+.item-found-toggle {
+  width: 100%;
+  padding: 14px;
+  border-radius: var(--radius-full);
+  border: none;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+
+.item-found-toggle.mark-found {
+  background: var(--success);
+  color: var(--white);
+}
+
+.item-found-toggle.mark-unfound {
+  background: var(--bg-elevated);
+  color: var(--text-secondary);
+}
+
+.item-found-toggle:active { transform: scale(0.98); }
+
+/* ==========================================
+   BUDGET — Period Dropdown & Update Goal
+   ========================================== */
+.planner-period-dropdown-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+
+.planner-period-dropdown {
+  padding: 12px 40px 12px 20px;
+  border-radius: var(--radius-full);
+  border: 2px solid var(--border-light);
+  background: var(--white);
+  color: var(--text);
+  font-size: 16px;
+  font-weight: 600;
+  font-family: inherit;
+  outline: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23767676' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+
+.planner-period-dropdown:focus {
+  border-color: var(--primary);
+}
+
+.btn-update-goal {
+  margin-top: 12px;
+  width: 100%;
+  padding: 10px;
+  border-radius: var(--radius-full);
+  border: 2px solid var(--border-light);
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+
+.btn-update-goal:active {
+  background: var(--bg-elevated);
+}
+
+.update-goal-panel {
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.update-goal-inner {
+  padding: 20px;
+}
+
+.update-goal-inner h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.update-goal-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.btn-secondary {
+  padding: 12px 20px;
+  border-radius: var(--radius-full);
+  border: 2px solid var(--border-light);
+  background: var(--bg-card);
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.btn-secondary:active { background: var(--bg-elevated); }

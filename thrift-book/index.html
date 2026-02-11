@@ -61,24 +61,53 @@
         <div class="bottom-spacer"></div>
       </div>
 
-      <!-- INSPO PAGE (feed + Thrift List) -->
+      <!-- THRIFT INSPO PAGE -->
       <div class="page active" id="page-featured">
         <div class="page-header">
-          <h1 class="page-title">Inspo</h1>
+          <h1 class="page-title">Thrift Inspo</h1>
+        </div>
+
+        <!-- My Thrift List (primary content) -->
+        <div class="section-header">
+          <h2>My Thrift List</h2>
+          <button class="add-btn" onclick="showAddToList()">+ Add</button>
+        </div>
+        <p class="header-subtitle" id="thrift-list-count" style="margin-bottom: 8px;">9 to find · 3 found</p>
+
+        <!-- View Toggle -->
+        <div class="view-toggle-row">
+          <button class="view-toggle-btn active" id="toggle-board" onclick="switchThriftView('board')">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+            Vision Board
+          </button>
+          <button class="view-toggle-btn" id="toggle-list" onclick="switchThriftView('list')">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+            List
+          </button>
+        </div>
+
+        <!-- Board View (vision board grid) -->
+        <div id="thrift-view-board">
+          <div class="thrift-list-grid" id="thrift-list-grid">
+            <!-- Thrift list pins injected by JS -->
+          </div>
+        </div>
+
+        <!-- List View (one per row) -->
+        <div id="thrift-view-list" style="display: none;">
+          <div class="thrift-list-rows" id="thrift-list-rows">
+            <!-- Thrift list rows injected by JS -->
+          </div>
+        </div>
+
+        <!-- Vision Board (inspo feed) -->
+        <div class="section-header" style="margin-top: 24px;">
+          <h2>Vision Board</h2>
         </div>
         <div class="bulletin-board" id="inspo-feed">
           <!-- Bulletin board pins injected by JS -->
         </div>
 
-        <!-- Thrift List (moved from List tab) -->
-        <div class="section-header" style="margin-top: 16px;">
-          <h2>My Thrift List</h2>
-          <button class="add-btn" onclick="showAddToList()">+ Add</button>
-        </div>
-        <p class="header-subtitle" id="thrift-list-count" style="margin-bottom: 12px;">9 to find · 3 found</p>
-        <div class="thrift-list-grid" id="thrift-list-grid">
-          <!-- Thrift list pins injected by JS -->
-        </div>
         <div class="bottom-spacer"></div>
       </div>
 
@@ -160,11 +189,13 @@
                 <input type="number" id="planner-amount" placeholder="0" min="1" step="1">
               </div>
               <label class="planner-label">to thrift this</label>
-              <div class="planner-period-options" id="planner-period-options">
-                <button class="planner-period-btn active" onclick="selectPeriod(this, 'month')">Month</button>
-                <button class="planner-period-btn" onclick="selectPeriod(this, 'season')">Season</button>
-                <button class="planner-period-btn" onclick="selectPeriod(this, 'trip')">Trip</button>
-                <button class="planner-period-btn" onclick="selectPeriod(this, 'year')">Year</button>
+              <div class="planner-period-dropdown-wrap">
+                <select class="planner-period-dropdown" id="planner-period-select">
+                  <option value="month">Month</option>
+                  <option value="season">Season</option>
+                  <option value="trip">Trip</option>
+                  <option value="year">Year</option>
+                </select>
               </div>
               <button class="btn-primary planner-submit" onclick="submitBudgetPlan()">Let's go</button>
             </div>
@@ -187,6 +218,31 @@
               <div class="budget-bar-fill" id="budget-bar-fill"></div>
             </div>
             <p class="budget-remaining" id="budget-remaining">$0.00 remaining</p>
+            <button class="btn-update-goal" onclick="showUpdateGoal()">Update Goal</button>
+          </div>
+
+          <!-- Update Goal Modal (inline) -->
+          <div class="update-goal-panel" id="update-goal-panel" style="display: none;">
+            <div class="update-goal-inner">
+              <h3>Update Your Goal</h3>
+              <div class="form-group">
+                <label>New budget amount</label>
+                <input type="number" placeholder="0" min="1" step="1" id="update-goal-amount">
+              </div>
+              <div class="form-group">
+                <label>Period</label>
+                <select id="update-goal-period">
+                  <option value="month">Month</option>
+                  <option value="season">Season</option>
+                  <option value="trip">Trip</option>
+                  <option value="year">Year</option>
+                </select>
+              </div>
+              <div class="update-goal-actions">
+                <button class="btn-secondary" onclick="hideUpdateGoal()">Cancel</button>
+                <button class="btn-primary" style="flex:1;" onclick="saveUpdatedGoal()">Save</button>
+              </div>
+            </div>
           </div>
 
           <div class="section-header">
@@ -300,6 +356,23 @@
         <div class="bottom-spacer"></div>
       </div>
 
+      <!-- THRIFT ITEM DETAIL PAGE -->
+      <div class="page" id="page-thrift-item">
+        <div class="detail-header" id="thrift-item-header">
+          <button class="back-btn" onclick="hideThriftItemDetail()">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          </button>
+          <div class="detail-header-info">
+            <h1 id="thrift-item-title"></h1>
+            <p id="thrift-item-subtitle"></p>
+          </div>
+        </div>
+        <div class="detail-content" id="thrift-item-content">
+          <!-- Injected by JS -->
+        </div>
+        <div class="bottom-spacer"></div>
+      </div>
+
       <!-- TOPIC DETAIL PAGE (article list for a category) -->
       <div class="page" id="page-topic">
         <div class="topic-detail-header">
@@ -357,7 +430,7 @@
     <nav class="bottom-nav">
       <button class="nav-item active" onclick="switchPage('featured', this)">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M7 2v20"/><path d="M17 2v20"/><path d="M2 12h20"/><path d="M2 7h5"/><path d="M2 17h5"/><path d="M17 7h5"/><path d="M17 17h5"/></svg>
-        <span>Inspo</span>
+        <span>Thrift Inspo</span>
       </button>
       <button class="nav-item" onclick="switchPage('budget', this)">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>

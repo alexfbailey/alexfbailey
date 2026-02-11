@@ -359,18 +359,18 @@ const inspoFeed = [
 ];
 
 const thriftListItems = [
-  { name: 'Oversized wool blazer', note: 'Earth tones, check for moth holes', board: 'clothing', found: false, bgClass: 'cat-bg-1' },
-  { name: 'Vintage Levi\'s 501s', note: 'Size 28-30, look for Big E tab', board: 'clothing', found: false, bgClass: 'cat-bg-11' },
-  { name: 'Ceramic vase (neutral)', note: 'For the bookshelf, no chips', board: 'home', found: false, bgClass: 'cat-bg-4' },
-  { name: 'Gold chain necklace', note: 'Check for 14K stamp, magnet test', board: 'accessories', found: true, bgClass: 'cat-bg-2' },
-  { name: 'Mid-century side table', note: 'Wood, tapered legs, no veneer', board: 'home', found: false, bgClass: 'cat-bg-5' },
-  { name: 'Leather crossbody bag', note: 'Real leather smell test, minimal hardware', board: 'accessories', found: false, bgClass: 'cat-bg-8' },
-  { name: 'Botanical print (framed)', note: 'Vintage feel, gold or wood frame', board: 'home', found: true, bgClass: 'cat-bg-3' },
-  { name: 'Silk slip dress', note: 'Black or champagne, check seams', board: 'clothing', found: false, bgClass: 'cat-bg-7' },
-  { name: 'Brass candlestick holders', note: 'Pair, can clean with Bar Keeper\'s Friend', board: 'home', found: false, bgClass: 'cat-bg-10' },
-  { name: 'New Balance 990s', note: 'Size 8, any colorway, check sole wear', board: 'clothing', found: false, bgClass: 'cat-bg-6' },
-  { name: 'Coffee table art book', note: 'Large format, photography or fashion', board: 'home', found: true, bgClass: 'cat-bg-9' },
-  { name: 'Cashmere scarf', note: 'Neutral color, do the scrunch test', board: 'accessories', found: false, bgClass: 'cat-bg-12' },
+  { name: 'Oversized wool blazer', note: 'Earth tones, check for moth holes', board: 'clothing', found: false, bgClass: 'cat-bg-1', goalPrice: 25, spent: 0, retailPrice: 189 },
+  { name: 'Vintage Levi\'s 501s', note: 'Size 28-30, look for Big E tab', board: 'clothing', found: false, bgClass: 'cat-bg-11', goalPrice: 20, spent: 0, retailPrice: 98 },
+  { name: 'Ceramic vase (neutral)', note: 'For the bookshelf, no chips', board: 'home', found: false, bgClass: 'cat-bg-4', goalPrice: 8, spent: 0, retailPrice: 55 },
+  { name: 'Gold chain necklace', note: 'Check for 14K stamp, magnet test', board: 'accessories', found: true, bgClass: 'cat-bg-2', goalPrice: 15, spent: 12, retailPrice: 120 },
+  { name: 'Mid-century side table', note: 'Wood, tapered legs, no veneer', board: 'home', found: false, bgClass: 'cat-bg-5', goalPrice: 35, spent: 0, retailPrice: 280 },
+  { name: 'Leather crossbody bag', note: 'Real leather smell test, minimal hardware', board: 'accessories', found: false, bgClass: 'cat-bg-8', goalPrice: 20, spent: 0, retailPrice: 165 },
+  { name: 'Botanical print (framed)', note: 'Vintage feel, gold or wood frame', board: 'home', found: true, bgClass: 'cat-bg-3', goalPrice: 10, spent: 7, retailPrice: 45 },
+  { name: 'Silk slip dress', note: 'Black or champagne, check seams', board: 'clothing', found: false, bgClass: 'cat-bg-7', goalPrice: 15, spent: 0, retailPrice: 130 },
+  { name: 'Brass candlestick holders', note: 'Pair, can clean with Bar Keeper\'s Friend', board: 'home', found: false, bgClass: 'cat-bg-10', goalPrice: 10, spent: 0, retailPrice: 68 },
+  { name: 'New Balance 990s', note: 'Size 8, any colorway, check sole wear', board: 'clothing', found: false, bgClass: 'cat-bg-6', goalPrice: 30, spent: 0, retailPrice: 185 },
+  { name: 'Coffee table art book', note: 'Large format, photography or fashion', board: 'home', found: true, bgClass: 'cat-bg-9', goalPrice: 8, spent: 5, retailPrice: 50 },
+  { name: 'Cashmere scarf', note: 'Neutral color, do the scrunch test', board: 'accessories', found: false, bgClass: 'cat-bg-12', goalPrice: 12, spent: 0, retailPrice: 95 },
 ];
 
 const purchases = [
@@ -398,6 +398,7 @@ const budgetData = {
 
 let currentCategory = null;
 let currentSection = null;
+let thriftViewMode = 'board'; // 'board' or 'list'
 
 
 // ==========================================
@@ -475,10 +476,12 @@ function togglePin(id) {
 
 function renderThriftList() {
   const grid = document.getElementById('thrift-list-grid');
+  const rows = document.getElementById('thrift-list-rows');
   const items = thriftListItems;
 
+  // Board view (vision board grid)
   grid.innerHTML = items.map((item, i) => `
-    <div class="thrift-pin ${item.found ? 'found' : ''}" onclick="toggleFound(${i})">
+    <div class="thrift-pin ${item.found ? 'found' : ''}" onclick="showThriftItemDetail(${i})">
       <div class="thrift-pin-image ${item.bgClass}">
         ${imagePlaceholderSVG}
         ${item.found ? '<span class="thrift-pin-check">✓</span>' : ''}
@@ -487,6 +490,21 @@ function renderThriftList() {
         <h4>${item.name}</h4>
         <p>${item.note}</p>
       </div>
+    </div>
+  `).join('');
+
+  // List view (one item per row)
+  rows.innerHTML = items.map((item, i) => `
+    <div class="thrift-list-row ${item.found ? 'found' : ''}" onclick="showThriftItemDetail(${i})">
+      <div class="thrift-row-image ${item.bgClass}">
+        ${imagePlaceholderSVG}
+        ${item.found ? '<span class="thrift-row-check">✓</span>' : ''}
+      </div>
+      <div class="thrift-row-info">
+        <h4>${item.name}</h4>
+        <p>${item.note}</p>
+      </div>
+      <svg class="thrift-row-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
     </div>
   `).join('');
 
@@ -499,9 +517,92 @@ function renderThriftList() {
   }
 }
 
-function toggleFound(index) {
+function switchThriftView(mode) {
+  thriftViewMode = mode;
+  document.getElementById('toggle-board').classList.toggle('active', mode === 'board');
+  document.getElementById('toggle-list').classList.toggle('active', mode === 'list');
+  document.getElementById('thrift-view-board').style.display = mode === 'board' ? 'block' : 'none';
+  document.getElementById('thrift-view-list').style.display = mode === 'list' ? 'block' : 'none';
+}
+
+function showThriftItemDetail(index) {
+  const item = thriftListItems[index];
+  if (!item) return;
+
+  document.getElementById('thrift-item-title').textContent = item.name;
+  document.getElementById('thrift-item-subtitle').textContent = item.board;
+
+  const saved = item.found ? (item.retailPrice - item.spent) : (item.retailPrice - item.goalPrice);
+  const spentDisplay = item.found ? item.spent : item.goalPrice;
+
+  const content = document.getElementById('thrift-item-content');
+  content.innerHTML = `
+    <div class="item-detail-image ${item.bgClass}">
+      ${imagePlaceholderSVG}
+    </div>
+
+    <div class="item-detail-note">
+      <h3>Notes</h3>
+      <p>${item.note}</p>
+    </div>
+
+    <div class="price-breakdown">
+      <div class="price-row">
+        <span class="price-row-label">Goal Price</span>
+        <span class="price-row-value">$${item.goalPrice.toFixed(2)}</span>
+      </div>
+      <div class="price-row">
+        <span class="price-row-label">${item.found ? 'What I Spent' : 'Budget'}</span>
+        <span class="price-row-value spent">$${spentDisplay.toFixed(2)}</span>
+      </div>
+      <div class="price-row">
+        <span class="price-row-label">Retail Price</span>
+        <span class="price-row-value">$${item.retailPrice.toFixed(2)}</span>
+      </div>
+      <div class="price-row">
+        <span class="price-row-label">${item.found ? 'I Saved' : 'Potential Savings'}</span>
+        <span class="price-row-value saved">$${saved.toFixed(2)}</span>
+      </div>
+    </div>
+
+    <button class="item-found-toggle ${item.found ? 'mark-unfound' : 'mark-found'}" onclick="toggleFoundFromDetail(${index})">
+      ${item.found ? 'Mark as Not Found' : 'Mark as Found'}
+    </button>
+  `;
+
+  // Show the detail page
+  document.querySelectorAll('.page').forEach(p => {
+    p.classList.remove('active');
+    p.style.display = 'none';
+  });
+
+  const detailPage = document.getElementById('page-thrift-item');
+  detailPage.style.display = 'block';
+  detailPage.classList.add('active');
+  detailPage.style.animation = 'slideInRight 0.3s ease';
+  detailPage.scrollTop = 0;
+}
+
+function hideThriftItemDetail() {
+  const page = document.getElementById('page-thrift-item');
+  page.style.animation = 'slideOutRight 0.25s ease forwards';
+
+  setTimeout(() => {
+    page.classList.remove('active');
+    page.style.display = 'none';
+    page.style.animation = '';
+
+    // Show inspo page
+    const inspoPage = document.getElementById('page-featured');
+    inspoPage.style.display = 'block';
+    inspoPage.classList.add('active');
+  }, 250);
+}
+
+function toggleFoundFromDetail(index) {
   thriftListItems[index].found = !thriftListItems[index].found;
   renderThriftList();
+  showThriftItemDetail(index);
 }
 
 function showAddToList() {
@@ -527,7 +628,10 @@ function addToThriftList() {
     note: note || 'No notes yet',
     board,
     found: false,
-    bgClass: bgClasses[Math.floor(Math.random() * bgClasses.length)]
+    bgClass: bgClasses[Math.floor(Math.random() * bgClasses.length)],
+    goalPrice: 0,
+    spent: 0,
+    retailPrice: 0
   });
 
   renderThriftList();
@@ -542,20 +646,13 @@ function addToThriftList() {
 // BUDGET
 // ==========================================
 
-let selectedPeriod = 'month';
-
-function selectPeriod(btn, period) {
-  document.querySelectorAll('.planner-period-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  selectedPeriod = period;
-}
-
 function submitBudgetPlan() {
   const amount = parseFloat(document.getElementById('planner-amount').value);
+  const period = document.getElementById('planner-period-select').value;
   if (!amount || amount <= 0) return;
 
   budgetData.monthly = amount;
-  budgetData.period = selectedPeriod;
+  budgetData.period = period;
   budgetData.isSetUp = true;
 
   document.getElementById('budget-planner').style.display = 'none';
@@ -563,6 +660,28 @@ function submitBudgetPlan() {
 
   renderBudget();
   renderPurchaseList();
+}
+
+function showUpdateGoal() {
+  const panel = document.getElementById('update-goal-panel');
+  document.getElementById('update-goal-amount').value = budgetData.monthly;
+  document.getElementById('update-goal-period').value = budgetData.period;
+  panel.style.display = 'block';
+}
+
+function hideUpdateGoal() {
+  document.getElementById('update-goal-panel').style.display = 'none';
+}
+
+function saveUpdatedGoal() {
+  const amount = parseFloat(document.getElementById('update-goal-amount').value);
+  const period = document.getElementById('update-goal-period').value;
+  if (!amount || amount <= 0) return;
+
+  budgetData.monthly = amount;
+  budgetData.period = period;
+  renderBudget();
+  hideUpdateGoal();
 }
 
 function renderBudget() {
@@ -633,7 +752,7 @@ function addPurchase() {
 
 function switchPage(pageId, navBtn) {
   // Hide overlay pages
-  ['page-detail', 'page-topic', 'page-article'].forEach(id => {
+  ['page-detail', 'page-topic', 'page-article', 'page-thrift-item'].forEach(id => {
     const p = document.getElementById(id);
     p.classList.remove('active');
     p.style.display = 'none';
