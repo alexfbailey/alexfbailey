@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Thrift Book</title>
   <link rel="stylesheet" href="styles.css">
-  <!-- System fonts only (iOS SF Pro / Pinterest style) -->
 </head>
 <body>
   <div id="app">
@@ -26,7 +25,7 @@
       <div class="page active" id="page-learn">
         <div class="page-header">
           <div class="header-top">
-            <h1 class="app-title">thrift book</h1>
+            <h1 class="app-title">Thrift book</h1>
             <div class="header-actions">
               <button class="icon-btn search-btn" onclick="toggleSearch()">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
@@ -43,7 +42,7 @@
           </div>
           <p class="header-subtitle">Your guide to thrifting like a pro</p>
 
-          <!-- Filter Pills -->
+          <!-- Filter Pills (scrolling bar of subjects) -->
           <div class="filter-pills">
             <button class="pill active" onclick="filterByTag(this, 'all')">All</button>
             <button class="pill" onclick="filterByTag(this, 'popular')">Popular</button>
@@ -54,13 +53,13 @@
           </div>
         </div>
 
-        <!-- Category Grid -->
+        <!-- Topic List (one per row) -->
         <div class="section-header">
           <h2>Learn to Thrift</h2>
           <span class="see-all" onclick="showAllCategories()">See All</span>
         </div>
-        <div class="category-grid" id="category-grid">
-          <!-- Categories will be injected by JS -->
+        <div class="topic-list" id="topic-list">
+          <!-- Topics injected by JS -->
         </div>
 
         <!-- Trending Section -->
@@ -75,7 +74,7 @@
         <div class="bottom-spacer"></div>
       </div>
 
-      <!-- INSPO PAGE (FYP-style feed) -->
+      <!-- INSPO PAGE (feed + Thrift List) -->
       <div class="page" id="page-featured">
         <div class="page-header">
           <h1 class="page-title">Inspo</h1>
@@ -90,6 +89,16 @@
         </div>
         <div class="inspo-feed" id="inspo-feed">
           <!-- Inspo cards injected by JS -->
+        </div>
+
+        <!-- Thrift List (moved from List tab) -->
+        <div class="section-header" style="margin-top: 16px;">
+          <h2>My List</h2>
+          <button class="add-btn" onclick="showAddToList()">+ Add</button>
+        </div>
+        <p class="header-subtitle" id="thrift-list-count" style="margin-bottom: 12px;">9 to find · 3 found</p>
+        <div class="thrift-list-grid" id="thrift-list-grid">
+          <!-- Thrift list pins injected by JS -->
         </div>
         <div class="bottom-spacer"></div>
       </div>
@@ -130,15 +139,21 @@
             <h3>Quick Tips</h3>
             <div class="tip-cards">
               <div class="tip-card">
-                <span class="tip-icon">🏷️</span>
+                <span class="tip-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--text-secondary)" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+                </span>
                 <span>Check labels & tags</span>
               </div>
               <div class="tip-card">
-                <span class="tip-icon">🔍</span>
+                <span class="tip-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--text-secondary)" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+                </span>
                 <span>Look for maker's marks</span>
               </div>
               <div class="tip-card">
-                <span class="tip-icon">📏</span>
+                <span class="tip-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--text-secondary)" stroke-width="2"><path d="M21 3H3v18h18V3zM12 3v18M3 12h18"/></svg>
+                </span>
                 <span>Note dimensions</span>
               </div>
             </div>
@@ -147,26 +162,34 @@
         <div class="bottom-spacer"></div>
       </div>
 
-      <!-- THRIFT LIST PAGE (Pinterest-style) -->
-      <div class="page" id="page-thriftlist">
+      <!-- BUDGET PAGE (was List) -->
+      <div class="page" id="page-budget">
         <div class="page-header">
-          <h1 class="page-title">Thrift List</h1>
-          <p class="header-subtitle" id="thrift-list-count">9 to find · 3 found</p>
-          <div class="filter-pills">
-            <button class="pill active" onclick="filterThriftList(this, 'all')">All</button>
-            <button class="pill" onclick="filterThriftList(this, 'clothing')">Clothing</button>
-            <button class="pill" onclick="filterThriftList(this, 'home')">Home</button>
-            <button class="pill" onclick="filterThriftList(this, 'accessories')">Accessories</button>
-            <button class="pill" onclick="filterThriftList(this, 'found')">Found!</button>
+          <h1 class="page-title">Budget</h1>
+          <p class="header-subtitle">Track your thrift spending</p>
+        </div>
+
+        <div class="budget-overview">
+          <div class="budget-amount-row">
+            <span class="budget-spent-amount" id="budget-spent">$67.50</span>
+            <span class="budget-total-amount">of $150.00</span>
           </div>
+          <div class="budget-bar">
+            <div class="budget-bar-fill" id="budget-bar-fill"></div>
+          </div>
+          <p class="budget-remaining" id="budget-remaining">$82.50 remaining this month</p>
+        </div>
+
+        <div class="budget-categories" id="budget-categories">
+          <!-- Budget category breakdown injected by JS -->
         </div>
 
         <div class="section-header">
-          <h2>Looking For</h2>
-          <button class="add-btn" onclick="showAddToList()">+ Add</button>
+          <h2>Recent Purchases</h2>
+          <button class="add-btn" onclick="showAddPurchase()">+ Add</button>
         </div>
-        <div class="thrift-list-grid" id="thrift-list-grid">
-          <!-- Thrift list pins injected by JS -->
+        <div class="purchase-list" id="purchase-list">
+          <!-- Purchase items injected by JS -->
         </div>
         <div class="bottom-spacer"></div>
       </div>
@@ -223,7 +246,17 @@
         </div>
 
         <div class="settings-group">
-          <h3 class="settings-group-title">Thrift List</h3>
+          <h3 class="settings-group-title">Budget</h3>
+          <div class="settings-item">
+            <div class="settings-item-left">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              <span>Monthly Budget</span>
+            </div>
+            <div class="settings-item-right">
+              <span class="settings-value">$150.00</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            </div>
+          </div>
           <div class="settings-item">
             <div class="settings-item-left">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
@@ -269,14 +302,30 @@
         <div class="bottom-spacer"></div>
       </div>
 
-      <!-- CATEGORY DETAIL PAGE -->
+      <!-- TOPIC DETAIL PAGE (article list for a category) -->
+      <div class="page" id="page-topic">
+        <div class="topic-detail-header">
+          <button class="back-btn-dark" onclick="hideTopicDetail()">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          </button>
+          <div>
+            <h1 class="page-title" id="topic-title"></h1>
+            <p class="header-subtitle" id="topic-subtitle"></p>
+          </div>
+        </div>
+        <div class="article-list" id="article-list">
+          <!-- Article items injected by JS -->
+        </div>
+        <div class="bottom-spacer"></div>
+      </div>
+
+      <!-- ARTICLE DETAIL PAGE -->
       <div class="page" id="page-detail">
         <div class="detail-header" id="detail-header">
-          <button class="back-btn" onclick="hideDetail()">
+          <button class="back-btn" onclick="hideArticleDetail()">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
           </button>
           <div class="detail-header-info">
-            <span class="detail-emoji" id="detail-emoji"></span>
             <h1 id="detail-title"></h1>
             <p id="detail-subtitle"></p>
           </div>
@@ -305,9 +354,9 @@
         </div>
         <span>Scan</span>
       </button>
-      <button class="nav-item" onclick="switchPage('thriftlist', this)">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 14l2 2 4-4"/></svg>
-        <span>List</span>
+      <button class="nav-item" onclick="switchPage('budget', this)">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        <span>Budget</span>
       </button>
       <button class="nav-item" onclick="switchPage('settings', this)">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
@@ -340,6 +389,35 @@
             </select>
           </div>
           <button class="btn-primary" onclick="addToThriftList()">Add to List</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add Purchase Modal -->
+    <div class="modal-overlay" id="add-purchase-modal" onclick="hideAddPurchase(event)">
+      <div class="modal">
+        <div class="modal-header">
+          <h2>Add Purchase</h2>
+          <button class="modal-close" onclick="hideAddPurchase()">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label>What did you buy?</label>
+            <input type="text" placeholder="e.g., Vintage denim jacket" id="purchase-name">
+          </div>
+          <div class="form-group">
+            <label>Price</label>
+            <input type="number" placeholder="0.00" step="0.01" id="purchase-price">
+          </div>
+          <div class="form-group">
+            <label>Category</label>
+            <select id="purchase-category">
+              <option value="clothing">Clothing</option>
+              <option value="home">Home</option>
+              <option value="accessories">Accessories</option>
+            </select>
+          </div>
+          <button class="btn-primary" onclick="addPurchase()">Add Purchase</button>
         </div>
       </div>
     </div>

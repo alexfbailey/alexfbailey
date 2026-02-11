@@ -9,7 +9,6 @@
 const categories = [
   {
     id: 'clothing',
-    emoji: '👗',
     title: 'Clothing',
     subtitle: '24 guides',
     badge: 'Popular',
@@ -47,7 +46,6 @@ const categories = [
   },
   {
     id: 'jewellery',
-    emoji: '💎',
     title: 'Jewellery',
     subtitle: '18 guides',
     badge: 'Hot',
@@ -80,7 +78,6 @@ const categories = [
   },
   {
     id: 'art',
-    emoji: '🎨',
     title: 'Art & Prints',
     subtitle: '15 guides',
     tags: ['home', 'vintage'],
@@ -107,7 +104,6 @@ const categories = [
   },
   {
     id: 'furniture',
-    emoji: '🪑',
     title: 'Furniture',
     subtitle: '20 guides',
     tags: ['home', 'vintage'],
@@ -129,7 +125,6 @@ const categories = [
   },
   {
     id: 'books',
-    emoji: '📚',
     title: 'Books',
     subtitle: '12 guides',
     tags: ['popular'],
@@ -151,7 +146,6 @@ const categories = [
   },
   {
     id: 'shoes',
-    emoji: '👟',
     title: 'Shoes',
     subtitle: '14 guides',
     badge: 'New',
@@ -174,7 +168,6 @@ const categories = [
   },
   {
     id: 'kitchenware',
-    emoji: '🍳',
     title: 'Kitchenware',
     subtitle: '16 guides',
     tags: ['home'],
@@ -196,7 +189,6 @@ const categories = [
   },
   {
     id: 'handbags',
-    emoji: '👜',
     title: 'Handbags',
     subtitle: '16 guides',
     badge: 'Hot',
@@ -219,7 +211,6 @@ const categories = [
   },
   {
     id: 'vinyl',
-    emoji: '🎵',
     title: 'Vinyl Records',
     subtitle: '10 guides',
     tags: ['vintage'],
@@ -241,7 +232,6 @@ const categories = [
   },
   {
     id: 'home-decor',
-    emoji: '🏠',
     title: 'Home Decor',
     subtitle: '18 guides',
     tags: ['home'],
@@ -263,7 +253,6 @@ const categories = [
   },
   {
     id: 'denim',
-    emoji: '👖',
     title: 'Denim',
     subtitle: '11 guides',
     badge: 'Popular',
@@ -286,7 +275,6 @@ const categories = [
   },
   {
     id: 'reselling',
-    emoji: '💰',
     title: 'Reselling Tips',
     subtitle: '22 guides',
     tags: ['popular'],
@@ -416,35 +404,51 @@ const inspoFeed = [
 ];
 
 const trendingGuides = [
-  { emoji: '🏷️', title: 'How to Read Clothing Labels', subtitle: 'Decode fabric content & care', category: 'clothing' },
-  { emoji: '🔍', title: 'Thrift Store Red Flags', subtitle: 'What to always avoid buying', category: 'clothing' },
-  { emoji: '💸', title: 'Best Thrift Store Chains Ranked', subtitle: 'Where to get the best deals', category: 'reselling' },
-  { emoji: '📱', title: 'Apps Every Thrifter Needs', subtitle: 'Price check & authenticate on the go', category: 'reselling' },
-  { emoji: '♻️', title: 'Sustainable Fashion Guide', subtitle: 'Thrifting for the planet', category: 'clothing' },
-];
-
-const thriftListBoards = [
-  { id: 'all', label: 'All' },
-  { id: 'clothing', label: 'Clothing' },
-  { id: 'home', label: 'Home' },
-  { id: 'accessories', label: 'Accessories' },
-  { id: 'found', label: 'Found!' },
+  { title: 'How to Read Clothing Labels', subtitle: 'Decode fabric content & care', category: 'clothing' },
+  { title: 'Thrift Store Red Flags', subtitle: 'What to always avoid buying', category: 'clothing' },
+  { title: 'Best Thrift Store Chains Ranked', subtitle: 'Where to get the best deals', category: 'reselling' },
+  { title: 'Apps Every Thrifter Needs', subtitle: 'Price check & authenticate on the go', category: 'reselling' },
+  { title: 'Sustainable Fashion Guide', subtitle: 'Thrifting for the planet', category: 'clothing' },
 ];
 
 const thriftListItems = [
-  { emoji: '🧥', name: 'Oversized wool blazer', note: 'Earth tones, check for moth holes', board: 'clothing', found: false, bgClass: 'cat-bg-1' },
-  { emoji: '👖', name: 'Vintage Levi\'s 501s', note: 'Size 28-30, look for Big E tab', board: 'clothing', found: false, bgClass: 'cat-bg-11' },
-  { emoji: '🏺', name: 'Ceramic vase (neutral)', note: 'For the bookshelf, no chips', board: 'home', found: false, bgClass: 'cat-bg-4' },
-  { emoji: '💍', name: 'Gold chain necklace', note: 'Check for 14K stamp, magnet test', board: 'accessories', found: true, bgClass: 'cat-bg-2' },
-  { emoji: '🪑', name: 'Mid-century side table', note: 'Wood, tapered legs, no veneer', board: 'home', found: false, bgClass: 'cat-bg-5' },
-  { emoji: '👜', name: 'Leather crossbody bag', note: 'Real leather smell test, minimal hardware', board: 'accessories', found: false, bgClass: 'cat-bg-8' },
-  { emoji: '🖼️', name: 'Botanical print (framed)', note: 'Vintage feel, gold or wood frame', board: 'home', found: true, bgClass: 'cat-bg-3' },
-  { emoji: '👗', name: 'Silk slip dress', note: 'Black or champagne, check seams', board: 'clothing', found: false, bgClass: 'cat-bg-7' },
-  { emoji: '🕯️', name: 'Brass candlestick holders', note: 'Pair, can clean with Bar Keeper\'s Friend', board: 'home', found: false, bgClass: 'cat-bg-10' },
-  { emoji: '👟', name: 'New Balance 990s', note: 'Size 8, any colorway, check sole wear', board: 'clothing', found: false, bgClass: 'cat-bg-6' },
-  { emoji: '📚', name: 'Coffee table art book', note: 'Large format, photography or fashion', board: 'home', found: true, bgClass: 'cat-bg-9' },
-  { emoji: '🧣', name: 'Cashmere scarf', note: 'Neutral color, do the scrunch test', board: 'accessories', found: false, bgClass: 'cat-bg-12' },
+  { name: 'Oversized wool blazer', note: 'Earth tones, check for moth holes', board: 'clothing', found: false, bgClass: 'cat-bg-1' },
+  { name: 'Vintage Levi\'s 501s', note: 'Size 28-30, look for Big E tab', board: 'clothing', found: false, bgClass: 'cat-bg-11' },
+  { name: 'Ceramic vase (neutral)', note: 'For the bookshelf, no chips', board: 'home', found: false, bgClass: 'cat-bg-4' },
+  { name: 'Gold chain necklace', note: 'Check for 14K stamp, magnet test', board: 'accessories', found: true, bgClass: 'cat-bg-2' },
+  { name: 'Mid-century side table', note: 'Wood, tapered legs, no veneer', board: 'home', found: false, bgClass: 'cat-bg-5' },
+  { name: 'Leather crossbody bag', note: 'Real leather smell test, minimal hardware', board: 'accessories', found: false, bgClass: 'cat-bg-8' },
+  { name: 'Botanical print (framed)', note: 'Vintage feel, gold or wood frame', board: 'home', found: true, bgClass: 'cat-bg-3' },
+  { name: 'Silk slip dress', note: 'Black or champagne, check seams', board: 'clothing', found: false, bgClass: 'cat-bg-7' },
+  { name: 'Brass candlestick holders', note: 'Pair, can clean with Bar Keeper\'s Friend', board: 'home', found: false, bgClass: 'cat-bg-10' },
+  { name: 'New Balance 990s', note: 'Size 8, any colorway, check sole wear', board: 'clothing', found: false, bgClass: 'cat-bg-6' },
+  { name: 'Coffee table art book', note: 'Large format, photography or fashion', board: 'home', found: true, bgClass: 'cat-bg-9' },
+  { name: 'Cashmere scarf', note: 'Neutral color, do the scrunch test', board: 'accessories', found: false, bgClass: 'cat-bg-12' },
 ];
+
+const purchases = [
+  { name: 'Vintage denim jacket', price: 15.00, date: 'Feb 8', category: 'clothing' },
+  { name: 'Brass candleholders (pair)', price: 8.00, date: 'Feb 6', category: 'home' },
+  { name: 'Silk scarf', price: 4.50, date: 'Feb 3', category: 'accessories' },
+  { name: 'Pyrex mixing bowl set', price: 12.00, date: 'Feb 1', category: 'home' },
+  { name: 'Wool cardigan', price: 10.00, date: 'Jan 28', category: 'clothing' },
+  { name: 'Sterling silver ring', price: 18.00, date: 'Jan 25', category: 'accessories' },
+];
+
+const budgetData = {
+  monthly: 150,
+  get spent() {
+    return purchases.reduce((sum, p) => sum + p.price, 0);
+  }
+};
+
+
+// ==========================================
+// STATE
+// ==========================================
+
+let currentCategory = null;
+let currentSection = null;
 
 
 // ==========================================
@@ -452,10 +456,12 @@ const thriftListItems = [
 // ==========================================
 
 document.addEventListener('DOMContentLoaded', () => {
-  renderCategories();
+  renderTopicList();
   renderInspoFeed();
   renderTrendingGuides();
   renderThriftList();
+  renderBudget();
+  renderPurchaseList();
   updateTime();
   setInterval(updateTime, 60000);
 });
@@ -473,22 +479,22 @@ function updateTime() {
 // RENDER FUNCTIONS
 // ==========================================
 
-function renderCategories() {
-  const grid = document.getElementById('category-grid');
-  grid.innerHTML = categories.map((cat, i) => `
-    <div class="category-card" data-tags="${cat.tags.join(',')}" data-id="${cat.id}" onclick="showCategoryDetail('${cat.id}')">
-      <div class="category-card-image ${cat.bgClass}">
-        <span style="position:relative;z-index:1;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.3))">${cat.emoji}</span>
-        ${cat.badge ? `<span class="category-badge">${cat.badge}</span>` : ''}
+// Image placeholder SVG (used instead of emojis)
+const imagePlaceholderSVG = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgba(0,0,0,0.25)" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>`;
+
+function renderTopicList() {
+  const list = document.getElementById('topic-list');
+  list.innerHTML = categories.map(cat => `
+    <div class="topic-item" data-tags="${cat.tags.join(',')}" data-id="${cat.id}" onclick="showCategoryDetail('${cat.id}')">
+      <div class="topic-image ${cat.bgClass}">
+        ${imagePlaceholderSVG}
       </div>
-      <div class="category-card-body">
+      <div class="topic-info">
         <h3>${cat.title}</h3>
-        <p>${cat.subtitle}</p>
-        <div class="category-viewers">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-          ${cat.viewers} learning
-        </div>
+        <p>${cat.subtitle} · ${cat.viewers} learning</p>
       </div>
+      ${cat.badge ? `<span class="topic-badge">${cat.badge}</span>` : ''}
+      <svg class="topic-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
     </div>
   `).join('');
 }
@@ -533,7 +539,9 @@ function renderTrendingGuides() {
   list.innerHTML = trendingGuides.map((guide, i) => `
     <div class="trending-item" onclick="showCategoryDetail('${guide.category}')">
       <span class="trending-number">${i + 1}</span>
-      <span class="trending-emoji">${guide.emoji}</span>
+      <div class="trending-image cat-bg-${(i % 12) + 1}">
+        ${imagePlaceholderSVG}
+      </div>
       <div class="trending-info">
         <h4>${guide.title}</h4>
         <p>${guide.subtitle}</p>
@@ -545,21 +553,14 @@ function renderTrendingGuides() {
   `).join('');
 }
 
-let activeBoard = 'all';
-
-function renderThriftList(board) {
-  if (board !== undefined) activeBoard = board;
+function renderThriftList() {
   const grid = document.getElementById('thrift-list-grid');
-  const filtered = activeBoard === 'all'
-    ? thriftListItems.filter(i => !i.found)
-    : activeBoard === 'found'
-    ? thriftListItems.filter(i => i.found)
-    : thriftListItems.filter(i => i.board === activeBoard && !i.found);
+  const items = thriftListItems;
 
-  grid.innerHTML = filtered.map((item, i) => `
-    <div class="thrift-pin ${item.found ? 'found' : ''}" onclick="toggleFound(${thriftListItems.indexOf(item)})">
+  grid.innerHTML = items.map((item, i) => `
+    <div class="thrift-pin ${item.found ? 'found' : ''}" onclick="toggleFound(${i})">
       <div class="thrift-pin-image ${item.bgClass}">
-        <span class="thrift-pin-emoji">${item.emoji}</span>
+        ${imagePlaceholderSVG}
         ${item.found ? '<span class="thrift-pin-check">✓</span>' : ''}
       </div>
       <div class="thrift-pin-body">
@@ -576,12 +577,6 @@ function renderThriftList(board) {
     const foundCount = thriftListItems.filter(i => i.found).length;
     countEl.textContent = `${total} to find · ${foundCount} found`;
   }
-}
-
-function filterThriftList(btn, board) {
-  btn.closest('.filter-pills').querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
-  btn.classList.add('active');
-  renderThriftList(board);
 }
 
 function toggleFound(index) {
@@ -605,13 +600,9 @@ function addToThriftList() {
 
   if (!name) return;
 
-  const boardEmojis = {
-    'clothing': '👗', 'home': '🏠', 'accessories': '💍'
-  };
   const bgClasses = ['cat-bg-1','cat-bg-2','cat-bg-3','cat-bg-4','cat-bg-5','cat-bg-6','cat-bg-7','cat-bg-8','cat-bg-9','cat-bg-10','cat-bg-11','cat-bg-12'];
 
   thriftListItems.unshift({
-    emoji: boardEmojis[board] || '📦',
     name,
     note: note || 'No notes yet',
     board,
@@ -628,18 +619,94 @@ function addToThriftList() {
 
 
 // ==========================================
+// BUDGET
+// ==========================================
+
+function renderBudget() {
+  const spent = budgetData.spent;
+  const monthly = budgetData.monthly;
+  const remaining = monthly - spent;
+  const pct = Math.min((spent / monthly) * 100, 100);
+
+  document.getElementById('budget-spent').textContent = `$${spent.toFixed(2)}`;
+  document.getElementById('budget-remaining').textContent = `$${remaining.toFixed(2)} remaining this month`;
+  document.getElementById('budget-bar-fill').style.width = `${pct}%`;
+
+  // Category breakdown
+  const cats = {};
+  purchases.forEach(p => {
+    cats[p.category] = (cats[p.category] || 0) + p.price;
+  });
+
+  const catEl = document.getElementById('budget-categories');
+  catEl.innerHTML = Object.entries(cats).map(([cat, amount]) => `
+    <div class="budget-cat-item">
+      <span class="budget-cat-name">${cat.charAt(0).toUpperCase() + cat.slice(1)}</span>
+      <span class="budget-cat-amount">$${amount.toFixed(2)}</span>
+    </div>
+  `).join('');
+}
+
+function renderPurchaseList() {
+  const list = document.getElementById('purchase-list');
+  list.innerHTML = purchases.map(p => `
+    <div class="purchase-item">
+      <div class="purchase-image cat-bg-${Math.floor(Math.random() * 12) + 1}">
+        ${imagePlaceholderSVG}
+      </div>
+      <div class="purchase-info">
+        <h4>${p.name}</h4>
+        <p>${p.date} · ${p.category}</p>
+      </div>
+      <span class="purchase-price">$${p.price.toFixed(2)}</span>
+    </div>
+  `).join('');
+}
+
+function showAddPurchase() {
+  document.getElementById('add-purchase-modal').classList.add('visible');
+}
+
+function hideAddPurchase(e) {
+  if (e && e.target !== e.currentTarget) return;
+  document.getElementById('add-purchase-modal').classList.remove('visible');
+}
+
+function addPurchase() {
+  const name = document.getElementById('purchase-name').value;
+  const price = parseFloat(document.getElementById('purchase-price').value);
+  const category = document.getElementById('purchase-category').value;
+
+  if (!name || isNaN(price)) return;
+
+  const now = new Date();
+  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const date = `${months[now.getMonth()]} ${now.getDate()}`;
+
+  purchases.unshift({ name, price, date, category });
+
+  renderBudget();
+  renderPurchaseList();
+  hideAddPurchase();
+
+  document.getElementById('purchase-name').value = '';
+  document.getElementById('purchase-price').value = '';
+}
+
+
+// ==========================================
 // NAVIGATION
 // ==========================================
 
 function switchPage(pageId, navBtn) {
-  // Hide detail page if showing
-  const detailPage = document.getElementById('page-detail');
-  if (detailPage.classList.contains('active')) {
-    detailPage.classList.remove('active');
-    detailPage.style.display = 'none';
-  }
+  // Hide overlay pages
+  ['page-detail', 'page-topic'].forEach(id => {
+    const p = document.getElementById(id);
+    p.classList.remove('active');
+    p.style.display = 'none';
+  });
 
-  // Switch pages
+  // Switch main pages
   document.querySelectorAll('.page').forEach(p => {
     p.classList.remove('active');
     p.style.display = 'none';
@@ -657,64 +724,129 @@ function switchPage(pageId, navBtn) {
 
 
 // ==========================================
-// CATEGORY DETAIL
+// CATEGORY DETAIL (Article List)
 // ==========================================
 
+function getArticleDescription(section) {
+  if (section.tips) {
+    const names = section.tips.slice(0, 2).map(t => t.title).join(', ');
+    const more = section.tips.length > 2 ? `, and ${section.tips.length - 2} more` : '';
+    return `${section.tips.length} tips — ${names}${more}`;
+  }
+  if (section.checklist) {
+    return `${section.checklist.length} items to check off`;
+  }
+  return '';
+}
+
 function showCategoryDetail(categoryId) {
+  currentCategory = categoryId;
   const category = categories.find(c => c.id === categoryId);
   if (!category) return;
 
-  document.getElementById('detail-emoji').textContent = category.emoji;
-  document.getElementById('detail-title').textContent = category.title;
-  document.getElementById('detail-subtitle').textContent = `${category.subtitle} · ${category.viewers} learning`;
+  document.getElementById('topic-title').textContent = category.title;
+  document.getElementById('topic-subtitle').textContent = `${category.sections.length} articles · ${category.viewers} learning`;
+
+  const list = document.getElementById('article-list');
+  list.innerHTML = category.sections.map((section, i) => `
+    <div class="article-item" onclick="showArticleDetail('${categoryId}', ${i})">
+      <div class="article-image ${category.bgClass}">
+        ${imagePlaceholderSVG}
+      </div>
+      <div class="article-info">
+        <h3>${section.title}</h3>
+        <p>${getArticleDescription(section)}</p>
+      </div>
+      <svg class="article-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+    </div>
+  `).join('');
+
+  // Show topic page
+  document.querySelectorAll('.page').forEach(p => {
+    p.classList.remove('active');
+    p.style.display = 'none';
+  });
+
+  const topicPage = document.getElementById('page-topic');
+  topicPage.style.display = 'block';
+  topicPage.classList.add('active');
+  topicPage.style.animation = 'slideInRight 0.3s ease';
+  topicPage.scrollTop = 0;
+}
+
+function hideTopicDetail() {
+  const topicPage = document.getElementById('page-topic');
+  topicPage.style.animation = 'slideOutRight 0.25s ease forwards';
+
+  setTimeout(() => {
+    topicPage.classList.remove('active');
+    topicPage.style.display = 'none';
+    topicPage.style.animation = '';
+
+    // Show learn page
+    const learnPage = document.getElementById('page-learn');
+    learnPage.style.display = 'block';
+    learnPage.classList.add('active');
+  }, 250);
+}
+
+
+// ==========================================
+// ARTICLE DETAIL
+// ==========================================
+
+function showArticleDetail(categoryId, sectionIndex) {
+  currentCategory = categoryId;
+  currentSection = sectionIndex;
+
+  const category = categories.find(c => c.id === categoryId);
+  if (!category) return;
+
+  const section = category.sections[sectionIndex];
+
+  document.getElementById('detail-title').textContent = section.title;
+  document.getElementById('detail-subtitle').textContent = category.title;
 
   const content = document.getElementById('detail-content');
   let html = '';
 
-  category.sections.forEach(section => {
-    html += `<div class="detail-section">`;
-    html += `<h2><span class="section-icon">${section.icon}</span> ${section.title}</h2>`;
-
-    if (section.tips) {
-      html += `<div class="tip-list">`;
-      section.tips.forEach((tip, i) => {
-        html += `
-          <div class="tip-item">
-            <span class="tip-number">${i + 1}</span>
-            <div class="tip-text">
-              <h4>${tip.title}</h4>
-              <p>${tip.desc}</p>
-            </div>
-          </div>
-        `;
-      });
-      html += `</div>`;
-    }
-
-    if (section.proTip) {
+  if (section.tips) {
+    html += `<div class="tip-list">`;
+    section.tips.forEach((tip, i) => {
       html += `
-        <div class="pro-tip">
-          <div class="pro-tip-label">Pro Tip</div>
-          <p>${section.proTip}</p>
+        <div class="tip-item">
+          <span class="tip-number">${i + 1}</span>
+          <div class="tip-text">
+            <h4>${tip.title}</h4>
+            <p>${tip.desc}</p>
+          </div>
         </div>
       `;
-    }
-
-    if (section.checklist) {
-      html += `<div class="checklist">`;
-      section.checklist.forEach((item, i) => {
-        html += `
-          <div class="checklist-item" onclick="toggleCheck(this)">
-            <div class="check-circle"></div>
-            <span>${item}</span>
-          </div>
-        `;
-      });
-      html += `</div>`;
-    }
-
+    });
     html += `</div>`;
-  });
+  }
+
+  if (section.proTip) {
+    html += `
+      <div class="pro-tip">
+        <div class="pro-tip-label">Pro Tip</div>
+        <p>${section.proTip}</p>
+      </div>
+    `;
+  }
+
+  if (section.checklist) {
+    html += `<div class="checklist">`;
+    section.checklist.forEach(item => {
+      html += `
+        <div class="checklist-item" onclick="toggleCheck(this)">
+          <div class="check-circle"></div>
+          <span>${item}</span>
+        </div>
+      `;
+    });
+    html += `</div>`;
+  }
 
   content.innerHTML = html;
 
@@ -731,7 +863,7 @@ function showCategoryDetail(categoryId) {
   detailPage.scrollTop = 0;
 }
 
-function hideDetail() {
+function hideArticleDetail() {
   const detailPage = document.getElementById('page-detail');
   detailPage.style.animation = 'slideOutRight 0.25s ease forwards';
 
@@ -740,10 +872,10 @@ function hideDetail() {
     detailPage.style.display = 'none';
     detailPage.style.animation = '';
 
-    // Show the learn page
-    const learnPage = document.getElementById('page-learn');
-    learnPage.style.display = 'block';
-    learnPage.classList.add('active');
+    // Go back to topic detail
+    if (currentCategory) {
+      showCategoryDetail(currentCategory);
+    }
   }, 250);
 }
 
@@ -769,38 +901,32 @@ function toggleSearch() {
 
 function filterCategories() {
   const query = document.getElementById('search-input').value.toLowerCase();
-  const cards = document.querySelectorAll('.category-card');
+  const items = document.querySelectorAll('.topic-item');
 
-  cards.forEach(card => {
-    const id = card.dataset.id;
+  items.forEach(item => {
+    const id = item.dataset.id;
     const cat = categories.find(c => c.id === id);
     const matches = !query ||
       cat.title.toLowerCase().includes(query) ||
       cat.tags.some(t => t.includes(query));
-    card.classList.toggle('hidden', !matches);
+    item.classList.toggle('hidden', !matches);
   });
 }
 
 function filterByTag(btn, tag) {
-  // Update active pill
   btn.closest('.filter-pills').querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
   btn.classList.add('active');
 
-  const cards = document.querySelectorAll('.category-card');
-  cards.forEach(card => {
+  const items = document.querySelectorAll('.topic-item');
+  items.forEach(item => {
     if (tag === 'all') {
-      card.classList.remove('hidden');
+      item.classList.remove('hidden');
     } else {
-      const tags = card.dataset.tags.split(',');
-      card.classList.toggle('hidden', !tags.includes(tag));
+      const tags = item.dataset.tags.split(',');
+      item.classList.toggle('hidden', !tags.includes(tag));
     }
   });
 }
-
-
-// ==========================================
-// THRIFT LIST (replaced Budget)
-// ==========================================
 
 
 // ==========================================
@@ -842,10 +968,8 @@ function toggleDarkMode() {
   }
 }
 
-
 function showAllCategories() {
-  // Reset filter to show all
   document.querySelectorAll('.filter-pills .pill').forEach(p => p.classList.remove('active'));
   document.querySelector('.filter-pills .pill').classList.add('active');
-  document.querySelectorAll('.category-card').forEach(c => c.classList.remove('hidden'));
+  document.querySelectorAll('.topic-item').forEach(c => c.classList.remove('hidden'));
 }
