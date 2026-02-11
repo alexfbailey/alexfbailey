@@ -432,96 +432,130 @@ body {
 .trending-arrow { color: var(--text-muted); }
 
 /* ==========================================
-   FEATURED FINDS PAGE
+   INSPO FEED (FYP-style)
    ========================================== */
-.featured-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+.inspo-feed {
+  display: flex;
+  flex-direction: column;
   gap: 2px;
-  padding-top: 0;
-  background: var(--black);
-  border: 2px solid var(--black);
 }
 
-.featured-card {
+.inspo-card {
   background: var(--white);
-  border-radius: 0;
+  border: 2px solid var(--black);
   overflow: hidden;
   cursor: pointer;
 }
 
-.featured-card:active { opacity: 0.85; }
+.inspo-card:active { opacity: 0.9; }
 
-.featured-image {
-  height: 130px;
+.inspo-image {
+  height: 160px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 48px;
   position: relative;
 }
 
-.featured-price {
+.inspo-emoji {
+  font-size: 56px;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));
+}
+
+.inspo-size-tag {
   position: absolute;
-  bottom: 0;
+  top: 0;
   left: 0;
-  background: var(--primary);
+  background: var(--black);
   color: var(--white);
-  padding: 4px 10px;
-  border-radius: 0;
-  font-size: 13px;
+  font-size: 9px;
   font-weight: 700;
-  letter-spacing: 0.02em;
+  padding: 4px 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
-.featured-retail {
+.inspo-platform {
   position: absolute;
-  bottom: 4px;
+  top: 8px;
   right: 8px;
-  color: var(--text-muted);
-  font-size: 11px;
-  text-decoration: line-through;
+  font-size: 18px;
 }
 
-.featured-body {
-  padding: 10px 12px;
+.inspo-body {
+  padding: 12px 14px;
   border-top: 1px solid var(--border-light);
 }
 
-.featured-body h3 {
-  font-size: 12px;
+.inspo-title {
+  font-size: 13px;
   font-weight: 700;
-  line-height: 1.3;
+  line-height: 1.4;
   letter-spacing: 0.02em;
+  margin-bottom: 6px;
 }
 
-.featured-body p {
+.inspo-source {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.inspo-handle {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--primary);
+  letter-spacing: 0.01em;
+}
+
+.inspo-dot {
+  color: var(--text-muted);
+  font-size: 10px;
+}
+
+.inspo-platform-name {
   font-size: 10px;
   color: var(--text-secondary);
-  margin-top: 3px;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
+  font-weight: 500;
 }
 
-.featured-meta {
+.inspo-actions {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 6px;
 }
 
-.featured-rating {
+.inspo-tags {
   display: flex;
-  align-items: center;
-  gap: 3px;
-  font-size: 11px;
-  color: var(--warning);
+  gap: 4px;
 }
 
-.featured-saves {
-  font-size: 10px;
+.inspo-tag {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  padding: 3px 8px;
+  color: var(--text-secondary);
+}
+
+.inspo-save {
+  font-size: 12px;
   color: var(--text-muted);
 }
+
+/* Inspo background colors */
+.inspo-bg-1 { background: #D4714E; }
+.inspo-bg-2 { background: #8B6B4A; }
+.inspo-bg-3 { background: #C4506A; }
+.inspo-bg-4 { background: #3A7D44; }
+.inspo-bg-5 { background: #C4A84E; }
+.inspo-bg-6 { background: #2D5DA1; }
 
 /* ==========================================
    CAMERA PAGE
@@ -659,90 +693,78 @@ body {
 .tip-icon { font-size: 20px; }
 
 /* ==========================================
-   BUDGET PAGE
+   THRIFT LIST PAGE (Pinterest-style)
    ========================================== */
-.budget-overview {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 24px 0;
-}
-
-.budget-circle {
-  position: relative;
-  width: 160px;
-  height: 160px;
-}
-
-.budget-ring {
-  width: 100%;
-  height: 100%;
-  transform: scaleX(-1);
-}
-
-.budget-ring circle:first-child { stroke: var(--border-light); }
-
-.budget-amount {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-}
-
-.budget-spent {
-  font-size: 36px;
-  font-weight: 700;
-  font-family: 'Bodoni Moda', 'Playfair Display', 'Georgia', serif;
-}
-
-.budget-total {
-  font-size: 12px;
-  color: var(--text-secondary);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
-.budget-period {
-  display: flex;
-  gap: 0;
-  margin-top: 16px;
-}
-
-.budget-stats {
+.thrift-list-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 2px;
-  margin: 8px 0;
   background: var(--black);
   border: 2px solid var(--black);
 }
 
-.stat-card {
+.thrift-pin {
   background: var(--white);
-  border-radius: 0;
-  padding: 14px 10px;
-  text-align: center;
+  overflow: hidden;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.thrift-pin:active { opacity: 0.85; }
+
+.thrift-pin.found { opacity: 0.6; }
+
+.thrift-pin-image {
+  height: 100px;
   display: flex;
-  flex-direction: column;
-  gap: 4px;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
 
-.stat-value {
-  font-size: 22px;
+.thrift-pin-emoji {
+  font-size: 36px;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
+
+.thrift-pin-check {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: var(--success);
+  color: var(--white);
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
   font-weight: 700;
-  color: var(--primary);
-  font-family: 'Bodoni Moda', 'Playfair Display', 'Georgia', serif;
 }
 
-.stat-label {
-  font-size: 9px;
-  color: var(--text-secondary);
+.thrift-pin-body {
+  padding: 10px 12px 12px;
+  border-top: 1px solid var(--border-light);
+}
+
+.thrift-pin-body h4 {
+  font-size: 12px;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
-  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin-bottom: 3px;
+}
+
+.thrift-pin-body p {
+  font-size: 10px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+}
+
+.thrift-pin.found .thrift-pin-body h4 {
+  text-decoration: line-through;
+  color: var(--text-muted);
 }
 
 .add-btn {
@@ -760,122 +782,6 @@ body {
 }
 
 .add-btn:active { background: var(--text-secondary); }
-
-.purchase-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  border: 2px solid var(--black);
-}
-
-.purchase-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  background: var(--white);
-  border-radius: 0;
-  padding: 12px;
-  border-bottom: 1px solid var(--border-light);
-}
-
-.purchase-item:last-child { border-bottom: none; }
-
-.purchase-icon {
-  width: 36px;
-  height: 36px;
-  border-radius: 0;
-  background: var(--bg-card);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-  border: 1px solid var(--border-light);
-}
-
-.purchase-info { flex: 1; }
-
-.purchase-info h4 {
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-}
-
-.purchase-info p {
-  font-size: 11px;
-  color: var(--text-secondary);
-  letter-spacing: 0.02em;
-}
-
-.purchase-price { text-align: right; }
-
-.purchase-price .paid {
-  font-size: 15px;
-  font-weight: 700;
-  font-family: 'Bodoni Moda', 'Playfair Display', 'Georgia', serif;
-}
-
-.purchase-price .retail {
-  font-size: 10px;
-  color: var(--text-muted);
-  text-decoration: line-through;
-}
-
-/* Savings Card */
-.savings-card {
-  background: var(--white);
-  border-radius: 0;
-  padding: 16px;
-  border: 2px solid var(--black);
-}
-
-.savings-info {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.savings-label {
-  font-size: 11px;
-  color: var(--text-secondary);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  font-weight: 500;
-}
-
-.savings-amount {
-  font-size: 20px;
-  font-weight: 700;
-  font-family: 'Bodoni Moda', 'Playfair Display', 'Georgia', serif;
-}
-
-.savings-bar {
-  height: 6px;
-  background: var(--bg-elevated);
-  border-radius: 0;
-  overflow: hidden;
-}
-
-.savings-fill {
-  height: 100%;
-  background: var(--primary);
-  border-radius: 0;
-  transition: width 0.5s ease;
-}
-
-.savings-comparison {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 8px;
-  font-size: 11px;
-  color: var(--text-secondary);
-  letter-spacing: 0.02em;
-}
-
-.savings-percent {
-  color: var(--success);
-  font-weight: 700;
-}
 
 /* ==========================================
    SETTINGS PAGE

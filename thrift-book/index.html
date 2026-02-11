@@ -77,20 +77,21 @@
         <div class="bottom-spacer"></div>
       </div>
 
-      <!-- FEATURED FINDS PAGE -->
+      <!-- INSPO PAGE (FYP-style feed) -->
       <div class="page" id="page-featured">
         <div class="page-header">
-          <h1 class="page-title">Inspo Finds</h1>
-          <p class="header-subtitle">Real thrift finds to train your eye</p>
+          <h1 class="page-title">Inspo</h1>
+          <p class="header-subtitle">Style ideas from across the internet</p>
           <div class="filter-pills">
-            <button class="pill active">This Week</button>
-            <button class="pill">Best Steals</button>
-            <button class="pill">Hidden Gems</button>
-            <button class="pill">Under $10</button>
+            <button class="pill active" onclick="filterInspo(this, 'all')">For You</button>
+            <button class="pill" onclick="filterInspo(this, 'plus-size')">Plus Size</button>
+            <button class="pill" onclick="filterInspo(this, 'runway')">Runway</button>
+            <button class="pill" onclick="filterInspo(this, 'vintage')">Vintage</button>
+            <button class="pill" onclick="filterInspo(this, 'accessories')">Accessories</button>
           </div>
         </div>
-        <div class="featured-grid" id="featured-grid">
-          <!-- Featured items injected by JS -->
+        <div class="inspo-feed" id="inspo-feed">
+          <!-- Inspo cards injected by JS -->
         </div>
         <div class="bottom-spacer"></div>
       </div>
@@ -148,69 +149,26 @@
         <div class="bottom-spacer"></div>
       </div>
 
-      <!-- MY BUDGET PAGE -->
-      <div class="page" id="page-budget">
+      <!-- THRIFT LIST PAGE (Pinterest-style) -->
+      <div class="page" id="page-thriftlist">
         <div class="page-header">
-          <h1 class="page-title">My Budget</h1>
-          <p class="header-subtitle">Track your thrift spending</p>
-        </div>
-
-        <div class="budget-overview">
-          <div class="budget-circle">
-            <svg viewBox="0 0 120 120" class="budget-ring">
-              <circle cx="60" cy="60" r="52" fill="none" stroke="var(--border)" stroke-width="8"/>
-              <circle cx="60" cy="60" r="52" fill="none" stroke="var(--primary)" stroke-width="8" stroke-dasharray="326.7" stroke-dashoffset="98" stroke-linecap="round" transform="rotate(-90 60 60)"/>
-            </svg>
-            <div class="budget-amount">
-              <span class="budget-spent">$67</span>
-              <span class="budget-total">of $100</span>
-            </div>
-          </div>
-          <div class="budget-period">
-            <button class="pill active">Weekly</button>
-            <button class="pill">Monthly</button>
-            <button class="pill">Yearly</button>
-          </div>
-        </div>
-
-        <div class="budget-stats">
-          <div class="stat-card">
-            <span class="stat-value">$33</span>
-            <span class="stat-label">Remaining</span>
-          </div>
-          <div class="stat-card">
-            <span class="stat-value">12</span>
-            <span class="stat-label">Items Found</span>
-          </div>
-          <div class="stat-card">
-            <span class="stat-value">$5.58</span>
-            <span class="stat-label">Avg per Item</span>
+          <h1 class="page-title">Thrift List</h1>
+          <p class="header-subtitle" id="thrift-list-count">9 to find · 3 found</p>
+          <div class="filter-pills">
+            <button class="pill active" onclick="filterThriftList(this, 'all')">All</button>
+            <button class="pill" onclick="filterThriftList(this, 'clothing')">Clothing</button>
+            <button class="pill" onclick="filterThriftList(this, 'home')">Home</button>
+            <button class="pill" onclick="filterThriftList(this, 'accessories')">Accessories</button>
+            <button class="pill" onclick="filterThriftList(this, 'found')">Found!</button>
           </div>
         </div>
 
         <div class="section-header">
-          <h2>Recent Purchases</h2>
-          <button class="add-btn" onclick="showAddPurchase()">+ Add</button>
+          <h2>Looking For</h2>
+          <button class="add-btn" onclick="showAddToList()">+ Add</button>
         </div>
-        <div class="purchase-list" id="purchase-list">
-          <!-- Purchases injected by JS -->
-        </div>
-
-        <div class="section-header" style="margin-top: 16px;">
-          <h2>Savings Wins</h2>
-        </div>
-        <div class="savings-card">
-          <div class="savings-info">
-            <span class="savings-label">Total retail value of finds</span>
-            <span class="savings-amount">$342</span>
-          </div>
-          <div class="savings-bar">
-            <div class="savings-fill" style="width: 19.5%"></div>
-          </div>
-          <div class="savings-comparison">
-            <span>You paid: $67</span>
-            <span class="savings-percent">You saved 80%!</span>
-          </div>
+        <div class="thrift-list-grid" id="thrift-list-grid">
+          <!-- Thrift list pins injected by JS -->
         </div>
         <div class="bottom-spacer"></div>
       </div>
@@ -267,24 +225,22 @@
         </div>
 
         <div class="settings-group">
-          <h3 class="settings-group-title">Budget</h3>
-          <div class="settings-item" onclick="showBudgetSettings()">
+          <h3 class="settings-group-title">Thrift List</h3>
+          <div class="settings-item">
             <div class="settings-item-left">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-              <span>Weekly Budget</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+              <span>Export List</span>
             </div>
             <div class="settings-item-right">
-              <span class="settings-value">$100</span>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
             </div>
           </div>
           <div class="settings-item">
             <div class="settings-item-left">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
-              <span>Currency</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              <span>Share with Friends</span>
             </div>
             <div class="settings-item-right">
-              <span class="settings-value">USD ($)</span>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
             </div>
           </div>
@@ -342,8 +298,8 @@
         <span>Learn</span>
       </button>
       <button class="nav-item" onclick="switchPage('featured', this)">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        <span>Finds</span>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M7 2v20"/><path d="M17 2v20"/><path d="M2 12h20"/><path d="M2 7h5"/><path d="M2 17h5"/><path d="M17 7h5"/><path d="M17 17h5"/></svg>
+        <span>Inspo</span>
       </button>
       <button class="nav-item camera-nav" onclick="switchPage('camera', this)">
         <div class="camera-btn-wrap">
@@ -351,9 +307,9 @@
         </div>
         <span>Scan</span>
       </button>
-      <button class="nav-item" onclick="switchPage('budget', this)">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-        <span>Budget</span>
+      <button class="nav-item" onclick="switchPage('thriftlist', this)">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 14l2 2 4-4"/></svg>
+        <span>List</span>
       </button>
       <button class="nav-item" onclick="switchPage('settings', this)">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
@@ -361,40 +317,31 @@
       </button>
     </nav>
 
-    <!-- Add Purchase Modal -->
-    <div class="modal-overlay" id="add-purchase-modal" onclick="hideAddPurchase(event)">
+    <!-- Add to Thrift List Modal -->
+    <div class="modal-overlay" id="add-thrift-modal" onclick="hideAddToList(event)">
       <div class="modal">
         <div class="modal-header">
-          <h2>Add Purchase</h2>
-          <button class="modal-close" onclick="hideAddPurchase()">&times;</button>
+          <h2>Add to List</h2>
+          <button class="modal-close" onclick="hideAddToList()">&times;</button>
         </div>
         <div class="modal-body">
           <div class="form-group">
-            <label>Item Name</label>
-            <input type="text" placeholder="e.g., Vintage denim jacket" id="purchase-name">
+            <label>What are you looking for?</label>
+            <input type="text" placeholder="e.g., Oversized wool blazer" id="thrift-item-name">
           </div>
           <div class="form-group">
-            <label>Price Paid</label>
-            <input type="number" placeholder="0.00" id="purchase-price" step="0.01">
+            <label>Notes & tips for finding it</label>
+            <input type="text" placeholder="e.g., Earth tones, check for moth holes" id="thrift-item-note">
           </div>
           <div class="form-group">
-            <label>Estimated Retail Value</label>
-            <input type="number" placeholder="0.00" id="purchase-retail" step="0.01">
-          </div>
-          <div class="form-group">
-            <label>Category</label>
-            <select id="purchase-category">
-              <option>Clothing</option>
-              <option>Accessories</option>
-              <option>Home Decor</option>
-              <option>Books</option>
-              <option>Jewellery</option>
-              <option>Art</option>
-              <option>Kitchenware</option>
-              <option>Other</option>
+            <label>Board</label>
+            <select id="thrift-item-board">
+              <option value="clothing">Clothing</option>
+              <option value="home">Home</option>
+              <option value="accessories">Accessories</option>
             </select>
           </div>
-          <button class="btn-primary" onclick="addPurchase()">Add to Budget</button>
+          <button class="btn-primary" onclick="addToThriftList()">Add to List</button>
         </div>
       </div>
     </div>

@@ -308,13 +308,111 @@ const categories = [
   }
 ];
 
-const featuredFinds = [
-  { emoji: '🧥', title: 'Vintage Pendleton Wool Coat', store: 'Found at Goodwill', price: '$12', retail: '$285', rating: 4.8, saves: 234, bgClass: 'feat-bg-1' },
-  { emoji: '💍', title: 'Sterling Silver Turquoise Ring', store: 'Found at Salvation Army', price: '$3', retail: '$85', rating: 4.9, saves: 189, bgClass: 'feat-bg-2' },
-  { emoji: '🖼️', title: 'Signed Lithograph Print', store: 'Found at Value Village', price: '$8', retail: '$150', rating: 4.7, saves: 156, bgClass: 'feat-bg-3' },
-  { emoji: '👜', title: 'Coach Leather Crossbody', store: 'Found at Savers', price: '$15', retail: '$298', rating: 4.9, saves: 312, bgClass: 'feat-bg-4' },
-  { emoji: '🍳', title: 'Le Creuset Dutch Oven', store: 'Found at Goodwill', price: '$18', retail: '$370', rating: 5.0, saves: 421, bgClass: 'feat-bg-5' },
-  { emoji: '👖', title: 'Levi\'s 501 Big E Vintage', store: 'Found at Buffalo Exchange', price: '$22', retail: '$350', rating: 4.8, saves: 278, bgClass: 'feat-bg-6' },
+const inspoFeed = [
+  {
+    id: 1,
+    image: '👗',
+    title: 'Oversized blazer + wide leg trouser moment',
+    handle: '@thaboranoke',
+    platform: 'Instagram',
+    platformIcon: '📸',
+    tags: ['streetwear', 'plus-size'],
+    saves: 1243,
+    bgClass: 'inspo-bg-1',
+    sizeTag: 'Size 18',
+    link: '#'
+  },
+  {
+    id: 2,
+    image: '🧥',
+    title: '70s suede jacket styling for fall',
+    handle: '@vintagesoulmate',
+    platform: 'Pinterest',
+    platformIcon: '📌',
+    tags: ['vintage', 'outerwear'],
+    saves: 892,
+    bgClass: 'inspo-bg-2',
+    sizeTag: null,
+    link: '#'
+  },
+  {
+    id: 3,
+    image: '👠',
+    title: 'Runway to thrift: Miu Miu ballet flat dupes',
+    handle: '@thriftedrunway',
+    platform: 'TikTok',
+    platformIcon: '🎵',
+    tags: ['runway', 'shoes'],
+    saves: 2104,
+    bgClass: 'inspo-bg-3',
+    sizeTag: null,
+    link: '#'
+  },
+  {
+    id: 4,
+    image: '👖',
+    title: 'Barrel jeans + crop top — all thrifted',
+    handle: '@curvythriftqueen',
+    platform: 'Instagram',
+    platformIcon: '📸',
+    tags: ['denim', 'plus-size'],
+    saves: 1567,
+    bgClass: 'inspo-bg-4',
+    sizeTag: 'Size 22',
+    link: '#'
+  },
+  {
+    id: 5,
+    image: '💍',
+    title: 'Layered gold jewelry — all under $5 at Goodwill',
+    handle: '@goldfindsonly',
+    platform: 'Instagram',
+    platformIcon: '📸',
+    tags: ['accessories', 'jewelry'],
+    saves: 3201,
+    bgClass: 'inspo-bg-5',
+    sizeTag: null,
+    link: '#'
+  },
+  {
+    id: 6,
+    image: '🧵',
+    title: 'SS25 Bottega Veneta — find the thrift version',
+    handle: '@runwaytothrift',
+    platform: 'Runway',
+    platformIcon: '🏛️',
+    tags: ['runway', 'designer'],
+    saves: 1890,
+    bgClass: 'inspo-bg-6',
+    sizeTag: null,
+    link: '#'
+  },
+  {
+    id: 7,
+    image: '👚',
+    title: 'Cottagecore garden party fit — size 2X',
+    handle: '@plussizecottage',
+    platform: 'Pinterest',
+    platformIcon: '📌',
+    tags: ['cottagecore', 'plus-size'],
+    saves: 978,
+    bgClass: 'inspo-bg-1',
+    sizeTag: 'Size 2X',
+    link: '#'
+  },
+  {
+    id: 8,
+    image: '🕶️',
+    title: 'Vintage Versace frames for $8 — how to spot them',
+    handle: '@thriftoptics',
+    platform: 'TikTok',
+    platformIcon: '🎵',
+    tags: ['accessories', 'vintage'],
+    saves: 2456,
+    bgClass: 'inspo-bg-3',
+    sizeTag: null,
+    link: '#'
+  },
 ];
 
 const trendingGuides = [
@@ -325,13 +423,27 @@ const trendingGuides = [
   { emoji: '♻️', title: 'Sustainable Fashion Guide', subtitle: 'Thrifting for the planet', category: 'clothing' },
 ];
 
-const samplePurchases = [
-  { emoji: '👗', name: 'Silk Wrap Dress', category: 'Clothing', price: 8, retail: 120, date: 'Today' },
-  { emoji: '📚', name: 'Vintage Cookbook Set', category: 'Books', price: 5, retail: 45, date: 'Yesterday' },
-  { emoji: '🍳', name: 'Cast Iron Skillet', category: 'Kitchenware', price: 12, retail: 65, date: '2 days ago' },
-  { emoji: '💎', name: 'Silver Hoop Earrings', category: 'Jewellery', price: 4, retail: 38, date: '3 days ago' },
-  { emoji: '🖼️', name: 'Framed Botanical Print', category: 'Art', price: 6, retail: 42, date: '4 days ago' },
-  { emoji: '👖', name: 'Levi\'s 501 Jeans', category: 'Denim', price: 9, retail: 70, date: '5 days ago' },
+const thriftListBoards = [
+  { id: 'all', label: 'All' },
+  { id: 'clothing', label: 'Clothing' },
+  { id: 'home', label: 'Home' },
+  { id: 'accessories', label: 'Accessories' },
+  { id: 'found', label: 'Found!' },
+];
+
+const thriftListItems = [
+  { emoji: '🧥', name: 'Oversized wool blazer', note: 'Earth tones, check for moth holes', board: 'clothing', found: false, bgClass: 'cat-bg-1' },
+  { emoji: '👖', name: 'Vintage Levi\'s 501s', note: 'Size 28-30, look for Big E tab', board: 'clothing', found: false, bgClass: 'cat-bg-11' },
+  { emoji: '🏺', name: 'Ceramic vase (neutral)', note: 'For the bookshelf, no chips', board: 'home', found: false, bgClass: 'cat-bg-4' },
+  { emoji: '💍', name: 'Gold chain necklace', note: 'Check for 14K stamp, magnet test', board: 'accessories', found: true, bgClass: 'cat-bg-2' },
+  { emoji: '🪑', name: 'Mid-century side table', note: 'Wood, tapered legs, no veneer', board: 'home', found: false, bgClass: 'cat-bg-5' },
+  { emoji: '👜', name: 'Leather crossbody bag', note: 'Real leather smell test, minimal hardware', board: 'accessories', found: false, bgClass: 'cat-bg-8' },
+  { emoji: '🖼️', name: 'Botanical print (framed)', note: 'Vintage feel, gold or wood frame', board: 'home', found: true, bgClass: 'cat-bg-3' },
+  { emoji: '👗', name: 'Silk slip dress', note: 'Black or champagne, check seams', board: 'clothing', found: false, bgClass: 'cat-bg-7' },
+  { emoji: '🕯️', name: 'Brass candlestick holders', note: 'Pair, can clean with Bar Keeper\'s Friend', board: 'home', found: false, bgClass: 'cat-bg-10' },
+  { emoji: '👟', name: 'New Balance 990s', note: 'Size 8, any colorway, check sole wear', board: 'clothing', found: false, bgClass: 'cat-bg-6' },
+  { emoji: '📚', name: 'Coffee table art book', note: 'Large format, photography or fashion', board: 'home', found: true, bgClass: 'cat-bg-9' },
+  { emoji: '🧣', name: 'Cashmere scarf', note: 'Neutral color, do the scrunch test', board: 'accessories', found: false, bgClass: 'cat-bg-12' },
 ];
 
 
@@ -341,9 +453,9 @@ const samplePurchases = [
 
 document.addEventListener('DOMContentLoaded', () => {
   renderCategories();
-  renderFeaturedFinds();
+  renderInspoFeed();
   renderTrendingGuides();
-  renderPurchases();
+  renderThriftList();
   updateTime();
   setInterval(updateTime, 60000);
 });
@@ -381,25 +493,39 @@ function renderCategories() {
   `).join('');
 }
 
-function renderFeaturedFinds() {
-  const grid = document.getElementById('featured-grid');
-  grid.innerHTML = featuredFinds.map((item, i) => `
-    <div class="featured-card">
-      <div class="featured-image ${item.bgClass}">
-        <span style="filter:drop-shadow(0 2px 8px rgba(0,0,0,0.3))">${item.emoji}</span>
-        <span class="featured-price">${item.price}</span>
-        <span class="featured-retail">${item.retail}</span>
+function renderInspoFeed(filter) {
+  const feed = document.getElementById('inspo-feed');
+  const filtered = !filter || filter === 'all'
+    ? inspoFeed
+    : inspoFeed.filter(item => item.tags.includes(filter));
+
+  feed.innerHTML = filtered.map(item => `
+    <div class="inspo-card">
+      <div class="inspo-image ${item.bgClass}">
+        <span class="inspo-emoji">${item.image}</span>
+        ${item.sizeTag ? `<span class="inspo-size-tag">${item.sizeTag}</span>` : ''}
+        <span class="inspo-platform">${item.platformIcon}</span>
       </div>
-      <div class="featured-body">
-        <h3>${item.title}</h3>
-        <p>${item.store}</p>
-        <div class="featured-meta">
-          <span class="featured-rating">${'★'.repeat(Math.floor(item.rating))} ${item.rating}</span>
-          <span class="featured-saves">♡ ${item.saves}</span>
+      <div class="inspo-body">
+        <p class="inspo-title">${item.title}</p>
+        <div class="inspo-source">
+          <span class="inspo-handle">${item.handle}</span>
+          <span class="inspo-dot">·</span>
+          <span class="inspo-platform-name">${item.platform}</span>
+        </div>
+        <div class="inspo-actions">
+          <span class="inspo-tags">${item.tags.map(t => `<span class="inspo-tag">${t}</span>`).join('')}</span>
+          <span class="inspo-save">♡ ${item.saves.toLocaleString()}</span>
         </div>
       </div>
     </div>
   `).join('');
+}
+
+function filterInspo(btn, filter) {
+  btn.closest('.filter-pills').querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  renderInspoFeed(filter);
 }
 
 function renderTrendingGuides() {
@@ -419,21 +545,85 @@ function renderTrendingGuides() {
   `).join('');
 }
 
-function renderPurchases() {
-  const list = document.getElementById('purchase-list');
-  list.innerHTML = samplePurchases.map(p => `
-    <div class="purchase-item">
-      <span class="purchase-icon">${p.emoji}</span>
-      <div class="purchase-info">
-        <h4>${p.name}</h4>
-        <p>${p.category} · ${p.date}</p>
+let activeBoard = 'all';
+
+function renderThriftList(board) {
+  if (board !== undefined) activeBoard = board;
+  const grid = document.getElementById('thrift-list-grid');
+  const filtered = activeBoard === 'all'
+    ? thriftListItems.filter(i => !i.found)
+    : activeBoard === 'found'
+    ? thriftListItems.filter(i => i.found)
+    : thriftListItems.filter(i => i.board === activeBoard && !i.found);
+
+  grid.innerHTML = filtered.map((item, i) => `
+    <div class="thrift-pin ${item.found ? 'found' : ''}" onclick="toggleFound(${thriftListItems.indexOf(item)})">
+      <div class="thrift-pin-image ${item.bgClass}">
+        <span class="thrift-pin-emoji">${item.emoji}</span>
+        ${item.found ? '<span class="thrift-pin-check">✓</span>' : ''}
       </div>
-      <div class="purchase-price">
-        <span class="paid">$${p.price}</span>
-        <span class="retail">$${p.retail}</span>
+      <div class="thrift-pin-body">
+        <h4>${item.name}</h4>
+        <p>${item.note}</p>
       </div>
     </div>
   `).join('');
+
+  // Update count
+  const countEl = document.getElementById('thrift-list-count');
+  if (countEl) {
+    const total = thriftListItems.filter(i => !i.found).length;
+    const foundCount = thriftListItems.filter(i => i.found).length;
+    countEl.textContent = `${total} to find · ${foundCount} found`;
+  }
+}
+
+function filterThriftList(btn, board) {
+  btn.closest('.filter-pills').querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  renderThriftList(board);
+}
+
+function toggleFound(index) {
+  thriftListItems[index].found = !thriftListItems[index].found;
+  renderThriftList();
+}
+
+function showAddToList() {
+  document.getElementById('add-thrift-modal').classList.add('visible');
+}
+
+function hideAddToList(e) {
+  if (e && e.target !== e.currentTarget) return;
+  document.getElementById('add-thrift-modal').classList.remove('visible');
+}
+
+function addToThriftList() {
+  const name = document.getElementById('thrift-item-name').value;
+  const note = document.getElementById('thrift-item-note').value;
+  const board = document.getElementById('thrift-item-board').value;
+
+  if (!name) return;
+
+  const boardEmojis = {
+    'clothing': '👗', 'home': '🏠', 'accessories': '💍'
+  };
+  const bgClasses = ['cat-bg-1','cat-bg-2','cat-bg-3','cat-bg-4','cat-bg-5','cat-bg-6','cat-bg-7','cat-bg-8','cat-bg-9','cat-bg-10','cat-bg-11','cat-bg-12'];
+
+  thriftListItems.unshift({
+    emoji: boardEmojis[board] || '📦',
+    name,
+    note: note || 'No notes yet',
+    board,
+    found: false,
+    bgClass: bgClasses[Math.floor(Math.random() * bgClasses.length)]
+  });
+
+  renderThriftList();
+  hideAddToList();
+
+  document.getElementById('thrift-item-name').value = '';
+  document.getElementById('thrift-item-note').value = '';
 }
 
 
@@ -609,49 +799,8 @@ function filterByTag(btn, tag) {
 
 
 // ==========================================
-// BUDGET / PURCHASES
+// THRIFT LIST (replaced Budget)
 // ==========================================
-
-function showAddPurchase() {
-  document.getElementById('add-purchase-modal').classList.add('visible');
-}
-
-function hideAddPurchase(e) {
-  if (e && e.target !== e.currentTarget) return;
-  document.getElementById('add-purchase-modal').classList.remove('visible');
-}
-
-function addPurchase() {
-  const name = document.getElementById('purchase-name').value;
-  const price = document.getElementById('purchase-price').value;
-  const retail = document.getElementById('purchase-retail').value;
-  const category = document.getElementById('purchase-category').value;
-
-  if (!name || !price) return;
-
-  const catEmoji = {
-    'Clothing': '👗', 'Accessories': '💎', 'Home Decor': '🏠',
-    'Books': '📚', 'Jewellery': '💍', 'Art': '🎨',
-    'Kitchenware': '🍳', 'Other': '📦'
-  };
-
-  samplePurchases.unshift({
-    emoji: catEmoji[category] || '📦',
-    name,
-    category,
-    price: parseFloat(price),
-    retail: parseFloat(retail) || parseFloat(price) * 5,
-    date: 'Just now'
-  });
-
-  renderPurchases();
-  hideAddPurchase();
-
-  // Clear form
-  document.getElementById('purchase-name').value = '';
-  document.getElementById('purchase-price').value = '';
-  document.getElementById('purchase-retail').value = '';
-}
 
 
 // ==========================================
@@ -687,9 +836,6 @@ function toggleDarkMode() {
   }
 }
 
-function showBudgetSettings() {
-  // Placeholder for budget settings modal
-}
 
 function showAllCategories() {
   // Reset filter to show all
