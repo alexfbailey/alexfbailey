@@ -272,72 +272,66 @@ body {
 .see-all:active { color: var(--text); }
 
 /* ==========================================
-   TOPIC LIST — one per row with image spots
+   TOPIC LIST — 3-column card grid
    ========================================== */
 .topic-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.topic-card {
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+
+.topic-card:active { transform: scale(0.95); }
+.topic-card.hidden { display: none; }
+
+.topic-card-bg {
+  border-radius: var(--radius-md);
+  padding: 14px 10px 12px;
   display: flex;
   flex-direction: column;
-  gap: 0;
-  background: var(--bg-card);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-sm);
+  align-items: center;
+  aspect-ratio: 0.85;
+  position: relative;
   overflow: hidden;
 }
 
-.topic-item {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 12px 14px;
-  cursor: pointer;
-  transition: background 0.15s;
-  border-bottom: 1px solid var(--border);
+.topic-card-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.7);
+  text-align: center;
+  line-height: 1.3;
+  letter-spacing: -0.1px;
 }
 
-.topic-item:last-child { border-bottom: none; }
-.topic-item:active { background: var(--bg-elevated); }
-.topic-item.hidden { display: none; }
-
-.topic-image {
-  width: 56px;
-  height: 56px;
-  min-width: 56px;
-  border-radius: var(--radius-sm);
+.topic-card-icon {
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.topic-info {
-  flex: 1;
-  min-width: 0;
+.topic-card-icon svg {
+  width: 36px;
+  height: 36px;
+  opacity: 0.5;
 }
 
-.topic-info h3 {
-  font-size: 15px;
-  font-weight: 700;
-  margin-bottom: 2px;
-  letter-spacing: -0.1px;
-}
-
-.topic-info p {
-  font-size: 12px;
-  color: var(--text-secondary);
-}
-
-.topic-badge {
-  background: var(--primary);
-  color: var(--white);
+.topic-card-count {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background: rgba(0, 0, 0, 0.12);
+  color: rgba(0, 0, 0, 0.55);
   font-size: 10px;
   font-weight: 700;
-  padding: 3px 8px;
+  padding: 4px 8px;
   border-radius: var(--radius-sm);
-  white-space: nowrap;
-}
-
-.topic-arrow {
-  flex-shrink: 0;
-  opacity: 0.4;
+  backdrop-filter: blur(4px);
 }
 
 /* Trending List */
@@ -1487,7 +1481,7 @@ body {
 .cat-bg-12 { background: #F9EBEA; }
 
 /* Hide topic on filter */
-.topic-item.hidden { display: none; }
+.topic-card.hidden { display: none; }
 
 /* Live banner — not used */
 .live-banner { display: none; }

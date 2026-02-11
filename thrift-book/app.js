@@ -470,18 +470,20 @@ const imagePlaceholderSVG = `<svg width="24" height="24" viewBox="0 0 24 24" fil
 
 function renderTopicList() {
   const list = document.getElementById('topic-list');
-  list.innerHTML = categories.map(cat => `
-    <div class="topic-item" data-tags="${cat.tags.join(',')}" data-id="${cat.id}" onclick="showCategoryDetail('${cat.id}')">
-      <div class="topic-image ${cat.bgClass}">
-        ${imagePlaceholderSVG}
+  list.innerHTML = categories.map(cat => {
+    const optionCount = cat.subtitle.match(/\d+/)?.[0] || cat.sections.length;
+    return `
+    <div class="topic-card" data-tags="${cat.tags.join(',')}" data-id="${cat.id}" onclick="showCategoryDetail('${cat.id}')">
+      <div class="topic-card-bg ${cat.bgClass}">
+        <h3 class="topic-card-title">${cat.title}</h3>
+        <div class="topic-card-icon">
+          ${imagePlaceholderSVG}
+        </div>
+        <span class="topic-card-count">${optionCount} Options</span>
       </div>
-      <div class="topic-info">
-        <h3>${cat.title}</h3>
-        <p>${cat.subtitle} · ${cat.viewers} learning</p>
-      </div>
-      <svg class="topic-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
     </div>
-  `).join('');
+  `;
+  }).join('');
 }
 
 function renderInspoFeed(filter) {
@@ -989,7 +991,7 @@ function toggleSearch() {
 
 function filterCategories() {
   const query = document.getElementById('search-input').value.toLowerCase();
-  const items = document.querySelectorAll('.topic-item');
+  const items = document.querySelectorAll('.topic-card');
 
   items.forEach(item => {
     const id = item.dataset.id;
@@ -1005,7 +1007,7 @@ function filterByTag(btn, tag) {
   btn.closest('.filter-pills').querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
   btn.classList.add('active');
 
-  const items = document.querySelectorAll('.topic-item');
+  const items = document.querySelectorAll('.topic-card');
   items.forEach(item => {
     if (tag === 'all') {
       item.classList.remove('hidden');
@@ -1059,5 +1061,5 @@ function toggleDarkMode() {
 function showAllCategories() {
   document.querySelectorAll('.filter-pills .pill').forEach(p => p.classList.remove('active'));
   document.querySelector('.filter-pills .pill').classList.add('active');
-  document.querySelectorAll('.topic-item').forEach(c => c.classList.remove('hidden'));
+  document.querySelectorAll('.topic-card').forEach(c => c.classList.remove('hidden'));
 }
