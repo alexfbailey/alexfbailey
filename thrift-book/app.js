@@ -309,12 +309,12 @@ const categories = [
 ];
 
 const featuredFinds = [
-  { emoji: '🧥', title: 'Vintage Pendleton Wool Coat', store: 'Goodwill - Portland', price: '$12', retail: '$285', rating: 4.8, saves: 234, bgClass: 'feat-bg-1' },
-  { emoji: '💍', title: 'Sterling Silver Turquoise Ring', store: 'Salvation Army - Austin', price: '$3', retail: '$85', rating: 4.9, saves: 189, bgClass: 'feat-bg-2' },
-  { emoji: '🖼️', title: 'Signed Lithograph Print', store: 'Value Village - Seattle', price: '$8', retail: '$150', rating: 4.7, saves: 156, bgClass: 'feat-bg-3' },
-  { emoji: '👜', title: 'Coach Leather Crossbody', store: 'Savers - Chicago', price: '$15', retail: '$298', rating: 4.9, saves: 312, bgClass: 'feat-bg-4' },
-  { emoji: '🍳', title: 'Le Creuset Dutch Oven', store: 'Goodwill - Denver', price: '$18', retail: '$370', rating: 5.0, saves: 421, bgClass: 'feat-bg-5' },
-  { emoji: '👖', title: 'Levi\'s 501 Big E Vintage', store: 'Buffalo Exchange - LA', price: '$22', retail: '$350', rating: 4.8, saves: 278, bgClass: 'feat-bg-6' },
+  { emoji: '🧥', title: 'Vintage Pendleton Wool Coat', store: 'Found at Goodwill', price: '$12', retail: '$285', rating: 4.8, saves: 234, bgClass: 'feat-bg-1' },
+  { emoji: '💍', title: 'Sterling Silver Turquoise Ring', store: 'Found at Salvation Army', price: '$3', retail: '$85', rating: 4.9, saves: 189, bgClass: 'feat-bg-2' },
+  { emoji: '🖼️', title: 'Signed Lithograph Print', store: 'Found at Value Village', price: '$8', retail: '$150', rating: 4.7, saves: 156, bgClass: 'feat-bg-3' },
+  { emoji: '👜', title: 'Coach Leather Crossbody', store: 'Found at Savers', price: '$15', retail: '$298', rating: 4.9, saves: 312, bgClass: 'feat-bg-4' },
+  { emoji: '🍳', title: 'Le Creuset Dutch Oven', store: 'Found at Goodwill', price: '$18', retail: '$370', rating: 5.0, saves: 421, bgClass: 'feat-bg-5' },
+  { emoji: '👖', title: 'Levi\'s 501 Big E Vintage', store: 'Found at Buffalo Exchange', price: '$22', retail: '$350', rating: 4.8, saves: 278, bgClass: 'feat-bg-6' },
 ];
 
 const trendingGuides = [
@@ -659,19 +659,8 @@ function addPurchase() {
 // ==========================================
 
 function toggleDarkMode() {
-  // App is already dark mode by default — this is a placeholder
-  // for toggling to light mode in a future update
   const isChecked = document.getElementById('dark-mode-toggle').checked;
-  if (!isChecked) {
-    document.documentElement.style.setProperty('--bg', '#F5F0EB');
-    document.documentElement.style.setProperty('--bg-card', '#FFFFFF');
-    document.documentElement.style.setProperty('--bg-card-hover', '#F0F0F0');
-    document.documentElement.style.setProperty('--bg-elevated', '#F0ECE7');
-    document.documentElement.style.setProperty('--text', '#1A1A1A');
-    document.documentElement.style.setProperty('--text-secondary', '#666666');
-    document.documentElement.style.setProperty('--text-muted', '#999999');
-    document.documentElement.style.setProperty('--border', '#E0DCD7');
-  } else {
+  if (isChecked) {
     document.documentElement.style.setProperty('--bg', '#0F0F0F');
     document.documentElement.style.setProperty('--bg-card', '#1A1A1A');
     document.documentElement.style.setProperty('--bg-card-hover', '#222222');
@@ -680,6 +669,15 @@ function toggleDarkMode() {
     document.documentElement.style.setProperty('--text-secondary', '#A0A0A0');
     document.documentElement.style.setProperty('--text-muted', '#666666');
     document.documentElement.style.setProperty('--border', '#2A2A2A');
+  } else {
+    document.documentElement.style.setProperty('--bg', '#FAF7F4');
+    document.documentElement.style.setProperty('--bg-card', '#FFFFFF');
+    document.documentElement.style.setProperty('--bg-card-hover', '#F5F0EB');
+    document.documentElement.style.setProperty('--bg-elevated', '#F0ECE7');
+    document.documentElement.style.setProperty('--text', '#1A1A1A');
+    document.documentElement.style.setProperty('--text-secondary', '#6B6B6B');
+    document.documentElement.style.setProperty('--text-muted', '#999999');
+    document.documentElement.style.setProperty('--border', '#E8E2DC');
   }
 }
 
