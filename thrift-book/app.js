@@ -442,11 +442,11 @@ function renderTopicList() {
     return `
     <div class="topic-card" data-tags="${cat.tags.join(',')}" data-id="${cat.id}" onclick="showCategoryDetail('${cat.id}')">
       <div class="topic-card-bg ${cat.bgClass}">
-        <h3 class="topic-card-title">${cat.title}</h3>
         <div class="topic-card-icon">
           ${imagePlaceholderSVG}
         </div>
       </div>
+      <h3 class="topic-card-title">${cat.title}</h3>
     </div>
   `;
   }).join('');
@@ -789,6 +789,10 @@ function switchPage(pageId, navBtn) {
   // Update nav
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
   navBtn.classList.add('active');
+
+  // Show FAB only on Vision Board page
+  const fab = document.getElementById('fab-add');
+  if (fab) fab.style.display = pageId === 'featured' ? 'flex' : 'none';
 }
 
 
