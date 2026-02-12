@@ -624,72 +624,100 @@ body {
 .tip-icon { font-size: 20px; display: flex; align-items: center; justify-content: center; }
 
 /* ==========================================
-   THRIFT LIST — Pinterest board style (in Inspo tab)
+   CORK BOARD — Vision Board Style
    ========================================== */
-.thrift-list-grid {
+.cork-board {
+  background: #D2B48C;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 20px, rgba(0,0,0,0.03) 20px, rgba(0,0,0,0.03) 21px),
+    repeating-linear-gradient(90deg, transparent, transparent 20px, rgba(0,0,0,0.03) 20px, rgba(0,0,0,0.03) 21px);
+  border-radius: var(--radius-lg);
+  padding: 16px 10px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
+  gap: 14px;
+  position: relative;
+  box-shadow: inset 0 2px 8px rgba(0,0,0,0.15);
+  border: 3px solid #B8976A;
 }
 
-.thrift-pin {
-  background: var(--bg-card);
-  border-radius: var(--radius-md);
+.cork-card {
+  background: var(--white);
+  border-radius: 4px;
   overflow: hidden;
   cursor: pointer;
-  box-shadow: var(--shadow-sm);
-  transition: transform 0.15s, box-shadow 0.15s;
+  box-shadow: 2px 3px 8px rgba(0,0,0,0.15);
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
 }
 
-.thrift-pin:active {
-  transform: scale(0.97);
-  box-shadow: var(--shadow-md);
+.cork-card:nth-child(odd) { transform: rotate(-2deg); }
+.cork-card:nth-child(even) { transform: rotate(1.5deg); }
+.cork-card:nth-child(3n) { transform: rotate(-1deg); }
+.cork-card:nth-child(4n) { transform: rotate(2.5deg); }
+
+.cork-card:active { transform: scale(0.96) rotate(0deg) !important; }
+
+.cork-card.found { opacity: 0.5; }
+
+.cork-card::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 14px;
+  background: radial-gradient(circle, #CC3333 40%, #AA2222 60%, transparent 62%);
+  border-radius: 50%;
+  z-index: 5;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 
-.thrift-pin.found { opacity: 0.55; }
-
-.thrift-pin-image {
+.cork-card-image {
   height: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  overflow: hidden;
 }
 
-.thrift-pin-check {
+.cork-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cork-card:nth-child(odd) .cork-card-image { height: 110px; }
+.cork-card:nth-child(even) .cork-card-image { height: 90px; }
+
+.cork-card-check {
   position: absolute;
-  top: 8px;
-  right: 8px;
+  top: 6px;
+  right: 6px;
   background: var(--success);
   color: var(--white);
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 700;
 }
 
-.thrift-pin-body {
-  padding: 10px 12px 12px;
+.cork-card-label {
+  padding: 8px 10px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--text);
+  text-align: center;
 }
 
-.thrift-pin-body h4 {
-  font-size: 13px;
-  font-weight: 700;
-  margin-bottom: 2px;
-}
-
-.thrift-pin-body p {
-  font-size: 11px;
-  color: var(--text-secondary);
-  line-height: 1.4;
-}
-
-.thrift-pin.found .thrift-pin-body h4 {
+.cork-card.found .cork-card-label {
   text-decoration: line-through;
   color: var(--text-muted);
 }
@@ -1041,142 +1069,8 @@ body {
 }
 
 /* ==========================================
-   PROFILE PAGE (IG/TikTok style)
+   SETTINGS PAGE
    ========================================== */
-.profile-header-area {
-  text-align: center;
-  padding: 12px 0 24px;
-}
-
-.profile-avatar-lg {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  background: var(--primary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 12px;
-  border: 3px solid var(--bg);
-  box-shadow: 0 2px 12px rgba(0,0,0,0.1);
-}
-
-.profile-display-name {
-  font-size: 20px;
-  font-weight: 800;
-  letter-spacing: -0.3px;
-}
-
-.profile-handle {
-  font-size: 13px;
-  color: var(--text-muted);
-  font-weight: 500;
-  margin-top: 2px;
-}
-
-.profile-stats-row {
-  display: flex;
-  justify-content: center;
-  gap: 32px;
-  margin: 16px 0;
-}
-
-.profile-stat {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.profile-stat-num {
-  font-size: 18px;
-  font-weight: 800;
-}
-
-.profile-stat-label {
-  font-size: 12px;
-  color: var(--text-muted);
-  font-weight: 500;
-}
-
-.profile-bio {
-  font-size: 14px;
-  color: var(--text-secondary);
-  font-style: italic;
-}
-
-/* Customize UI */
-.customize-section {
-  background: var(--bg-card);
-  border-radius: var(--radius-md);
-  padding: 16px;
-  margin-bottom: 10px;
-  box-shadow: var(--shadow-sm);
-}
-
-.customize-label {
-  display: block;
-  font-size: 14px;
-  font-weight: 600;
-  margin-bottom: 12px;
-}
-
-.color-picker-row {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.color-swatch {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  border: 3px solid transparent;
-  cursor: pointer;
-  transition: all 0.15s;
-}
-
-.color-swatch:active { transform: scale(0.9); }
-
-.color-swatch.active {
-  border-color: var(--text);
-  box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--text);
-}
-
-.bg-picker-row {
-  display: flex;
-  gap: 10px;
-}
-
-.bg-swatch {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  background: none;
-  border: 2px solid transparent;
-  border-radius: var(--radius-sm);
-  padding: 8px 4px;
-  cursor: pointer;
-  font-family: inherit;
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--text-secondary);
-  transition: all 0.15s;
-}
-
-.bg-swatch:active { transform: scale(0.95); }
-
-.bg-swatch.active {
-  border-color: var(--primary);
-  color: var(--primary);
-}
-
-.bg-preview {
-  width: 100%;
-  height: 32px;
-  border-radius: 6px;
-}
 
 .settings-group { margin-bottom: 24px; }
 
@@ -1617,6 +1511,48 @@ body {
 
 .btn-primary:active { background: var(--primary-dark); }
 
+/* Image Upload */
+.image-upload-area {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.upload-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px;
+  border: 2px dashed var(--border-light);
+  border-radius: var(--radius-md);
+  background: var(--bg-elevated);
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+
+.upload-btn:active {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.image-preview-wrap {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  max-height: 120px;
+}
+
+.image-preview-wrap img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+}
+
 /* Article Body Card (tip detail page) */
 .article-body-card {
   background: var(--bg-card);
@@ -1680,7 +1616,7 @@ body {
 .view-toggle-row {
   display: flex;
   gap: 6px;
-  margin-bottom: 14px;
+  margin-top: 10px;
 }
 
 .view-toggle-btn {

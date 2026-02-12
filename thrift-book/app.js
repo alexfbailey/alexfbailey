@@ -407,7 +407,6 @@ let thriftViewMode = 'board'; // 'board' or 'list'
 
 document.addEventListener('DOMContentLoaded', () => {
   renderTopicList();
-  renderInspoFeed();
   renderThriftList();
   renderBudget();
   renderPurchaseList();
@@ -475,21 +474,18 @@ function togglePin(id) {
 }
 
 function renderThriftList() {
-  const grid = document.getElementById('thrift-list-grid');
+  const board = document.getElementById('thrift-cork-board');
   const rows = document.getElementById('thrift-list-rows');
   const items = thriftListItems;
 
-  // Board view (vision board grid)
-  grid.innerHTML = items.map((item, i) => `
-    <div class="thrift-pin ${item.found ? 'found' : ''}" onclick="showThriftItemDetail(${i})">
-      <div class="thrift-pin-image ${item.bgClass}">
-        ${imagePlaceholderSVG}
-        ${item.found ? '<span class="thrift-pin-check">✓</span>' : ''}
+  // Cork board view (floating images with small descriptions)
+  board.innerHTML = items.map((item, i) => `
+    <div class="cork-card ${item.found ? 'found' : ''}" onclick="showThriftItemDetail(${i})">
+      <div class="cork-card-image ${item.bgClass}">
+        ${item.imageUrl ? `<img src="${item.imageUrl}" alt="${item.name}">` : imagePlaceholderSVG}
+        ${item.found ? '<span class="cork-card-check">✓</span>' : ''}
       </div>
-      <div class="thrift-pin-body">
-        <h4>${item.name}</h4>
-        <p>${item.note}</p>
-      </div>
+      <p class="cork-card-label">${item.name}</p>
     </div>
   `).join('');
 
@@ -497,7 +493,7 @@ function renderThriftList() {
   rows.innerHTML = items.map((item, i) => `
     <div class="thrift-list-row ${item.found ? 'found' : ''}" onclick="showThriftItemDetail(${i})">
       <div class="thrift-row-image ${item.bgClass}">
-        ${imagePlaceholderSVG}
+        ${item.imageUrl ? `<img src="${item.imageUrl}" alt="${item.name}" style="width:100%;height:100%;object-fit:cover;border-radius:var(--radius-sm);">` : imagePlaceholderSVG}
         ${item.found ? '<span class="thrift-row-check">✓</span>' : ''}
       </div>
       <div class="thrift-row-info">
@@ -507,14 +503,6 @@ function renderThriftList() {
       <svg class="thrift-row-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
     </div>
   `).join('');
-
-  // Update count
-  const countEl = document.getElementById('thrift-list-count');
-  if (countEl) {
-    const total = thriftListItems.filter(i => !i.found).length;
-    const foundCount = thriftListItems.filter(i => i.found).length;
-    countEl.textContent = `${total} to find · ${foundCount} found`;
-  }
 }
 
 function switchThriftView(mode) {
@@ -538,7 +526,7 @@ function showThriftItemDetail(index) {
   const content = document.getElementById('thrift-item-content');
   content.innerHTML = `
     <div class="item-detail-image ${item.bgClass}">
-      ${imagePlaceholderSVG}
+      ${item.imageUrl ? `<img src="${item.imageUrl}" alt="${item.name}" style="width:100%;height:100%;object-fit:cover;border-radius:var(--radius-md);">` : imagePlaceholderSVG}
     </div>
 
     <div class="item-detail-note">
@@ -618,12 +606,13 @@ function addToThriftList() {
   const name = document.getElementById('thrift-item-name').value;
   const note = document.getElementById('thrift-item-note').value;
   const board = document.getElementById('thrift-item-board').value;
+  const fileInput = document.getElementById('thrift-item-image');
 
   if (!name) return;
 
   const bgClasses = ['cat-bg-1','cat-bg-2','cat-bg-3','cat-bg-4','cat-bg-5','cat-bg-6','cat-bg-7','cat-bg-8','cat-bg-9','cat-bg-10','cat-bg-11','cat-bg-12'];
 
-  thriftListItems.unshift({
+  const newItem = {
     name,
     note: note || 'No notes yet',
     board,
@@ -631,14 +620,32 @@ function addToThriftList() {
     bgClass: bgClasses[Math.floor(Math.random() * bgClasses.length)],
     goalPrice: 0,
     spent: 0,
-    retailPrice: 0
-  });
+    retailPrice: 0,
+    imageUrl: ''
+  };
 
-  renderThriftList();
+  // Handle image upload
+  if (fileInput && fileInput.files && fileInput.files[0]) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      newItem.imageUrl = e.target.result;
+      thriftListItems.unshift(newItem);
+      renderThriftList();
+    };
+    reader.readAsDataURL(fileInput.files[0]);
+  } else {
+    thriftListItems.unshift(newItem);
+    renderThriftList();
+  }
+
   hideAddToList();
 
   document.getElementById('thrift-item-name').value = '';
   document.getElementById('thrift-item-note').value = '';
+  if (fileInput) fileInput.value = '';
+  // Reset preview
+  const preview = document.getElementById('image-preview');
+  if (preview) preview.style.display = 'none';
 }
 
 
@@ -1104,58 +1111,48 @@ function filterByTag(btn, tag) {
 
 
 // ==========================================
-// PROFILE / CUSTOMIZATION
+// SETTINGS
 // ==========================================
 
-function setAccentColor(btn, primary, dark, light, glow) {
-  document.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('active'));
-  btn.classList.add('active');
-  document.documentElement.style.setProperty('--primary', primary);
-  document.documentElement.style.setProperty('--primary-dark', dark);
-  document.documentElement.style.setProperty('--primary-light', light);
-  document.documentElement.style.setProperty('--primary-glow', glow);
+function toggleDarkMode(checkbox) {
+  if (checkbox.checked) {
+    document.documentElement.style.setProperty('--bg', '#1E1E1E');
+    document.documentElement.style.setProperty('--bg-card', '#2C2C2C');
+    document.documentElement.style.setProperty('--bg-card-hover', '#363636');
+    document.documentElement.style.setProperty('--bg-elevated', '#3A3A3A');
+    document.documentElement.style.setProperty('--text', '#EFEFEF');
+    document.documentElement.style.setProperty('--text-secondary', '#A0A0A0');
+    document.documentElement.style.setProperty('--text-muted', '#6B6B6B');
+    document.documentElement.style.setProperty('--border', '#3A3A3A');
+    document.documentElement.style.setProperty('--border-light', '#444444');
+    document.documentElement.style.setProperty('--black', '#EFEFEF');
+    document.documentElement.style.setProperty('--white', '#1E1E1E');
+  } else {
+    document.documentElement.style.setProperty('--bg', '#FFFFFF');
+    document.documentElement.style.setProperty('--bg-card', '#FFFFFF');
+    document.documentElement.style.setProperty('--bg-card-hover', '#F9F9F9');
+    document.documentElement.style.setProperty('--bg-elevated', '#EFEFEF');
+    document.documentElement.style.setProperty('--text', '#111111');
+    document.documentElement.style.setProperty('--text-secondary', '#767676');
+    document.documentElement.style.setProperty('--text-muted', '#B5B5B5');
+    document.documentElement.style.setProperty('--border', '#EFEFEF');
+    document.documentElement.style.setProperty('--border-light', '#E2E2E2');
+    document.documentElement.style.setProperty('--black', '#111111');
+    document.documentElement.style.setProperty('--white', '#FFFFFF');
+  }
 }
 
-const bgThemes = {
-  light: {
-    '--bg': '#FFFFFF', '--bg-card': '#FFFFFF', '--bg-card-hover': '#F9F9F9',
-    '--bg-elevated': '#EFEFEF', '--text': '#111111', '--text-secondary': '#767676',
-    '--text-muted': '#B5B5B5', '--border': '#EFEFEF', '--border-light': '#E2E2E2',
-    '--black': '#111111', '--white': '#FFFFFF',
-    '--shadow-sm': '0 1px 4px rgba(0,0,0,0.06)', '--shadow-md': '0 2px 12px rgba(0,0,0,0.08)',
-    '--shadow-lg': '0 4px 24px rgba(0,0,0,0.12)'
-  },
-  dark: {
-    '--bg': '#1E1E1E', '--bg-card': '#2C2C2C', '--bg-card-hover': '#363636',
-    '--bg-elevated': '#3A3A3A', '--text': '#EFEFEF', '--text-secondary': '#A0A0A0',
-    '--text-muted': '#6B6B6B', '--border': '#3A3A3A', '--border-light': '#444444',
-    '--black': '#EFEFEF', '--white': '#1E1E1E',
-    '--shadow-sm': '0 1px 4px rgba(0,0,0,0.2)', '--shadow-md': '0 2px 12px rgba(0,0,0,0.3)',
-    '--shadow-lg': '0 4px 24px rgba(0,0,0,0.4)'
-  },
-  cream: {
-    '--bg': '#FAF6F1', '--bg-card': '#FFFFFF', '--bg-card-hover': '#F5F0EA',
-    '--bg-elevated': '#EDE7DF', '--text': '#2D2418', '--text-secondary': '#8A7D6E',
-    '--text-muted': '#BEB4A6', '--border': '#EDE7DF', '--border-light': '#DDD5C9',
-    '--black': '#2D2418', '--white': '#FFFFFF',
-    '--shadow-sm': '0 1px 4px rgba(0,0,0,0.05)', '--shadow-md': '0 2px 12px rgba(0,0,0,0.07)',
-    '--shadow-lg': '0 4px 24px rgba(0,0,0,0.1)'
-  },
-  midnight: {
-    '--bg': '#0F172A', '--bg-card': '#1E293B', '--bg-card-hover': '#273548',
-    '--bg-elevated': '#334155', '--text': '#F1F5F9', '--text-secondary': '#94A3B8',
-    '--text-muted': '#64748B', '--border': '#1E293B', '--border-light': '#334155',
-    '--black': '#F1F5F9', '--white': '#0F172A',
-    '--shadow-sm': '0 1px 4px rgba(0,0,0,0.3)', '--shadow-md': '0 2px 12px rgba(0,0,0,0.4)',
-    '--shadow-lg': '0 4px 24px rgba(0,0,0,0.5)'
+function previewImage(input) {
+  const preview = document.getElementById('image-preview');
+  const previewImg = document.getElementById('image-preview-img');
+  if (input.files && input.files[0]) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      previewImg.src = e.target.result;
+      preview.style.display = 'block';
+    };
+    reader.readAsDataURL(input.files[0]);
+  } else {
+    preview.style.display = 'none';
   }
-};
-
-function setBgTheme(btn, theme) {
-  document.querySelectorAll('.bg-swatch').forEach(s => s.classList.remove('active'));
-  btn.classList.add('active');
-  const vars = bgThemes[theme];
-  Object.entries(vars).forEach(([key, val]) => {
-    document.documentElement.style.setProperty(key, val);
-  });
 }
