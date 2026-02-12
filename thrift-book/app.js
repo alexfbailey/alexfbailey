@@ -427,8 +427,13 @@ function updateTime() {
 // RENDER FUNCTIONS
 // ==========================================
 
-// Image placeholder SVG (used instead of emojis)
+// Image placeholder SVG (used in list views, small contexts)
 const imagePlaceholderSVG = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgba(0,0,0,0.25)" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>`;
+
+// Dress cut-out SVG (vision board placeholder)
+const dressCutoutSVG = `<svg width="48" height="64" viewBox="0 0 48 64" fill="none" stroke="rgba(0,0,0,0.3)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M18 4 C18 4 16 2 14 2 C12 2 10 3 10 5 C10 7 12 9 14 10 L12 18 L6 32 L10 34 L14 26 L12 58 C12 60 14 62 18 62 L30 62 C34 62 36 60 36 58 L34 26 L38 34 L42 32 L36 18 L34 10 C36 9 38 7 38 5 C38 3 36 2 34 2 C32 2 30 4 30 4 L28 8 L24 10 L20 8 Z" fill="rgba(0,0,0,0.08)" stroke="rgba(0,0,0,0.25)" stroke-width="1.5"/>
+</svg>`;
 
 function renderTopicList() {
   const list = document.getElementById('topic-list');
@@ -478,11 +483,14 @@ function renderThriftList() {
   const rows = document.getElementById('thrift-list-rows');
   const items = thriftListItems;
 
-  // Cork board view (floating images with small descriptions)
+  // Vision board view (cut-out sticker style)
   board.innerHTML = items.map((item, i) => `
     <div class="cork-card ${item.found ? 'found' : ''}" onclick="showThriftItemDetail(${i})">
-      <div class="cork-card-image ${item.bgClass}">
-        ${item.imageUrl ? `<img src="${item.imageUrl}" alt="${item.name}">` : imagePlaceholderSVG}
+      <div class="cork-card-image">
+        ${item.imageUrl
+          ? `<img src="${item.imageUrl}" alt="${item.name}">`
+          : `<div class="cutout-placeholder"><div class="cutout-bg ${item.bgClass}"></div>${dressCutoutSVG}</div>`
+        }
         ${item.found ? '<span class="cork-card-check">✓</span>' : ''}
       </div>
       <p class="cork-card-label">${item.name}</p>
