@@ -624,78 +624,92 @@ body {
 .tip-icon { font-size: 20px; display: flex; align-items: center; justify-content: center; }
 
 /* ==========================================
-   CORK BOARD — Vision Board Style
+   VISION BOARD — Cut-out Sticker Style
    ========================================== */
 .cork-board {
-  background: #D2B48C;
-  background-image:
-    repeating-linear-gradient(0deg, transparent, transparent 20px, rgba(0,0,0,0.03) 20px, rgba(0,0,0,0.03) 21px),
-    repeating-linear-gradient(90deg, transparent, transparent 20px, rgba(0,0,0,0.03) 20px, rgba(0,0,0,0.03) 21px);
+  background: #EDEDED;
+  background-image: radial-gradient(circle, #D0D0D0 1px, transparent 1px);
+  background-size: 18px 18px;
   border-radius: var(--radius-lg);
-  padding: 16px 10px;
+  padding: 20px 14px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 14px;
+  gap: 20px 16px;
   position: relative;
-  box-shadow: inset 0 2px 8px rgba(0,0,0,0.15);
-  border: 3px solid #B8976A;
+  min-height: 200px;
 }
 
 .cork-card {
-  background: var(--white);
-  border-radius: 4px;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   cursor: pointer;
-  box-shadow: 2px 3px 8px rgba(0,0,0,0.15);
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform 0.2s;
   position: relative;
 }
 
-.cork-card:nth-child(odd) { transform: rotate(-2deg); }
-.cork-card:nth-child(even) { transform: rotate(1.5deg); }
-.cork-card:nth-child(3n) { transform: rotate(-1deg); }
-.cork-card:nth-child(4n) { transform: rotate(2.5deg); }
+.cork-card:nth-child(odd) { transform: rotate(-2.5deg); }
+.cork-card:nth-child(even) { transform: rotate(2deg); }
+.cork-card:nth-child(3n) { transform: rotate(1deg); }
+.cork-card:nth-child(4n+1) { transform: rotate(-1.5deg); }
 
-.cork-card:active { transform: scale(0.96) rotate(0deg) !important; }
+.cork-card:active { transform: scale(0.95) rotate(0deg) !important; }
 
-.cork-card.found { opacity: 0.5; }
-
-.cork-card::before {
-  content: '';
-  position: absolute;
-  top: -6px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 14px;
-  height: 14px;
-  background: radial-gradient(circle, #CC3333 40%, #AA2222 60%, transparent 62%);
-  border-radius: 50%;
-  z-index: 5;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
-}
+.cork-card.found { opacity: 0.45; }
 
 .cork-card-image {
-  height: 100px;
+  width: 120px;
+  height: 140px;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  overflow: hidden;
+  filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.2));
 }
 
+/* Cut-out sticker shape — white border silhouette */
+.cork-card-image .cutout-placeholder {
+  width: 100%;
+  height: 100%;
+  background: var(--white);
+  border-radius: 30% 30% 5% 5% / 20% 20% 8% 8%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid var(--white);
+  box-shadow: 0 0 0 2px rgba(0,0,0,0.06);
+  overflow: hidden;
+  position: relative;
+}
+
+.cork-card-image .cutout-placeholder .cutout-bg {
+  position: absolute;
+  inset: 0;
+  opacity: 0.35;
+  border-radius: inherit;
+}
+
+.cork-card-image .cutout-placeholder svg {
+  position: relative;
+  z-index: 1;
+}
+
+/* Uploaded image as cut-out */
 .cork-card-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 30% 30% 5% 5% / 20% 20% 8% 8%;
+  border: 3px solid var(--white);
 }
 
-.cork-card:nth-child(odd) .cork-card-image { height: 110px; }
-.cork-card:nth-child(even) .cork-card-image { height: 90px; }
+.cork-card:nth-child(odd) .cork-card-image { width: 110px; height: 130px; }
+.cork-card:nth-child(even) .cork-card-image { width: 125px; height: 145px; }
 
 .cork-card-check {
   position: absolute;
-  top: 6px;
-  right: 6px;
+  top: 2px;
+  right: 2px;
   background: var(--success);
   color: var(--white);
   width: 22px;
@@ -706,15 +720,18 @@ body {
   justify-content: center;
   font-size: 12px;
   font-weight: 700;
+  z-index: 5;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
 }
 
 .cork-card-label {
-  padding: 8px 10px 10px;
+  margin-top: 8px;
   font-size: 12px;
   font-weight: 600;
   line-height: 1.3;
   color: var(--text);
   text-align: center;
+  max-width: 130px;
 }
 
 .cork-card.found .cork-card-label {
