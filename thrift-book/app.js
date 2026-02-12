@@ -392,12 +392,21 @@ const budgetData = {
 };
 
 
+// Topic sections for grouped learn page
+const topicSections = [
+  { title: 'Clothing', categoryIds: ['clothing', 'denim', 'shoes'] },
+  { title: 'Jewellery', categoryIds: ['jewellery', 'handbags'] },
+  { title: 'Home', categoryIds: ['furniture', 'kitchenware', 'home-decor'] },
+  { title: 'Art and prints', categoryIds: ['art', 'books', 'vinyl'] },
+];
+
 // ==========================================
 // STATE
 // ==========================================
 
 let currentCategory = null;
 let currentSection = null;
+let currentTipIndex = null;
 let thriftViewMode = 'board'; // 'board' or 'list'
 
 
@@ -438,18 +447,54 @@ const dressCutoutSVG = `<svg width="100" height="135" viewBox="0 0 48 64" fill="
 
 function renderTopicList() {
   const list = document.getElementById('topic-list');
-  list.innerHTML = categories.map(cat => {
-    return `
-    <div class="topic-card" data-tags="${cat.tags.join(',')}" data-id="${cat.id}" onclick="showCategoryDetail('${cat.id}')">
-      <div class="topic-card-bg ${cat.bgClass}">
-        <div class="topic-card-icon">
-          ${imagePlaceholderSVG}
+  let html = '';
+
+  topicSections.forEach(section => {
+    html += `<div class="topic-section">`;
+    html += `<h3 class="topic-section-title">${section.title}</h3>`;
+    html += `<div class="topic-section-list">`;
+
+    section.categoryIds.forEach(id => {
+      const cat = categories.find(c => c.id === id);
+      if (!cat) return;
+      html += `
+        <div class="topic-row" data-tags="${cat.tags.join(',')}" data-id="${cat.id}" onclick="showCategoryDetail('${cat.id}')">
+          <div class="topic-row-icon ${cat.bgClass}">
+            ${imagePlaceholderSVG}
+          </div>
+          <div class="topic-row-info">
+            <h4>${cat.title}</h4>
+          </div>
+          <svg class="topic-row-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
         </div>
-      </div>
-      <h3 class="topic-card-title">${cat.title}</h3>
-    </div>
-  `;
-  }).join('');
+      `;
+    });
+
+    html += `</div></div>`;
+  });
+
+  // Remaining categories not in any section
+  const allSectionIds = topicSections.flatMap(s => s.categoryIds);
+  const remaining = categories.filter(c => !allSectionIds.includes(c.id));
+  if (remaining.length > 0) {
+    html += `<div class="topic-section"><h3 class="topic-section-title">More</h3><div class="topic-section-list">`;
+    remaining.forEach(cat => {
+      html += `
+        <div class="topic-row" data-tags="${cat.tags.join(',')}" data-id="${cat.id}" onclick="showCategoryDetail('${cat.id}')">
+          <div class="topic-row-icon ${cat.bgClass}">
+            ${imagePlaceholderSVG}
+          </div>
+          <div class="topic-row-info">
+            <h4>${cat.title}</h4>
+          </div>
+          <svg class="topic-row-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+        </div>
+      `;
+    });
+    html += `</div></div>`;
+  }
+
+  list.innerHTML = html;
 }
 
 function renderInspoFeed() {
@@ -489,7 +534,7 @@ function renderThriftList() {
     <div class="cork-card ${item.found ? 'found' : ''}" onclick="showThriftItemDetail(${i})">
       <div class="cork-card-image">
         ${item.imageUrl
-          ? `<img src="${item.imageUrl}" alt="${item.name}">`
+          ? `<img src="${item.imageUrl}" alt="${item.name}" style="object-fit:contain;">`
           : `<div class="cutout-placeholder">${dressCutoutSVG}</div>`
         }
         ${item.found ? '<span class="cork-card-check">✓</span>' : ''}
@@ -818,7 +863,7 @@ function showCategoryDetail(categoryId) {
   if (!category) return;
 
   document.getElementById('topic-title').textContent = category.title;
-  document.getElementById('topic-subtitle').textContent = `${category.sections.length} articles · ${category.viewers} learning`;
+  document.getElementById('topic-subtitle').textContent = '';
 
   const list = document.getElementById('article-list');
   list.innerHTML = category.sections.map((section, i) => `
@@ -828,7 +873,6 @@ function showCategoryDetail(categoryId) {
       </div>
       <div class="article-info">
         <h3>${section.title}</h3>
-        <p>${getArticleDescription(section)}</p>
       </div>
       <svg class="article-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
     </div>
@@ -915,15 +959,6 @@ function showArticleDetail(categoryId, sectionIndex) {
     html += `</div>`;
   }
 
-  if (section.proTip) {
-    html += `
-      <div class="pro-tip">
-        <div class="pro-tip-label">Pro Tip</div>
-        <p>${section.proTip}</p>
-      </div>
-    `;
-  }
-
   content.innerHTML = html;
 
   // Show detail page
@@ -942,6 +977,7 @@ function showArticleDetail(categoryId, sectionIndex) {
 function showTipDetail(categoryId, sectionIndex, tipIndex) {
   currentCategory = categoryId;
   currentSection = sectionIndex;
+  currentTipIndex = tipIndex;
 
   const category = categories.find(c => c.id === categoryId);
   if (!category) return;
@@ -949,6 +985,12 @@ function showTipDetail(categoryId, sectionIndex, tipIndex) {
   const section = category.sections[sectionIndex];
   const tip = section.tips[tipIndex];
 
+  // Set hero image with category background
+  const hero = document.getElementById('article-hero');
+  hero.className = `article-hero ${category.bgClass}`;
+  hero.innerHTML = imagePlaceholderSVG;
+
+  // Set orange title and subtitle
   document.getElementById('article-title').textContent = tip.title;
   document.getElementById('article-subtitle').textContent = section.title;
 
@@ -962,70 +1004,16 @@ function showTipDetail(categoryId, sectionIndex, tipIndex) {
     </div>
   `;
 
-  // Pro tip if available
-  if (section.proTip) {
+  // Next Article button
+  const nextTipIndex = tipIndex + 1;
+  if (nextTipIndex < section.tips.length) {
+    const nextTip = section.tips[nextTipIndex];
     html += `
-      <div class="pro-tip">
-        <div class="pro-tip-label">Pro Tip</div>
-        <p>${section.proTip}</p>
-      </div>
+      <button class="next-article-btn" onclick="showTipDetail('${categoryId}', ${sectionIndex}, ${nextTipIndex})">
+        Next: ${nextTip.title}
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
     `;
-  }
-
-  // Keep Learning — other tips from same section
-  const otherTips = section.tips
-    .map((t, i) => ({ ...t, index: i }))
-    .filter((_, i) => i !== tipIndex);
-
-  if (otherTips.length > 0) {
-    html += `
-      <div class="related-section">
-        <h3>Keep Learning</h3>
-        <div class="article-list">
-    `;
-    otherTips.forEach(otherTip => {
-      html += `
-        <div class="article-item" onclick="showTipDetail('${categoryId}', ${sectionIndex}, ${otherTip.index})">
-          <div class="article-image ${category.bgClass}">
-            ${imagePlaceholderSVG}
-          </div>
-          <div class="article-info">
-            <h3>${otherTip.title}</h3>
-            <p>${otherTip.desc.length > 65 ? otherTip.desc.substring(0, 65) + '...' : otherTip.desc}</p>
-          </div>
-          <svg class="article-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
-        </div>
-      `;
-    });
-    html += `</div></div>`;
-  }
-
-  // More from this category — other sections
-  const otherSections = category.sections
-    .map((s, i) => ({ ...s, index: i }))
-    .filter((_, i) => i !== sectionIndex);
-
-  if (otherSections.length > 0) {
-    html += `
-      <div class="related-section">
-        <h3>More in ${category.title}</h3>
-        <div class="article-list">
-    `;
-    otherSections.forEach(sec => {
-      html += `
-        <div class="article-item" onclick="showArticleDetail('${categoryId}', ${sec.index})">
-          <div class="article-image ${category.bgClass}">
-            ${imagePlaceholderSVG}
-          </div>
-          <div class="article-info">
-            <h3>${sec.title}</h3>
-            <p>${getArticleDescription(sec)}</p>
-          </div>
-          <svg class="article-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
-        </div>
-      `;
-    });
-    html += `</div></div>`;
   }
 
   content.innerHTML = html;
@@ -1096,7 +1084,7 @@ function toggleSearch() {
 
 function filterCategories() {
   const query = document.getElementById('search-input').value.toLowerCase();
-  const items = document.querySelectorAll('.topic-card');
+  const items = document.querySelectorAll('.topic-row');
 
   items.forEach(item => {
     const id = item.dataset.id;
@@ -1106,19 +1094,35 @@ function filterCategories() {
       cat.tags.some(t => t.includes(query));
     item.classList.toggle('hidden', !matches);
   });
+
+  // Hide empty sections
+  document.querySelectorAll('.topic-section').forEach(section => {
+    const visibleRows = section.querySelectorAll('.topic-row:not(.hidden)');
+    section.classList.toggle('hidden', visibleRows.length === 0);
+  });
 }
 
 function filterByTag(btn, tag) {
   btn.closest('.filter-pills').querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
   btn.classList.add('active');
 
-  const items = document.querySelectorAll('.topic-card');
+  const items = document.querySelectorAll('.topic-row');
   items.forEach(item => {
     if (tag === 'all') {
       item.classList.remove('hidden');
     } else {
       const tags = item.dataset.tags.split(',');
       item.classList.toggle('hidden', !tags.includes(tag));
+    }
+  });
+
+  // Hide empty sections
+  document.querySelectorAll('.topic-section').forEach(section => {
+    if (tag === 'all') {
+      section.classList.remove('hidden');
+    } else {
+      const visibleRows = section.querySelectorAll('.topic-row:not(.hidden)');
+      section.classList.toggle('hidden', visibleRows.length === 0);
     }
   });
 }

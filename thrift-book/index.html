@@ -50,10 +50,7 @@
           </div>
         </div>
 
-        <!-- Topic List (one per row) -->
-        <div class="section-header">
-          <h2>Pick a topic to learn about</h2>
-        </div>
+        <!-- Topic List (sectioned list) -->
         <div class="topic-list" id="topic-list">
           <!-- Topics injected by JS -->
         </div>
@@ -307,15 +304,14 @@
 
       <!-- INDIVIDUAL TIP/ARTICLE PAGE -->
       <div class="page" id="page-article">
-        <div class="detail-header" id="article-header">
-          <button class="back-btn" onclick="hideTipDetail()">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        <div class="article-page-top">
+          <button class="back-btn-dark" onclick="hideTipDetail()">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
           </button>
-          <div class="detail-header-info">
-            <h1 id="article-title"></h1>
-            <p id="article-subtitle"></p>
-          </div>
         </div>
+        <div class="article-hero" id="article-hero"></div>
+        <h1 class="article-title-orange" id="article-title"></h1>
+        <p class="article-subtitle-text" id="article-subtitle"></p>
         <div class="detail-content" id="article-content">
           <!-- Tip article content injected by JS -->
         </div>
