@@ -130,6 +130,22 @@ body {
   margin-bottom: 16px;
 }
 
+/* Thrift List page — gray dot background extends across full page */
+.inspo-header {
+  background: #EDEDED;
+  background-image: radial-gradient(circle, #D0D0D0 1px, transparent 1px);
+  background-size: 18px 18px;
+  margin: 0 -16px;
+  padding: 8px 16px 12px;
+  margin-bottom: 0;
+}
+
+#page-featured {
+  background: #EDEDED;
+  background-image: radial-gradient(circle, #D0D0D0 1px, transparent 1px);
+  background-size: 18px 18px;
+}
+
 .header-top {
   display: flex;
   justify-content: space-between;
@@ -147,6 +163,7 @@ body {
   font-size: 24px;
   font-weight: 700;
   letter-spacing: -0.3px;
+  color: var(--primary);
 }
 
 .header-actions {
@@ -627,16 +644,12 @@ body {
    VISION BOARD — Cut-out Sticker Style
    ========================================== */
 .cork-board {
-  background: #EDEDED;
-  background-image: radial-gradient(circle, #D0D0D0 1px, transparent 1px);
-  background-size: 18px 18px;
-  border-radius: var(--radius-lg);
-  padding: 20px 14px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px 16px;
   position: relative;
   min-height: 200px;
+  padding: 8px 0;
 }
 
 .cork-card {
@@ -732,6 +745,36 @@ body {
 }
 
 .add-btn:active { background: var(--primary-dark); }
+
+/* Floating Action Button — lower right */
+.fab-add {
+  position: fixed;
+  bottom: calc(var(--nav-height) + env(safe-area-inset-bottom, 4px) + 16px);
+  right: 20px;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: var(--white);
+  border: none;
+  font-size: 28px;
+  font-weight: 400;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(255, 107, 0, 0.35);
+  z-index: 50;
+  transition: transform 0.15s, box-shadow 0.15s;
+  font-family: inherit;
+  line-height: 1;
+}
+
+.fab-add:active {
+  transform: scale(0.9);
+  background: var(--primary-dark);
+  box-shadow: 0 2px 8px rgba(255, 107, 0, 0.3);
+}
 
 /* ==========================================
    BUDGET PLANNER ONBOARDING
