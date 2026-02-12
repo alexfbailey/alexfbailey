@@ -430,9 +430,10 @@ function updateTime() {
 // Image placeholder SVG (used in list views, small contexts)
 const imagePlaceholderSVG = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgba(0,0,0,0.25)" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>`;
 
-// Dress cut-out SVG (vision board placeholder)
-const dressCutoutSVG = `<svg width="48" height="64" viewBox="0 0 48 64" fill="none" stroke="rgba(0,0,0,0.3)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M18 4 C18 4 16 2 14 2 C12 2 10 3 10 5 C10 7 12 9 14 10 L12 18 L6 32 L10 34 L14 26 L12 58 C12 60 14 62 18 62 L30 62 C34 62 36 60 36 58 L34 26 L38 34 L42 32 L36 18 L34 10 C36 9 38 7 38 5 C38 3 36 2 34 2 C32 2 30 4 30 4 L28 8 L24 10 L20 8 Z" fill="rgba(0,0,0,0.08)" stroke="rgba(0,0,0,0.25)" stroke-width="1.5"/>
+// Dress cut-out SVG (vision board placeholder — white outline silhouette)
+const dressCutoutSVG = `<svg width="70" height="95" viewBox="0 0 48 64" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M18 4 C18 4 16 2 14 2 C12 2 10 3 10 5 C10 7 12 9 14 10 L12 18 L6 32 L10 34 L14 26 L12 58 C12 60 14 62 18 62 L30 62 C34 62 36 60 36 58 L34 26 L38 34 L42 32 L36 18 L34 10 C36 9 38 7 38 5 C38 3 36 2 34 2 C32 2 30 4 30 4 L28 8 L24 10 L20 8 Z" fill="rgba(180,180,180,0.25)" stroke="white" stroke-width="3"/>
+  <path d="M18 4 C18 4 16 2 14 2 C12 2 10 3 10 5 C10 7 12 9 14 10 L12 18 L6 32 L10 34 L14 26 L12 58 C12 60 14 62 18 62 L30 62 C34 62 36 60 36 58 L34 26 L38 34 L42 32 L36 18 L34 10 C36 9 38 7 38 5 C38 3 36 2 34 2 C32 2 30 4 30 4 L28 8 L24 10 L20 8 Z" fill="none" stroke="rgba(0,0,0,0.12)" stroke-width="1"/>
 </svg>`;
 
 function renderTopicList() {
@@ -489,7 +490,7 @@ function renderThriftList() {
       <div class="cork-card-image">
         ${item.imageUrl
           ? `<img src="${item.imageUrl}" alt="${item.name}">`
-          : `<div class="cutout-placeholder"><div class="cutout-bg ${item.bgClass}"></div>${dressCutoutSVG}</div>`
+          : `<div class="cutout-placeholder">${dressCutoutSVG}</div>`
         }
         ${item.found ? '<span class="cork-card-check">✓</span>' : ''}
       </div>
@@ -513,12 +514,13 @@ function renderThriftList() {
   `).join('');
 }
 
-function switchThriftView(mode) {
-  thriftViewMode = mode;
-  document.getElementById('toggle-board').classList.toggle('active', mode === 'board');
-  document.getElementById('toggle-list').classList.toggle('active', mode === 'list');
-  document.getElementById('thrift-view-board').style.display = mode === 'board' ? 'block' : 'none';
-  document.getElementById('thrift-view-list').style.display = mode === 'list' ? 'block' : 'none';
+function toggleThriftView() {
+  thriftViewMode = thriftViewMode === 'board' ? 'list' : 'board';
+  document.getElementById('thrift-view-board').style.display = thriftViewMode === 'board' ? 'block' : 'none';
+  document.getElementById('thrift-view-list').style.display = thriftViewMode === 'list' ? 'block' : 'none';
+  // Swap icon: show list icon when in board mode (to switch TO list), grid icon when in list mode
+  document.getElementById('view-icon-list').style.display = thriftViewMode === 'board' ? 'block' : 'none';
+  document.getElementById('view-icon-grid').style.display = thriftViewMode === 'list' ? 'block' : 'none';
 }
 
 function showThriftItemDetail(index) {

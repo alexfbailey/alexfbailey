@@ -667,31 +667,11 @@ body {
   filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.2));
 }
 
-/* Cut-out sticker shape — white border silhouette */
+/* Cut-out silhouette — just the shape with white outline, no background */
 .cork-card-image .cutout-placeholder {
-  width: 100%;
-  height: 100%;
-  background: var(--white);
-  border-radius: 30% 30% 5% 5% / 20% 20% 8% 8%;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 3px solid var(--white);
-  box-shadow: 0 0 0 2px rgba(0,0,0,0.06);
-  overflow: hidden;
-  position: relative;
-}
-
-.cork-card-image .cutout-placeholder .cutout-bg {
-  position: absolute;
-  inset: 0;
-  opacity: 0.35;
-  border-radius: inherit;
-}
-
-.cork-card-image .cutout-placeholder svg {
-  position: relative;
-  z-index: 1;
 }
 
 /* Uploaded image as cut-out */
@@ -699,7 +679,7 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 30% 30% 5% 5% / 20% 20% 8% 8%;
+  border-radius: 6px;
   border: 3px solid var(--white);
 }
 
@@ -1628,39 +1608,26 @@ body {
 .live-banner { display: none; }
 
 /* ==========================================
-   VIEW TOGGLE (Vision Board / List)
+   VIEW SWITCH (single icon toggle)
    ========================================== */
-.view-toggle-row {
-  display: flex;
-  gap: 6px;
-  margin-top: 10px;
-}
-
-.view-toggle-btn {
-  flex: 1;
+.view-switch-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  border: none;
+  background: var(--bg-elevated);
+  color: var(--text);
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  padding: 10px 12px;
-  border-radius: var(--radius-full);
-  border: 2px solid var(--border-light);
-  background: var(--bg-card);
-  color: var(--text-secondary);
-  font-size: 13px;
-  font-weight: 600;
   cursor: pointer;
-  font-family: inherit;
   transition: all 0.15s;
 }
 
-.view-toggle-btn.active {
-  background: var(--black);
-  color: var(--white);
-  border-color: var(--black);
+.view-switch-btn:active {
+  background: var(--border-light);
+  transform: scale(0.92);
 }
-
-.view-toggle-btn:active { transform: scale(0.97); }
 
 /* ==========================================
    THRIFT LIST — List View (one per row)
