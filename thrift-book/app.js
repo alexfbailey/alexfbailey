@@ -394,10 +394,9 @@ const budgetData = {
 
 // Topic sections for grouped learn page
 const topicSections = [
-  { title: 'Clothing', categoryIds: ['clothing', 'denim', 'shoes'] },
-  { title: 'Jewellery', categoryIds: ['jewellery', 'handbags'] },
-  { title: 'Home', categoryIds: ['furniture', 'kitchenware', 'home-decor'] },
-  { title: 'Art and prints', categoryIds: ['art', 'books', 'vinyl'] },
+  { title: 'Clothing', bgClass: 'cat-bg-1', categoryIds: ['clothing', 'denim', 'shoes'] },
+  { title: 'Accessories', bgClass: 'cat-bg-4', categoryIds: ['jewellery', 'handbags'] },
+  { title: 'Art and Prints', bgClass: 'cat-bg-3', categoryIds: ['art', 'books', 'vinyl'] },
 ];
 
 // ==========================================
@@ -447,54 +446,63 @@ const dressCutoutSVG = `<svg width="100" height="135" viewBox="0 0 48 64" fill="
 
 function renderTopicList() {
   const list = document.getElementById('topic-list');
-  let html = '';
-
-  topicSections.forEach(section => {
-    html += `<div class="topic-section">`;
-    html += `<h3 class="topic-section-title">${section.title}</h3>`;
-    html += `<div class="topic-section-list">`;
-
-    section.categoryIds.forEach(id => {
-      const cat = categories.find(c => c.id === id);
-      if (!cat) return;
-      html += `
-        <div class="topic-row" data-tags="${cat.tags.join(',')}" data-id="${cat.id}" onclick="showCategoryDetail('${cat.id}')">
-          <div class="topic-row-icon ${cat.bgClass}">
-            ${imagePlaceholderSVG}
-          </div>
-          <div class="topic-row-info">
-            <h4>${cat.title}</h4>
-          </div>
-          <svg class="topic-row-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+  list.innerHTML = '<div class="topic-section-list">' +
+    topicSections.map((section, i) => `
+      <div class="topic-row" onclick="showSectionGroup(${i})">
+        <div class="topic-row-icon ${section.bgClass}">
+          ${imagePlaceholderSVG}
         </div>
-      `;
-    });
+        <div class="topic-row-info">
+          <h4>${section.title}</h4>
+        </div>
+        <svg class="topic-row-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+      </div>
+    `).join('') + '</div>';
+}
 
-    html += `</div></div>`;
+function showSectionGroup(sectionIndex) {
+  const section = topicSections[sectionIndex];
+
+  document.getElementById('section-title').textContent = section.title;
+
+  const list = document.getElementById('section-list');
+  list.innerHTML = section.categoryIds.map(id => {
+    const cat = categories.find(c => c.id === id);
+    if (!cat) return '';
+    return `
+      <div class="article-item" onclick="showCategoryDetail('${id}')">
+        <div class="article-image ${cat.bgClass}">
+          ${imagePlaceholderSVG}
+        </div>
+        <div class="article-info">
+          <h3>${cat.title}</h3>
+        </div>
+        <svg class="article-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+      </div>
+    `;
+  }).join('');
+
+  // Show section page
+  document.querySelectorAll('.page').forEach(p => {
+    p.classList.remove('active');
+    p.style.display = 'none';
   });
 
-  // Remaining categories not in any section
-  const allSectionIds = topicSections.flatMap(s => s.categoryIds);
-  const remaining = categories.filter(c => !allSectionIds.includes(c.id));
-  if (remaining.length > 0) {
-    html += `<div class="topic-section"><h3 class="topic-section-title">More</h3><div class="topic-section-list">`;
-    remaining.forEach(cat => {
-      html += `
-        <div class="topic-row" data-tags="${cat.tags.join(',')}" data-id="${cat.id}" onclick="showCategoryDetail('${cat.id}')">
-          <div class="topic-row-icon ${cat.bgClass}">
-            ${imagePlaceholderSVG}
-          </div>
-          <div class="topic-row-info">
-            <h4>${cat.title}</h4>
-          </div>
-          <svg class="topic-row-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
-        </div>
-      `;
-    });
-    html += `</div></div>`;
-  }
+  const sectionPage = document.getElementById('page-section');
+  sectionPage.style.display = 'block';
+  sectionPage.classList.add('active');
+  sectionPage.scrollTop = 0;
+}
 
-  list.innerHTML = html;
+function hideSectionDetail() {
+  document.querySelectorAll('.page').forEach(p => {
+    p.classList.remove('active');
+    p.style.display = 'none';
+  });
+
+  const learnPage = document.getElementById('page-learn');
+  learnPage.style.display = 'block';
+  learnPage.classList.add('active');
 }
 
 function renderInspoFeed() {
@@ -622,24 +630,18 @@ function showThriftItemDetail(index) {
   const detailPage = document.getElementById('page-thrift-item');
   detailPage.style.display = 'block';
   detailPage.classList.add('active');
-  detailPage.style.animation = 'slideInRight 0.3s ease';
   detailPage.scrollTop = 0;
 }
 
 function hideThriftItemDetail() {
   const page = document.getElementById('page-thrift-item');
-  page.style.animation = 'slideOutRight 0.25s ease forwards';
+  page.classList.remove('active');
+  page.style.display = 'none';
 
-  setTimeout(() => {
-    page.classList.remove('active');
-    page.style.display = 'none';
-    page.style.animation = '';
-
-    // Show inspo page
-    const inspoPage = document.getElementById('page-featured');
-    inspoPage.style.display = 'block';
-    inspoPage.classList.add('active');
-  }, 250);
+  // Show inspo page
+  const inspoPage = document.getElementById('page-featured');
+  inspoPage.style.display = 'block';
+  inspoPage.classList.add('active');
 }
 
 function toggleFoundFromDetail(index) {
@@ -887,24 +889,18 @@ function showCategoryDetail(categoryId) {
   const topicPage = document.getElementById('page-topic');
   topicPage.style.display = 'block';
   topicPage.classList.add('active');
-  topicPage.style.animation = 'slideInRight 0.3s ease';
   topicPage.scrollTop = 0;
 }
 
 function hideTopicDetail() {
   const topicPage = document.getElementById('page-topic');
-  topicPage.style.animation = 'slideOutRight 0.25s ease forwards';
+  topicPage.classList.remove('active');
+  topicPage.style.display = 'none';
 
-  setTimeout(() => {
-    topicPage.classList.remove('active');
-    topicPage.style.display = 'none';
-    topicPage.style.animation = '';
-
-    // Show learn page
-    const learnPage = document.getElementById('page-learn');
-    learnPage.style.display = 'block';
-    learnPage.classList.add('active');
-  }, 250);
+  // Go back to section group page
+  const sectionPage = document.getElementById('page-section');
+  sectionPage.style.display = 'block';
+  sectionPage.classList.add('active');
 }
 
 
@@ -970,7 +966,6 @@ function showArticleDetail(categoryId, sectionIndex) {
   const detailPage = document.getElementById('page-detail');
   detailPage.style.display = 'block';
   detailPage.classList.add('active');
-  detailPage.style.animation = 'slideInRight 0.3s ease';
   detailPage.scrollTop = 0;
 }
 
@@ -1027,39 +1022,28 @@ function showTipDetail(categoryId, sectionIndex, tipIndex) {
   const articlePage = document.getElementById('page-article');
   articlePage.style.display = 'block';
   articlePage.classList.add('active');
-  articlePage.style.animation = 'slideInRight 0.3s ease';
   articlePage.scrollTop = 0;
 }
 
 function hideTipDetail() {
   const articlePage = document.getElementById('page-article');
-  articlePage.style.animation = 'slideOutRight 0.25s ease forwards';
+  articlePage.classList.remove('active');
+  articlePage.style.display = 'none';
 
-  setTimeout(() => {
-    articlePage.classList.remove('active');
-    articlePage.style.display = 'none';
-    articlePage.style.animation = '';
-
-    if (currentCategory !== null && currentSection !== null) {
-      showArticleDetail(currentCategory, currentSection);
-    }
-  }, 250);
+  if (currentCategory !== null && currentSection !== null) {
+    showArticleDetail(currentCategory, currentSection);
+  }
 }
 
 function hideArticleDetail() {
   const detailPage = document.getElementById('page-detail');
-  detailPage.style.animation = 'slideOutRight 0.25s ease forwards';
+  detailPage.classList.remove('active');
+  detailPage.style.display = 'none';
 
-  setTimeout(() => {
-    detailPage.classList.remove('active');
-    detailPage.style.display = 'none';
-    detailPage.style.animation = '';
-
-    // Go back to topic detail
-    if (currentCategory) {
-      showCategoryDetail(currentCategory);
-    }
-  }, 250);
+  // Go back to topic detail
+  if (currentCategory) {
+    showCategoryDetail(currentCategory);
+  }
 }
 
 function toggleCheck(el) {
@@ -1087,43 +1071,8 @@ function filterCategories() {
   const items = document.querySelectorAll('.topic-row');
 
   items.forEach(item => {
-    const id = item.dataset.id;
-    const cat = categories.find(c => c.id === id);
-    const matches = !query ||
-      cat.title.toLowerCase().includes(query) ||
-      cat.tags.some(t => t.includes(query));
-    item.classList.toggle('hidden', !matches);
-  });
-
-  // Hide empty sections
-  document.querySelectorAll('.topic-section').forEach(section => {
-    const visibleRows = section.querySelectorAll('.topic-row:not(.hidden)');
-    section.classList.toggle('hidden', visibleRows.length === 0);
-  });
-}
-
-function filterByTag(btn, tag) {
-  btn.closest('.filter-pills').querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
-  btn.classList.add('active');
-
-  const items = document.querySelectorAll('.topic-row');
-  items.forEach(item => {
-    if (tag === 'all') {
-      item.classList.remove('hidden');
-    } else {
-      const tags = item.dataset.tags.split(',');
-      item.classList.toggle('hidden', !tags.includes(tag));
-    }
-  });
-
-  // Hide empty sections
-  document.querySelectorAll('.topic-section').forEach(section => {
-    if (tag === 'all') {
-      section.classList.remove('hidden');
-    } else {
-      const visibleRows = section.querySelectorAll('.topic-row:not(.hidden)');
-      section.classList.toggle('hidden', visibleRows.length === 0);
-    }
+    const title = item.querySelector('h4').textContent.toLowerCase();
+    item.classList.toggle('hidden', query && !title.includes(query));
   });
 }
 

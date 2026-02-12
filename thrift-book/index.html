@@ -30,23 +30,11 @@
               <button class="icon-btn search-btn" onclick="toggleSearch()">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
               </button>
-              <button class="icon-btn notification-btn">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
-                <span class="notification-dot"></span>
-              </button>
             </div>
           </div>
           <div class="search-bar" id="search-bar">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
             <input type="text" placeholder="Search topics..." id="search-input" oninput="filterCategories()">
-          </div>
-          <!-- Filter Pills (scrolling bar of subjects) -->
-          <div class="filter-pills">
-            <button class="pill active" onclick="filterByTag(this, 'all')">All</button>
-            <button class="pill" onclick="filterByTag(this, 'clothing')">Clothing</button>
-            <button class="pill" onclick="filterByTag(this, 'home')">Home</button>
-            <button class="pill" onclick="filterByTag(this, 'accessories')">Accessories</button>
-            <button class="pill" onclick="filterByTag(this, 'vintage')">Vintage</button>
           </div>
         </div>
 
@@ -264,6 +252,22 @@
         </div>
         <div class="detail-content" id="thrift-item-content">
           <!-- Injected by JS -->
+        </div>
+        <div class="bottom-spacer"></div>
+      </div>
+
+      <!-- SECTION GROUP PAGE (subcategories within a main section) -->
+      <div class="page" id="page-section">
+        <div class="topic-detail-header">
+          <button class="back-btn-dark" onclick="hideSectionDetail()">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          </button>
+          <div>
+            <h1 class="page-title" id="section-title"></h1>
+          </div>
+        </div>
+        <div class="article-list" id="section-list">
+          <!-- Subcategory items injected by JS -->
         </div>
         <div class="bottom-spacer"></div>
       </div>
