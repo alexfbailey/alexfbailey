@@ -446,18 +446,16 @@ const dressCutoutSVG = `<svg width="100" height="135" viewBox="0 0 48 64" fill="
 
 function renderTopicList() {
   const list = document.getElementById('topic-list');
-  list.innerHTML = '<div class="topic-section-list">' +
-    topicSections.map((section, i) => `
-      <div class="topic-row" onclick="showSectionGroup(${i})">
-        <div class="topic-row-icon ${section.bgClass}">
+  list.innerHTML = topicSections.map((section, i) => `
+    <div class="topic-card" onclick="showSectionGroup(${i})">
+      <div class="topic-card-bg ${section.bgClass}">
+        <div class="topic-card-icon">
           ${imagePlaceholderSVG}
         </div>
-        <div class="topic-row-info">
-          <h4>${section.title}</h4>
-        </div>
-        <svg class="topic-row-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
       </div>
-    `).join('') + '</div>';
+      <h3 class="topic-card-title">${section.title}</h3>
+    </div>
+  `).join('');
 }
 
 function showSectionGroup(sectionIndex) {
@@ -1068,10 +1066,10 @@ function toggleSearch() {
 
 function filterCategories() {
   const query = document.getElementById('search-input').value.toLowerCase();
-  const items = document.querySelectorAll('.topic-row');
+  const items = document.querySelectorAll('.topic-card');
 
   items.forEach(item => {
-    const title = item.querySelector('h4').textContent.toLowerCase();
+    const title = item.querySelector('.topic-card-title').textContent.toLowerCase();
     item.classList.toggle('hidden', query && !title.includes(query));
   });
 }
