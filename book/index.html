@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Book</title>
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      font-family: 'Georgia', 'Times New Roman', serif;
+      background: #b8a9c9;
+      cursor: default;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ===== BOOK WRAPPER ===== */
+    .book-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      perspective: 2400px;
+    }
+
+    /* ===== BOOK ===== */
+    .book {
+      position: relative;
+      width: 88vw;
+      max-width: 1100px;
+      height: 82vh;
+      max-height: 780px;
+      display: flex;
+      transform-style: preserve-3d;
+      border-radius: 6px 6px 6px 6px;
+      box-shadow:
+        0 25px 60px rgba(0,0,0,0.35),
+        0 0 0 1px rgba(0,0,0,0.08),
+        inset 0 0 30px rgba(0,0,0,0.03);
+    }
+
+    /* ===== CLICK ZONES ===== */
+    .click-zone {
+      position: absolute;
+      top: 0;
+      height: 100%;
+      z-index: 100;
+      cursor: pointer;
+    }
+
+    .click-zone-left {
+      left: 0;
+      width: 50%;
+    }
+
+    .click-zone-right {
+      right: 0;
+      width: 50%;
+    }
+
+    .click-zone-left:hover {
+      cursor: w-resize;
+    }
+
+    .click-zone-right:hover {
+      cursor: e-resize;
+    }
+
+    /* ===== SPINE ===== */
+    .spine {
+      position: absolute;
+      top: -4px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 28px;
+      height: calc(100% + 8px);
+      z-index: 60;
+      pointer-events: none;
+      background: linear-gradient(
+        to right,
+        #3d2b1f 0%,
+        #5a3e2b 15%,
+        #6b4c34 30%,
+        #7a5a3e 45%,
+        #6b4c34 55%,
+        #5a3e2b 70%,
+        #4a3526 85%,
+        #3d2b1f 100%
+      );
+      border-radius: 2px;
+      box-shadow:
+        -3px 0 8px rgba(0,0,0,0.3),
+        3px 0 8px rgba(0,0,0,0.3);
+    }
+
+    .spine::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 100%;
+      background: rgba(0,0,0,0.15);
+    }
+
+    /* Inner spine shadow on pages */
+    .spine-shadow-left,
+    .spine-shadow-right {
+      position: absolute;
+      top: 0;
+      height: 100%;
+      z-index: 55;
+      pointer-events: none;
+    }
+
+    .spine-shadow-left {
+      right: 50%;
+      width: 60px;
+      margin-right: 14px;
+      background: linear-gradient(to left, rgba(0,0,0,0.12) 0%, rgba(0,0,0,0.04) 40%, transparent 100%);
+    }
+
+    .spine-shadow-right {
+      left: 50%;
+      width: 60px;
+      margin-left: 14px;
+      background: linear-gradient(to right, rgba(0,0,0,0.12) 0%, rgba(0,0,0,0.04) 40%, transparent 100%);
+    }
+
+    /* ===== SPREAD ===== */
+    .spread {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      opacity: 0;
+      pointer-events: none;
+      transform-style: preserve-3d;
+    }
+
+    .spread.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* ===== PAGE ===== */
+    .page {
+      width: 50%;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+      background: #f2ddd0;
+    }
+
+    .page-left {
+      border-radius: 6px 0 0 6px;
+    }
+
+    .page-right {
+      border-radius: 0 6px 6px 0;
+    }
+
+    /* Page edge effect */
+    .page-left::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 1px;
+      height: 100%;
+      background: rgba(0,0,0,0.06);
+    }
+
+    .page-right::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 1px;
+      height: 100%;
+      background: rgba(0,0,0,0.06);
+    }
+
+    /* ===== PAGE CONTENT ===== */
+    .page-inner {
+      padding: 36px 40px 30px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .page-number {
+      font-family: 'Georgia', serif;
+      font-size: 11px;
+      color: #8a6b5e;
+      margin-bottom: 16px;
+      letter-spacing: 0.05em;
+    }
+
+    .page-left .page-number {
+      text-align: left;
+    }
+
+    .page-right .page-number {
+      text-align: right;
+    }
+
+    .page-header-title {
+      font-family: 'Georgia', serif;
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: #8a6b5e;
+      margin-bottom: 20px;
+    }
+
+    .page-left .page-header-title {
+      text-align: left;
+    }
+
+    .page-right .page-header-title {
+      text-align: right;
+    }
+
+    /* ===== TEXT COLUMNS ===== */
+    .text-columns {
+      column-count: 2;
+      column-gap: 22px;
+      flex: 1;
+      overflow: hidden;
+    }
+
+    .text-columns p {
+      font-family: 'Georgia', serif;
+      font-size: 10.5px;
+      line-height: 1.7;
+      color: #4a3530;
+      text-align: justify;
+      margin-bottom: 10px;
+      hyphens: auto;
+    }
+
+    .text-columns p:first-child::first-letter {
+      font-size: 28px;
+      float: left;
+      line-height: 1;
+      margin-right: 4px;
+      margin-top: 2px;
+      color: #3a2520;
+      font-weight: 700;
+    }
+
+    /* ===== INLINE PHOTOS ===== */
+    .inline-photo {
+      width: 100%;
+      margin: 10px 0;
+      border-radius: 2px;
+      display: block;
+      break-inside: avoid;
+    }
+
+    .inline-photo img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 2px;
+    }
+
+    /* Placeholder photo with gradient */
+    .photo-placeholder {
+      width: 100%;
+      aspect-ratio: 4/3;
+      border-radius: 2px;
+      margin: 10px 0;
+      break-inside: avoid;
+      display: block;
+    }
+
+    .photo-placeholder.portrait {
+      aspect-ratio: 3/4;
+    }
+
+    .photo-placeholder.square {
+      aspect-ratio: 1/1;
+    }
+
+    .photo-placeholder.wide {
+      aspect-ratio: 16/9;
+    }
+
+    .photo-caption {
+      font-family: 'Georgia', serif;
+      font-size: 8px;
+      font-style: italic;
+      color: #8a6b5e;
+      margin-top: -6px;
+      margin-bottom: 10px;
+      break-inside: avoid;
+    }
+
+    /* ===== COVER PAGE ===== */
+    .cover-page {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      background: linear-gradient(145deg, #e8c9b8 0%, #f2ddd0 40%, #e8c9b8 100%);
+    }
+
+    .cover-title {
+      font-family: 'Georgia', serif;
+      font-size: clamp(24px, 3.5vw, 44px);
+      font-weight: 400;
+      color: #3a2520;
+      text-align: center;
+      letter-spacing: 0.08em;
+      line-height: 1.3;
+    }
+
+    .cover-subtitle {
+      font-family: 'Georgia', serif;
+      font-size: clamp(11px, 1.2vw, 15px);
+      color: #8a6b5e;
+      text-align: center;
+      margin-top: 16px;
+      font-style: italic;
+      letter-spacing: 0.05em;
+    }
+
+    .cover-line {
+      width: 60px;
+      height: 1px;
+      background: #8a6b5e;
+      margin: 20px auto;
+    }
+
+    .cover-author {
+      font-family: 'Georgia', serif;
+      font-size: clamp(10px, 1vw, 13px);
+      color: #6b4c3e;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    /* ===== CHAPTER TITLE PAGE ===== */
+    .chapter-page {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      background: #f2ddd0;
+    }
+
+    .chapter-number {
+      font-family: 'Georgia', serif;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+      color: #8a6b5e;
+      margin-bottom: 12px;
+    }
+
+    .chapter-title {
+      font-family: 'Georgia', serif;
+      font-size: clamp(20px, 2.8vw, 36px);
+      font-weight: 400;
+      color: #3a2520;
+      text-align: center;
+      letter-spacing: 0.06em;
+      line-height: 1.3;
+    }
+
+    .chapter-ornament {
+      font-size: 18px;
+      color: #8a6b5e;
+      margin-top: 16px;
+    }
+
+    /* ===== FULL PAGE IMAGE ===== */
+    .full-image-page {
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .full-image-page .page-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .full-image-placeholder {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* ===== PAGE TURN ANIMATION ===== */
+    .spread.turning-out-forward {
+      animation: turnOutForward 0.55s ease-in-out forwards;
+      transform-origin: left center;
+    }
+    .spread.turning-in-forward {
+      animation: turnInForward 0.55s ease-in-out forwards;
+      transform-origin: left center;
+    }
+    .spread.turning-out-backward {
+      animation: turnOutBackward 0.55s ease-in-out forwards;
+      transform-origin: right center;
+    }
+    .spread.turning-in-backward {
+      animation: turnInBackward 0.55s ease-in-out forwards;
+      transform-origin: right center;
+    }
+
+    @keyframes turnOutForward {
+      0% { opacity: 1; transform: rotateY(0deg); }
+      50% { opacity: 0.6; }
+      100% { opacity: 0; transform: rotateY(-18deg); }
+    }
+    @keyframes turnInForward {
+      0% { opacity: 0; transform: rotateY(18deg); }
+      50% { opacity: 0.6; }
+      100% { opacity: 1; transform: rotateY(0deg); }
+    }
+    @keyframes turnOutBackward {
+      0% { opacity: 1; transform: rotateY(0deg); }
+      50% { opacity: 0.6; }
+      100% { opacity: 0; transform: rotateY(18deg); }
+    }
+    @keyframes turnInBackward {
+      0% { opacity: 0; transform: rotateY(-18deg); }
+      50% { opacity: 0.6; }
+      100% { opacity: 1; transform: rotateY(0deg); }
+    }
+
+    /* ===== PAGE INDICATOR ===== */
+    .page-indicator {
+      position: fixed;
+      bottom: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 6px;
+      z-index: 300;
+    }
+
+    .page-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.3);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .page-dot:hover {
+      background: rgba(255,255,255,0.5);
+    }
+
+    .page-dot.active {
+      background: rgba(255,255,255,0.85);
+      width: 22px;
+      border-radius: 4px;
+    }
+
+    /* ===== NAV HINT ===== */
+    .nav-hint {
+      position: fixed;
+      bottom: 42px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Georgia', serif;
+      font-size: 11px;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.05em;
+      pointer-events: none;
+      transition: opacity 0.5s ease;
+    }
+
+    .nav-hint.hidden {
+      opacity: 0;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .book {
+        width: 96vw;
+        height: 72vh;
+      }
+
+      .page-inner {
+        padding: 20px 22px 16px;
+      }
+
+      .text-columns {
+        column-count: 1;
+        column-gap: 0;
+      }
+
+      .text-columns p {
+        font-size: 10px;
+      }
+
+      .spine {
+        width: 18px;
+      }
+
+      .spine-shadow-left {
+        margin-right: 9px;
+        width: 40px;
+      }
+
+      .spine-shadow-right {
+        margin-left: 9px;
+        width: 40px;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .book {
+        width: 100vw;
+        height: 65vh;
+        border-radius: 0;
+      }
+
+      .page-left { border-radius: 0; }
+      .page-right { border-radius: 0; }
+
+      .page-inner {
+        padding: 14px 16px 12px;
+      }
+
+      .text-columns p {
+        font-size: 9px;
+        line-height: 1.6;
+      }
+
+      .page-number {
+        font-size: 9px;
+      }
+
+      .cover-title {
+        font-size: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="book-wrapper">
+    <div class="book" id="book">
+
+      <!-- Click Zones -->
+      <div class="click-zone click-zone-left" onclick="prevSpread()"></div>
+      <div class="click-zone click-zone-right" onclick="nextSpread()"></div>
+
+      <!-- Spine -->
+      <div class="spine"></div>
+      <div class="spine-shadow-left"></div>
+      <div class="spine-shadow-right"></div>
+
+      <!-- SPREAD 0: Front Cover -->
+      <div class="spread active" id="spread-0">
+        <div class="page page-left cover-page">
+          <div class="cover-line"></div>
+          <div class="cover-title">Collected<br>Photographs</div>
+          <div class="cover-subtitle">A Visual Journey</div>
+          <div class="cover-line"></div>
+          <div class="cover-author">Alex Bailey</div>
+        </div>
+        <div class="page page-right chapter-page">
+          <div class="chapter-number">Chapter One</div>
+          <div class="chapter-title">Through<br>the Lens</div>
+          <div class="chapter-ornament">&mdash;</div>
+        </div>
+      </div>
+
+      <!-- SPREAD 1: Pages 2–3 -->
+      <div class="spread" id="spread-1">
+        <div class="page page-left">
+          <div class="page-inner">
+            <div class="page-number">2</div>
+            <div class="page-header-title">Collected Photographs</div>
+            <div class="text-columns">
+              <p>Photography began as a means of documenting what lay before the eye, yet it quickly transcended mere record-keeping to become one of the most powerful forms of artistic expression in the modern world. Each frame captures not only light, but also emotion, memory, and the passage of time itself.</p>
+              <p>The earliest photographs demanded patience: long exposures, careful preparation of silver plates, and absolute stillness from the subject. What emerged from those painstaking processes were images imbued with a gravity that modern instant photography sometimes lacks.</p>
+              <div class="photo-placeholder" style="background: linear-gradient(135deg, #c9a88c 0%, #a67c5b 50%, #8b6547 100%); border-radius: 2px;"></div>
+              <p class="photo-caption">Morning light filtering through the studio, 2024.</p>
+              <p>Yet there is beauty in the spontaneous, too. The street photographer who lifts the camera at precisely the right moment, capturing a stranger mid-stride beneath a canopy of autumn leaves, creates something no amount of planning could produce. It is the tension between control and chaos that gives photography its enduring magic.</p>
+              <p>In this collection, we have assembled images that span both worlds: the carefully composed and the happily accidental, the studio-lit portrait and the rain-soaked snapshot taken from a moving train.</p>
+            </div>
+          </div>
+        </div>
+        <div class="page page-right">
+          <div class="page-inner">
+            <div class="page-number">3</div>
+            <div class="page-header-title">Through the Lens</div>
+            <div class="text-columns">
+              <p>The camera does not lie, the old saying goes, but that is perhaps the greatest lie of all. Every photograph is a choice: what to include and what to leave beyond the frame, which moment to freeze and which to let pass. The photographer is always an author, never merely a witness.</p>
+              <div class="photo-placeholder portrait" style="background: linear-gradient(160deg, #d4a89c 0%, #b87b6a 60%, #9c5e4d 100%); border-radius: 2px;"></div>
+              <p class="photo-caption">Portrait study in natural light.</p>
+              <p>Light is the photographer's primary medium. It sculpts form, creates mood, and can transform the mundane into the magnificent. The golden hour, that fleeting period just after sunrise and before sunset, bathes the world in warm, directional light that photographers have long considered ideal for capturing both landscapes and portraits.</p>
+              <p>Shadows are equally important. Without shadow there is no depth, no mystery, no drama. The interplay between illumination and darkness gives every great photograph its sense of dimension and emotional weight.</p>
+              <p>Throughout history, photographers have pushed the boundaries of what the medium can express, from the pictorialists who sought to emulate painting to the modernists who embraced sharp focus and geometric composition.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SPREAD 2: Pages 4–5 -->
+      <div class="spread" id="spread-2">
+        <div class="page page-left">
+          <div class="page-inner">
+            <div class="page-number">4</div>
+            <div class="page-header-title">Collected Photographs</div>
+            <div class="text-columns">
+              <div class="photo-placeholder wide" style="background: linear-gradient(135deg, #7a8a6b 0%, #5d6e4e 50%, #4a5a3d 100%); border-radius: 2px;"></div>
+              <p class="photo-caption">Landscape at dusk, the Scottish Highlands.</p>
+              <p>Landscape photography demands a different kind of patience than portraiture. The subject cannot be directed or posed; instead, the photographer must wait for nature to arrange itself into something extraordinary. Sometimes this means returning to the same location dozens of times before conditions align.</p>
+              <p>The great landscape photographers speak of pre-visualization: seeing the final image in the mind's eye before pressing the shutter. Ansel Adams, perhaps the most celebrated practitioner of this approach, would study a scene for hours, waiting for clouds to shift and light to change.</p>
+              <p>Yet landscapes are also about scale. Standing before a vast mountain range or an endless ocean, the photographer must find a way to translate that overwhelming sense of space into a rectangle small enough to hold in one's hands. The best landscape photographs manage this translation so effectively that the viewer feels the wind and hears the silence.</p>
+              <p>Modern landscape photography has evolved to embrace both the pristine wilderness and the human-altered environment, recognizing beauty and meaning in industrial parks, suburban sprawl, and the edges where civilization meets the untamed world.</p>
+            </div>
+          </div>
+        </div>
+        <div class="page page-right">
+          <div class="page-inner">
+            <div class="page-number">5</div>
+            <div class="page-header-title">Through the Lens</div>
+            <div class="text-columns">
+              <p>Colour photography was once considered inferior to black and white by serious practitioners. The argument was that colour distracted from form and composition, that it was somehow too literal, too tied to the surface of things. William Eggleston changed that perception almost single-handedly with his 1976 exhibition at the Museum of Modern Art.</p>
+              <p>Eggleston showed that colour could be as expressive, as formally rigorous, and as emotionally resonant as any monochrome image. His photographs of the American South, with their saturated reds and deep blues, revealed a world that black and white would have rendered invisible.</p>
+              <div class="photo-placeholder" style="background: linear-gradient(145deg, #8893a4 0%, #6b7a8e 50%, #4e5d6e 100%); border-radius: 2px;"></div>
+              <p class="photo-caption">Urban geometry, reflections in steel and glass.</p>
+              <p>Today the debate between colour and monochrome persists, but it has softened into a matter of aesthetic choice rather than ideological conviction. Many photographers work fluently in both, choosing whichever serves the particular image at hand.</p>
+              <p>Digital technology has further complicated the conversation, introducing possibilities for colour manipulation that would have been unimaginable in the darkroom era. Whether this represents liberation or corruption depends entirely on one's philosophy of the medium.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SPREAD 3: Pages 6–7 (Chapter Two) -->
+      <div class="spread" id="spread-3">
+        <div class="page page-left chapter-page">
+          <div class="chapter-number">Chapter Two</div>
+          <div class="chapter-title">Portraits<br>&amp; People</div>
+          <div class="chapter-ornament">&mdash;</div>
+        </div>
+        <div class="page page-right">
+          <div class="page-inner">
+            <div class="page-number">7</div>
+            <div class="page-header-title">Portraits &amp; People</div>
+            <div class="text-columns">
+              <p>Portraiture is the oldest and most intimate genre of photography. When we photograph a person, we enter into a silent negotiation: the subject offers their face, and the photographer attempts to reveal something hidden beneath its surface. The best portraits feel less like pictures of people and more like windows into their inner lives.</p>
+              <div class="photo-placeholder portrait" style="background: linear-gradient(155deg, #c4a882 0%, #a8896c 50%, #8c6e54 100%); border-radius: 2px;"></div>
+              <p class="photo-caption">Study in chiaroscuro, afternoon session.</p>
+              <p>The great portrait photographers, from Julia Margaret Cameron to Richard Avedon, understood that a portrait is always a collaboration. The photographer brings technical skill and artistic vision, but the subject brings their entire life, their hopes and fears, their public mask and their private self.</p>
+              <p>Environmental portraiture places the subject within a meaningful setting, allowing the surroundings to tell part of the story. A craftsman photographed in their workshop, a dancer in an empty rehearsal room, or a chef in a kitchen filled with steam—each setting amplifies and enriches the portrait.</p>
+              <p>Whether formal or candid, every portrait is ultimately an act of empathy. To photograph someone well, you must first see them truly.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SPREAD 4: Pages 8–9 -->
+      <div class="spread" id="spread-4">
+        <div class="page page-left">
+          <div class="page-inner">
+            <div class="page-number">8</div>
+            <div class="page-header-title">Collected Photographs</div>
+            <div class="text-columns">
+              <p>Fashion photography exists at the intersection of art and commerce, beauty and commerce, fantasy and reality. It asks us to admire not just the clothes or the model, but the entire world constructed around them: the light, the setting, the mood, the story implied by a single frozen instant.</p>
+              <p>The greatest fashion photographers have always been those who treated the genre as a legitimate art form rather than mere advertising. Irving Penn's stark still lifes, Helmut Newton's provocative tableaux, and Sarah Moon's dreamlike blurs all elevated fashion imagery beyond its commercial origins.</p>
+              <div class="photo-placeholder wide" style="background: linear-gradient(140deg, #d4b8c8 0%, #b89aad 50%, #9c7e92 100%); border-radius: 2px;"></div>
+              <p class="photo-caption">Editorial shoot, golden hour on location.</p>
+              <p>Movement is essential to fashion photography. Clothes are designed to be worn, to flow and fold and catch the air. The static mannequin reveals nothing of a garment's true character. It is only when fabric moves against the body that its intention becomes visible.</p>
+              <p>Today's fashion photography is more diverse than ever, reflecting a broader range of bodies, cultures, and perspectives. This inclusivity has not diminished the art form but enriched it immeasurably.</p>
+            </div>
+          </div>
+        </div>
+        <div class="page page-right">
+          <div class="page-inner">
+            <div class="page-number">9</div>
+            <div class="page-header-title">Portraits &amp; People</div>
+            <div class="text-columns">
+              <div class="photo-placeholder square" style="background: linear-gradient(130deg, #a4b8c4 0%, #849aaa 50%, #687e8e 100%); border-radius: 2px;"></div>
+              <p class="photo-caption">Documentary portrait, London street market.</p>
+              <p>Street photography is perhaps the most democratic form of the art. It requires no studio, no elaborate equipment, no willing subject. Only a camera, a keen eye, and the courage to photograph strangers in their unguarded moments.</p>
+              <p>Henri Cartier-Bresson famously described the decisive moment: that fraction of a second when all the visual elements of a scene align into a composition that is both meaningful and beautiful. Achieving this requires not just quick reflexes but a deep understanding of human behaviour and spatial relationships.</p>
+              <p>Modern street photography has expanded to include not just the bustling city centre but the quiet suburbs, the overlooked spaces where everyday life unfolds without spectacle. In these ordinary settings, the attentive photographer can discover extraordinary images that speak to the universal human experience.</p>
+              <p>The ethical dimensions of street photography remain debated. When is it permissible to photograph a stranger? The answer varies by culture, by law, and by individual conscience, but the best street photographers approach their subjects with respect and humility.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SPREAD 5: Pages 10–11 (Chapter Three) -->
+      <div class="spread" id="spread-5">
+        <div class="page page-left">
+          <div class="page-inner">
+            <div class="page-number">10</div>
+            <div class="page-header-title">Collected Photographs</div>
+            <div class="text-columns">
+              <p>The still life, often overlooked in contemporary photography, is in fact the genre that offers the photographer the most complete control. Every element can be arranged, every shadow shaped, every colour chosen. The result is a pure expression of the photographer's aesthetic vision.</p>
+              <div class="photo-placeholder" style="background: linear-gradient(150deg, #c8b8a0 0%, #a89880 50%, #8a7a64 100%); border-radius: 2px;"></div>
+              <p class="photo-caption">Studio arrangement, objects from the collection.</p>
+              <p>In the tradition of Dutch Golden Age painting, photographic still life often carries symbolic weight. A wilting flower, an overripe fruit, a half-empty glass—these common objects become meditations on time, abundance, and mortality when composed with care and lit with intention.</p>
+              <p>Commercial still life photography, though often dismissed as merely functional, can achieve a startling beauty. The simple image of a well-crafted object, presented against a clean background with precise lighting, honours the maker's skill and invites the viewer to look more closely at things they might otherwise take for granted.</p>
+              <p>There is a contemplative quality to still life work that suits certain temperaments perfectly. Where the street photographer must be quick and reactive, the still life photographer can be slow, deliberate, and meditative.</p>
+            </div>
+          </div>
+        </div>
+        <div class="page page-right chapter-page">
+          <div class="chapter-number">Chapter Three</div>
+          <div class="chapter-title">Light<br>&amp; Shadow</div>
+          <div class="chapter-ornament">&mdash;</div>
+        </div>
+      </div>
+
+      <!-- SPREAD 6: Pages 12–13 -->
+      <div class="spread" id="spread-6">
+        <div class="page page-left">
+          <div class="page-inner">
+            <div class="page-number">12</div>
+            <div class="page-header-title">Light &amp; Shadow</div>
+            <div class="text-columns">
+              <p>Without light there is no photography, and without shadow there is no form. These twin forces, presence and absence of illumination, define every image ever made. Understanding light is not merely a technical skill but a philosophical orientation toward the medium itself.</p>
+              <p>Natural light is endlessly variable. The harsh midday sun creates deep, dramatic shadows and vivid contrasts. Overcast skies produce soft, diffused illumination that flatters faces and reveals subtle tonal gradations. The blue hour after sunset wraps the world in cool, melancholic tones that feel like memory made visible.</p>
+              <div class="photo-placeholder wide" style="background: linear-gradient(135deg, #2a2a3a 0%, #4a4a5a 30%, #6a6a7a 60%, #3a3a4a 100%); border-radius: 2px;"></div>
+              <p class="photo-caption">Study in shadow, late afternoon.</p>
+              <p>Artificial light offers different possibilities. Studio strobes can freeze motion and sculpt form with surgical precision. Continuous lights allow the photographer to see exactly how illumination falls before the shutter is pressed. And available light—the glow of a neon sign, the flicker of a candle, the cold fluorescence of an office—carries its own emotional associations.</p>
+            </div>
+          </div>
+        </div>
+        <div class="page page-right">
+          <div class="page-inner">
+            <div class="page-number">13</div>
+            <div class="page-header-title">Light &amp; Shadow</div>
+            <div class="text-columns">
+              <p>Black and white photography strips the image to its essentials: light, shadow, form, and texture. Without colour to guide the eye, the viewer must engage more actively with the composition, tracing the interplay of tones across the frame. This is why many photographers consider monochrome the purest expression of the medium.</p>
+              <p>The Zone System, developed by Ansel Adams and Fred Archer, provided a systematic approach to controlling tonal values from pure black to pure white. Though originally designed for film, its principles remain relevant in the digital age, offering a framework for understanding how light translates into visual form.</p>
+              <div class="photo-placeholder portrait" style="background: linear-gradient(145deg, #3d3d3d 0%, #5a5a5a 40%, #7a7a7a 70%, #4a4a4a 100%); border-radius: 2px;"></div>
+              <p class="photo-caption">High contrast study, silver gelatin print.</p>
+              <p>The darkroom was once the photographer's second studio, a place where images were not merely developed but transformed. Dodging and burning, the selective lightening and darkening of areas within a print, allowed for a degree of creative control that anticipates modern digital editing.</p>
+              <p>Today's digital workflow offers unprecedented control over every pixel, yet many photographers still find that the discipline of thinking in black and white, of seeing the world in terms of luminance rather than hue, sharpens their compositional instincts and deepens their understanding of light.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SPREAD 7: Pages 14–15 -->
+      <div class="spread" id="spread-7">
+        <div class="page page-left">
+          <div class="page-inner">
+            <div class="page-number">14</div>
+            <div class="page-header-title">Collected Photographs</div>
+            <div class="text-columns">
+              <p>Architecture and photography have long been intimate companions. The camera's ability to render perspective, reveal pattern, and isolate detail makes it an ideal tool for exploring built environments. From Eugène Atget's quiet Parisian streets to Julius Shulman's iconic images of modernist houses, architectural photography has both documented and mythologised the spaces we inhabit.</p>
+              <div class="photo-placeholder" style="background: linear-gradient(140deg, #b0c4d8 0%, #8aa4be 50%, #6888a4 100%); border-radius: 2px;"></div>
+              <p class="photo-caption">Geometric abstraction, contemporary gallery interior.</p>
+              <p>The challenge of architectural photography lies in translating three-dimensional space into a two-dimensional image without losing the sense of volume and flow that defines a building's character. Wide-angle lenses can exaggerate depth, while telephoto lenses compress it; the choice of focal length fundamentally shapes how the viewer experiences the space.</p>
+              <p>Interior photography presents its own challenges: mixed light sources, limited vantage points, and the need to convey atmosphere as well as layout. The best interior photographs make the viewer want to step inside and inhabit the space.</p>
+            </div>
+          </div>
+        </div>
+        <div class="page page-right">
+          <div class="page-inner">
+            <div class="page-number">15</div>
+            <div class="page-header-title">Light &amp; Shadow</div>
+            <div class="text-columns">
+              <p>Travel photography bridges the documentary and the aesthetic. At its best, it captures not just the appearance of a place but its feeling, its rhythm, its particular quality of light and air. The travel photographer must be simultaneously observer and participant, recording what they see while remaining open to surprise.</p>
+              <div class="photo-placeholder wide" style="background: linear-gradient(135deg, #d4c4a0 0%, #c0a878 50%, #a89060 100%); border-radius: 2px;"></div>
+              <p class="photo-caption">Morning market, coloured silks and spices.</p>
+              <p>The danger of travel photography is the postcard: the image so polished and predictable that it tells us nothing we didn't already know. The best travel photographers avoid this trap by seeking the overlooked, the imperfect, the moment between moments when a place reveals its true character.</p>
+              <p>Documentary photography carries a heavier responsibility. It aims not merely to please the eye but to bear witness, to bring attention to realities that might otherwise remain invisible. From the Farm Security Administration photographs of the Great Depression to contemporary projects documenting climate change, documentary work insists that photographs can and should change the world.</p>
+              <p>The ethics of documentary photography are complex and ever-evolving. Questions of consent, representation, and power dynamics demand that the photographer approach their subjects with care, honesty, and a willingness to confront their own biases.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SPREAD 8: Back Cover -->
+      <div class="spread" id="spread-8">
+        <div class="page page-left">
+          <div class="page-inner">
+            <div class="page-number">16</div>
+            <div class="page-header-title">Collected Photographs</div>
+            <div class="text-columns">
+              <p>As this collection draws to a close, it is worth reflecting on what photography means in an age of ubiquitous images. When everyone carries a camera in their pocket and billions of photographs are shared online each day, what distinguishes the thoughtful image from the merely recorded?</p>
+              <p>The answer, we believe, lies in intention. A photograph made with care, with attention to light and composition and meaning, stands apart from the visual noise that surrounds it. Not because it employs expensive equipment or advanced technique, but because it reflects a human being's genuine engagement with the world before them.</p>
+              <div class="photo-placeholder square" style="background: linear-gradient(145deg, #d8c8b4 0%, #c0b098 50%, #a89880 100%); border-radius: 2px;"></div>
+              <p class="photo-caption">Final plate, from the personal archive.</p>
+              <p>Photography remains, after nearly two centuries, a medium of extraordinary power and versatility. It can document and deceive, reveal and conceal, celebrate and critique. In the hands of a thoughtful practitioner, it continues to offer one of the most direct connections between the human eye and the human heart.</p>
+              <p>We hope these images have inspired you to look more carefully at the world around you, and perhaps to pick up a camera yourself. After all, every great photograph begins with a single act of attention.</p>
+            </div>
+          </div>
+        </div>
+        <div class="page page-right cover-page">
+          <div class="cover-line"></div>
+          <div class="cover-title" style="font-size: clamp(14px, 1.8vw, 22px); letter-spacing: 0.12em;">Collected<br>Photographs</div>
+          <div class="cover-subtitle">First Edition &middot; 2026</div>
+          <div class="cover-line"></div>
+          <div class="cover-author" style="font-size: 10px;">alexfbailey.com</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Page Indicator -->
+    <div class="page-indicator" id="page-indicator"></div>
+
+    <!-- Navigation Hint -->
+    <div class="nav-hint" id="nav-hint">Click left or right to turn pages</div>
+
+  </div>
+
+  <script>
+    // ===== BOOK PAGE TURNER =====
+    const spreads = document.querySelectorAll('.spread');
+    const totalSpreads = spreads.length;
+    let currentSpread = 0;
+    let isAnimating = false;
+
+    // Build page indicator dots
+    const indicator = document.getElementById('page-indicator');
+    for (let i = 0; i < totalSpreads; i++) {
+      const dot = document.createElement('div');
+      dot.className = 'page-dot' + (i === 0 ? ' active' : '');
+      dot.onclick = () => goToSpread(i);
+      indicator.appendChild(dot);
+    }
+
+    function updateDots() {
+      const dots = document.querySelectorAll('.page-dot');
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentSpread);
+      });
+    }
+
+    function goToSpread(index) {
+      if (isAnimating || index === currentSpread || index < 0 || index >= totalSpreads) return;
+      const direction = index > currentSpread ? 'forward' : 'backward';
+      animatePageTurn(currentSpread, index, direction);
+    }
+
+    function nextSpread() {
+      if (currentSpread < totalSpreads - 1) {
+        goToSpread(currentSpread + 1);
+      }
+    }
+
+    function prevSpread() {
+      if (currentSpread > 0) {
+        goToSpread(currentSpread - 1);
+      }
+    }
+
+    function animatePageTurn(fromIndex, toIndex, direction) {
+      isAnimating = true;
+
+      // Hide nav hint on first interaction
+      const hint = document.getElementById('nav-hint');
+      if (hint && !hint.classList.contains('hidden')) {
+        hint.classList.add('hidden');
+      }
+
+      const fromSpread = document.getElementById('spread-' + fromIndex);
+      const toSpread = document.getElementById('spread-' + toIndex);
+
+      const outClass = direction === 'forward' ? 'turning-out-forward' : 'turning-out-backward';
+      const inClass = direction === 'forward' ? 'turning-in-forward' : 'turning-in-backward';
+
+      // Start out animation
+      fromSpread.classList.add(outClass);
+
+      // Start in animation slightly after
+      setTimeout(() => {
+        toSpread.classList.add('active', inClass);
+      }, 120);
+
+      // Cleanup
+      setTimeout(() => {
+        fromSpread.classList.remove('active', outClass);
+        toSpread.classList.remove(inClass);
+        currentSpread = toIndex;
+        updateDots();
+        isAnimating = false;
+      }, 550);
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ') {
+        e.preventDefault();
+        nextSpread();
+      } else if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        prevSpread();
+      }
+    });
+
+    // Touch/swipe support
+    let touchStartX = 0;
+    document.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    document.addEventListener('touchend', (e) => {
+      const diff = touchStartX - e.changedTouches[0].screenX;
+      if (Math.abs(diff) > 50) {
+        if (diff > 0) nextSpread();
+        else prevSpread();
+      }
+    }, { passive: true });
+  </script>
+
+</body>
+</html>
