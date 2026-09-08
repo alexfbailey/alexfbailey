@@ -305,8 +305,9 @@
             }
         }
     </style>
+    <link rel="stylesheet" href="./sleek.css">
 </head>
-<body>
+<body class="sleek">
     <!-- Desktop sidebar -->
     <aside class="sidebar">
         <div>
@@ -365,45 +366,13 @@
         </div>
     </div>
 
-    <main>
-        <h1>Film/TV</h1>
-        <div class="project">
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/X7ybFRyFa6k" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-            <div class="project-title">êmîcêtôcêt: Many Bloodlines</div>
-        </div>
-
-        <div class="cv-section">
-            <div class="cv-section-title">Awards</div>
-            <div class="cv-item">Betty Youson Award for Best Canadian Short Documentary, Hot Docs (2020)</div>
-            <div class="cv-item">Best Short Documentary Work, imagineNATIVE Film + Media Arts Festival (2020)</div>
-            <div class="cv-item">Jury Choice Top Short Film, Reel Pride Film Festival</div>
-        </div>
-
-        <div class="cv-section">
-            <div class="cv-section-title">Nominations</div>
-            <div class="cv-item">Best Short Documentary, 9th Canadian Screen Awards (2021)</div>
-            <div class="cv-item">Academy Awards (Oscars) — Documentary Short Subject, Qualified for consideration</div>
-        </div>
-
-        <div class="cv-section">
-            <div class="cv-section-title">Official Selections</div>
-            <div class="cv-item">Canada's Top Ten Shorts of 2020, Toronto International Film Festival (TIFF)</div>
-            <div class="cv-item">Short Documentary, Hamptons International Film Festival</div>
-            <div class="cv-item">Native Cinema Showcase, Smithsonian's National Museum of the American Indian</div>
-        </div>
-
-        <div class="project">
-            <img src="./images/youve-been-posted.jpg" alt="You've Been Posted">
-            <div class="project-title">You've Been Posted</div>
-        </div>
-
-        <div class="cv-section">
-            <div class="cv-section-title">Details</div>
-            <div class="cv-item">One-hour documentary special for Citytv, Rogers Media, airing nationally across Canada.</div>
-        </div>
-    </main>
+    <main class="strip"><div class="kicker">Film / TV</div>
+<div class="tile"><a class="play" data-yt="X7ybFRyFa6k" href="https://www.youtube.com/watch?v=X7ybFRyFa6k"><img class="poster" src="https://i.ytimg.com/vi/X7ybFRyFa6k/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/X7ybFRyFa6k/hqdefault.jpg'" alt="êmîcêtôcêt: Many Bloodlines"></a><div class="cap"><span class="t">êmîcêtôcêt: Many Bloodlines</span><span class="r">Producer · Short documentary, 2020</span></div></div><div class="tile text"><div class="h">êmîcêtôcêt:<br>Many Bloodlines</div><div class="role">Producer</div>
+<div class="k">Awards</div><div class="i">Betty Youson Award, Best Canadian Short Documentary, Hot Docs 2020<br>Best Short Documentary Work, imagineNATIVE 2020<br>Jury Choice Top Short Film, Reel Pride</div>
+<div class="k">Nominations</div><div class="i">Best Short Documentary, 9th Canadian Screen Awards 2021<br>Academy Awards, Documentary Short Subject, qualified</div>
+<div class="k">Official selections</div><div class="i">TIFF Canada's Top Ten Shorts 2020<br>Hamptons International Film Festival<br>Smithsonian NMAI Native Cinema Showcase</div></div><div class="tile"><img src="./images/youve-been-posted.jpg" alt="You've Been Posted"><div class="cap"><span class="t">You've Been Posted</span><span class="r">Directed, produced and narrated by Alex Bailey</span></div></div><div class="tile text"><div class="h">You've Been Posted</div><div class="role">Directed, produced and narrated by Alex Bailey</div>
+<div class="k">Details</div><div class="i">Documentary<br>Rogers Media</div></div>
+</main>
 
     <script>
         const menuToggle = document.querySelector('.menu-toggle');
@@ -437,5 +406,6 @@
             }
         });
     </script>
+<script src="./lightbox.js"></script>
 </body>
 </html>

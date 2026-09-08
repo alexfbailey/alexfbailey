@@ -311,8 +311,9 @@
             }
         }
     </style>
+    <link rel="stylesheet" href="./sleek.css">
 </head>
-<body>
+<body class="sleek">
     <!-- Desktop sidebar -->
     <aside class="sidebar">
         <div>
@@ -371,24 +372,11 @@
         </div>
     </div>
 
-    <main>
-        <div class="content-left">
-            <h1>Social</h1>
-
-            <div class="section">
-                <div class="section-title">About</div>
-                <div class="section-item">Alex's short form content has been viewed over 150 million times online with a growing audience of 140,000 followers across platforms.</div>
-            </div>
-
-            <div class="section">
-                <div class="section-title">Select Collaborations</div>
-                <img src="./images/selectcollab2.png" alt="Select Collaborations" style="max-width: 81%; margin-top: 10px;">
-            </div>
-        </div>
-        <div class="content-right">
-            <img src="./images/social-media-1.jpg" alt="Alex Bailey">
-        </div>
-    </main>
+    <main class="sheet"><div class="kicker">Social</div>
+<div class="stats"><div class="big">150M<small>views of short-form content</small></div><div class="big">140K<small>followers across platforms</small></div></div>
+<div class="group"><div class="k">Select collaborations</div><img class="logos" src="./images/selectcollab2.png" alt="Select collaborations"></div>
+<div class="thumbs"><img src="./images/social-media-1.jpg" alt=""><img src="./images/social-media-2.jpg" alt=""><img src="./images/social-media-3.png" alt=""><img src="./images/social-media-4.png" alt=""><img src="./images/social-media-5.png" alt=""><img src="./images/social-media-6.png" alt=""><img src="./images/social-media-7.png" alt=""><img src="./images/social-media-8.png" alt=""></div>
+</main>
 
     <script>
         const menuToggle = document.querySelector('.menu-toggle');
@@ -422,5 +410,6 @@
             }
         });
     </script>
+<script src="./lightbox.js"></script>
 </body>
 </html>
