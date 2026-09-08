@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /social-media.html
+Disallow: /about.html
+Disallow: /work.html
+
+Sitemap: https://alexfbailey.com/sitemap.xml
