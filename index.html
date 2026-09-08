@@ -200,6 +200,34 @@
             flex-shrink: 0;
         }
 
+        .intro-card {
+            flex-shrink: 0;
+            width: 330px;
+            align-self: center;
+            padding: 0 20px 0 14px;
+        }
+        .intro-card h2 {
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: -0.6px;
+            line-height: 1.05;
+            margin-bottom: 10px;
+        }
+        .intro-card .role {
+            font-size: 15px;
+            font-weight: 400;
+            margin-bottom: 14px;
+        }
+        .intro-card p {
+            font-size: 13.5px;
+            font-weight: 300;
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .intro-card .more { font-size: 13px; margin-top: 16px; }
+        .intro-card a { color: #000; text-decoration: none; }
+        .intro-card a:hover { opacity: 0.5; }
         /* ── Mobile ── */
         @media (max-width: 768px) {
             .sidebar {
@@ -264,6 +292,10 @@
             main img {
                 height: auto !important;
                 width: 100%;
+            }
+            .intro-card {
+                width: 100%;
+                padding: 18px 0 8px;
             }
         }
     </style>
@@ -344,6 +376,13 @@
         <img src="./images/7.webp" alt="Alex Bailey, behind the scenes" loading="lazy" decoding="async">
         <img src="./images/8.webp" alt="Photograph by Alex Bailey, Toronto" loading="lazy" decoding="async">
         <img src="./images/9.webp" alt="Alex Bailey, portrait" loading="lazy" decoding="async">
+        <section class="intro-card">
+            <h2>Alex Bailey</h2>
+            <p class="role">Filmmaker, photographer and thrift creator in Toronto.</p>
+            <p>Producer of <em>êmîcêtôsêt: Many Bloodlines</em>, winner of the Betty Youson Award at Hot Docs and one of TIFF's Canada's Top Ten shorts of 2020. Director and narrator of <em>You've Been Posted</em> for Citytv.</p>
+            <p>Commercials for Walmart, Aeroplan, Tim Hortons and RBC. Photography in Vogue Germany and VICE. Thrift videos watched more than 150 million times.</p>
+            <p class="more"><a href="about.html">About</a> · <a href="film-tv.html">Film/TV</a> · <a href="videos.html">Videos</a> · <a href="contact.html">Contact</a></p>
+        </section>
     </main>
 
     <script>
