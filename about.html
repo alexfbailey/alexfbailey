@@ -1,6 +1,411 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
-<title>Alex Bailey • Alex Bailey</title>
-<meta http-equiv="refresh" content="0; url=https://alexfbailey.com/index.html">
-<link rel="canonical" href="https://alexfbailey.com/index.html">
-<meta name="robots" content="noindex">
-</head><body><p>This page has moved to <a href="https://alexfbailey.com/index.html">https://alexfbailey.com/index.html</a>.</p></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Alex Bailey | Toronto Filmmaker, Director &amp; Thrift Creator</title>
+    <meta name="description" content="About Alex Bailey, filmmaker and photographer in Toronto. Producer of êmîcêtôsêt: Many Bloodlines (Hot Docs, TIFF Canada's Top Ten) and director of You've Been Posted for Citytv. Thrift videos with 150 million views.">
+    <link rel="canonical" href="https://alexfbailey.com/about.html">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "@id": "https://alexfbailey.com/#alex", "name": "Alex Bailey", "alternateName": ["Alexandra Bailey", "Alex Fisher-Bailey", "Alexandra Fisher-Bailey", "alexfbailey"], "url": "https://alexfbailey.com", "jobTitle": ["Filmmaker", "Director", "Producer", "Photographer"], "sameAs": ["https://www.wikidata.org/wiki/Q138750056", "https://www.imdb.com/name/nm11977685/", "https://www.instagram.com/alexfbailey/", "https://www.tiktok.com/@alexfbailey", "https://www.youtube.com/@alexfbailey", "https://www.linkedin.com/in/alexfbailey/"]}</script>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/favicon.png" type="image/png" sizes="96x96">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <meta property="og:site_name" content="Alex Bailey">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="About • Alex Bailey">
+    <meta property="og:description" content="About Alex Bailey, filmmaker and photographer in Toronto. Producer of êmîcêtôsêt: Many Bloodlines (Hot Docs, TIFF Canada's Top Ten) and director of You've Been Posted for Citytv. Thrift videos with 150 million views.">
+    <meta property="og:url" content="https://alexfbailey.com/about.html">
+    <meta property="og:image" content="https://alexfbailey.com/images/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Alex Bailey">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@alexfbailey">
+    <meta name="twitter:title" content="About • Alex Bailey">
+    <meta name="twitter:description" content="About Alex Bailey, filmmaker and photographer in Toronto. Producer of êmîcêtôsêt: Many Bloodlines (Hot Docs, TIFF Canada's Top Ten) and director of You've Been Posted for Citytv. Thrift videos with 150 million views.">
+    <meta name="twitter:image" content="https://alexfbailey.com/images/og-image.jpg">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Helvetica, Arial, sans-serif;
+            background: #fff;
+            color: #000;
+        }
+
+        /* ── Desktop sidebar ── */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 260px;
+            height: 100vh;
+            padding: 40px 40px 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            z-index: 1000;
+            background: #fff;
+        }
+        .sidebar .logo {
+            font-size: 28px;
+            font-weight: 700;
+            text-decoration: none;
+            color: #000;
+            font-family: Helvetica, Arial, sans-serif;
+            letter-spacing: -0.5px;
+            line-height: 1.15;
+            display: block;
+            margin-bottom: 30px;
+        }
+        .sidebar nav ul {
+            list-style: none;
+        }
+        .sidebar nav ul li {
+            margin: 10px 0;
+        }
+        .sidebar nav ul li a {
+            text-decoration: none;
+            color: #000;
+            font-size: 17px;
+            font-weight: 400;
+            transition: opacity 0.2s;
+        }
+        .sidebar nav ul li a:hover {
+            opacity: 0.5;
+        }
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+        .social-icons a {
+            color: #000;
+            text-decoration: none;
+            font-size: 18px;
+            transition: opacity 0.2s;
+        }
+        .social-icons a:hover {
+            opacity: 0.5;
+        }
+        .sidebar-bottom {
+            margin-top: auto;
+        }
+        .sidebar-bottom hr {
+            border: none;
+            border-top: 2px solid #000;
+            width: 40px;
+            margin-bottom: 15px;
+        }
+        .sidebar-bottom p {
+            font-size: 11px;
+            line-height: 1.7;
+            font-style: italic;
+        }
+        .sidebar-bottom .copyright {
+            font-style: normal;
+            margin-top: 12px;
+            font-size: 11px;
+        }
+
+        /* ── Mobile header (hidden on desktop) ── */
+        .mobile-header {
+            display: none;
+        }
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: #ff6600;
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 80px 40px 50px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .menu-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+        .menu-overlay .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 28px;
+            cursor: pointer;
+            padding: 5px;
+            line-height: 1;
+        }
+        .menu-overlay nav ul {
+            list-style: none;
+            text-align: left;
+        }
+        .menu-overlay nav ul li {
+            margin: 15px 0;
+        }
+        .menu-overlay nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 28px;
+            font-weight: 300;
+            transition: opacity 0.2s;
+        }
+        .menu-overlay nav ul li a:hover {
+            opacity: 0.7;
+        }
+        .menu-overlay .overlay-social {
+            display: flex;
+            gap: 18px;
+        }
+        .menu-overlay .overlay-social a {
+            color: #fff;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+        .menu-overlay .overlay-social a:hover {
+            opacity: 0.7;
+        }
+
+        /* ── Main content ── */
+        main {
+            margin-left: 260px;
+            height: 100vh;
+            overflow-y: auto;
+            padding: 40px 60px 60px;
+            scrollbar-width: none;
+        }
+        main::-webkit-scrollbar {
+            display: none;
+        }
+        h1 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        .press-section {
+            margin-bottom: 20px;
+        }
+        .press-section-title {
+            font-size: 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+        .press-item {
+            margin-bottom: 8px;
+            font-size: 17px;
+            line-height: 1.6;
+        }
+        .press-item a {
+            color: #000;
+            text-decoration: none;
+            font-weight: 300;
+        }
+        .press-item a:hover {
+            opacity: 0.5;
+        }
+
+        /* ── Mobile ── */
+        @media (max-width: 768px) {
+            .sidebar {
+                display: none;
+            }
+            .mobile-header {
+                display: flex;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 1000;
+                background: #fff;
+                padding: 15px 20px;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .mobile-header .logo {
+                font-size: 20px;
+                font-weight: 700;
+                text-decoration: none;
+                color: #000;
+                font-family: Helvetica, Arial, sans-serif;
+                letter-spacing: -0.5px;
+            }
+            .menu-toggle {
+                background: none;
+                border: none;
+                cursor: pointer;
+                padding: 5px;
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+                z-index: 1001;
+            }
+            .menu-toggle span {
+                display: block;
+                width: 20px;
+                height: 2px;
+                background: #000;
+                transition: all 0.3s ease;
+            }
+            .menu-toggle.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+            .menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+            .menu-toggle.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(6px, -6px);
+            }
+            main {
+                margin-left: 0;
+                margin-top: 60px;
+                height: auto;
+                min-height: 0;
+                overflow: visible;
+                padding: 20px 20px 40px;
+            }
+            h1 {
+                font-size: 28px;
+            }
+            html, body {
+                height: auto;
+                overflow-x: hidden;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="./sleek.css">
+<style>
+.sheet .about-h1 { font-size: 30px; font-weight: 700; letter-spacing: -0.6px; margin: -24px 0 14px; }
+.sheet .about-lede { font-size: 18px; font-weight: 400; line-height: 1.5; margin-bottom: 36px; }
+.sheet .group p { font-size: 15px; font-weight: 300; line-height: 1.6; color: #333; max-width: 680px; margin-bottom: 12px; }
+.sheet .group p a { color: #000; }
+</style>
+</head>
+<body class="sleek">
+    <!-- Desktop sidebar -->
+    <aside class="sidebar">
+        <div>
+            <a href="index.html" class="logo">Alex<br>Bailey</a>
+            <nav>
+                <ul>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="film-tv.html">Film/TV</a></li>
+                    <li><a href="social.html">Social</a></li>
+                    <li><a href="photography.html">Photography</a></li>
+                    <li><a href="commercial.html">Commercial</a></li>
+                    <li><a href="vocals-acting.html">Vocals + Acting</a></li>
+                    <li><a href="press.html">Press</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="links.html">Links</a></li>
+                </ul>
+            </nav>
+            <div class="social-icons">
+                <a href="https://www.tiktok.com/@alexfbailey" target="_blank" aria-label="TikTok"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.34-6.34V8.73a8.19 8.19 0 004.76 1.52V6.8a4.84 4.84 0 01-1-.11z"/></svg></a>
+                <a href="https://www.instagram.com/alexfbailey" target="_blank" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+                <a href="https://www.youtube.com/@alexfbailey" target="_blank" aria-label="YouTube"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+                <a href="https://www.facebook.com/share/17qSmUW3v4/?mibextid=wwXIfr" target="_blank" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+            </div>
+    </div>
+    <div class="sidebar-bottom">
+        <hr>
+        <p class="copyright">&copy; 2026 Alex Bailey.</p>
+    </div>
+    </aside>
+
+    <!-- Mobile header -->
+    <div class="mobile-header">
+        <a href="index.html" class="logo">Alex Bailey</a>
+        <button class="menu-toggle" aria-label="Menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+
+    <!-- Mobile menu overlay -->
+    <div class="menu-overlay">
+        <button class="close-btn" aria-label="Close menu">&times;</button>
+        <nav>
+            <ul>
+                <li><a href="about.html">About</a></li>
+                    <li><a href="film-tv.html">Film/TV</a></li>
+                <li><a href="social.html">Social</a></li>
+                <li><a href="photography.html">Photography</a></li>
+                <li><a href="commercial.html">Commercial</a></li>
+                <li><a href="vocals-acting.html">Vocals + Acting</a></li>
+                <li><a href="press.html">Press</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                    <li><a href="links.html">Links</a></li>
+            </ul>
+        </nav>
+        <div class="overlay-social">
+            <a href="https://www.tiktok.com/@alexfbailey" target="_blank" aria-label="TikTok"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.34-6.34V8.73a8.19 8.19 0 004.76 1.52V6.8a4.84 4.84 0 01-1-.11z"/></svg></a>
+            <a href="https://www.instagram.com/alexfbailey" target="_blank" aria-label="Instagram"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+            <a href="https://www.youtube.com/@alexfbailey" target="_blank" aria-label="YouTube"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+            <a href="https://www.facebook.com/share/17qSmUW3v4/?mibextid=wwXIfr" target="_blank" aria-label="Facebook"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+        </div>
+    </div>
+
+    <main class="sheet"><div class="kicker">About</div>
+<h1 class="about-h1">Alex Bailey</h1>
+<p class="about-lede">Alex Bailey is a filmmaker and photographer in Toronto. She also thrifts.</p>
+<div class="group"><div class="k">Film and television</div>
+<p>Alex produced <em>êmîcêtôsêt: Many Bloodlines</em>, directed by Theola Ross. The short documentary came out of the National Screen Institute's IndigiDocs program and went on to win the Betty Youson Award for Best Canadian Short Documentary at Hot Docs 2020. It was named one of TIFF's Canada's Top Ten Shorts that year and nominated for a Canadian Screen Award.</p>
+<p>She directed and narrated <em>VeraCity: You've Been Posted</em> for Citytv. The one-hour documentary follows women whose intimate photos were shared without consent and aired nationally across Canada.</p></div>
+<div class="group"><div class="k">Commercial and photography</div>
+<p>Her commercial work includes spots for Walmart, Aeroplan, Tim Hortons and RBC. Her photography has run in Vogue Germany and VICE.</p></div>
+<div class="group"><div class="k">Thrifting</div>
+<p>Online Alex is known for thrifting whole wardrobes on a small budget. Her videos have been watched more than 150 million times and she has about 140,000 followers across TikTok, Instagram, YouTube and Facebook. She has worked with McDonald's, Tangerine, Clairol, Braun, YesStyle and Pet Valu.</p>
+<p>She wrote <em>Thrift Book</em>, a magazine and journal about fashion and culture through a thrifting lens.</p></div>
+<div class="group"><div class="k">Voice</div>
+<p>Alex is the vocalist on four tracks of the <em>Outer Wilds: Echoes of the Eye</em> soundtrack by Andrew Prahlow: Into Shadow, A Dream of Home, Fear and Ashes and Hearth's Shadow. The game is published by Annapurna Interactive.</p></div>
+<div class="group"><div class="k">Work with Alex</div>
+<p>Directing, documentary, commercials, photography and brand partnerships. Email <a href="mailto:hialexfbailey@gmail.com">hialexfbailey@gmail.com</a>.</p>
+<p class="about-links"><a href="https://www.tiktok.com/@alexfbailey" target="_blank" rel="noopener">TikTok</a> · <a href="https://www.instagram.com/alexfbailey" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.youtube.com/@alexfbailey" target="_blank" rel="noopener">YouTube</a> · <a href="https://www.facebook.com/p/Alex-Bailey-61564820196554/" target="_blank" rel="noopener">Facebook</a> · <a href="https://www.imdb.com/name/nm11977685/" target="_blank" rel="noopener">IMDb</a> · <a href="https://www.linkedin.com/in/alexfbailey/" target="_blank" rel="noopener">LinkedIn</a></p></div>
+</main>
+
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const menuOverlay = document.querySelector('.menu-overlay');
+        const closeBtn = document.querySelector('.menu-overlay .close-btn');
+        const menuLinks = document.querySelectorAll('.menu-overlay nav a');
+
+        function openMenu() {
+            menuOverlay.classList.add('active');
+            menuToggle.classList.add('active');
+            menuToggle.setAttribute('aria-expanded', 'true');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeMenu() {
+            menuOverlay.classList.remove('active');
+            menuToggle.classList.remove('active');
+            menuToggle.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+        }
+
+        if (menuToggle) menuToggle.addEventListener('click', openMenu);
+        if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+        menuLinks.forEach(link => link.addEventListener('click', closeMenu));
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && menuOverlay.classList.contains('active')) {
+                menuToggle.classList.remove('active');
+                menuOverlay.classList.remove('active');
+                menuToggle.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+            }
+        });
+    </script>
+<script src="./lightbox.js"></script>
+</body>
+</html>
