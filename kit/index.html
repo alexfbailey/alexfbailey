@@ -13,101 +13,109 @@
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,700;1,6..96,400;1,6..96,500;1,6..96,700&family=Jost:wght@300;400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
 <style>
 :root{
-  --paper:#f3ece1;
-  --paper-2:#f2e9dc;
-  --ink:#17140f;
-  --ink-2:#3b342c;
-  --muted:#6b6459;
-  --faint:#8a8177;
-  --red:#a4232c;
-  --rule:#ded4c4;
-  --rule-strong:#17140f;
+  --paper:#f3ece1; --paper-2:#f2e9dc; --ink:#17140f; --ink-2:#3b342c;
+  --muted:#6b6459; --faint:#8a8177; --red:#a4232c; --rule:#ded4c4; --rule-strong:#17140f;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{background:var(--paper);-webkit-text-size-adjust:100%}
 body{
-  /* paper grain tiled directly on the body: no fixed layer, no blend mode */
   background-color:var(--paper);
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.055'/%3E%3C/svg%3E");
-  color:var(--ink);
-  font-family:"Newsreader",Georgia,serif;
-  -webkit-font-smoothing:antialiased;
-  position:relative;
+  color:var(--ink); font-family:"Newsreader",Georgia,serif; -webkit-font-smoothing:antialiased;
 }
 img{display:block;max-width:100%}
 a{color:inherit}
+.page{max-width:1140px;margin:0 auto;padding:0 34px}
 
-.page{max-width:1140px;margin:0 auto;padding:0 34px;position:relative;z-index:1}
-
-/* ——— shared type ——— */
 .kicker{font:500 10px/1 "Jost",sans-serif;letter-spacing:3.4px;text-transform:uppercase;color:var(--muted)}
 .kicker.red{color:var(--red)}
-.rule{border:0;border-top:1px solid var(--rule);margin:0}
-.rule.heavy{border-top:1.5px solid var(--rule-strong)}
-.sechead{
-  display:flex;align-items:baseline;justify-content:space-between;gap:18px;
-  border-bottom:1.5px solid var(--rule-strong);padding-bottom:9px;margin-bottom:30px;
-}
-.sechead h2{font:400 15px/1 "Jost",sans-serif;letter-spacing:4.6px;text-transform:uppercase;font-weight:500}
+.sechead{display:flex;align-items:baseline;justify-content:space-between;gap:18px;
+  border-bottom:1.5px solid var(--rule-strong);padding-bottom:9px;margin-bottom:28px}
+.sechead h2{font:500 15px/1 "Jost",sans-serif;letter-spacing:4.6px;text-transform:uppercase}
 .sechead .folio{font:400 13px/1 "Bodoni Moda",serif;color:var(--faint);letter-spacing:1px;white-space:nowrap}
+section.blk{padding:60px 0 0}
 
-/* ——— cover ——— */
+/* cover */
 .cover{position:relative;min-height:100svh;display:grid;grid-template-columns:1fr 44%;background:var(--paper);border-bottom:1.5px solid var(--rule-strong)}
-.cover-in{position:relative;z-index:2;display:flex;flex-direction:column;padding:32px 0 34px 34px;color:var(--ink);min-width:0}
+.cover-in{display:flex;flex-direction:column;padding:32px 0 34px 34px;min-width:0}
 .cover-art{position:relative;overflow:hidden;background:#17140f}
 .cover-art img{width:100%;height:100%;object-fit:cover;object-position:50% 46%;filter:saturate(.86) contrast(1.04)}
-.cover-art figcaption{
-  position:absolute;left:0;bottom:0;right:0;padding:26px 18px 14px;
+.cover-art figcaption{position:absolute;left:0;bottom:0;right:0;padding:26px 18px 14px;
   background:linear-gradient(180deg,rgba(23,20,15,0),rgba(23,20,15,.72));
-  font:500 9.5px/1.5 "Jost",sans-serif;letter-spacing:2.6px;text-transform:uppercase;color:rgba(246,241,232,.92)
-}
+  font:500 9.5px/1.5 "Jost",sans-serif;letter-spacing:2.6px;text-transform:uppercase;color:rgba(246,241,232,.92)}
 .cover-top{display:flex;justify-content:space-between;align-items:center;gap:14px;padding-right:34px;
   font:500 10px/1 "Jost",sans-serif;letter-spacing:3.4px;text-transform:uppercase;color:var(--muted);
   border-bottom:1.5px solid var(--rule-strong);padding-bottom:12px}
 .cover-top .red{color:var(--red)}
-.masthead{
-  font-family:"Bodoni Moda",Didot,serif;font-weight:700;
+.masthead{font-family:"Bodoni Moda",Didot,serif;font-weight:700;
   font-size:clamp(58px,9.4vw,132px);line-height:.8;letter-spacing:-.04em;
-  margin-top:auto;padding-top:40px;text-transform:uppercase;
-}
+  margin-top:auto;padding-top:40px;text-transform:uppercase}
 .masthead em{display:block;font-style:italic;font-weight:400;letter-spacing:-.028em;margin-left:.03em}
-.cover-sub{margin-top:22px;padding-right:34px;font:400 clamp(17px,1.9vw,23px)/1.35 "Bodoni Moda",Didot,serif;font-style:italic;color:var(--ink-2);max-width:22ch}
+.cover-sub{margin-top:22px;padding-right:34px;font:400 clamp(17px,1.9vw,22px)/1.36 "Bodoni Moda",Didot,serif;font-style:italic;color:var(--ink-2);max-width:25ch}
 .cover-lines{margin-top:auto;padding-top:30px;padding-right:34px;display:flex;flex-direction:column;gap:9px}
 .cover-lines span{display:flex;gap:12px;align-items:baseline;font:400 14px/1.35 "Newsreader",Georgia,serif;font-style:italic;color:var(--ink-2);border-top:1px solid var(--rule);padding-top:9px}
 .cover-lines b{font:500 9.5px/1 "Jost",sans-serif;letter-spacing:2.6px;text-transform:uppercase;font-style:normal;color:var(--ink);min-width:74px;flex-shrink:0}
-.cover-foot{margin-top:24px;padding-top:14px;padding-right:34px;border-top:1.5px solid var(--rule-strong);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px 20px;align-items:baseline;
+.cover-foot{margin-top:24px;padding-top:14px;padding-right:34px;border-top:1.5px solid var(--rule-strong);
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px 20px;align-items:baseline;
   font:500 9.5px/1 "Jost",sans-serif;letter-spacing:2.6px;text-transform:uppercase;color:var(--muted)}
 .cover-foot .reach{font-family:"Bodoni Moda",serif;font-size:17px;letter-spacing:-.01em;text-transform:none;color:var(--ink)}
 .cover-foot .reach em{font-style:italic;color:var(--red)}
 
-/* ——— circulation ——— */
-.circ{padding:62px 0 12px}
+/* platform stats */
+.circ{padding:58px 0 0}
 .stats{display:grid;grid-template-columns:repeat(4,1fr)}
 .stat{padding:4px 22px 20px;border-left:1px solid var(--rule)}
 .stat:first-child{padding-left:0;border-left:0}
-.stat .plat{font:500 10px/1 "Jost",sans-serif;letter-spacing:2.8px;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
-.stat .n{font:400 clamp(44px,6.4vw,74px)/.88 "Bodoni Moda",Didot,serif;letter-spacing:-.035em}
+.stat .plat{font:500 10px/1 "Jost",sans-serif;letter-spacing:2.8px;text-transform:uppercase;color:var(--muted);margin-bottom:13px}
+.stat .n{font:400 clamp(42px,6vw,70px)/.88 "Bodoni Moda",Didot,serif;letter-spacing:-.035em}
 .stat .n sup{font-size:.34em;letter-spacing:0;vertical-align:.9em;margin-left:1px}
-.stat .sub{margin-top:11px;font:400 13px/1.45 "Newsreader",Georgia,serif;font-style:italic;color:var(--ink-2)}
+.stat .sub{margin-top:10px;font:400 13px/1.5 "Newsreader",Georgia,serif;font-style:italic;color:var(--ink-2)}
 .stat .sub a{color:var(--red);text-decoration:none;border-bottom:1px solid rgba(164,35,44,.32)}
-.total{display:flex;align-items:baseline;justify-content:space-between;gap:20px;flex-wrap:wrap;border-top:1.5px solid var(--rule-strong);padding-top:14px;margin-top:6px}
+.total{display:flex;align-items:baseline;justify-content:space-between;gap:12px 20px;flex-wrap:wrap;
+  border-top:1.5px solid var(--rule-strong);padding-top:14px;margin-top:4px}
 .total .l{font:500 10px/1 "Jost",sans-serif;letter-spacing:3.4px;text-transform:uppercase;color:var(--muted)}
 .total .v{font-family:"Bodoni Moda",serif;font-size:clamp(26px,3.4vw,38px);line-height:1;letter-spacing:-.02em}
 .total .v em{font-style:italic;color:var(--red)}
 .total .note{font:400 14px/1.4 "Newsreader",Georgia,serif;font-style:italic;color:var(--muted);margin-left:auto}
 
-/* ——— letter ——— */
-.letter{padding:66px 0 10px;display:grid;grid-template-columns:1.55fr .95fr;gap:56px;align-items:start}
-.letter .lede{font:400 clamp(25px,3vw,36px)/1.24 "Bodoni Moda",Didot,serif;letter-spacing:-.018em;margin-bottom:26px}
+/* performance */
+.perf{display:grid;grid-template-columns:repeat(4,1fr);margin-bottom:26px}
+.perf div{border-left:1px solid var(--rule);padding:2px 20px 0}
+.perf div:first-child{border-left:0;padding-left:0}
+.perf .v{font:400 clamp(30px,4.4vw,50px)/.92 "Bodoni Moda",Didot,serif;letter-spacing:-.035em}
+.perf .v em{font-style:italic;color:var(--red)}
+.perf .l{margin-top:9px;font:400 13.5px/1.45 "Newsreader",Georgia,serif;font-style:italic;color:var(--muted)}
+.persrc{font:400 13px/1.5 "Newsreader",Georgia,serif;font-style:italic;color:var(--faint);border-top:1px solid var(--rule);padding-top:11px;margin-top:18px}
+
+/* top content */
+.grid6{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+.card{text-decoration:none;display:block}
+.card .th{position:relative;display:block;overflow:hidden;background:#ddd6c8;border:1px solid var(--rule)}
+.card img{width:100%;aspect-ratio:9/16;object-fit:cover;transition:transform .4s ease}
+.card:hover img{transform:scale(1.035)}
+.card .views{position:absolute;left:0;right:0;bottom:0;padding:24px 9px 8px;
+  background:linear-gradient(180deg,rgba(23,20,15,0),rgba(23,20,15,.8));
+  font:400 17px/1 "Bodoni Moda",serif;color:#f6f1e8;letter-spacing:-.01em}
+.card .views small{font:500 8.5px/1 "Jost",sans-serif;letter-spacing:2px;text-transform:uppercase;opacity:.82;margin-left:4px}
+.card .cap{display:block;margin-top:9px;font:400 13px/1.42 "Newsreader",Georgia,serif;color:var(--ink-2)}
+.card .tag{display:block;margin-top:4px;font:500 8.5px/1 "Jost",sans-serif;letter-spacing:2px;text-transform:uppercase;color:var(--faint)}
+
+/* insight */
+.insight{margin-top:30px;border-top:1.5px solid var(--rule-strong);border-bottom:1.5px solid var(--rule-strong);
+  padding:26px 0;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.insight p{font:400 clamp(21px,2.5vw,29px)/1.28 "Bodoni Moda",Didot,serif;letter-spacing:-.02em}
+.insight p em{font-style:italic;color:var(--red)}
+.insight .why{font:400 15px/1.6 "Newsreader",Georgia,serif;color:var(--ink-2)}
+
+/* about */
+.letter{padding:58px 0 0;display:grid;grid-template-columns:1.55fr .95fr;gap:52px;align-items:start}
+.letter .lede{font:400 clamp(24px,2.9vw,34px)/1.24 "Bodoni Moda",Didot,serif;letter-spacing:-.018em;margin-bottom:24px}
 .letter .lede em{font-style:italic;color:var(--red)}
 .cols{column-count:2;column-gap:30px;font:400 15.5px/1.62 "Newsreader",Georgia,serif;color:var(--ink-2);text-align:justify;hyphens:auto}
 .cols p{margin:0;text-indent:15px}
 .cols p:first-child{text-indent:0}
-.cols p+p{margin-top:0}
-.cols p:first-child::first-letter{
-  float:left;font-family:"Bodoni Moda",Didot,serif;font-weight:700;
-  font-size:62px;line-height:.78;margin:5px 8px 0 0;color:var(--red);
-}
+.cols p:first-child::first-letter{float:left;font-family:"Bodoni Moda",Didot,serif;font-weight:700;
+  font-size:62px;line-height:.78;margin:5px 8px 0 0;color:var(--red)}
 .sidebar figure{margin:0}
 .sidebar img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 22%;filter:saturate(.88)}
 .sidebar figcaption{margin-top:9px;font:400 12.5px/1.45 "Newsreader",Georgia,serif;font-style:italic;color:var(--muted)}
@@ -115,47 +123,60 @@ a{color:inherit}
 .sidebar .vert dt{font:500 10px/1 "Jost",sans-serif;letter-spacing:2.6px;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
 .sidebar .vert dd{font:400 14.5px/1.5 "Newsreader",Georgia,serif;color:var(--ink-2);margin-bottom:14px}
 
-/* ——— sections ——— */
-section.blk{padding:62px 0 0}
+/* audience */
+.aud{display:grid;grid-template-columns:1fr 1fr 1fr;gap:36px}
+.aud .hd{font:500 10px/1 "Jost",sans-serif;letter-spacing:2.8px;text-transform:uppercase;color:var(--muted);margin-bottom:15px}
+.bar{display:flex;align-items:center;gap:12px;font:400 14.5px/1 "Newsreader",Georgia,serif;margin-bottom:10px}
+.bar .n{width:108px;color:var(--ink-2);flex-shrink:0}
+.bar .t{flex:1;height:7px;background:#e5ddcf;overflow:hidden}
+.bar .f{display:block;height:100%;background:var(--ink)}
+.bar .p{width:44px;text-align:right;font-family:"Bodoni Moda",serif;font-size:16px}
+.audempty{border:1px dashed var(--rule);padding:22px 24px;font:400 15px/1.62 "Newsreader",Georgia,serif;color:var(--ink-2)}
+.audempty b{display:block;font:500 10px/1 "Jost",sans-serif;letter-spacing:2.8px;text-transform:uppercase;color:var(--red);margin-bottom:9px}
+
+/* formats / credits */
 .formats{display:grid;grid-template-columns:repeat(3,1fr);gap:0 30px}
-.fmt{padding:0 0 26px;border-top:1px solid var(--rule);padding-top:18px;margin-top:-1px}
+.fmt{border-top:1px solid var(--rule);padding:18px 0 26px;margin-top:-1px}
 .fmt .no{font:400 12px/1 "Bodoni Moda",serif;color:var(--red);letter-spacing:2px;margin-bottom:10px}
-.fmt h3{font:400 clamp(20px,2.3vw,26px)/1.12 "Bodoni Moda",Didot,serif;letter-spacing:-.02em;margin-bottom:8px}
+.fmt h3{font:400 clamp(20px,2.3vw,25px)/1.12 "Bodoni Moda",Didot,serif;letter-spacing:-.02em;margin-bottom:8px}
 .fmt h3 em{font-style:italic}
 .fmt p{font:400 14.5px/1.55 "Newsreader",Georgia,serif;color:var(--muted)}
-
 .credits{display:grid;grid-template-columns:1fr 1fr;gap:44px}
-.credits .grp+.grp{margin-top:22px}
-.credits dt{font:500 10px/1 "Jost",sans-serif;letter-spacing:2.8px;text-transform:uppercase;color:var(--muted);padding-bottom:7px;border-bottom:1px solid var(--rule);margin-bottom:11px}
-.credits dd{font:400 16px/1.5 "Newsreader",Georgia,serif;color:var(--ink-2);margin-bottom:7px}
+.credits dt{font:500 10px/1 "Jost",sans-serif;letter-spacing:2.8px;text-transform:uppercase;color:var(--muted);
+  padding-bottom:7px;border-bottom:1px solid var(--rule);margin-bottom:11px}
+.credits dd{font:400 15.5px/1.5 "Newsreader",Georgia,serif;color:var(--ink-2);margin-bottom:7px}
 .credits dd b{font-weight:500;color:var(--ink)}
 .credits dd i{color:var(--muted);font-size:14px}
-.brands{display:flex;flex-wrap:wrap;gap:7px;margin-top:2px}
-.brands span{font:400 14px/1 "Bodoni Moda",serif;letter-spacing:.2px;border:1px solid var(--rule);padding:9px 13px;background:var(--paper-2)}
-
-.press{font:400 clamp(19px,2.4vw,27px)/1.5 "Bodoni Moda",Didot,serif;letter-spacing:-.012em;color:var(--ink)}
+.brands{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}
+.brands span{font:400 14px/1 "Bodoni Moda",serif;border:1px solid var(--rule);padding:9px 13px;background:var(--paper-2)}
+.note-sm{margin-top:12px;font:400 13.5px/1.55 "Newsreader",Georgia,serif;font-style:italic;color:var(--muted)}
+.press{font:400 clamp(19px,2.4vw,27px)/1.5 "Bodoni Moda",Didot,serif;letter-spacing:-.012em}
 .press i{font-style:italic;color:var(--red)}
 
-/* ——— rates / booking ——— */
-.book{margin-top:62px;border:1.5px solid var(--rule-strong);padding:44px 46px;background:var(--paper-2);display:grid;grid-template-columns:1.25fr 1fr;gap:46px;align-items:start}
+/* booking */
+.book{margin-top:60px;border:1.5px solid var(--rule-strong);padding:44px 46px;background:var(--paper-2);
+  display:grid;grid-template-columns:1.25fr 1fr;gap:46px;align-items:start}
 .book h2{font:400 clamp(34px,4.6vw,54px)/1.02 "Bodoni Moda",Didot,serif;letter-spacing:-.03em;margin:10px 0 14px}
 .book h2 em{font-style:italic;color:var(--red)}
 .book p{font:400 15.5px/1.62 "Newsreader",Georgia,serif;color:var(--ink-2);max-width:46ch}
 .book p+p{margin-top:11px}
-.deliv dt{font:500 10px/1 "Jost",sans-serif;letter-spacing:2.8px;text-transform:uppercase;color:var(--muted);padding-bottom:7px;border-bottom:1px solid var(--rule);margin-bottom:11px}
+.deliv dt{font:500 10px/1 "Jost",sans-serif;letter-spacing:2.8px;text-transform:uppercase;color:var(--muted);
+  padding-bottom:7px;border-bottom:1px solid var(--rule);margin-bottom:11px}
 .deliv dd{font:400 15px/1.5 "Newsreader",Georgia,serif;color:var(--ink-2);margin-bottom:6px;padding-left:16px;position:relative}
 .deliv dd::before{content:"—";position:absolute;left:0;color:var(--red)}
-.cta{display:inline-flex;align-items:center;gap:12px;margin-top:24px;background:var(--ink);color:var(--paper);text-decoration:none;padding:16px 26px;font:500 11px/1 "Jost",sans-serif;letter-spacing:3.2px;text-transform:uppercase;transition:background .18s}
+.cta{display:inline-flex;align-items:center;gap:12px;margin-top:24px;background:var(--ink);color:var(--paper);
+  text-decoration:none;padding:16px 26px;font:500 11px/1 "Jost",sans-serif;letter-spacing:3.2px;text-transform:uppercase;transition:background .18s}
 .cta:hover{background:var(--red)}
 .cta span{font-family:"Bodoni Moda",serif;letter-spacing:0;text-transform:none;font-size:15px}
 
-/* ——— colophon ——— */
-.colophon{margin-top:64px;border-top:1.5px solid var(--rule-strong);padding:20px 0 64px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:baseline}
+/* colophon */
+.colophon{margin-top:62px;border-top:1.5px solid var(--rule-strong);padding:20px 0 64px;
+  display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:baseline}
 .colophon .l{font:500 10px/1.7 "Jost",sans-serif;letter-spacing:2.8px;text-transform:uppercase;color:var(--muted)}
 .colophon a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rule)}
-.colophon .sig{font:400 20px/1 "Bodoni Moda",serif;font-style:italic;letter-spacing:-.01em}
+.colophon .sig{font:400 20px/1 "Bodoni Moda",serif;font-style:italic}
 
-/* ——— responsive ——— */
+@media (max-width:1000px){ .grid6{grid-template-columns:repeat(3,1fr)} .aud{grid-template-columns:1fr 1fr} }
 @media (max-width:900px){
   .page{padding:0 22px}
   .cover{grid-template-columns:1fr;min-height:0}
@@ -165,53 +186,49 @@ section.blk{padding:62px 0 0}
   .masthead{padding-top:26px;margin-top:22px}
   .cover-lines{margin-top:26px;padding-top:0}
   .stats{grid-template-columns:repeat(2,1fr)}
-  .stat{padding:16px 16px 20px;border-left:1px solid var(--rule);border-top:1px solid var(--rule)}
+  .stat{padding:16px 16px 20px;border-top:1px solid var(--rule)}
   .stat:first-child,.stat:nth-child(3){padding-left:0;border-left:0}
   .stat:first-child,.stat:nth-child(2){border-top:0;padding-top:4px}
-  .letter{grid-template-columns:1fr;gap:36px;padding-top:52px}
+  .perf{grid-template-columns:repeat(2,1fr);gap:22px 0}
+  .perf div:nth-child(3){border-left:0;padding-left:0}
+  .insight{grid-template-columns:1fr;gap:18px}
+  .letter{grid-template-columns:1fr;gap:36px}
   .cols{column-count:1}
+  .aud{grid-template-columns:1fr;gap:26px}
   .formats{grid-template-columns:1fr}
   .credits{grid-template-columns:1fr;gap:26px}
   .book{grid-template-columns:1fr;gap:32px;padding:32px 26px}
   .sidebar img{aspect-ratio:3/2}
 }
-@media (max-width:560px){
-  .cover-lines{gap:8px 16px}
-  .sechead{flex-direction:column;align-items:flex-start;gap:4px}
-}
+@media (max-width:560px){ .grid6{grid-template-columns:repeat(2,1fr)} .sechead{flex-direction:column;align-items:flex-start;gap:4px} }
 
-/* ——— print (PDF) ——— */
 @media print{
-  @page{margin:14mm}
-  html,body{background:#fff}
+  @page{margin:12mm}
+  html,body{background:#fff;background-image:none}
   .cover{min-height:auto;page-break-after:always;border-bottom:0}
-  .cover-art{height:auto;max-height:520px}
+  .cover-art{height:auto;max-height:480px}
   .cta,.colophon .sig{display:none}
-  .letter,section.blk{page-break-inside:avoid}
+  section.blk,.letter,.insight{page-break-inside:avoid}
 }
 </style>
 </head>
 <body>
 
-<!-- ══════════════ COVER ══════════════ -->
 <header class="cover">
   <div class="cover-in">
     <div class="cover-top">
       <span>Media Kit <span class="red">·</span> No. 01</span>
-      <span>Autumn 2026</span>
+      <span id="issue">Autumn 2026</span>
     </div>
-
     <h1 class="masthead">Alex<em>Bailey</em></h1>
-    <p class="cover-sub">An entire wardrobe on a $200 budget — shot like a film.</p>
-
+    <p class="cover-sub">Secondhand fashion and budget occasionwear — shot like a film.</p>
     <div class="cover-lines">
       <span><b>Creator</b> thrift-with-me, flips &amp; designer-spotting</span>
       <span><b>Director</b> commercials &amp; documentary</span>
       <span><b>Author</b> Thrift Book</span>
     </div>
-
     <div class="cover-foot">
-      <span class="reach">145.8K followers <em>across four platforms</em></span>
+      <span class="reach" id="reachline">145.8K followers <em>across four platforms</em></span>
       <span>hialexfbailey@gmail.com</span>
     </div>
   </div>
@@ -223,39 +240,32 @@ section.blk{padding:62px 0 0}
 
 <main class="page">
 
-  <!-- ══════════════ CIRCULATION ══════════════ -->
   <section class="circ">
-    <div class="sechead"><h2>Circulation</h2><span class="folio">i · Audience</span></div>
-    <div class="stats">
-      <div class="stat">
-        <div class="plat">TikTok</div>
-        <div class="n">73.1<sup>K</sup></div>
-        <div class="sub">6.9M lifetime likes<br><a href="https://www.tiktok.com/@alexfbailey" target="_blank" rel="noopener">@alexfbailey</a></div>
-      </div>
-      <div class="stat">
-        <div class="plat">Instagram</div>
-        <div class="n">42.8<sup>K</sup></div>
-        <div class="sub">1,010 posts<br><a href="https://www.instagram.com/alexfbailey/" target="_blank" rel="noopener">@alexfbailey</a></div>
-      </div>
-      <div class="stat">
-        <div class="plat">YouTube</div>
-        <div class="n">15.9<sup>K</sup></div>
-        <div class="sub">645 videos<br><a href="https://www.youtube.com/@alexfbailey" target="_blank" rel="noopener">@alexfbailey</a></div>
-      </div>
-      <div class="stat">
-        <div class="plat">Facebook</div>
-        <div class="n">14<sup>K</sup></div>
-        <div class="sub">Page followers<br>Alex Bailey</div>
-      </div>
-    </div>
+    <div class="sechead"><h2>Platforms</h2><span class="folio">i · Reach</span></div>
+    <div class="stats" id="stats"></div>
     <div class="total">
       <span class="l">Total reach</span>
-      <span class="v">145.8K <em>followers</em></span>
-      <span class="note">Audience demographics on request</span>
+      <span class="v" id="total">—</span>
+      <span class="note" id="statnote"></span>
     </div>
   </section>
 
-  <!-- ══════════════ LETTER ══════════════ -->
+  <section class="blk">
+    <div class="sechead"><h2>Top Performing Content</h2><span class="folio">ii · YouTube Shorts</span></div>
+    <div class="perf">
+      <div><div class="v">15.5<em>M</em></div><div class="l">views across 574 Shorts</div></div>
+      <div><div class="v">3.7<em>M</em></div><div class="l">best-performing single video</div></div>
+      <div><div class="v">14</div><div class="l">videos over 100K views</div></div>
+      <div><div class="v">2</div><div class="l">videos over 1M views</div></div>
+    </div>
+    <div class="grid6" id="top"></div>
+    <div class="insight">
+      <p>Six of the eight best-performing videos are the <em>same brief</em>: a wedding-guest dress, thrifted, under $20.</p>
+      <div class="why">That is the clearest signal in the data. The audience arrives for budget occasionwear and stays for the rest — so formalwear, resale, rental, alterations and anything with a "can you do it for less" framing sits inside the highest-performing format on the channel rather than beside it.</div>
+    </div>
+    <p class="persrc">Source: channel Shorts analytics, September 2026. 574 Shorts measured; the channel now holds 602. Instagram and TikTok performance figures available on request.</p>
+  </section>
+
   <section class="letter">
     <div>
       <p class="lede">She thrifts an entire wardrobe on a <em>$200 budget</em> — and shoots it like a film.</p>
@@ -275,93 +285,70 @@ section.blk{padding:62px 0 0}
         <dt>Identity</dt>
         <dd>Indigenous · she/her</dd>
         <dt>Categories</dt>
-        <dd>Secondhand &amp; sustainable fashion, resale, home, beauty, finance, pets</dd>
+        <dd>Secondhand &amp; sustainable fashion, occasionwear, resale, home, beauty, finance, pets</dd>
         <dt>Availability</dt>
         <dd>In-store and event shoot days, on location or remote</dd>
       </dl>
     </aside>
   </section>
 
-  <!-- ══════════════ FORMATS ══════════════ -->
   <section class="blk">
-    <div class="sechead"><h2>The Formats</h2><span class="folio">ii · What gets made</span></div>
+    <div class="sechead"><h2>Audience</h2><span class="folio">iii · Who watches</span></div>
+    <div class="aud" id="aud"></div>
+  </section>
+
+  <section class="blk">
+    <div class="sechead"><h2>The Formats</h2><span class="folio">iv · What gets made</span></div>
     <div class="formats">
-      <article class="fmt">
-        <div class="no">01</div>
-        <h3>The <em>$200</em> Budget Challenge</h3>
-        <p>A full seasonal wardrobe built on a fixed budget, shot as one narrative. The series the audience returns for, and the easiest place for a brand to sit inside a story rather than beside one.</p>
-      </article>
-      <article class="fmt">
-        <div class="no">02</div>
-        <h3>Real or <em>Thrift?</em></h3>
-        <p>Designer authentication on the rack — spotting the real thing among the racks, and explaining how. High saves, high comments, strong completion.</p>
-      </article>
-      <article class="fmt">
-        <div class="no">03</div>
-        <h3>Thrift <em>flips</em></h3>
-        <p>A piece bought, altered and re-styled end to end. Naturally hosts tools, materials, care and laundry products without a hard read.</p>
-      </article>
-      <article class="fmt">
-        <div class="no">04</div>
-        <h3>Long-form <em>thrift-with-me</em></h3>
-        <p>Eight to fifteen minutes on YouTube, where an integration can breathe for sixty to ninety seconds and still feel like part of the trip.</p>
-      </article>
-      <article class="fmt">
-        <div class="no">05</div>
-        <h3>Bea</h3>
-        <p>The adopted cat, and the reason pet brands convert here. Appears organically across the channel rather than in dedicated pet content.</p>
-      </article>
-      <article class="fmt">
-        <div class="no">06</div>
-        <h3>Set <em>diaries</em></h3>
-        <p>Behind the scenes from commercial and documentary shoots — the proof, in public, that the production quality is real.</p>
-      </article>
+      <article class="fmt"><div class="no">01</div><h3>The <em>$200</em> Budget Challenge</h3>
+        <p>A full seasonal wardrobe built on a fixed budget, shot as one narrative. The series the audience returns for, and the easiest place for a brand to sit inside a story rather than beside one.</p></article>
+      <article class="fmt"><div class="no">02</div><h3>Under <em>$20</em> occasionwear</h3>
+        <p>The highest-performing format on the channel: one dress, one budget, one deadline. Two have passed a million views.</p></article>
+      <article class="fmt"><div class="no">03</div><h3>Real or <em>Thrift?</em></h3>
+        <p>Designer authentication on the rack — spotting the real thing among the racks, and explaining how. High saves, high comments, strong completion.</p></article>
+      <article class="fmt"><div class="no">04</div><h3>Thrift <em>flips</em></h3>
+        <p>A piece bought, altered and re-styled end to end. Naturally hosts tools, materials, care and laundry products without a hard read.</p></article>
+      <article class="fmt"><div class="no">05</div><h3>Long-form <em>thrift-with-me</em></h3>
+        <p>Eight to fifteen minutes on YouTube, where an integration can breathe for sixty to ninety seconds and still feel like part of the trip.</p></article>
+      <article class="fmt"><div class="no">06</div><h3>Set <em>diaries</em></h3>
+        <p>Behind the scenes from commercial and documentary shoots — the proof, in public, that the production quality is real.</p></article>
     </div>
   </section>
 
-  <!-- ══════════════ CREDITS ══════════════ -->
   <section class="blk">
-    <div class="sechead"><h2>Direction &amp; Credits</h2><span class="folio">iii · The other half</span></div>
+    <div class="sechead"><h2>Partnerships &amp; Credits</h2><span class="folio">v · Track record</span></div>
     <div class="credits">
       <div>
-        <div class="grp">
-          <dl>
-            <dt>Commercial direction</dt>
-            <dd>Campaigns directed for:</dd>
-          </dl>
-          <div class="brands">
-            <span>Aeroplan</span><span>Tim Hortons</span><span>RBC</span>
-            <span>McDonald's</span><span>Cetaphil</span><span>Pretty Litter</span>
-          </div>
+        <dl><dt>Directed campaigns for</dt></dl>
+        <div class="brands">
+          <span>Aeroplan</span><span>Tim Hortons</span><span>RBC</span>
+          <span>McDonald's</span><span>Cetaphil</span><span>Pretty Litter</span>
         </div>
+        <p class="note-sm">Commercial direction, not creator partnerships — the reason brand content here arrives at broadcast standard.</p>
       </div>
       <div>
-        <div class="grp">
-          <dl>
-            <dt>Film &amp; television</dt>
-            <dd><b>You've Been Posted</b> — Citytv one-hour documentary <i>(director)</i></dd>
-            <dd><b>êmîcêtôsêt: Many Bloodlines</b> — TIFF Canada's Top Ten; Hot Docs Betty Youson Award <i>(producer; dir. Theola Ross)</i></dd>
-            <dd><b>Thrift Book</b> — sustainable style magazine &amp; journal <i>(author)</i></dd>
-          </dl>
-        </div>
+        <dl>
+          <dt>Film &amp; television</dt>
+          <dd><b>You've Been Posted</b> — Citytv one-hour documentary <i>(director)</i></dd>
+          <dd><b>êmîcêtôsêt: Many Bloodlines</b> — TIFF Canada's Top Ten; Hot Docs Betty Youson Award <i>(producer; dir. Theola Ross)</i></dd>
+          <dd><b>Thrift Book</b> — sustainable style magazine &amp; journal <i>(author)</i></dd>
+        </dl>
       </div>
     </div>
   </section>
 
-  <!-- ══════════════ PRESS ══════════════ -->
   <section class="blk">
-    <div class="sechead"><h2>Press</h2><span class="folio">iv · Selected</span></div>
+    <div class="sechead"><h2>Press</h2><span class="folio">vi · Selected</span></div>
     <p class="press">The Hollywood Reporter <i>·</i> Business of Fashion <i>·</i> Glamour <i>·</i> Marie Claire UK <i>·</i> CBC Radio, The Current <i>·</i> PhotoBook Magazine <i>·</i> Breakfast Television</p>
   </section>
 
-  <!-- ══════════════ BOOKING ══════════════ -->
   <section class="book">
     <div>
       <span class="kicker red">Partnerships</span>
       <h2>Rates on <em>request</em></h2>
       <p>Every brief is priced to the work: the platforms, the deliverable count, how long you need the usage, and whether you want exclusivity in the category.</p>
       <p>Send the brief — product, timing, platforms and budget range — and a full rate card comes back the same week, along with two or three concepts built for the format rather than retrofitted to it.</p>
-      <a class="cta" href="mailto:hialexfbailey@gmail.com?subject=Partnership%20enquiry%20%E2%80%94%20Alex%20Bailey">Request the rate card <span>→</span></a>
+      <a class="cta" href="mailto:hialexfbailey@gmail.com?subject=Partnership%20enquiry%20%E2%80%94%20Alex%20Bailey">Request the rate card <span>&rarr;</span></a>
     </div>
     <dl class="deliv">
       <dt>What can be booked</dt>
@@ -377,21 +364,125 @@ section.blk{padding:62px 0 0}
     </dl>
   </section>
 
-  <!-- ══════════════ COLOPHON ══════════════ -->
   <footer class="colophon">
     <div class="l">
       Alex Bailey · Partnerships<br>
       <a href="mailto:hialexfbailey@gmail.com">hialexfbailey@gmail.com</a><br>
       <a href="https://alexfbailey.com">alexfbailey.com</a>
     </div>
-    <div class="l">
-      Media kit · No. 01 · Autumn 2026<br>
-      Figures current as of September 2026<br>
-      Audience demographics available on request
-    </div>
+    <div class="l" id="colophon-meta"></div>
     <div class="sig">Alex Bailey</div>
   </footer>
 
 </main>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════
+   EDIT EVERYTHING HERE. The page renders from this block.
+   stats.json (written by the GitHub Action) overrides it at load.
+   ═══════════════════════════════════════════════════════════════ */
+const KIT = {
+  updated: "September 12, 2026",
+  issue: "Autumn 2026",
+
+  // avgViews / engagement: fill once platform analytics are connected.
+  // Leave null and that line simply does not render.
+  platforms: {
+    TikTok:    { handle:"@alexfbailey", url:"https://www.tiktok.com/@alexfbailey",    followers:73100, extra:"6.9M lifetime likes", avgViews:null,  engagement:null },
+    Instagram: { handle:"@alexfbailey", url:"https://www.instagram.com/alexfbailey/", followers:42800, extra:"1,010 posts",         avgViews:null,  engagement:null },
+    YouTube:   { handle:"@alexfbailey", url:"https://www.youtube.com/@alexfbailey",   followers:15900, extra:"645 videos, 27K avg. views per Short", avgViews:null, engagement:null },
+    Facebook:  { handle:"Alex Bailey",  url:"https://www.facebook.com/p/Alex-Bailey-61564820196554/", followers:14000, extra:"Page followers", avgViews:null, engagement:null }
+  },
+
+  // Paste from TikTok Studio / Instagram Insights. null hides the section.
+  age: null,     // e.g. { "18-24":31, "25-34":42, "35-44":17, "45+":10 }
+  gender: null,  // e.g. { Women:78, Men:21, "Other":1 }
+  geo: null,     // e.g. { Canada:41, "United States":38, "United Kingdom":6, Other:15 }
+
+  // Top performing content — real view counts, channel analytics Sept 2026.
+  top: [
+    { id:"I7qsxNiJzYE", views:3700000, cap:"$20 and one day to find a wedding guest dress", tag:"Occasionwear" },
+    { id:"5VZFwFUv67c", views:1100000, cap:"$90 left of $100 to thrift furniture for my apartment", tag:"Home" },
+    { id:"rMCzD8NHPoI", views:497000,  cap:"$20 to thrift a black tie wedding guest dress", tag:"Occasionwear" },
+    { id:"rgGa1GhE-ac", views:295000,  cap:"$46 left of $100 to thrift for fall", tag:"Seasonal" },
+    { id:"hdAcx897CrU", views:179000,  cap:"$80 and 25 days to thrift for Christmas", tag:"Designer" },
+    { id:"__u5bLrirto", views:102000,  cap:"$54 left of $150 to decorate my apartment", tag:"Home" }
+  ]
+};
+/* ══════════════ no edits needed below ══════════════ */
+const fmt = n => n==null ? null
+  : n>=1e6 ? (n/1e6).toFixed(n>=1e7?0:1).replace(/\.0$/,'')+'M'
+  : n>=1e3 ? (n/1e3).toFixed(1).replace(/\.0$/,'')+'K'
+  : String(n);
+const splitNum = s => { const m=String(s).match(/^([\d.]+)(\D*)$/); return m?[m[1],m[2]]:[s,'']; };
+const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');
+
+function renderStats(){
+  const P=KIT.platforms, names=Object.keys(P);
+  document.getElementById('stats').innerHTML = names.map(k=>{
+    const p=P[k], parts=splitNum(fmt(p.followers));
+    const bits=[];
+    if(p.avgViews) bits.push(fmt(p.avgViews)+' avg. views');
+    if(p.engagement) bits.push(p.engagement+'% engagement');
+    if(p.extra) bits.push(esc(p.extra));
+    return '<div class="stat"><div class="plat">'+k+'</div>'
+      + '<div class="n">'+parts[0]+'<sup>'+parts[1]+'</sup></div>'
+      + '<div class="sub">'+bits.join('<br>')+'<br><a href="'+p.url+'" target="_blank" rel="noopener">'+esc(p.handle)+'</a></div></div>';
+  }).join('');
+  const tot=names.reduce((s,k)=>s+(P[k].followers||0),0);
+  document.getElementById('total').innerHTML = fmt(tot)+' <em>followers</em>';
+  document.getElementById('statnote').textContent =
+    (KIT.age||KIT.gender||KIT.geo) ? 'Figures current as of '+KIT.updated : 'Audience demographics on request';
+  document.getElementById('reachline').innerHTML = fmt(tot)+' followers <em>across four platforms</em>';
+}
+
+function renderTop(){
+  document.getElementById('top').innerHTML = KIT.top.map(v =>
+    '<a class="card" href="https://www.youtube.com/watch?v='+v.id+'" target="_blank" rel="noopener">'
+    + '<span class="th"><img src="/images/kit/'+v.id+'.webp" alt="'+esc(v.cap)+'" loading="lazy" decoding="async">'
+    + '<span class="views">'+fmt(v.views)+'<small>views</small></span></span>'
+    + '<span class="cap">'+esc(v.cap)+'<span class="tag">'+esc(v.tag)+'</span></span></a>'
+  ).join('');
+}
+
+function bars(obj){
+  return Object.entries(obj).map(function(e){
+    return '<div class="bar"><span class="n">'+esc(e[0])+'</span><span class="t"><span class="f" style="width:'
+      + e[1] + '%"></span></span><span class="p">'+e[1]+'%</span></div>';
+  }).join('');
+}
+function renderAudience(){
+  const blocks=[];
+  if(KIT.gender) blocks.push('<div><div class="hd">Gender</div>'+bars(KIT.gender)+'</div>');
+  if(KIT.age)    blocks.push('<div><div class="hd">Age</div>'+bars(KIT.age)+'</div>');
+  if(KIT.geo)    blocks.push('<div><div class="hd">Top locations</div>'+bars(KIT.geo)+'</div>');
+  document.getElementById('aud').innerHTML = blocks.length ? blocks.join('')
+    : '<div class="audempty" style="grid-column:1/-1"><b>Available on request</b>'
+      + 'Age, gender and location splits come straight from TikTok Studio and Instagram Insights and are shared with any brief — ask and they come back the same day, alongside saves, shares and completion rate for the formats you are considering.</div>';
+}
+
+function renderMeta(){
+  document.getElementById('issue').textContent = KIT.issue;
+  document.getElementById('colophon-meta').innerHTML =
+    'Media kit · No. 01 · '+KIT.issue+'<br>Figures current as of '+KIT.updated+'<br>Performance data: channel analytics';
+}
+
+function renderAll(){ renderStats(); renderTop(); renderAudience(); renderMeta(); }
+renderAll();
+
+/* Live numbers: stats.json is rewritten by the GitHub Action once it is set up. */
+fetch('stats.json?'+Date.now()).then(function(r){ return r.ok ? r.json() : Promise.reject(); }).then(function(j){
+  Object.keys(KIT.platforms).forEach(function(k){
+    if(j.platforms && j.platforms[k]){
+      Object.entries(j.platforms[k]).forEach(function(e){ if(e[1]!=null) KIT.platforms[k][e[0]]=e[1]; });
+    }
+  });
+  if(j.age) KIT.age=j.age;
+  if(j.gender) KIT.gender=j.gender;
+  if(j.geo) KIT.geo=j.geo;
+  if(j.updated) KIT.updated=new Date(j.updated+'T12:00:00').toLocaleDateString('en-CA',{year:'numeric',month:'long',day:'numeric'});
+  renderAll();
+}).catch(function(){});
+</script>
 </body>
 </html>
