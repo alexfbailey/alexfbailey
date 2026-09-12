@@ -439,7 +439,7 @@ function renderStats(){
 function renderTop(){
   document.getElementById('top').innerHTML = KIT.top.map(v =>
     '<a class="card" href="https://www.youtube.com/watch?v='+v.id+'" target="_blank" rel="noopener">'
-    + '<span class="th"><img src="/images/kit/'+v.id+'.webp" alt="'+esc(v.cap)+'" loading="lazy" decoding="async">'
+    + '<span class="th"><img src="/images/kit/'+v.id+'.webp" alt="'+esc(v.cap)+'" decoding="async">'
     + '<span class="views">'+fmt(v.views)+'<small>views</small></span></span>'
     + '<span class="cap">'+esc(v.cap)+'<span class="tag">'+esc(v.tag)+'</span></span></a>'
   ).join('');
