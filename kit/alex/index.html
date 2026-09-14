@@ -156,31 +156,11 @@ h1{font-size:40px;line-height:1;font-weight:700;text-align:center;color:var(--te
 .co{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;flex-basis:50%;width:100%;padding:0 4px}
 .co .circ{position:relative;display:flex;align-items:center;justify-content:center;width:96px;height:96px;border-radius:9999px;background:#fff;box-shadow:inset 0 0 0 1px var(--stroke)}
 .co .circ .in{display:flex;align-items:center;justify-content:center;width:100%;height:100%;border-radius:9999px;overflow:hidden;transition:transform .2s}
-.co:hover .circ .in{transform:scale(1.05)}
 .co .circ img{width:62%;height:62%;object-fit:contain}
 .co .circ img.full{width:100%;height:100%;object-fit:cover}
 .co .badge{position:absolute;right:0;bottom:0;display:flex;padding:8px;border-radius:9999px;background:var(--button-soft);color:var(--text)}
 .co .nm{text-align:center;color:var(--text)}
 .mono-l{font-size:26px;font-weight:700;letter-spacing:-.02em}
-/* modal */
-.ov{position:fixed;inset:0;z-index:40;background:rgba(0,0,0,.6);animation:fade .2s ease}
-.dlg{position:fixed;left:50%;top:50%;z-index:41;transform:translate(-50%,-50%);width:100%;height:100vh;max-height:100vh;overflow-y:auto;padding:32px;background:var(--bg);box-shadow:0 10px 40px rgba(0,0,0,.2)}
-.dlg .inner{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px}
-.dlg .x{position:absolute;right:0;top:0;display:flex;color:var(--text)}
-.dlg .lg80{align-self:flex-start;display:flex;align-items:center;justify-content:center;width:80px;height:80px;border-radius:9999px;overflow:hidden;background:#fff;box-shadow:inset 0 0 0 1px var(--stroke)}
-.dlg .lg80 img{width:62%;height:62%;object-fit:contain}
-.dlg .body{display:flex;flex-direction:column;align-items:flex-start;gap:24px;width:100%}
-.dlg .ttl{font-size:20px;line-height:1.3;font-weight:600}
-.dlg .sec{display:flex;flex-direction:column;gap:12px}
-.dlg .sec .h{font-weight:600}
-.dlg .dstats{display:grid;grid-template-columns:1fr;gap:24px;width:100%}
-.dlg .dstats div{display:flex;flex-direction:column;gap:4px}
-.dlg .dstats .l{color:var(--text-2)}
-.dlg .dstats .v{font-size:24px;line-height:1.3;font-weight:600}
-.dlg .view{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;height:48px;padding:0 14px;border-radius:6px;background:var(--button);color:var(--button-text);font-size:13.5px;line-height:20px;font-weight:500}
-.dlg .view:hover{opacity:.85}
-body.locked{overflow:hidden}
-
 /* footer */
 .foot{display:flex;flex-direction:column;align-items:center;padding-bottom:64px}
 .fin{display:flex;flex-direction:column;align-items:center;gap:24px;padding:32px;width:100%;max-width:1200px}
@@ -216,8 +196,6 @@ body.locked{overflow:hidden}
   .row .post{width:352px;max-width:352px;height:560px}
   .row .post.sq{width:560px;max-width:560px}
   .co{flex-basis:25%}
-  .dlg{width:560px;height:auto;max-height:90%;border-radius:15px}
-  .dlg .dstats{grid-template-columns:1fr 1fr}
 }
 @media (min-width:1024px){
   .avatar{width:218px;height:218px}
@@ -527,24 +505,9 @@ const MARKS = {
 };
 const coLogo = (p, cls) => p.mark ? MARKS[p.mark] : `<img src="${esc(p.logo)}" alt="" class="${p.full?"full":""}">`;
 function partnersPanel(t){
-  return `<div><div class="cohead"><p class="t">Past Partnerships</p><p class="s">Click to view details</p></div>
+  return `<div><div class="cohead"><p class="t">Past Partnerships</p></div>
   <div class="cogrid">${t.partners.map((p,i) =>
-    `<button class="co" type="button" data-co="${i}"><div class="circ"><div class="in">${coLogo(p)}</div><div class="badge">${I.chartsm}</div></div><p class="nm">${esc(p.name)}</p></button>`).join("")}</div></div>`;
-}
-function openPartner(p){
-  const ov=document.createElement("div"); ov.className="ov";
-  const d=document.createElement("div"); d.className="dlg"; d.setAttribute("role","dialog"); d.setAttribute("aria-modal","true"); d.setAttribute("aria-label","Alex Bailey x "+p.name);
-  d.innerHTML=`<div class="inner"><button type="button" class="x" aria-label="Close">${I.close}</button>
-    <div class="lg80">${p.mark?MARKS[p.mark]:`<img src="${esc(p.logo)}" alt="" style="${p.full?"width:100%;height:100%;object-fit:cover":""}">`}</div>
-    <div class="body"><p class="ttl">Alex Bailey x ${esc(p.name)}</p>
-      <div class="sec"><p class="h">Overview</p><p>${esc(p.overview)}</p></div>
-      ${p.stats?`<div class="dstats">${p.stats.map(([l,v])=>`<div><p class="l">${esc(l)}</p><p class="v">${esc(v)}</p></div>`).join("")}</div>`:""}
-      <a class="view" href="${esc(p.url||mailto)}" ${p.url?'target="_blank" rel="noopener"':""}>${p.url?"View Post":"Ask about this partnership"} ${I.ext}</a>
-    </div></div>`;
-  const close=()=>{ov.remove(); d.remove(); document.body.classList.remove("locked"); document.removeEventListener("keydown",esc_);};
-  const esc_=e=>{ if(e.key==="Escape") close(); };
-  ov.addEventListener("click",close); d.querySelector(".x").addEventListener("click",close); document.addEventListener("keydown",esc_);
-  document.body.append(ov,d); document.body.classList.add("locked"); d.querySelector(".x").focus();
+    `<div class="co"><div class="circ"><div class="in">${coLogo(p)}</div></div><p class="nm">${esc(p.name)}</p></div>`).join("")}</div></div>`;
 }
 function ratesPanel(t){
   return `<div class="rates">${t.rates.map(([l,v]) =>
@@ -561,7 +524,6 @@ tabs.forEach((t, i) => {
   const p = document.createElement("div");
   p.className = "panel"; p.id = "panel-"+t.id; p.setAttribute("role","tabpanel"); p.setAttribute("aria-labelledby", b.id);
   p.innerHTML = t.rates ? ratesPanel(t) : t.partners ? partnersPanel(t) : platformPanel(t);
-  if (t.partners) p.querySelectorAll("[data-co]").forEach(b => b.addEventListener("click", () => openPartner(t.partners[+b.dataset.co])));
   p.hidden = i !== 0;
   panels.appendChild(p);
   b.addEventListener("click", () => select(t.id));
