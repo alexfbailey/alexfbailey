@@ -148,12 +148,38 @@ h1{font-size:40px;line-height:1;font-weight:700;text-align:center;color:var(--te
 .ratenote{padding:8px 8px 0;font-size:13.5px;line-height:20px;color:var(--text-2)}
 
 /* partnerships */
-.partners{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-.pcard{display:flex;flex-direction:column;align-items:center;gap:12px;padding:24px 16px;background:var(--fill);border:1px solid var(--stroke);border-radius:15px;text-align:center}
-.plogo{width:72px;height:72px;border-radius:9999px;background:#fff;border:1px solid var(--stroke);display:flex;align-items:center;justify-content:center;overflow:hidden;font-size:24px;font-weight:600;color:var(--button)}
-.plogo img{width:100%;height:100%;object-fit:contain}
-.pcard .pn{font-weight:600}
-.pcard .pd{font-size:13.5px;line-height:20px;color:var(--text-2)}
+.cohead{display:flex;align-items:flex-end;gap:12px}
+.cohead .t{font-size:20px;line-height:28px;font-weight:600}
+.cohead .s{display:flex;align-items:center;gap:4px;padding-bottom:3px;font-size:13.5px;line-height:20px;color:var(--text-2);opacity:.5}
+.cogrid{display:flex;flex-wrap:wrap;align-items:flex-start;row-gap:32px;margin-top:32px;animation:fadeup .35s ease}
+@keyframes fadeup{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.co{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;flex-basis:50%;width:100%;padding:0 4px}
+.co .circ{position:relative;display:flex;align-items:center;justify-content:center;width:96px;height:96px;border-radius:9999px;background:#fff;box-shadow:inset 0 0 0 1px var(--stroke)}
+.co .circ .in{display:flex;align-items:center;justify-content:center;width:100%;height:100%;border-radius:9999px;overflow:hidden;transition:transform .2s}
+.co:hover .circ .in{transform:scale(1.05)}
+.co .circ img{width:62%;height:62%;object-fit:contain}
+.co .circ img.full{width:100%;height:100%;object-fit:cover}
+.co .badge{position:absolute;right:0;bottom:0;display:flex;padding:8px;border-radius:9999px;background:var(--button-soft);color:var(--text)}
+.co .nm{text-align:center;color:var(--text)}
+.mono-l{font-size:26px;font-weight:700;letter-spacing:-.02em}
+/* modal */
+.ov{position:fixed;inset:0;z-index:40;background:rgba(0,0,0,.6);animation:fade .2s ease}
+.dlg{position:fixed;left:50%;top:50%;z-index:41;transform:translate(-50%,-50%);width:100%;height:100vh;max-height:100vh;overflow-y:auto;padding:32px;background:var(--bg);box-shadow:0 10px 40px rgba(0,0,0,.2)}
+.dlg .inner{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px}
+.dlg .x{position:absolute;right:0;top:0;display:flex;color:var(--text)}
+.dlg .lg80{align-self:flex-start;display:flex;align-items:center;justify-content:center;width:80px;height:80px;border-radius:9999px;overflow:hidden;background:#fff;box-shadow:inset 0 0 0 1px var(--stroke)}
+.dlg .lg80 img{width:62%;height:62%;object-fit:contain}
+.dlg .body{display:flex;flex-direction:column;align-items:flex-start;gap:24px;width:100%}
+.dlg .ttl{font-size:20px;line-height:1.3;font-weight:600}
+.dlg .sec{display:flex;flex-direction:column;gap:12px}
+.dlg .sec .h{font-weight:600}
+.dlg .dstats{display:grid;grid-template-columns:1fr;gap:24px;width:100%}
+.dlg .dstats div{display:flex;flex-direction:column;gap:4px}
+.dlg .dstats .l{color:var(--text-2)}
+.dlg .dstats .v{font-size:24px;line-height:1.3;font-weight:600}
+.dlg .view{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;height:48px;padding:0 14px;border-radius:6px;background:var(--button);color:var(--button-text);font-size:13.5px;line-height:20px;font-weight:500}
+.dlg .view:hover{opacity:.85}
+body.locked{overflow:hidden}
 
 /* footer */
 .foot{display:flex;flex-direction:column;align-items:center;padding-bottom:64px}
@@ -167,7 +193,6 @@ h1{font-size:40px;line-height:1;font-weight:700;text-align:center;color:var(--te
 
 @media (min-width:640px){
   .grid,.charts{flex-direction:row;flex-wrap:wrap}
-  .partners{grid-template-columns:repeat(3,1fr)}
 }
 @media (min-width:768px){
   .hdr .by,.fby{display:flex}
@@ -190,7 +215,9 @@ h1{font-size:40px;line-height:1;font-weight:700;text-align:center;color:var(--te
   .tablist{border-radius:15px}
   .row .post{width:352px;max-width:352px;height:560px}
   .row .post.sq{width:560px;max-width:560px}
-  .partners{grid-template-columns:repeat(4,1fr)}
+  .co{flex-basis:25%}
+  .dlg{width:560px;height:auto;max-height:90%;border-radius:15px}
+  .dlg .dstats{grid-template-columns:1fr 1fr}
 }
 @media (min-width:1024px){
   .avatar{width:218px;height:218px}
@@ -202,7 +229,7 @@ h1{font-size:40px;line-height:1;font-weight:700;text-align:center;color:var(--te
   .rates{grid-template-columns:1fr 1fr}
   .rates .rate:nth-child(odd):last-child{grid-column:span 2}
   .row{padding-right:0}
-  .partners{grid-template-columns:repeat(6,1fr)}
+  .co{flex-basis:14%}
 }
 @media print{
   .hdr{position:static}
@@ -293,6 +320,9 @@ const I = {
   arrow: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>',
   left: '<svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#fff"/><path d="m13.5 8-4 4 4 4" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round"/></svg>',
   right: '<svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#fff"/><path d="m10.5 8 4 4-4 4" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round"/></svg>',
+  chartsm: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="m7 14 4-4 3 3 5-6"/></svg>',
+  close: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>',
+  ext: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>',
   info: '<svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="currentColor"/><path d="M12 11v6M12 7.5v.01" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg>',
   spark: '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg>',
   stat: {
@@ -405,21 +435,23 @@ const KIT = {
     },
     {
       id:"partnerships", name:"Partnerships", partners:[
-        {name:"Karrot", note:"Paid TikTok · 2.8M views"},
-        {name:"McDonald's", logo:"/images/social-media-3.webp"},
-        {name:"Tangerine", logo:"/images/social-media-4.webp"},
-        {name:"Clairol", logo:"/images/social-media-5.webp"},
-        {name:"Braun", logo:"/images/social-media-6.webp"},
-        {name:"YesStyle", logo:"/images/social-media-7.webp"},
-        {name:"Pet Valu", logo:"/images/social-media-8.webp"},
-        {name:"Teddy Blake"},
-        {name:"Hay Day"},
-        {name:"Walmart", note:"Commercial director"},
-        {name:"Aeroplan", note:"Commercial director"},
-        {name:"Tim Hortons", note:"Commercial director"},
-        {name:"RBC", note:"Commercial director"},
-        {name:"Cetaphil", note:"Commercial director"},
-        {name:"Pretty Litter", note:"Commercial director"}
+        {name:"Karrot", logo:"img/logos/karrot.png", url:"https://www.tiktok.com/@alexfbailey/video/7628344045948931348",
+         overview:"A paid TikTok partnership: Alex set out to find a pair of heels for under $30 on Karrot. It became her most-viewed video ever, and Karrot ran it as an ad.",
+         stats:[["Views","2.8M"],["Platform","TikTok"]]},
+        {name:"Pet Valu", logo:"img/logos/petvalu.png", overview:"Creator partnership with Pet Valu, Canada's pet specialty retailer."},
+        {name:"Tangerine", logo:"img/logos/tangerine.png", overview:"Creator partnership with Tangerine, the Canadian digital bank."},
+        {name:"YesStyle", logo:"img/logos/yesstyle.png", overview:"Creator partnership with the online fashion and beauty retailer YesStyle."},
+        {name:"Hay Day", logo:"img/logos/hayday.png", full:true, overview:"Creator partnership with Supercell's farming game Hay Day."},
+        {name:"Braun", logo:"img/logos/braun-wordmark.webp", overview:"Creator partnership with Braun."},
+        {name:"Clairol", logo:"img/logos/clairol.png", overview:"Creator partnership with Clairol hair colour."},
+        {name:"Teddy Blake", logo:"img/logos/teddyblake.png", full:true, overview:"Creator partnership with the handbag brand Teddy Blake."},
+        {name:"McDonald's", logo:"img/logos/mcdonalds.png", overview:"Alex directed commercial work for McDonald's."},
+        {name:"Walmart", mark:"walmart", overview:"Alex directed commercial work for Walmart."},
+        {name:"Aeroplan", logo:"img/logos/aeroplan.png", overview:"Alex directed commercial work for Aeroplan."},
+        {name:"Tim Hortons", mark:"timhortons", overview:"Alex directed commercial work for Tim Hortons."},
+        {name:"RBC", logo:"img/logos/rbc.png", overview:"Alex directed commercial work for RBC."},
+        {name:"Cetaphil", logo:"img/logos/cetaphil.png", overview:"Alex directed commercial work for Cetaphil."},
+        {name:"PrettyLitter", logo:"img/logos/prettylitter.png", overview:"Alex directed a commercial for PrettyLitter."}
       ]
     },
     {
@@ -489,9 +521,30 @@ function platformPanel(t){
     </div>
   </div>`;
 }
+const MARKS = {
+  walmart:'<svg viewBox="0 0 64 64" width="62%" height="62%" aria-hidden="true"><g fill="#FFC220">'+[0,60,120,180,240,300].map(a=>`<rect x="28.5" y="4" width="7" height="20" rx="3.5" transform="rotate(${a} 32 32)"/>`).join("")+'</g></svg>',
+  timhortons:'<span class="mono-l" style="color:#C8102E">TH</span>'
+};
+const coLogo = (p, cls) => p.mark ? MARKS[p.mark] : `<img src="${esc(p.logo)}" alt="" class="${p.full?"full":""}">`;
 function partnersPanel(t){
-  return `<div class="partners">${t.partners.map(p =>
-    `<div class="pcard"><div class="plogo">${p.logo ? `<img src="${esc(p.logo)}" alt="${esc(p.name)} logo">` : esc(p.name[0])}</div><p class="pn">${esc(p.name)}</p>${p.note?`<p class="pd">${esc(p.note)}</p>`:""}</div>`).join("")}</div>`;
+  return `<div><div class="cohead"><p class="t">Past Partnerships</p><p class="s">Click to view details</p></div>
+  <div class="cogrid">${t.partners.map((p,i) =>
+    `<button class="co" type="button" data-co="${i}"><div class="circ"><div class="in">${coLogo(p)}</div><div class="badge">${I.chartsm}</div></div><p class="nm">${esc(p.name)}</p></button>`).join("")}</div></div>`;
+}
+function openPartner(p){
+  const ov=document.createElement("div"); ov.className="ov";
+  const d=document.createElement("div"); d.className="dlg"; d.setAttribute("role","dialog"); d.setAttribute("aria-modal","true"); d.setAttribute("aria-label","Alex Bailey x "+p.name);
+  d.innerHTML=`<div class="inner"><button type="button" class="x" aria-label="Close">${I.close}</button>
+    <div class="lg80">${p.mark?MARKS[p.mark]:`<img src="${esc(p.logo)}" alt="" style="${p.full?"width:100%;height:100%;object-fit:cover":""}">`}</div>
+    <div class="body"><p class="ttl">Alex Bailey x ${esc(p.name)}</p>
+      <div class="sec"><p class="h">Overview</p><p>${esc(p.overview)}</p></div>
+      ${p.stats?`<div class="dstats">${p.stats.map(([l,v])=>`<div><p class="l">${esc(l)}</p><p class="v">${esc(v)}</p></div>`).join("")}</div>`:""}
+      <a class="view" href="${esc(p.url||mailto)}" ${p.url?'target="_blank" rel="noopener"':""}>${p.url?"View Post":"Ask about this partnership"} ${I.ext}</a>
+    </div></div>`;
+  const close=()=>{ov.remove(); d.remove(); document.body.classList.remove("locked"); document.removeEventListener("keydown",esc_);};
+  const esc_=e=>{ if(e.key==="Escape") close(); };
+  ov.addEventListener("click",close); d.querySelector(".x").addEventListener("click",close); document.addEventListener("keydown",esc_);
+  document.body.append(ov,d); document.body.classList.add("locked"); d.querySelector(".x").focus();
 }
 function ratesPanel(t){
   return `<div class="rates">${t.rates.map(([l,v]) =>
@@ -508,6 +561,7 @@ tabs.forEach((t, i) => {
   const p = document.createElement("div");
   p.className = "panel"; p.id = "panel-"+t.id; p.setAttribute("role","tabpanel"); p.setAttribute("aria-labelledby", b.id);
   p.innerHTML = t.rates ? ratesPanel(t) : t.partners ? partnersPanel(t) : platformPanel(t);
+  if (t.partners) p.querySelectorAll("[data-co]").forEach(b => b.addEventListener("click", () => openPartner(t.partners[+b.dataset.co])));
   p.hidden = i !== 0;
   panels.appendChild(p);
   b.addEventListener("click", () => select(t.id));
@@ -518,7 +572,7 @@ function select(id){
     document.getElementById("tab-"+t.id).setAttribute("aria-selected", on);
     const p = document.getElementById("panel-"+t.id);
     p.hidden = !on;
-    if (on) { p.style.animation = "none"; p.offsetHeight; p.style.animation = ""; }
+    if (on) { p.style.animation = "none"; p.offsetHeight; p.style.animation = ""; const tb = document.getElementById("tab-"+t.id); tl.scrollTo({left: tb.offsetLeft - (tl.clientWidth - tb.offsetWidth)/2, behavior: "smooth"}); }
   });
   history.replaceState(null, "", location.pathname + location.search + "#" + id);
 }
