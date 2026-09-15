@@ -490,7 +490,7 @@ function platformPanel(t){
         <div class="periods"><span class="per on">${esc(t.period)}</span></div>
       </div>
       <div class="sbody">
-        <div class="hl"><div class="pills"><div class="pill">${I.spark}${esc(t.highlight.pill)}</div>${t.highlight.women?`<div class="pill">${I.stat.users}${esc((t.highlight.women.match(/^[\d.]+%/)||["92%"])[0])} women</div>`:""}</div><p>${esc(t.highlight.text)}${t.highlight.women?" "+esc(t.highlight.women):""}</p></div>
+        <div class="hl"><div class="pills"><div class="pill">${I.stat.users}${esc((t.highlight.women.match(/[\d.]+%/)||["92%"])[0])} women</div></div><p>${esc(t.highlight.women)}</p></div>
         <div class="grid">${t.stats.map(([ic,l,v,tip]) =>
           `<div class="scard"><div class="top2"><div class="lab">${I.stat[ic]}<p>${esc(l)}</p></div><span class="info" title="${esc(tip)}">${I.info}</span></div><p class="val">${esc(v)}</p></div>`).join("")}</div>
         ${(t.gender || t.charts.length) ? `<div class="charts">
