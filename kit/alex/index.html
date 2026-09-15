@@ -248,9 +248,9 @@ h1{font-size:40px;line-height:1;font-weight:700;text-align:center;color:var(--te
         </div>
       </div>
       <div class="feature">
-        <a href="https://www.tiktok.com/@alexfbailey/video/7628344045948931348" target="_blank" rel="noopener" class="post">
-          <img src="img/tt-7628344045948931348.jpg" alt="Heels under $30 for Karrot">
-          <div class="bar"><div class="m"><div class="c">ICON_PLAY<p>2.8M</p></div></div><div class="m"><span class="c" style="opacity:.25">ICON_LEFT</span><span class="c" style="opacity:.75">ICON_RIGHT</span></div></div>
+        <a href="https://www.tiktok.com/@alexfbailey/video/7527515187021237560" target="_blank" rel="noopener" class="post">
+          <img src="img/tt-7527515187021237560.jpg" alt="Thrifting video, 1.1M views">
+          <div class="bar"><div class="m"><div class="c">ICON_PLAY<p>1.1M</p></div></div><div class="m"><span class="c" style="opacity:.25">ICON_LEFT</span><span class="c" style="opacity:.75">ICON_RIGHT</span></div></div>
         </a>
       </div>
     </div>
@@ -320,16 +320,15 @@ const KIT = {
       id:"tiktok", name:"TikTok", icon:"tiktok",
       handle:"@alexfbailey", url:"https://www.tiktok.com/@alexfbailey",
       posts:[
-        {img:"img/tt-7628344045948931348.jpg", url:"https://www.tiktok.com/@alexfbailey/video/7628344045948931348", views:"2.8M"},
         {img:"img/tt-7527515187021237560.jpg", url:"https://www.tiktok.com/@alexfbailey/video/7527515187021237560", views:"1.1M"},
         {img:"img/tt-7150454214580276486.jpg", url:"https://www.tiktok.com/@alexfbailey/video/7150454214580276486", views:"498K"},
         {img:"img/tt-7643557568199101704.jpg", url:"https://www.tiktok.com/@alexfbailey/video/7643557568199101704", views:"187K"}
       ],
-      period:"Past 365 days", source:"TikTok Studio",
+      period:"Past 365 days, likes all time", source:"TikTok Studio",
       highlight:{pill:"Standout performance", text:"@alexfbailey has 6.9M likes on 73K followers, about 94 likes for every follower.", women:"88% of her TikTok followers are women, on an app whose users are split roughly half and half."},
       stats:[
         ["users","Followers","73k","Total TikTok followers"],
-        ["heart","All-Time Likes","6.9M","Likes across every post since she joined"],
+        ["heart","Likes (All Time)","6.9M","Likes across every post since she joined"],
         ["eye","Views","7.5M","Video views, past 365 days"],
         ["reach","Profile Views","93.3k","Past 365 days"],
         ["heart","Likes","219.4k","Past 365 days"],
@@ -426,25 +425,6 @@ const KIT = {
          stats:[["Views","2.8M"],["Platform","TikTok"]]},
         {name:"Teddy Blake", logo:"img/logos/teddyblake.png", full:true, overview:"Creator partnership with the handbag brand Teddy Blake."}
       ]
-    },
-    {
-      id:"rates", name:"Rates", ratesOnly:true, note:"All rates in Canadian dollars. Bundles and multi-month partnerships are quoted on request.",
-      rates:[
-        ["1x TikTok Video (30–60s)","$1,200.00"],
-        ["1x IG Reel","$900.00"],
-        ["TikTok + IG Reel (same concept)","$1,800.00"],
-        ["1x IG Story Set (3 Frames + link)","$350.00"],
-        ["YouTube Integration (60–90s)","$900.00"],
-        ["YouTube Dedicated Video (8–15 min)","$2,500.00"],
-        ["Full Funnel (TikTok + Reel + YouTube + Stories)","$3,200.00"],
-        ["UGC Video, no posting (30–60s)","$450.00"],
-        ["Creator-Director Package (3 spots + 3 months paid usage)","From $6,000.00"],
-        ["Toronto Shoot Day","$1,500.00 + deliverables"],
-        ["30 Days Paid Usage","+30% of base rate"],
-        ["30 Day Category Exclusivity","+25% of base rate"],
-        ["Rush (under 7 days)","+25% of base rate"],
-        ["Raw Files","$300.00"]
-      ]
     }
   ]
 };
@@ -452,8 +432,7 @@ const KIT = {
 
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const mailto = "mailto:" + MAIL + "?subject=" + encodeURIComponent("Partnership enquiry — Alex Bailey");
-/* The page at rates/index.html is this file plus window.KIT_WITH_RATES=true. After editing, run: sh kit/alex/make-rates-page.sh */
-const showRates = window.KIT_WITH_RATES === true;
+const showRates = false;
 const tabs = KIT.tabs.filter(t => !t.ratesOnly || showRates);
 
 function donut(f){
