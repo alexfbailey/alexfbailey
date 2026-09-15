@@ -112,6 +112,7 @@ h1{font-size:40px;line-height:1;font-weight:700;text-align:center;color:var(--te
 .per.on{background:var(--button);color:var(--button-text)}
 .sbody{display:flex;flex-direction:column;gap:16px}
 .hl{display:flex;flex-direction:column;gap:16px;padding:20px;border-radius:13px;background:#C4E6BC;color:#394236}
+.hl .pills{display:flex;flex-wrap:wrap;gap:8px}
 .hl .pill{display:flex;align-items:center;gap:4px;width:fit-content;height:28px;padding:8px 12px;border-radius:9999px;background:#9ED198}
 .grid{display:flex;flex-direction:column;gap:16px}
 .scard{flex:1;min-width:300px;background:var(--fill);border:1px solid var(--stroke);border-radius:15px;padding:20px;display:flex;flex-direction:column;gap:16px;transition:transform .2s}
@@ -245,7 +246,7 @@ h1{font-size:40px;line-height:1;font-weight:700;text-align:center;color:var(--te
             <span class="tag">Fashion</span><span class="tag">Beauty</span><span class="tag">Thrifting</span><span class="tag">Home</span><span class="tag">Interiors</span><span class="tag">Sustainability</span><span class="tag">Designer</span><span class="tag">Filmmaker</span><span class="tag">Director</span><span class="tag">Pets</span><span class="tag">Female</span>
           </div>
           <div class="biobox">
-            <p class="bio" id="bio">Alex Bailey is a fashion, beauty and lifestyle creator with over 180 million views across TikTok, YouTube, Instagram and Facebook. She's known for her shopping videos, style and her viral adopted cat, Bea. Her audience is 92% women who love style, sustainability, money-saving tips and feel-good storytelling.</p>
+            <p class="bio" id="bio">Alex Bailey is a fashion, beauty and lifestyle creator with over 180 million views and an audience that's 92% women. She's known for her shopping videos, style and her viral adopted cat, Bea. Her followers love style, sustainability, money-saving tips and feel-good storytelling.</p>
             <button class="more" id="more">Show more</button>
           </div>
         </div>
@@ -259,6 +260,7 @@ h1{font-size:40px;line-height:1;font-weight:700;text-align:center;color:var(--te
     </div>
     <div class="cards2">
       <div class="acard"><p class="l">Total Audience</p><div class="v"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm0 2c-5.33 0-8 2.67-8 6v2h16v-2c0-3.33-2.67-6-8-6Z"/></svg><p>146,300</p></div></div>
+      <div class="acard"><p class="l">Women</p><div class="v"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="M12 15v7M8.5 19h7"/></svg><p>92%</p></div></div>
       <div class="acard"><p class="l">Largest Platform</p><a class="v" href="https://www.tiktok.com/@alexfbailey" target="_blank" rel="noopener">ICON_TIKTOK<p>TikTok</p></a></div>
     </div>
   </div>
@@ -328,7 +330,7 @@ const KIT = {
         {img:"img/tt-7643557568199101704.jpg", url:"https://www.tiktok.com/@alexfbailey/video/7643557568199101704", views:"187K"}
       ],
       period:"Past 365 days", source:"TikTok Studio",
-      highlight:{pill:"Standout performance", text:"@alexfbailey has 6.9M likes on 73K followers, about 94 likes for every follower. 92% of her followers across TikTok, Instagram and Facebook are women."},
+      highlight:{pill:"Standout performance", text:"@alexfbailey has 6.9M likes on 73K followers, about 94 likes for every follower.", women:"88% of her TikTok followers are women, on an app whose users are split roughly half and half."},
       stats:[
         ["users","Followers","73k","Total TikTok followers"],
         ["heart","All-Time Likes","6.9M","Likes across every post since she joined"],
@@ -354,7 +356,7 @@ const KIT = {
         {img:"img/ig-5.jpg", cap:"Designer in the shoe aisle"}
       ],
       period:"Past 28 days", source:"Meta Business Suite",
-      highlight:{pill:"Above average performance", text:"@alexfbailey has an engagement rate of 4.7%. This is nearly double the average engagement rate (2.5%) for creators of similar size, and almost 10x the Instagram-wide average of 0.48%. 92% of her followers across TikTok, Instagram and Facebook are women."},
+      highlight:{pill:"Above average performance", text:"@alexfbailey has an engagement rate of 4.7%. This is nearly double the average engagement rate (2.5%) for creators of similar size, and almost 10x the Instagram-wide average of 0.48%.", women:"96.4% of her Instagram followers are women, on a platform whose audience is roughly half women."},
       stats:[
         ["users","Followers","42.9k","Total Instagram followers"],
         ["chart","Engagement Rate","4.7%","Past 28 days"],
@@ -380,7 +382,7 @@ const KIT = {
         {img:"/images/kit/__u5bLrirto.webp", url:"https://www.youtube.com/watch?v=__u5bLrirto", views:"102K"}
       ],
       period:"Lifetime", source:"YouTube Studio",
-      highlight:{pill:"Standout performance", text:"@alexfbailey's channel has 16.4M views, more than 1,000 views for every subscriber, and people have spent 129.5K hours watching her. 92% of her followers across TikTok, Instagram and Facebook are women."},
+      highlight:{pill:"Standout performance", text:"@alexfbailey's channel has 16.4M views, more than 1,000 views for every subscriber, and people have spent 129.5K hours watching her.", women:"Across TikTok, Instagram and Facebook, 92% of her followers are women."},
       stats:[
         ["users","Subscribers","15.9k","Total YouTube subscribers"],
         ["eye","Lifetime Views","16.4M","All views since the channel started"],
@@ -400,12 +402,12 @@ const KIT = {
         {img:"img/fb-4.jpg", cap:"Thrift flip, after"}
       ],
       period:"Lifetime", source:"Meta Business Suite",
-      highlight:{pill:"Monetised page", text:"Alex Bailey's Facebook page reaches 37.6K people a week. Its audience skews older, at 35–54, the age group that buys for the home. 92% of her followers across TikTok, Instagram and Facebook are women."},
+      highlight:{pill:"Monetised page", text:"Alex Bailey's Facebook page reaches 37.6K people a week. Its audience skews older, at 35–54, the age group that buys for the home.", women:"96.8% of her Facebook followers are women, on a platform whose global audience is majority men."},
       stats:[
         ["users","Followers","14.4k","Total Facebook followers"],
         ["reach","Weekly Reach","37.6k","People reached per week"]
       ],
-      gender:[96.7,3.3],
+      gender:[96.8,3.2],
       charts:[{title:"Audience Country", kind:"", rows:[["USA",55.2],["Other",44.8]]}]
     },
     {
@@ -486,7 +488,7 @@ function platformPanel(t){
         <div class="periods"><span class="per on">${esc(t.period)}</span></div>
       </div>
       <div class="sbody">
-        <div class="hl"><div class="pill">${I.spark}${esc(t.highlight.pill)}</div><p>${esc(t.highlight.text)}</p></div>
+        <div class="hl"><div class="pills"><div class="pill">${I.spark}${esc(t.highlight.pill)}</div>${t.highlight.women?`<div class="pill">${I.stat.users}${esc((t.highlight.women.match(/^[\d.]+%/)||["92%"])[0])} women</div>`:""}</div><p>${esc(t.highlight.text)}${t.highlight.women?" "+esc(t.highlight.women):""}</p></div>
         <div class="grid">${t.stats.map(([ic,l,v,tip]) =>
           `<div class="scard"><div class="top2"><div class="lab">${I.stat[ic]}<p>${esc(l)}</p></div><span class="info" title="${esc(tip)}">${I.info}</span></div><p class="val">${esc(v)}</p></div>`).join("")}</div>
         ${(t.gender || t.charts.length) ? `<div class="charts">
