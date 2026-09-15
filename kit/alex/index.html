@@ -490,7 +490,7 @@ function platformPanel(t){
       <div class="sbody">
         <div class="hl"><div class="pills"><div class="pill">${I.stat.users}${esc((t.highlight.women.match(/[\d.]+%/)||["92%"])[0])} women</div></div><p>${esc(t.highlight.women)}</p></div>
         <div class="grid">${t.stats.map(([ic,l,v,tip]) =>
-          `<div class="scard"><div class="top2"><div class="lab">${I.stat[ic]}<p>${esc(l)}</p></div><span class="info" title="${esc(tip)}">${I.info}</span></div><p class="val">${esc(v)}</p></div>`).join("")}</div>
+          `<div class="scard" title="${esc(tip)}"><div class="top2"><div class="lab">${I.stat[ic]}<p>${esc(l)}</p></div></div><p class="val">${esc(v)}</p></div>`).join("")}</div>
         ${(t.gender || t.charts.length) ? `<div class="charts">
           ${t.gender ? `<div class="chart" style="gap:16px"><p class="ct">Audience Gender</p><div class="gender">${donut(t.gender[0])}<div class="legend"><div class="lg"><span class="k"><span class="sw on"></span>Female</span><span>${t.gender[0]}%</span></div><div class="lg"><span class="k"><span class="sw"></span>Male</span><span>${t.gender[1]}%</span></div></div></div></div>` : ""}
           ${t.charts.map(bars).join("")}
