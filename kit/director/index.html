@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<title>Alex Bailey — Director</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.png" type="image/png" sizes="96x96">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--button:#111;--button-text:#fff;--bg:#fff;--fill:#fff;--stroke:#E8E8E8;--text:#111;--text-2:#6B6B6B;--soft:#F5F5F5}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{font-family:Inter,"Helvetica Neue",Arial,sans-serif;font-size:16px;line-height:24px;color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+
+.hdr{position:sticky;top:0;z-index:30;background:var(--bg);border-bottom:1px solid var(--stroke);display:flex;align-items:center;justify-content:center;gap:12px;padding:20px 14px}
+.logo{width:32px;height:32px;border-radius:9999px;object-fit:cover}
+.hdr .brand{display:flex;align-items:center;gap:12px;font-weight:500}
+.hdr .by{display:none}
+
+.wrap{width:100%;max-width:1200px;margin:0 auto}
+.hero{padding:64px 24px 32px}
+.top{display:flex;flex-direction:column;align-items:center;gap:40px}
+.left{display:flex;flex-direction:column;align-items:center;gap:24px;text-align:center}
+.avatar{width:128px;height:128px;border-radius:9999px;object-fit:cover}
+h1{font-size:40px;line-height:1;font-weight:700;letter-spacing:-.01em}
+.role{font-size:20px;line-height:28px;color:var(--text-2);margin-top:8px}
+.tags{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;max-width:640px}
+.tag{background:#fff;color:var(--text);border:1.5px solid var(--text);border-radius:9999px;padding:4.5px 10.5px;font-size:13.5px;line-height:20px}
+.bio{font-size:15px;line-height:24px;max-width:560px}
+.cta{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:48px;padding:0 20px;border-radius:9999px;background:var(--button);color:var(--button-text);font-size:13.5px;font-weight:500;white-space:nowrap}
+.btn.ghost{background:#fff;color:var(--text);box-shadow:inset 0 0 0 1.5px var(--text)}
+.btn:hover{opacity:.85}
+.feature{width:100%;max-width:560px;flex:1 1 480px}
+.video{display:block;position:relative;width:100%;aspect-ratio:16/9;border-radius:15px;overflow:hidden;background:#000}
+.video iframe,.video img{position:absolute;inset:0;width:100%;height:100%;border:0;object-fit:cover}
+.video .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.video .play span{width:64px;height:64px;border-radius:9999px;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center}
+.cap{margin-top:10px;font-size:13.5px;line-height:20px;color:var(--text-2)}
+
+.cards{display:grid;grid-template-columns:1fr;gap:16px;margin-top:40px}
+.acard{padding:16px;border:1px solid var(--stroke);border-radius:13px;display:flex;flex-direction:column;align-items:center;gap:8px}
+.acard .l{color:var(--text-2)}
+.acard .v{font-size:20px;line-height:28px;font-weight:600;text-align:center}
+
+.tabs{padding:0 24px 32px}
+.tablist{display:flex;gap:8px;overflow-x:auto;padding:8px;border:1px solid var(--stroke);border-radius:13px;scrollbar-width:none}
+.tablist::-webkit-scrollbar{display:none}
+.tab{flex:1;padding:12px 24px;border-radius:13px;white-space:nowrap}
+.tab[aria-selected=true]{background:var(--button);color:var(--button-text)}
+.panel{margin-top:48px;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.h2{font-size:20px;line-height:28px;font-weight:600}
+.sub{color:var(--text-2);margin-top:4px}
+.grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:24px}
+.work{display:flex;flex-direction:column;gap:10px}
+.work .video{aspect-ratio:16/9}
+.work .t{font-weight:600}
+.work .m{font-size:13.5px;line-height:20px;color:var(--text-2)}
+.logos{display:flex;flex-wrap:wrap;row-gap:32px;margin-top:32px}
+.co{display:flex;flex-direction:column;align-items:center;gap:12px;flex-basis:50%}
+.circ{width:96px;height:96px;border-radius:9999px;background:#fff;box-shadow:inset 0 0 0 1px var(--stroke);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.circ img{width:62%;height:62%;object-fit:contain}
+.circ img.full{width:100%;height:100%;object-fit:cover}
+.mono-l{font-size:26px;font-weight:700;color:#C8102E}
+
+.film{display:grid;grid-template-columns:1fr;gap:24px;padding:24px;border:1px solid var(--stroke);border-radius:15px;margin-top:24px}
+.film .title{font-size:24px;line-height:1.25;font-weight:700}
+.film .credit{color:var(--text-2);margin-top:6px}
+.film ul{list-style:none;display:flex;flex-direction:column;gap:8px;margin-top:16px}
+.film li{display:flex;gap:10px;font-size:15px;line-height:22px}
+.film li::before{content:"";flex:none;width:6px;height:6px;border-radius:9999px;background:var(--text);margin-top:8px}
+.film .lab{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-2);font-weight:600;margin-top:20px}
+
+.press{display:grid;grid-template-columns:1fr;gap:12px;margin-top:24px}
+.pr{padding:16px 20px;border:1px solid var(--stroke);border-radius:13px;display:flex;flex-direction:column;gap:2px}
+.pr .o{font-weight:600}
+.pr .h{color:var(--text-2);font-size:14.5px;line-height:22px}
+
+.foot{display:flex;flex-direction:column;align-items:center;gap:24px;padding:32px 24px 64px;text-align:center}
+.foot .small{font-size:13.5px;color:var(--text-2)}
+
+@media (min-width:640px){.grid,.press{grid-template-columns:1fr 1fr}.cards{grid-template-columns:repeat(3,1fr)}}
+@media (min-width:768px){
+  .hdr .by{display:block}
+  .hero{padding:96px 32px 32px}.tabs{padding:0 32px 32px}
+  .top{flex-direction:row;align-items:center;justify-content:space-between}
+  .left{align-items:flex-start;text-align:left}
+  .tags,.cta{justify-content:flex-start}
+  .avatar{width:160px;height:160px}
+  h1{font-size:56px;line-height:56px}
+  .acard{align-items:flex-start}.acard .v{text-align:left}
+  .co{flex-basis:25%}
+  .film{grid-template-columns:1.1fr 1fr;align-items:start}
+  .tab{flex:1}
+}
+@media (min-width:1024px){.grid{grid-template-columns:repeat(3,1fr)}.co{flex-basis:16.66%}h1{font-size:64px;line-height:64px}.avatar{width:200px;height:200px}.feature{max-width:600px}}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <p class="by">Director</p>
+  <a class="brand" href="/" target="_blank"><img class="logo" src="/kit/alex/img/avatar.jpg" alt=""><span>Alex Bailey</span></a>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="top">
+      <div class="left">
+        <img class="avatar" src="/kit/alex/img/avatar.jpg" alt="Alex Bailey">
+        <div>
+          <h1>Alex Bailey</h1>
+          <p class="role">Director · Producer</p>
+        </div>
+        <div class="tags"><span class="tag">Commercial</span><span class="tag">Branded Content</span><span class="tag">Documentary</span><span class="tag">Social-First</span><span class="tag">Toronto</span><span class="tag">Available Worldwide</span></div>
+        <p class="bio">Alex Bailey is a Toronto-based director and producer making commercials, branded content and documentary. She has directed spots for Walmart and made the one-hour Citytv documentary <em>You've Been Posted</em>, and she produced the award-winning short <em>êmîcêtôcêt: Many Bloodlines</em>. With over 180 million views as a creator, she knows what makes people stop scrolling.</p>
+        <div class="cta"><a class="btn" data-mail>Contact Alex</a><a class="btn ghost" href="#commercial">View work</a></div>
+      </div>
+      <div class="feature">
+        <a class="video" href="https://www.youtube.com/watch?v=hbj4uoz2UKE" target="_blank" rel="noopener" aria-label="Watch Walmart, Easter campaign">
+          <img src="https://i.ytimg.com/vi/hbj4uoz2UKE/maxresdefault.jpg" alt="Walmart Easter campaign">
+          <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#111" aria-hidden="true"><path d="M7 4.5v15l12-7.5-12-7.5Z"/></svg></span></span>
+        </a>
+        <p class="cap">Walmart, Easter campaign · Director · 2025</p>
+      </div>
+    </div>
+    <div class="cards">
+      <div class="acard"><p class="l">Commercial clients</p><p class="v">Walmart, Aeroplan, Tim Hortons, RBC</p></div>
+      <div class="acard"><p class="l">Documentary</p><p class="v">Citytv · Rogers Media</p></div>
+      <div class="acard"><p class="l">Festival &amp; awards</p><p class="v">TIFF Canada's Top Ten · Hot Docs</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="tabs">
+  <div class="wrap">
+    <div class="tablist" role="tablist" aria-label="Work">
+      <button class="tab" role="tab" id="tab-commercial" aria-controls="commercial" aria-selected="true">Commercial</button>
+      <button class="tab" role="tab" id="tab-film" aria-controls="film" aria-selected="false">Film &amp; TV</button>
+      <button class="tab" role="tab" id="tab-clients" aria-controls="clients" aria-selected="false">Clients</button>
+      <button class="tab" role="tab" id="tab-press" aria-controls="press" aria-selected="false">Press</button>
+    </div>
+
+    <div class="panel" id="commercial" role="tabpanel" aria-labelledby="tab-commercial">
+      <p class="h2">Commercial</p>
+      <p class="sub">Director. Click any spot to watch.</p>
+      <div class="grid" id="spots"></div>
+    </div>
+
+    <div class="panel" id="film" role="tabpanel" aria-labelledby="tab-film" hidden>
+      <p class="h2">Film &amp; TV</p>
+      <div class="film">
+        <div class="video"><img src="/images/youve-been-posted.webp" alt="You've Been Posted, a Citytv documentary special"></div>
+        <div>
+          <p class="title">You've Been Posted</p>
+          <p class="credit">Director · Producer · Narrator</p>
+          <p style="margin-top:12px">One-hour documentary special for Citytv, Rogers Media, airing nationally across Canada.</p>
+        </div>
+      </div>
+      <div class="film">
+        <div class="video"><iframe src="https://www.youtube.com/embed/X7ybFRyFa6k" title="êmîcêtôcêt: Many Bloodlines, TIFF clip" loading="lazy" allow="accelerometer; encrypted-media; picture-in-picture" allowfullscreen></iframe></div>
+        <div>
+          <p class="title">êmîcêtôcêt: Many Bloodlines</p>
+          <p class="credit">Producer · Short documentary, 2020</p>
+          <p class="lab">Awards</p>
+          <ul>
+            <li>Betty Youson Award for Best Canadian Short Documentary, Hot Docs (2020)</li>
+            <li>Best Short Documentary Work, imagineNATIVE Film + Media Arts Festival (2020)</li>
+            <li>Jury Choice Top Short Film, Reel Pride Film Festival</li>
+          </ul>
+          <p class="lab">Nominations &amp; selections</p>
+          <ul>
+            <li>Best Short Documentary nominee, 9th Canadian Screen Awards (2021)</li>
+            <li>Qualified for Academy Awards consideration, Documentary Short Subject</li>
+            <li>Canada's Top Ten Shorts of 2020, TIFF</li>
+            <li>Hamptons International Film Festival</li>
+            <li>Native Cinema Showcase, Smithsonian's National Museum of the American Indian</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel" id="clients" role="tabpanel" aria-labelledby="tab-clients" hidden>
+      <p class="h2">Clients</p>
+      <p class="sub">Brands Alex has directed commercial work for.</p>
+      <div class="logos" id="logos"></div>
+    </div>
+
+    <div class="panel" id="press" role="tabpanel" aria-labelledby="tab-press" hidden>
+      <p class="h2">Press</p>
+      <div class="press" id="presslist"></div>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <a class="btn" data-mail>Contact Alex Bailey</a>
+  <p class="small">Based in Toronto · Available for projects in Canada, the US and worldwide · alexfbailey.com</p>
+</footer>
+
+<script>
+const MAIL = "hialexfbailey@gmail.com";
+const mailto = "mailto:" + MAIL + "?subject=" + encodeURIComponent("Directing enquiry — Alex Bailey");
+document.querySelectorAll("[data-mail]").forEach(a => a.href = mailto);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+const SPOTS = [
+  ["n7uFzE5gLzA","Walmart","The Night Before Easter"],
+  ["MEW1fK3fYdQ","Walmart","A Treat for Me"],
+  ["ztLQ4hblOq4","Walmart","Easter Dinner"],
+  ["a0qZB_aRb8s","Walmart","Easter"],
+  ["iT1hNIP-adw","Walmart","Easter"],
+  ["hwRLHxZRwxc","Walmart","Easter"]
+];
+document.getElementById("spots").innerHTML = SPOTS.map(([id,brand,title]) =>
+  `<a class="work" href="https://www.youtube.com/watch?v=${id}" target="_blank" rel="noopener">
+     <span class="video"><img src="https://i.ytimg.com/vi/${id}/hqdefault.jpg" alt="${esc(brand)}, ${esc(title)}" loading="lazy"><span class="play"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="#111" aria-hidden="true"><path d="M7 4.5v15l12-7.5-12-7.5Z"/></svg></span></span></span>
+     <span><span class="t">${esc(brand)}, ${esc(title)}</span><br><span class="m">Director · 2025</span></span>
+   </a>`).join("");
+
+const L = "/kit/alex/img/logos/";
+const CLIENTS = [
+  {name:"Walmart", mark:'<svg viewBox="0 0 64 64" width="62%" height="62%" aria-hidden="true"><g fill="#FFC220">'+[0,60,120,180,240,300].map(a=>`<rect x="28.5" y="4" width="7" height="20" rx="3.5" transform="rotate(${a} 32 32)"/>`).join("")+'</g></svg>'},
+  {name:"McDonald's", logo:L+"mcdonalds.png"},
+  {name:"RBC", logo:L+"rbc.png"},
+  {name:"Aeroplan", logo:L+"aeroplan.png"},
+  {name:"Tim Hortons", mark:'<span class="mono-l">TH</span>'},
+  {name:"Cetaphil", logo:L+"cetaphil.png"},
+  {name:"PrettyLitter", logo:L+"prettylitter.png"}
+];
+document.getElementById("logos").innerHTML = CLIENTS.map(c =>
+  `<div class="co"><div class="circ">${c.mark || `<img src="${c.logo}" alt="">`}</div><p>${esc(c.name)}</p></div>`).join("");
+
+const PRESS = [
+  ["The Hollywood Reporter","Canada Restarts Holiday Film Production"],
+  ["The Hollywood Reporter","How Canada Is Rethinking Film Financing"],
+  ["TIFF","Canada's Top Ten Shorts"],
+  ["Hot Docs","êmîcêtôcêt: Many Bloodlines"],
+  ["Breakfast Television","The Real Traumatic Effects of Having Your Intimate Photos Posted Online"],
+  ["National Screen Institute","IndigiDocs Alumni Profile"],
+  ["CBC Radio, The Current","Interview"],
+  ["Business of Fashion","Why So Many Brands Gave Up on Clothing Rental"],
+  ["Newsweek","Woman Thrifts Vintage Jean Paul Gaultier Bag"],
+  ["PhotoBook Magazine","Alex Bailey Feature"]
+];
+document.getElementById("presslist").innerHTML = PRESS.map(([o,h]) =>
+  `<div class="pr"><span class="o">${esc(o)}</span><span class="h">${esc(h)}</span></div>`).join("");
+
+const tabs = [...document.querySelectorAll('[role=tab]')];
+function select(id){
+  tabs.forEach(t => { const on = t.getAttribute("aria-controls") === id; t.setAttribute("aria-selected", on); document.getElementById(t.getAttribute("aria-controls")).hidden = !on; });
+}
+tabs.forEach(t => t.addEventListener("click", () => select(t.getAttribute("aria-controls"))));
+document.querySelector('.btn.ghost[href="#commercial"]').addEventListener("click", e => { e.preventDefault(); select("commercial"); document.querySelector(".tablist").scrollIntoView({behavior:"smooth", block:"start"}); });
+const h = location.hash.slice(1); if (["commercial","film","clients","press"].includes(h)) select(h);
+</script>
+</body>
+</html>

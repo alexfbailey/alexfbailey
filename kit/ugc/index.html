@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<title>Alex Bailey — UGC</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.png" type="image/png" sizes="96x96">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--button:#111;--button-text:#fff;--bg:#fff;--stroke:#E8E8E8;--text:#111;--text-2:#6B6B6B;--green:#C4E6BC;--green-2:#9ED198;--green-ink:#394236}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{font-family:Inter,"Helvetica Neue",Arial,sans-serif;font-size:16px;line-height:24px;color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+
+.hdr{position:sticky;top:0;z-index:30;background:var(--bg);border-bottom:1px solid var(--stroke);display:flex;align-items:center;justify-content:center;gap:12px;padding:20px 14px}
+.logo{width:32px;height:32px;border-radius:9999px;object-fit:cover}
+.hdr .brand{display:flex;align-items:center;gap:12px;font-weight:500}
+.hdr .by{display:none}
+
+.wrap{width:100%;max-width:1200px;margin:0 auto}
+.hero{padding:64px 24px 32px}
+.top{display:flex;flex-direction:column;align-items:center;gap:40px}
+.left{display:flex;flex-direction:column;align-items:center;gap:24px;text-align:center}
+.avatar{width:128px;height:128px;border-radius:9999px;object-fit:cover}
+h1{font-size:40px;line-height:1;font-weight:700;letter-spacing:-.01em}
+.role{font-size:20px;line-height:28px;color:var(--text-2);margin-top:8px}
+.tags{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;max-width:640px}
+.tag{background:#fff;color:var(--text);border:1.5px solid var(--text);border-radius:9999px;padding:4.5px 10.5px;font-size:13.5px;line-height:20px}
+.bio{font-size:15px;line-height:24px;max-width:560px}
+.cta{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;height:48px;padding:0 20px;border-radius:9999px;background:var(--button);color:var(--button-text);font-size:13.5px;font-weight:500;white-space:nowrap}
+.btn.ghost{background:#fff;color:var(--text);box-shadow:inset 0 0 0 1.5px var(--text)}
+.btn:hover{opacity:.85}
+.stack{display:flex;gap:12px;align-items:flex-end}
+.phone{position:relative;width:150px;aspect-ratio:9/16;border-radius:15px;overflow:hidden;background:#eee}
+.phone img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.phone.big{width:210px}
+
+.cards{display:grid;grid-template-columns:1fr;gap:16px;margin-top:40px}
+.acard{padding:16px;border:1px solid var(--stroke);border-radius:13px;display:flex;flex-direction:column;align-items:center;gap:8px}
+.acard .l{color:var(--text-2)}
+.acard .v{font-size:20px;line-height:28px;font-weight:600;text-align:center}
+.hl{margin-top:16px;display:flex;flex-direction:column;gap:12px;padding:20px;border-radius:13px;background:var(--green);color:var(--green-ink)}
+.hl .pill{width:fit-content;height:28px;display:flex;align-items:center;padding:8px 12px;border-radius:9999px;background:var(--green-2)}
+
+.tabs{padding:0 24px 32px}
+.tablist{display:flex;gap:8px;overflow-x:auto;padding:8px;border:1px solid var(--stroke);border-radius:13px;scrollbar-width:none}
+.tablist::-webkit-scrollbar{display:none}
+.tab{flex:1;padding:12px 24px;border-radius:13px;white-space:nowrap}
+.tab[aria-selected=true]{background:var(--button);color:var(--button-text)}
+.panel{margin-top:48px;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.h2{font-size:20px;line-height:28px;font-weight:600}
+.sub{color:var(--text-2);margin-top:4px}
+
+.samples{display:flex;gap:16px;overflow-x:auto;margin-top:24px;padding-bottom:4px;scrollbar-width:none}
+.samples::-webkit-scrollbar{display:none}
+.sample{flex:none;width:220px;display:flex;flex-direction:column;gap:10px}
+.sample .phone{width:100%}
+.sample .t{font-weight:600;font-size:15px;line-height:22px}
+.sample .m{font-size:13.5px;line-height:20px;color:var(--text-2)}
+
+.formats,.steps{display:grid;grid-template-columns:1fr;gap:16px;margin-top:24px}
+.fcard{padding:20px;border:1px solid var(--stroke);border-radius:15px;display:flex;flex-direction:column;gap:6px}
+.fcard .t{font-weight:600;font-size:17px}
+.fcard p{color:var(--text-2);font-size:15px;line-height:23px}
+.num{width:28px;height:28px;border-radius:9999px;box-shadow:inset 0 0 0 1.5px var(--text);display:flex;align-items:center;justify-content:center;font-size:13.5px;font-weight:600;margin-bottom:6px}
+
+.logos{display:flex;flex-wrap:wrap;row-gap:32px;margin-top:32px}
+.co{display:flex;flex-direction:column;align-items:center;gap:12px;flex-basis:50%}
+.circ{width:96px;height:96px;border-radius:9999px;background:#fff;box-shadow:inset 0 0 0 1px var(--stroke);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.circ img{width:62%;height:62%;object-fit:contain}
+.circ img.full{width:100%;height:100%;object-fit:cover}
+.mono-l{font-size:26px;font-weight:700;color:#C8102E}
+
+.foot{display:flex;flex-direction:column;align-items:center;gap:24px;padding:32px 24px 64px;text-align:center}
+.foot .small{font-size:13.5px;color:var(--text-2)}
+
+@media (min-width:640px){.cards{grid-template-columns:repeat(3,1fr)}.formats,.steps{grid-template-columns:1fr 1fr}}
+@media (min-width:768px){
+  .hdr .by{display:block}
+  .hero{padding:96px 32px 32px}.tabs{padding:0 32px 32px}
+  .top{flex-direction:row;justify-content:space-between}
+  .left{align-items:flex-start;text-align:left}
+  .tags,.cta{justify-content:flex-start}
+  .avatar{width:160px;height:160px}
+  h1{font-size:56px;line-height:56px}
+  .acard{align-items:flex-start}.acard .v{text-align:left}
+  .co{flex-basis:25%}
+}
+@media (min-width:1024px){.formats{grid-template-columns:repeat(3,1fr)}.steps{grid-template-columns:repeat(4,1fr)}.co{flex-basis:14%}h1{font-size:64px;line-height:64px}.avatar{width:200px;height:200px}}
+@media (max-width:767px){.stack .phone:not(.big){display:none}.phone.big{width:220px}}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <p class="by">UGC</p>
+  <a class="brand" href="/" target="_blank"><img class="logo" src="/kit/alex/img/avatar.jpg" alt=""><span>Alex Bailey</span></a>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="top">
+      <div class="left">
+        <img class="avatar" src="/kit/alex/img/avatar.jpg" alt="Alex Bailey">
+        <div>
+          <h1>Alex Bailey</h1>
+          <p class="role">UGC Creator · Fashion, Beauty &amp; Lifestyle</p>
+        </div>
+        <div class="tags"><span class="tag">Fashion</span><span class="tag">Beauty</span><span class="tag">Home</span><span class="tag">Pets</span><span class="tag">Try-Ons</span><span class="tag">Voiceover</span><span class="tag">Paid Social</span></div>
+        <p class="bio">Alex Bailey makes scroll-stopping UGC for fashion, beauty and lifestyle brands. A commercial director who has shot for Walmart, she scripts, films and edits every video herself, so brands get native-feeling content with broadcast-level polish, ready for their own feeds and ads.</p>
+        <div class="cta"><a class="btn" data-mail>Request a quote</a><a class="btn ghost" href="#samples">See samples</a></div>
+      </div>
+      <div class="stack" aria-hidden="true">
+        <div class="phone"><img src="/kit/alex/img/tt-7150454214580276486.jpg" alt=""></div>
+        <div class="phone big"><img src="/kit/alex/img/tt-7527515187021237560.jpg" alt=""></div>
+        <div class="phone"><img src="/kit/alex/img/tt-7643557568199101704.jpg" alt=""></div>
+      </div>
+    </div>
+    <div class="cards">
+      <div class="acard"><p class="l">Views as a creator</p><p class="v">180M+</p></div>
+      <div class="acard"><p class="l">Audience</p><p class="v">92% women</p></div>
+      <div class="acard"><p class="l">Behind the camera</p><p class="v">Commercial director</p></div>
+    </div>
+    <div class="hl"><div class="pill">Why brands hire her</div><p>Alex knows what holds attention on TikTok, Instagram and YouTube from making it every week for her own 146K followers, and knows how to deliver to a brief from directing commercials.</p></div>
+  </div>
+</section>
+
+<section class="tabs">
+  <div class="wrap">
+    <div class="tablist" role="tablist" aria-label="UGC">
+      <button class="tab" role="tab" id="tab-samples" aria-controls="samples" aria-selected="true">Samples</button>
+      <button class="tab" role="tab" id="tab-formats" aria-controls="formats" aria-selected="false">What I make</button>
+      <button class="tab" role="tab" id="tab-process" aria-controls="process" aria-selected="false">How it works</button>
+      <button class="tab" role="tab" id="tab-brands" aria-controls="brands" aria-selected="false">Brands</button>
+    </div>
+
+    <div class="panel" id="samples" role="tabpanel" aria-labelledby="tab-samples">
+      <p class="h2">Samples</p>
+      <p class="sub">Vertical videos Alex scripted, shot and edited. Tap to watch.</p>
+      <div class="samples" id="samplelist"></div>
+    </div>
+
+    <div class="panel" id="formats" role="tabpanel" aria-labelledby="tab-formats" hidden>
+      <p class="h2">What I make</p>
+      <div class="formats">
+        <div class="fcard"><p class="t">Product demos</p><p>Close, well-lit footage that shows how the product looks, feels and works.</p></div>
+        <div class="fcard"><p class="t">Try-ons &amp; hauls</p><p>Fashion and accessories styled on camera, with honest first reactions.</p></div>
+        <div class="fcard"><p class="t">Get ready with me</p><p>Beauty and skincare routines filmed the way people actually watch them.</p></div>
+        <div class="fcard"><p class="t">Talking-head &amp; voiceover</p><p>Straight-to-camera testimonials and voiceover scripts for ads.</p></div>
+        <div class="fcard"><p class="t">Hooks &amp; variations</p><p>Multiple openings and cut-downs of one concept for ad testing.</p></div>
+        <div class="fcard"><p class="t">Stills &amp; B-roll</p><p>Lifestyle photos and extra footage your team can cut into its own edits.</p></div>
+      </div>
+    </div>
+
+    <div class="panel" id="process" role="tabpanel" aria-labelledby="tab-process" hidden>
+      <p class="h2">How it works</p>
+      <div class="steps">
+        <div class="fcard"><span class="num">1</span><p class="t">Brief</p><p>Share the product, audience, goals and any must-say points.</p></div>
+        <div class="fcard"><span class="num">2</span><p class="t">Concept</p><p>Alex sends back hooks and a short script or shot outline for approval.</p></div>
+        <div class="fcard"><span class="num">3</span><p class="t">Shoot &amp; edit</p><p>Filmed and edited in-house, with captions, music and on-screen text if needed.</p></div>
+        <div class="fcard"><span class="num">4</span><p class="t">Delivery</p><p>Final files in 9:16, 4:5 or 1:1, plus raw footage and usage rights as agreed.</p></div>
+      </div>
+      <p class="sub" style="margin-top:20px">Usage, whitelisting, turnaround and revision rounds are agreed per project. Rates on request.</p>
+    </div>
+
+    <div class="panel" id="brands" role="tabpanel" aria-labelledby="tab-brands" hidden>
+      <p class="h2">Brands</p>
+      <p class="sub">Brands Alex has created content or directed commercial work for.</p>
+      <div class="logos" id="logos"></div>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <a class="btn" data-mail>Request a quote</a>
+  <p class="small">hialexfbailey@gmail.com · @alexfbailey · alexfbailey.com</p>
+</footer>
+
+<script>
+const MAIL = "hialexfbailey@gmail.com";
+const mailto = "mailto:" + MAIL + "?subject=" + encodeURIComponent("UGC enquiry — Alex Bailey");
+document.querySelectorAll("[data-mail]").forEach(a => a.href = mailto);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+const SAMPLES = [
+  {img:"/kit/alex/img/tt-7527515187021237560.jpg", url:"https://www.tiktok.com/@alexfbailey/video/7527515187021237560", t:"Try-on and styling", m:"TikTok · 1.1M views"},
+  {img:"/kit/alex/img/tt-7643557568199101704.jpg", url:"https://www.tiktok.com/@alexfbailey/video/7643557568199101704", t:"Designer product close-up", m:"TikTok · 187K views"},
+  {img:"/kit/alex/img/tt-7150454214580276486.jpg", url:"https://www.tiktok.com/@alexfbailey/video/7150454214580276486", t:"Talking to camera", m:"TikTok · 498K views"},
+  {img:"/images/kit/I7qsxNiJzYE.webp", url:"https://www.youtube.com/watch?v=I7qsxNiJzYE", t:"Occasionwear challenge", m:"YouTube · 3.7M views"},
+  {img:"/images/kit/5VZFwFUv67c.webp", url:"https://www.youtube.com/watch?v=5VZFwFUv67c", t:"Home and decor", m:"YouTube · 1.1M views"},
+  {img:"/images/kit/rgGa1GhE-ac.webp", url:"https://www.youtube.com/watch?v=rgGa1GhE-ac", t:"Seasonal wardrobe", m:"YouTube · 295K views"}
+];
+document.getElementById("samplelist").innerHTML = SAMPLES.map(s =>
+  `<a class="sample" href="${s.url}" target="_blank" rel="noopener"><span class="phone"><img src="${s.img}" alt="${esc(s.t)}" loading="lazy"></span><span><span class="t">${esc(s.t)}</span><br><span class="m">${esc(s.m)}</span></span></a>`).join("");
+
+const L = "/kit/alex/img/logos/";
+const BRANDS = [
+  {name:"Walmart", mark:'<svg viewBox="0 0 64 64" width="62%" height="62%" aria-hidden="true"><g fill="#FFC220">'+[0,60,120,180,240,300].map(a=>`<rect x="28.5" y="4" width="7" height="20" rx="3.5" transform="rotate(${a} 32 32)"/>`).join("")+'</g></svg>'},
+  {name:"McDonald's", logo:L+"mcdonalds.png"},
+  {name:"RBC", logo:L+"rbc.png"},
+  {name:"Aeroplan", logo:L+"aeroplan.png"},
+  {name:"Tim Hortons", mark:'<span class="mono-l">TH</span>'},
+  {name:"Braun", logo:L+"braun-wordmark.webp"},
+  {name:"Clairol", logo:L+"clairol.png"},
+  {name:"Cetaphil", logo:L+"cetaphil.png"},
+  {name:"Tangerine", logo:L+"tangerine.png"},
+  {name:"Pet Valu", logo:L+"petvalu.png"},
+  {name:"Hay Day", logo:L+"hayday.png", full:true},
+  {name:"PrettyLitter", logo:L+"prettylitter.png"},
+  {name:"YesStyle", logo:L+"yesstyle.png"},
+  {name:"Karrot", logo:L+"karrot.png"}
+];
+document.getElementById("logos").innerHTML = BRANDS.map(c =>
+  `<div class="co"><div class="circ">${c.mark || `<img src="${c.logo}" alt="" class="${c.full?"full":""}">`}</div><p>${esc(c.name)}</p></div>`).join("");
+
+const tabs = [...document.querySelectorAll('[role=tab]')];
+function select(id){ tabs.forEach(t => { const on = t.getAttribute("aria-controls") === id; t.setAttribute("aria-selected", on); document.getElementById(t.getAttribute("aria-controls")).hidden = !on; }); }
+tabs.forEach(t => t.addEventListener("click", () => select(t.getAttribute("aria-controls"))));
+document.querySelector('.btn.ghost[href="#samples"]').addEventListener("click", e => { e.preventDefault(); select("samples"); document.querySelector(".tablist").scrollIntoView({behavior:"smooth", block:"start"}); });
+const h = location.hash.slice(1); if (["samples","formats","process","brands"].includes(h)) select(h);
+</script>
+</body>
+</html>
