@@ -327,16 +327,16 @@ const KIT = {
     {
       id:"all", name:"All", icon:"globe", all:true,
       platforms:[
-        {icon:"tiktok", name:"TikTok", handle:"@alexfbailey", url:"https://www.tiktok.com/@alexfbailey", followers:"73.1k", views:"92.3M", note:"All-time views"},
-        {icon:"instagram", name:"Instagram", handle:"@alexfbailey", url:"https://www.instagram.com/alexfbailey/", followers:"42.9k", views:"12M", note:"Views since Oct 2024"},
-        {icon:"youtube", name:"YouTube", handle:"@alexfbailey", url:"https://www.youtube.com/@alexfbailey", followers:"15.9k", views:"16.4M", note:"All-time views"},
-        {icon:"facebook", name:"Facebook", handle:"Alex Bailey", url:"https://www.facebook.com/share/17qSmUW3v4/?mibextid=wwXIfr", followers:"14.5k", views:"20.2M", note:"Views since Oct 2024"}
+        {icon:"facebook", name:"Facebook", handle:"Alex Bailey", url:"https://www.facebook.com/share/17qSmUW3v4/?mibextid=wwXIfr", followers:"14.5k", views:"19.5M", note:"views"},
+        {icon:"instagram", name:"Instagram", handle:"@alexfbailey", url:"https://www.instagram.com/alexfbailey/", followers:"42.9k", views:"10.7M", note:"views"},
+        {icon:"tiktok", name:"TikTok", handle:"@alexfbailey", url:"https://www.tiktok.com/@alexfbailey", followers:"73.1k", views:"7.5M", note:"views"},
+        {icon:"youtube", name:"YouTube", handle:"@alexfbailey", url:"https://www.youtube.com/@alexfbailey", followers:"15.9k", views:"5.2M", note:"views"}
       ],
       stats:[
         ["users","Total Followers","146.3k","TikTok 73.1K + Instagram 42.9K + YouTube 15.9K + Facebook 14.5K"],
-        ["eye","Total Views","180M+","Across TikTok, YouTube, Instagram and Facebook"],
+        ["eye","Views, Past 12 Months","42.9M","Facebook 19.5M + Instagram 10.7M + TikTok 7.5M + YouTube 5.2M"],
         ["heart","TikTok Likes","6.9M","Likes across every TikTok post"],
-        ["clock","YouTube Watch Hours","129.5k","Lifetime hours watched on YouTube"],
+        ["clock","YouTube Watch Hours","25.6k","Hours watched, past 12 months"],
         ["chart","Instagram Engagement","4.7%","Past 28 days"],
         ["reach","Instagram Reach","192.5k","Accounts reached, past 28 days"]
       ],
@@ -346,7 +346,7 @@ const KIT = {
         {title:"Audience Age", kind:"age", rows:[["18-24",29.1],["25-34",41.1],["35-44",16.0],["45-54",7.2],["55+",6.6]]},
         {title:"Audience Country", kind:"", rows:[["USA",44.9],["Canada",10.0],["UK",8.1],["Australia",5.3],["Other",31.7]]}
       ],
-      period:"All platforms", source:"TikTok Studio, Meta Business Suite and YouTube Studio"
+      period:"Past 12 months", source:"TikTok Studio, Meta Business Suite and YouTube Studio"
     },
     {
       id:"tiktok", name:"TikTok", icon:"tiktok",
@@ -516,12 +516,12 @@ const coLogo = (p, cls) => p.mark ? MARKS[p.mark] : `<img src="${esc(p.logo)}" a
 function allPanel(t){
   return `<div class="pwrap">
     <div class="posts">
-      <div class="phead"><p class="t" style="font-size:20px;line-height:28px;font-weight:600">Where her audience is</p></div>
+      <div class="phead"><p class="t" style="font-size:20px;line-height:28px;font-weight:600">Followers and views, past 12 months</p></div>
       <div class="grid">${t.platforms.map(p =>
         `<a class="scard plat" href="${esc(p.url)}" target="_blank" rel="noopener">
            <div class="top2"><div class="lab">${I[p.icon]}<p style="color:var(--text);font-weight:600">${esc(p.name)}</p></div></div>
            <p class="val">${esc(p.followers)}</p>
-           <p class="pmeta">followers · ${esc(p.views)} ${esc(p.note.toLowerCase())}</p>
+           <p class="pmeta">followers · ${esc(p.views)} ${esc(p.note)} in the past year</p>
          </a>`).join("")}</div>
     </div>
     <div class="stats">
