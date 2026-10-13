@@ -93,3 +93,8 @@ body.sleek main.sheet::-webkit-scrollbar { display: none; }
 /* neutralise page-specific layouts left in the inline styles */
 body.sleek main.sheet { display: block; height: auto; }
 body.sleek main.sheet .group img.logos { width: 100%; max-width: 560px; height: auto; }
+
+/* short descriptive paragraph at the foot of sheet pages */
+.sheet .intro { font-size: 15px; font-weight: 300; line-height: 1.6; color: #333; max-width: 680px; margin-top: 40px; }
+.sheet .intro + .intro { margin-top: 12px; }
+.sheet .intro a { color: #000; }
