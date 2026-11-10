@@ -1,5 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /kit/
+Disallow: /finds/archive/
+Disallow: /finds/_incoming/
 
 Sitemap: https://alexfbailey.com/sitemap.xml

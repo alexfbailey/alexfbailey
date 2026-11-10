@@ -1,0 +1,493 @@
+{
+  "updated": "2026-11-04",
+  "videos": [
+    {
+      "id": "ysl-tiger-karen-millen-goodwill",
+      "title": "Finding vintage Yves Saint Laurent at the thrift store: thrift, upcycle or pass?",
+      "date": "November 3, 2026",
+      "sort": "2026-11-03",
+      "store": "Goodwill",
+      "youtube": null,
+      "tiktok": "https://www.tiktok.com/@alexfbailey/video/7704156003771747590",
+      "card": "img/ysl-tiger-karen-millen-goodwill/card.jpg",
+      "page": null
+    },
+    {
+      "id": "fall-thrift-haul-130-budget",
+      "title": "I have $130 left to thrift my dream fall wardrobe",
+      "date": "September 29, 2026",
+      "sort": "2026-09-29",
+      "store": "Value Village",
+      "youtube": "VZgQzV_NN5Y",
+      "card": "img/fall-thrift-haul-130-budget/card.jpg",
+      "page": "fall-thrift-haul-130-budget.html"
+    },
+    {
+      "id": "miu-miu-thrift-with-me-33-fall-haul",
+      "title": "Thrift with me: $33 budget at the thrift store for a Pinterest-inspired fall OOTD",
+      "date": "September 26, 2026",
+      "sort": "2026-09-26",
+      "store": "Thrift store",
+      "youtube": "k_RXlvaeRwE",
+      "card": "img/miu-miu-thrift-with-me-33-fall-haul/card.jpg",
+      "page": "miu-miu-thrift-with-me-33-fall-haul.html"
+    },
+    {
+      "id": "lesportsac-leopard-bag-fall-thrift-budget",
+      "title": "I have a budget of $133 left of $200 to thrift my dream fall wardrobe",
+      "date": "September 24, 2026",
+      "sort": "2026-09-24",
+      "store": "Thrift store",
+      "youtube": "iNDASw0Manc",
+      "card": "img/lesportsac-leopard-bag-fall-thrift-budget/card.jpg",
+      "page": "lesportsac-leopard-bag-fall-thrift-budget.html"
+    },
+    {
+      "id": "miu-miu-18-thrift-haul",
+      "title": "Miu Miu for $18?! I have $163 left of $200 to thrift my dream fall wardrobe",
+      "date": "September 22, 2026",
+      "sort": "2026-09-22",
+      "store": "Thrift store",
+      "youtube": "0OcAVO3keHw",
+      "card": "img/miu-miu-18-thrift-haul/card.jpg",
+      "page": "miu-miu-18-thrift-haul.html"
+    },
+    {
+      "id": "fall-thrift-anne-klein-coat-157-budget",
+      "title": "I have $163 left of $200 to thrift my dream fall wardrobe",
+      "date": "September 20, 2026",
+      "sort": "2026-09-20",
+      "store": "Thrift store",
+      "youtube": "a5nXL1rBp94",
+      "card": "img/fall-thrift-anne-klein-coat-157-budget/card.jpg",
+      "page": "fall-thrift-anne-klein-coat-157-budget.html"
+    },
+    {
+      "id": "vintage-art-easel-thrift-hunt",
+      "title": "I have $167 left of $200 to thrift this fall: the vintage art easel hunt",
+      "date": "September 17, 2026",
+      "sort": "2026-09-17",
+      "store": "Thrift store",
+      "youtube": "U6kSI6ZwC8s",
+      "card": "img/vintage-art-easel-thrift-hunt/card.jpg",
+      "page": "vintage-art-easel-thrift-hunt.html"
+    }
+  ],
+  "items": [
+    {
+      "id": "ornate-brass-frame-easel",
+      "name": "Ornate brass frame easel",
+      "brand": "Vintage",
+      "category": "Home",
+      "video": "fall-thrift-haul-130-budget",
+      "photo": "img/fall-thrift-haul-130-budget/821a523556.jpg",
+      "timestamp": "0:10",
+      "youtube_t": 10,
+      "status": "Came home · $5",
+      "note": "The piece I searched for all summer. Vintage photo easel, now holding an iPad.",
+      "shop": []
+    },
+    {
+      "id": "vintage-ysl-navy-patent-platform-pumps",
+      "name": "Vintage YSL navy patent platform pumps",
+      "brand": "Yves Saint Laurent",
+      "category": "Shoes",
+      "video": "fall-thrift-haul-130-budget",
+      "photo": "img/fall-thrift-haul-130-budget/39981cba62.jpg",
+      "timestamp": "3:08",
+      "youtube_t": 188,
+      "status": "Left behind · $59.99",
+      "note": "Stopped me in my tracks, but navy, not black, and pretty beat up.",
+      "shop": [
+        {
+          "label": "Buy on 1stDibs",
+          "url": "https://www.1stdibs.com/fashion/clothing/shoes/ysl-saint-laurent-shoe-navy-blue-patent-leather-tribute-pump-39-9-new/id-v_5004523/",
+          "price": null,
+          "condition": "New, never worn",
+          "size": "EU 39",
+          "country": "US",
+          "note": "Exact match: YSL Tribute navy patent platform pump",
+          "tag": "closest"
+        }
+      ]
+    },
+    {
+      "id": "terracotta-dutch-oven",
+      "name": "Terracotta Dutch oven",
+      "brand": "Our Place",
+      "category": "Home",
+      "video": "fall-thrift-haul-130-budget",
+      "photo": "img/fall-thrift-haul-130-budget/d13f59fbb6.jpg",
+      "timestamp": "3:24",
+      "youtube_t": 204,
+      "status": "Left behind",
+      "note": "Looks like Our Place. Does anyone have their cookware?",
+      "shop": [
+        {
+          "label": "Our Place Perfect Pot",
+          "url": "https://go.shopmy.us/p-90362119",
+          "price": null,
+          "thumb": "img/fall-thrift-haul-130-budget/1a8bfefbec.jpg",
+          "condition": "New"
+        },
+        {
+          "label": "Buy new at Our Place Canada",
+          "url": "https://fromourplace.ca/products/perfect-pot",
+          "price": "C$149.00",
+          "condition": "New",
+          "size": "6 L",
+          "country": "CA",
+          "note": "Exact item, Spice colour",
+          "tag": "closest"
+        },
+        {
+          "label": "Buy new at Crate & Barrel",
+          "url": "https://www.crateandbarrel.com/our-place-6.5-qt.-spice-ceramic-nonstick-perfect-pot/s650428",
+          "price": "US$99.00",
+          "condition": "New",
+          "size": "6.5 qt",
+          "country": "US",
+          "note": "Exact item in Spice",
+          "tag": "cheapest"
+        }
+      ]
+    },
+    {
+      "id": "scott-mcclintock-velvet-and-gold-lam-dress",
+      "name": "Scott McClintock velvet and gold lamé dress",
+      "brand": "Scott McClintock",
+      "category": "Clothing",
+      "video": "fall-thrift-haul-130-budget",
+      "photo": "img/fall-thrift-haul-130-budget/f632401533.jpg",
+      "timestamp": "2:05",
+      "youtube_t": 125,
+      "status": "Left behind",
+      "note": "The designer behind my birthday dress. Perfect for the Ren Faire.",
+      "shop": []
+    },
+    {
+      "id": "red-valentino-denim-ruffle-dress",
+      "name": "RED Valentino denim ruffle dress",
+      "brand": "RED Valentino",
+      "category": "Clothing",
+      "video": "fall-thrift-haul-130-budget",
+      "photo": "img/fall-thrift-haul-130-budget/d8ea442192.jpg",
+      "timestamp": "0:50",
+      "youtube_t": 50,
+      "status": "Left behind",
+      "note": "Valentino's diffusion line. Too many frills for me.",
+      "shop": []
+    },
+    {
+      "id": "xbox-series-x-mini-fridge",
+      "name": "Xbox Series X mini fridge",
+      "brand": "Xbox",
+      "category": "Home",
+      "video": "fall-thrift-haul-130-budget",
+      "photo": "img/fall-thrift-haul-130-budget/67da2cfb8a.jpg",
+      "timestamp": "3:30",
+      "youtube_t": 210,
+      "status": "Left behind",
+      "note": "\"Some sort of part for an Xbox.\" It's a fridge.",
+      "shop": [
+        {
+          "label": "Buy on eBay",
+          "url": "https://go.shopmy.us/p-90431163",
+          "price": "C$75.00",
+          "thumb": "img/fall-thrift-haul-130-budget/09ab074594.jpg",
+          "tag": "cheapest"
+        },
+        {
+          "label": "Buy new at Walmart",
+          "url": "https://www.walmart.com/ip/414202579",
+          "price": "US$63.70",
+          "condition": "New",
+          "size": "8-can",
+          "country": "US",
+          "note": "Official Ukonic replica mini fridge",
+          "tag": "closest"
+        },
+        {
+          "label": "Buy on eBay",
+          "url": "https://www.ebay.com/itm/405422817780",
+          "price": "US$115.00",
+          "condition": "New",
+          "size": "8-can",
+          "country": "US",
+          "note": "Official replica, new"
+        },
+        {
+          "label": "Buy on eBay",
+          "url": "https://www.ebay.com/itm/394353517338",
+          "price": "US$145.00",
+          "condition": "New",
+          "size": "8-can",
+          "country": "US",
+          "note": "Official replica, free shipping"
+        }
+      ]
+    },
+    {
+      "id": "vintage-lesportsac-leopard-bag",
+      "name": "Vintage LeSportsac leopard bag",
+      "brand": "LeSportsac",
+      "category": "Bags",
+      "video": "fall-thrift-haul-130-budget",
+      "photo": "img/fall-thrift-haul-130-budget/fd4018e1e6.jpg",
+      "timestamp": "0:03",
+      "youtube_t": 3,
+      "status": "From last haul · $3",
+      "note": "Thrifted in the previous video.",
+      "shop": []
+    },
+    {
+      "id": "vintage-lesportsac-oversized-cheetah-print-bag",
+      "name": "Vintage LeSportsac oversized cheetah print bag",
+      "brand": "LeSportsac",
+      "category": "Bags",
+      "video": "miu-miu-thrift-with-me-33-fall-haul",
+      "photo": "img/miu-miu-thrift-with-me-33-fall-haul/e7e68ca3c1.jpg",
+      "timestamp": "16:58",
+      "youtube_t": 1018,
+      "status": "Came home · $2.99",
+      "note": "Found on the floor. $3.99, then $1 in savings at the cash.",
+      "shop": []
+    },
+    {
+      "id": "red-and-cream-chevron-throw-pillows",
+      "name": "Red and cream chevron throw pillows",
+      "brand": "Vintage",
+      "category": "Home",
+      "video": "miu-miu-thrift-with-me-33-fall-haul",
+      "photo": "img/miu-miu-thrift-with-me-33-fall-haul/73912f9ff0.jpg",
+      "timestamp": "20:11",
+      "youtube_t": 1211,
+      "status": "Friend took them home · 2 for $8",
+      "note": "The person I'm thrifting with found two of these.",
+      "shop": []
+    },
+    {
+      "id": "miu-miu-cork-platform-sandals-with-black-velvet-straps-ss201",
+      "name": "Miu Miu cork platform sandals with black velvet straps (SS2015)",
+      "brand": "Miu Miu",
+      "category": "Shoes",
+      "video": "miu-miu-thrift-with-me-33-fall-haul",
+      "photo": "img/miu-miu-thrift-with-me-33-fall-haul/44d6914359.jpg",
+      "timestamp": "8:22",
+      "youtube_t": 502,
+      "status": "Left behind · $18.99",
+      "note": "I was literally shaking. If they weren't Miu Miu, I wouldn't have picked them up.",
+      "shop": []
+    },
+    {
+      "id": "vintage-mr-leonard-red-jacket",
+      "name": "Vintage Mr. Leonard red jacket",
+      "brand": "Mister Leonard",
+      "category": "Clothing",
+      "video": "miu-miu-thrift-with-me-33-fall-haul",
+      "photo": "img/miu-miu-thrift-with-me-33-fall-haul/ffcb8303cc.jpg",
+      "timestamp": "17:22",
+      "youtube_t": 1042,
+      "status": "Left behind",
+      "note": "A Canadian brand that makes really high quality pieces, including great suiting.",
+      "shop": []
+    },
+    {
+      "id": "vintage-lesportsac-leopard-print-tote-bag",
+      "name": "Vintage LeSportsac leopard print tote bag",
+      "brand": "LeSportsac",
+      "category": "Bags",
+      "video": "lesportsac-leopard-bag-fall-thrift-budget",
+      "photo": "img/lesportsac-leopard-bag-fall-thrift-budget/3dd8b5b217.jpg",
+      "timestamp": "0:34",
+      "youtube_t": 34,
+      "status": "Came home · $2.99",
+      "note": "Found it on the floor. $3.99, and $1 in savings made it $2.99.",
+      "shop": []
+    },
+    {
+      "id": "red-and-white-chevron-throw-pillows",
+      "name": "Red and white chevron throw pillows",
+      "brand": "Vintage",
+      "category": "Home",
+      "video": "lesportsac-leopard-bag-fall-thrift-budget",
+      "photo": "img/lesportsac-leopard-bag-fall-thrift-budget/38beab456e.jpg",
+      "timestamp": "3:49",
+      "youtube_t": 229,
+      "status": "My friend took them home · $8 for two",
+      "note": "The person I'm thrifting with found two of these for eight bucks.",
+      "shop": []
+    },
+    {
+      "id": "vintage-mister-leonard-red-wool-blazer",
+      "name": "Vintage Mister Leonard red wool blazer",
+      "brand": "Mister Leonard",
+      "category": "Clothing",
+      "video": "lesportsac-leopard-bag-fall-thrift-budget",
+      "photo": "img/lesportsac-leopard-bag-fall-thrift-budget/c89dc53fc3.jpg",
+      "timestamp": "0:58",
+      "youtube_t": 58,
+      "status": "Left behind",
+      "note": "A vintage Canadian brand, usually really affordable at the thrift store.",
+      "shop": []
+    },
+    {
+      "id": "mid-century-chrome-swan-sculptures",
+      "name": "Mid-century chrome swan sculptures",
+      "brand": "Vintage",
+      "category": "Home",
+      "video": "lesportsac-leopard-bag-fall-thrift-budget",
+      "photo": "img/lesportsac-leopard-bag-fall-thrift-budget/ca36bd70c4.jpg",
+      "timestamp": "3:52",
+      "youtube_t": 232,
+      "status": "Left behind",
+      "note": "I put the MCM ducks back in their home.",
+      "shop": []
+    },
+    {
+      "id": "giant-wooden-dice",
+      "name": "Giant wooden dice",
+      "brand": "Vintage",
+      "category": "Home",
+      "video": "lesportsac-leopard-bag-fall-thrift-budget",
+      "photo": "img/lesportsac-leopard-bag-fall-thrift-budget/fa48b57f4b.jpg",
+      "timestamp": "3:57",
+      "youtube_t": 237,
+      "status": "Left behind",
+      "note": "Good for so many things, except actually playing with them.",
+      "shop": []
+    },
+    {
+      "id": "british-bulldog-union-jack-cookie-jar",
+      "name": "British bulldog Union Jack cookie jar",
+      "brand": "Vintage",
+      "category": "Home",
+      "video": "lesportsac-leopard-bag-fall-thrift-budget",
+      "photo": "img/lesportsac-leopard-bag-fall-thrift-budget/ca5739c091.jpg",
+      "timestamp": "4:17",
+      "youtube_t": 257,
+      "status": "Left behind",
+      "note": "A British cookie jar, very cute.",
+      "shop": [
+        {
+          "label": "Buy on Etsy",
+          "url": "https://www.etsy.com/listing/4477276491/vintage-ceramic-english-british-bulldog",
+          "price": "US$54",
+          "condition": "Excellent vintage",
+          "size": "9.5 in",
+          "country": "US",
+          "note": "Ceramic bulldog cookie jar with Union Jack tie",
+          "tag": "closest"
+        },
+        {
+          "label": "Buy on Etsy",
+          "url": "https://www.etsy.com/listing/4607202451/english-bulldog-cookie-jar-union-jack",
+          "price": "US$39.94",
+          "condition": "Pre-owned",
+          "size": "9.25 in",
+          "country": "US",
+          "note": "Same bulldog jar, removable head lid",
+          "tag": "cheapest"
+        },
+        {
+          "label": "Buy on Etsy",
+          "url": "https://www.etsy.com/listing/655338289/vintage-ceramic-british-bulldog-with",
+          "price": "US$43.20",
+          "condition": "Good vintage, small chip on lid",
+          "size": "9 in",
+          "country": "US",
+          "note": "Same jar, seller dates it 1960s"
+        }
+      ]
+    },
+    {
+      "id": "miu-miu-black-suede-cork-platform-wedge-sandals-spring-summe",
+      "name": "Miu Miu black suede cork platform wedge sandals (Spring/Summer 2015)",
+      "brand": "Miu Miu",
+      "category": "Shoes",
+      "video": "miu-miu-18-thrift-haul",
+      "photo": "img/miu-miu-18-thrift-haul/abe8418ba8.jpg",
+      "timestamp": "0:15",
+      "youtube_t": 15,
+      "status": "Left behind · $18.99",
+      "note": "I was literally shaking. But if they weren't Miu Miu, I wouldn't have picked them up.",
+      "shop": []
+    },
+    {
+      "id": "polo-ralph-lauren-red-big-pony-button-down-shirt",
+      "name": "Polo Ralph Lauren red big pony button-down shirt",
+      "brand": "Polo Ralph Lauren",
+      "category": "Clothing",
+      "video": "miu-miu-18-thrift-haul",
+      "photo": "img/miu-miu-18-thrift-haul/276ea84c75.jpg",
+      "timestamp": "3:28",
+      "youtube_t": 208,
+      "status": "Left behind",
+      "note": "I look like I work at a ketchup plant. A nice shirt, just not my style.",
+      "shop": []
+    },
+    {
+      "id": "kate-spade-polka-dot-iphone-12-mini-case-with-ring-stand",
+      "name": "Kate Spade polka dot iPhone 12 mini case with ring stand",
+      "brand": "Kate Spade",
+      "category": "Accessories",
+      "video": "vintage-art-easel-thrift-hunt",
+      "photo": "img/vintage-art-easel-thrift-hunt/628e4b504a.jpg",
+      "timestamp": "0:25",
+      "youtube_t": 25,
+      "status": "Left behind · $7.99",
+      "note": "I really like this case, it just doesn't fit my phone.",
+      "shop": []
+    },
+    {
+      "id": "vintage-ysl-grey-wool-blazer",
+      "name": "Vintage Yves Saint Laurent grey wool blazer",
+      "brand": "Yves Saint Laurent",
+      "category": "Clothing",
+      "video": "ysl-tiger-karen-millen-goodwill",
+      "photo": "img/ysl-tiger-karen-millen-goodwill/ysl.jpg",
+      "timestamp": "0:20",
+      "youtube_t": null,
+      "status": "Thrifted · Goodwill",
+      "note": "At least 30 years old. Worn oversized over a black mini, after the street-style grey blazer look.",
+      "shop": []
+    },
+    {
+      "id": "tiger-of-sweden-red-double-breasted-blazer",
+      "name": "Tiger of Sweden red double-breasted blazer",
+      "brand": "Tiger of Sweden",
+      "category": "Clothing",
+      "video": "ysl-tiger-karen-millen-goodwill",
+      "photo": "img/ysl-tiger-karen-millen-goodwill/tiger.jpg",
+      "timestamp": "1:10",
+      "youtube_t": null,
+      "status": "Thrifted · $9 (plus 10% off)",
+      "note": "Retails around $800. Cherry red wool, peak lapels, black 1903 lining.",
+      "shop": []
+    },
+    {
+      "id": "karen-millen-houndstooth-pencil-dress",
+      "name": "Karen Millen houndstooth pencil dress",
+      "brand": "Karen Millen",
+      "category": "Dresses",
+      "video": "ysl-tiger-karen-millen-goodwill",
+      "photo": "img/ysl-tiger-karen-millen-goodwill/karen.jpg",
+      "timestamp": "0:56",
+      "youtube_t": null,
+      "status": "Left behind",
+      "note": "Twist-front neckline, black velvet cuffs and corset lacing at the hips. I wished it was cropped.",
+      "shop": [
+        {
+          "label": "Buy on eBay",
+          "url": "https://www.ebay.com/itm/156945854826",
+          "price": null,
+          "condition": "Pre-owned",
+          "size": "UK 12",
+          "country": "",
+          "note": "The exact dress",
+          "tag": "closest"
+        }
+      ]
+    }
+  ]
+}
