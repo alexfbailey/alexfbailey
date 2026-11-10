@@ -1,0 +1,81 @@
+/* My Finds v2 — cream, soft black, one orange. Built pages come from finds/build.py. */
+body.finds-v2{background:#fdf9ec;color:#222;font-family:'Josefin Sans',Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+body.finds-v2 .sidebar,body.finds-v2 .mobile-header,body.finds-v2 .menu-overlay{background:#fdf9ec}
+body.finds-v2 .sidebar .logo,body.finds-v2 .mobile-header .logo,body.finds-v2 .sidebar a,body.finds-v2 .menu-overlay a,body.finds-v2 .menu-overlay .close-btn,body.finds-v2 .sidebar-bottom p{color:#222}
+body.finds-v2 .menu-toggle span{background:#222}
+body.finds-v2 .sidebar-bottom hr{border-color:#e6dfc8}
+body.finds-v2 [hidden]{display:none!important}
+body.finds-v2 main.fv{margin-left:260px;height:auto;min-height:100vh;overflow:visible;padding:44px 48px 80px;max-width:1160px}
+.fv a{color:#222}
+.fv .ttl{font-family:'Gilda Display',Georgia,serif;font-weight:400;font-size:44px;letter-spacing:0;line-height:1.1;text-align:left;margin:0 0 20px;color:#222}
+.fv .search input{width:100%;max-width:520px;height:46px;border:1px solid #222;border-radius:999px;background:#fffdf6;padding:2px 20px 0;font:400 16px 'Josefin Sans',Helvetica,Arial,sans-serif;color:#222;outline:none;-webkit-appearance:none;appearance:none}
+.fv .search input:focus{border-color:#f39a4f;box-shadow:0 0 0 2px #f39a4f55}
+.fv .chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin:14px 0 26px;padding-bottom:2px}
+.fv .chips::-webkit-scrollbar{display:none}
+.fv .chip{flex:0 0 auto;border:1px solid #222;background:transparent;color:#222;border-radius:999px;padding:9px 16px 6px;font:600 12px 'Josefin Sans',Helvetica,Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
+.fv .chip.on{background:#222;color:#fdf9ec}
+.fv .rowhead{display:flex;align-items:baseline;gap:14px;margin:0 0 12px}
+.fv .rowhead h2,.fv .every{font-family:'Gilda Display',Georgia,serif;font-weight:400;font-size:26px;color:#222}
+.fv .every{text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:1px;margin:44px 0 14px}
+.fv .viewall{font-size:14px;text-decoration:underline;text-underline-offset:4px}
+.fv .arrows{margin-left:auto;display:flex;gap:6px}
+.fv .arr{width:34px;height:34px;border-radius:50%;border:1px solid #222;background:transparent;color:#222;font-size:18px;line-height:1;cursor:pointer}
+.fv .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+.fv .swipe{display:grid;grid-auto-flow:column;grid-auto-columns:250px;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin-bottom:36px}
+.fv .swipe::-webkit-scrollbar{display:none}
+.fv .swipe .card{scroll-snap-align:start}
+.fv .card{display:flex;flex-direction:column;min-width:0}
+.fv .ph,.fv .itemph{position:relative;display:block;aspect-ratio:4/5;background:#efe8d2;overflow:hidden}
+.fv .ph img,.fv .itemph img,.fv .vt img{display:block;width:100%;height:100%;object-fit:cover}
+.fv .pill{position:absolute;left:8px;top:8px;background:#fdf9ec;color:#222;border-radius:999px;padding:6px 10px 3px;font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase}
+.fv .nm{font:600 11px/1.5 'Josefin Sans',Helvetica,Arial,sans-serif;letter-spacing:.16em;text-transform:uppercase;margin:11px 0 9px}
+.fv .nm a{text-decoration:none}
+.fv .cta{display:flex;flex-direction:column;gap:6px;margin-top:auto;padding-bottom:18px}
+.fv .btn{display:block;text-align:center;text-decoration:none;border-radius:999px;padding:11px 8px 8px;font-size:12.5px;font-weight:600;letter-spacing:.02em;border:1px solid #f39a4f;white-space:nowrap}
+.fv .btn.sh{background:#f39a4f;color:#222}
+.fv .btn.nw{background:transparent;color:#222;border-color:#222}
+.fv .none{font-style:italic;font-size:14px;color:#222;padding-bottom:18px}
+.fv .vt{text-decoration:none;display:block}
+.fv .vt img{aspect-ratio:4/5;height:auto}
+.fv .vt span{display:block;font-size:14px;line-height:1.35;margin:9px 0 18px}
+.fv .aff{font-size:12px;line-height:1.5;color:#222;opacity:.75;margin-top:44px;max-width:560px}
+/* item page */
+.fv .item{max-width:560px}
+.fv .back{display:inline-block;font-size:14px;text-decoration:none;margin-bottom:14px}
+.fv .brand{font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;margin:18px 0 6px}
+.fv .iname{font-family:'Gilda Display',Georgia,serif;font-weight:400;font-size:32px;line-height:1.15;letter-spacing:0;text-align:left;margin:0 0 6px;color:#222}
+.fv .grp{scroll-margin-top:76px;margin-top:26px}
+.fv .grp h2{font:600 13px 'Josefin Sans',Helvetica,Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;padding:8px 0 5px;margin-bottom:8px;border-bottom:1px solid #222}
+.fv .grp:target h2{animation:fvhl 1.8s ease-out}
+@keyframes fvhl{0%,35%{background:#f39a4f}100%{background:transparent}}
+.fv .buy{display:flex;align-items:center;gap:12px;background:#f39a4f;color:#222;text-decoration:none;border-radius:14px;padding:8px 14px 8px 8px;margin-bottom:8px}
+.fv .buy img,.fv .buy .noph{flex:0 0 64px;width:64px;height:80px;object-fit:cover;border-radius:8px;background:#fdf9ec}
+.fv .buy .mid{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;gap:5px}
+.fv .buy .bt{font-size:16px;font-weight:600;line-height:1.15}
+.fv .buy .tags{display:flex;flex-wrap:nowrap;gap:5px;align-items:center}
+.fv .tag,.fv .cheap{border-radius:999px;padding:4px 8px 2px;font-size:9.5px;font-weight:600;letter-spacing:.07em;white-space:nowrap;text-transform:uppercase;line-height:1.3}
+.fv .tag.sh{background:#fff;color:#222;border:1px solid #fff}
+.fv .tag.nw{background:transparent;color:#222;border:1px solid #222}
+.fv .cheap{background:#222;color:#fdf9ec;border:1px solid #222}
+.fv .buy .meta{font-size:12.5px;line-height:1.3}
+.fv .buy .pr{flex:0 0 auto;font-size:16px;font-weight:600;white-space:nowrap}
+.fv .seen{margin-top:30px;font-size:15px}
+.fv .seen a,.fv .vmeta a{text-underline-offset:4px}
+.fv .vttl{font-size:34px;margin-bottom:8px}
+.fv .vmeta{font-size:14px;margin-bottom:22px}
+@media (max-width:768px){
+  body.finds-v2 main.fv{margin-left:0;margin-top:60px;padding:18px 0 60px;max-width:none}
+  .fv .ttl,.fv .search,.fv .rowhead,.fv .every,.fv .aff,.fv .pad,.fv .vmeta{margin-left:16px;margin-right:16px}
+  .fv .ttl{font-size:38px}
+  .fv .search input{max-width:none}
+  .fv .chips{padding-left:16px;padding-right:16px}
+  .fv .grid{grid-template-columns:1fr 1fr;gap:6px}
+  .fv .swipe{grid-auto-columns:calc((100% - 6px)/2);gap:6px}
+  .fv .nm,.fv .cta,.fv .card .none,.fv .vt span{padding-left:8px;padding-right:8px}
+  .fv .cta{padding-bottom:20px}
+  .fv .btn{font-size:11.5px;padding-left:4px;padding-right:4px}
+  .fv .item{max-width:none}
+  .fv .item>*{margin-left:16px;margin-right:16px}
+  .fv .item>.itemph{margin-left:0;margin-right:0}
+  .fv .iname{font-size:28px}
+}

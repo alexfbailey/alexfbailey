@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="robots" content="noindex">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Finds | Alex Bailey – Thrift Hauls You Can Shop</title>
+    <meta name="description" content="Every thrift haul in one place. Search Alex Bailey's thrift-with-me videos by item, designer or date, and shop close matches to what she found.">
+    <link rel="canonical" href="https://alexfbailey.com/finds.html">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "@id": "https://alexfbailey.com/#alex", "name": "Alex Bailey", "alternateName": ["Alexandra Bailey", "Alex Fisher-Bailey", "Alexandra Fisher-Bailey", "alexfbailey"], "url": "https://alexfbailey.com", "jobTitle": ["Filmmaker", "Director", "Producer", "Photographer"], "sameAs": ["https://www.wikidata.org/wiki/Q138750056", "https://www.imdb.com/name/nm11977685/", "https://www.instagram.com/alexfbailey/", "https://www.tiktok.com/@alexfbailey", "https://www.youtube.com/@alexfbailey", "https://www.linkedin.com/in/alexfbailey/"]}</script>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/favicon.png" type="image/png" sizes="96x96">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <meta property="og:site_name" content="Alex Bailey">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="My Finds • Alex Bailey">
+    <meta property="og:description" content="Every thrift haul in one place. Search Alex Bailey's thrift-with-me videos by item, designer or date, and shop close matches to what she found.">
+    <meta property="og:url" content="https://alexfbailey.com/finds.html">
+    <meta property="og:image" content="https://alexfbailey.com/images/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Alex Bailey">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@alexfbailey">
+    <meta name="twitter:title" content="My Finds • Alex Bailey">
+    <meta name="twitter:description" content="Every thrift haul in one place. Search Alex Bailey's thrift-with-me videos by item, designer or date, and shop close matches to what she found.">
+    <meta name="twitter:image" content="https://alexfbailey.com/images/og-image.jpg">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=Josefin+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Helvetica, Arial, sans-serif;
+            background: #fff;
+            color: #000;
+        }
+
+        /* ── Desktop sidebar ── */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 260px;
+            height: 100vh;
+            padding: 40px 40px 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            z-index: 1000;
+            background: #fff;
+        }
+        .sidebar .logo {
+            font-size: 28px;
+            font-weight: 700;
+            text-decoration: none;
+            color: #000;
+            font-family: Helvetica, Arial, sans-serif;
+            letter-spacing: -0.5px;
+            line-height: 1.15;
+            display: block;
+            margin-bottom: 30px;
+        }
+        .sidebar nav ul {
+            list-style: none;
+        }
+        .sidebar nav ul li {
+            margin: 10px 0;
+        }
+        .sidebar nav ul li a {
+            text-decoration: none;
+            color: #000;
+            font-size: 17px;
+            font-weight: 400;
+            transition: opacity 0.2s;
+        }
+        .sidebar nav ul li a:hover {
+            opacity: 0.5;
+        }
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+        .social-icons a {
+            color: #000;
+            text-decoration: none;
+            font-size: 18px;
+            transition: opacity 0.2s;
+        }
+        .social-icons a:hover {
+            opacity: 0.5;
+        }
+        .sidebar-bottom {
+            margin-top: auto;
+        }
+        .sidebar-bottom hr {
+            border: none;
+            border-top: 2px solid #000;
+            width: 40px;
+            margin-bottom: 15px;
+        }
+        .sidebar-bottom p {
+            font-size: 11px;
+            line-height: 1.7;
+            font-style: italic;
+        }
+        .sidebar-bottom .copyright {
+            font-style: normal;
+            margin-top: 12px;
+            font-size: 11px;
+        }
+
+        /* ── Mobile header (hidden on desktop) ── */
+        .mobile-header {
+            display: none;
+        }
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: #ff6600;
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 80px 40px 50px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .menu-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+        .menu-overlay .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 28px;
+            cursor: pointer;
+            padding: 5px;
+            line-height: 1;
+        }
+        .menu-overlay nav ul {
+            list-style: none;
+            text-align: left;
+        }
+        .menu-overlay nav ul li {
+            margin: 15px 0;
+        }
+        .menu-overlay nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 28px;
+            font-weight: 300;
+            transition: opacity 0.2s;
+        }
+        .menu-overlay nav ul li a:hover {
+            opacity: 0.7;
+        }
+        .menu-overlay .overlay-social {
+            display: flex;
+            gap: 18px;
+        }
+        .menu-overlay .overlay-social a {
+            color: #fff;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+        .menu-overlay .overlay-social a:hover {
+            opacity: 0.7;
+        }
+
+        /* ── Mobile ── */
+        @media (max-width: 768px) {
+            .sidebar {
+                display: none;
+            }
+            .mobile-header {
+                display: flex;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 1000;
+                background: #fff;
+                padding: 15px 20px;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .mobile-header .logo {
+                font-size: 20px;
+                font-weight: 700;
+                text-decoration: none;
+                color: #000;
+                font-family: Helvetica, Arial, sans-serif;
+                letter-spacing: -0.5px;
+            }
+            .menu-toggle {
+                background: none;
+                border: none;
+                cursor: pointer;
+                padding: 5px;
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+                z-index: 1001;
+            }
+            .menu-toggle span {
+                display: block;
+                width: 20px;
+                height: 2px;
+                background: #000;
+                transition: all 0.3s ease;
+            }
+            .menu-toggle.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+            .menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+            .menu-toggle.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(6px, -6px);
+            }
+            main {
+                margin-left: 0;
+                margin-top: 60px;
+                height: auto;
+                min-height: 0;
+                overflow: visible;
+                padding: 20px 20px 40px;
+            }
+            h1 {
+                font-size: 28px;
+            }
+            html, body {
+                height: auto;
+                overflow-x: hidden;
+            }
+        }
+    
+/* ── My Finds page theme ── */
+:root{
+  --bg:#fdf8f1; --ink:#222222; --muted:#555049; --line:#e9e1d4; --blue:#e8d9c2; --white:#fff;
+  --head:'Josefin Sans',Helvetica,Arial,sans-serif; --serif:'Gilda Display',Georgia,serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--head);-webkit-font-smoothing:antialiased}
+.sidebar{background:var(--bg)}
+.sidebar .logo,.sidebar nav ul li a,.social-icons a,.sidebar-bottom p{color:var(--ink)}
+.sidebar-bottom hr{border-top-color:var(--ink)}
+.sidebar nav ul li a[href="finds.html"]{font-weight:700}
+.mobile-header .logo{color:var(--ink)}
+.menu-toggle span{background:var(--ink)}
+main.finds{margin-left:260px;height:100vh;overflow-y:auto;scrollbar-width:none;padding:0 0 60px;font-size:17px;line-height:1.5}
+main.finds::-webkit-scrollbar{display:none}
+main.finds *{box-sizing:border-box}
+main.finds{overflow-x:hidden}
+.wrap{padding:0 48px}
+.btn-reset{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+main.finds svg,.sheet svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+main.finds svg .f,.sheet svg .f{fill:currentColor;stroke:none}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+/* hero */
+.hero{padding:56px 48px 10px;text-align:center}
+.hero h1{font-family:var(--head);font-weight:600;font-size:52px;line-height:1.05;letter-spacing:.02em;margin:0}
+.lede{margin:14px auto 0;font-size:18px;color:var(--muted);max-width:34em}
+.toggle{display:inline-flex;margin-top:22px;padding:4px;border-radius:999px;background:var(--white);border:1.5px solid var(--ink)}
+.toggle a{min-width:118px;height:46px;display:grid;place-items:center;border-radius:999px;font-weight:600;font-size:17px;color:var(--muted);text-decoration:none}
+.toggle a.on{background:var(--ink);color:#fff}
+
+/* section heads */
+section.latest,section.all{padding:34px 0 8px}
+.sec-head{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 48px 18px}
+.sec-head h2{font-family:var(--head);font-weight:600;font-size:32px;line-height:1.1;margin:0;padding-bottom:12px;letter-spacing:.01em;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 8'%3E%3Cpath d='M2 5 Q50 2 100 4 T198 3' fill='none' stroke='%23222222' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E") bottom/100% 7px no-repeat}
+.sub{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:4px 6px;margin-top:8px;font-size:15px;color:var(--muted)}
+.sub svg{width:16px;height:16px}
+.sub a{color:inherit;text-underline-offset:3px}
+.see-all{position:absolute;right:48px;top:4px;display:flex;align-items:center;gap:2px;font-weight:600;font-size:16px;min-height:44px;color:var(--ink);text-decoration:none;white-space:nowrap}
+.see-all svg{width:18px;height:18px}
+
+/* rail */
+.rail{display:flex;min-width:0;gap:22px;overflow-x:auto;padding:4px 48px 22px;scroll-snap-type:x mandatory;scroll-padding-inline:48px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.rail::-webkit-scrollbar{display:none}
+.rail .card{flex:0 0 calc((100% - 4*22px)/4.4);scroll-snap-align:start}
+.rail-nav{display:none}
+
+/* card */
+.card{display:flex;flex-direction:column;text-align:center;position:relative;min-width:0}
+.card .photo{position:relative;aspect-ratio:1/1;border-radius:6px;overflow:hidden;background:#eeeeec;display:block;cursor:pointer}
+.card .photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s ease}
+.card .photo:hover img{transform:scale(1.03)}
+.vid-btn{position:absolute;top:12px;left:12px;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:#fff;color:var(--ink);text-decoration:none;box-shadow:0 1px 4px rgba(34,34,34,.12)}
+.vid-btn svg{width:18px;height:18px}
+.badge{position:absolute;left:12px;bottom:12px;padding:8px 16px;border-radius:999px;font-size:15px;font-weight:600;background:var(--blue);color:var(--ink)}
+.card-body{padding:14px 4px 6px;display:flex;flex-direction:column;flex:1;align-items:center}
+.brand{font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0}
+.name{font-family:var(--serif);font-weight:400;font-size:22px;line-height:1.22;margin:4px 0 0;color:var(--ink)}
+.name button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;padding:0;text-align:center}
+.name button:hover{text-decoration:underline;text-underline-offset:4px}
+.status{margin:6px 0 0;font-size:15px;color:var(--muted)}
+.links{list-style:none;margin:12px 0 0;padding:0;display:flex;flex-direction:column;gap:8px;width:100%;margin-top:auto;padding-top:12px}
+.link-row{display:flex;justify-content:space-between;align-items:center;gap:8px;min-height:46px;padding:8px 14px 8px 16px;line-height:1.2;text-align:left;border-radius:999px;background:#fff;color:var(--ink);border:1.5px solid var(--ink);font-size:16px;font-weight:600;text-decoration:none}
+.link-row>span:first-child{min-width:0}
+.link-row .price{white-space:nowrap}
+.links li:first-child .link-row{background:var(--ink);color:#fff}
+.link-row .price{display:flex;align-items:center;gap:4px}
+.link-row .price svg{width:17px;height:17px}
+.more{display:inline-block;margin-top:10px;font-size:15px;font-weight:600;text-decoration:underline;text-underline-offset:3px;color:var(--ink);cursor:pointer;background:none;border:0;font-family:inherit}
+
+/* filters */
+.filters{position:sticky;top:0;z-index:4;background:var(--bg);display:grid;grid-template-columns:340px 1fr auto;align-items:center;gap:16px;padding:12px 48px;border-bottom:1px solid var(--line);margin-bottom:26px}
+.search{display:flex;align-items:center;gap:10px;height:52px;padding:0 16px;border-radius:999px;background:#fff;border:1.5px solid #ddd5c8;color:var(--muted)}
+.search input{flex:1;min-width:0;border:0;background:none;font:inherit;font-size:17px;color:var(--ink);outline:none}
+.search input::placeholder{color:var(--muted)}
+.search input::-webkit-search-cancel-button,.search input::-webkit-search-decoration{-webkit-appearance:none;appearance:none}
+.search .clear{display:none;width:32px;height:32px;border-radius:50%;background:#f1ebe1;place-items:center}
+.search .clear svg{width:14px;height:14px}
+.search.has .clear{display:grid}
+.chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:2px 0}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;height:44px;padding:0 18px;border-radius:999px;border:1.5px solid #ddd5c8;background:#fff;font-size:16px;font-weight:600;color:var(--ink)}
+.chip[aria-pressed="true"]{background:var(--blue);border-color:var(--blue)}
+.drops{display:flex;gap:8px;align-items:center}
+.drop{position:relative;display:flex;align-items:center;gap:6px;height:44px;padding:0 14px 0 18px;border-radius:999px;border:1.5px solid #ddd5c8;background:#fff;font-size:16px;font-weight:600;color:var(--ink)}
+.drop svg{width:18px;height:18px}
+.drop select{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer;font-size:16px}
+.drop.set{background:var(--blue);border-color:var(--blue)}
+.count{font-size:15px;color:var(--muted);white-space:nowrap}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:40px 22px;padding:0 48px}
+.empty{padding:40px 48px;text-align:center;color:var(--muted);font-size:18px}
+.empty b{display:block;font-family:var(--serif);font-weight:400;font-size:26px;color:var(--ink);margin-bottom:6px}
+.load{display:block;margin:34px auto 8px;height:52px;padding:0 32px;border-radius:999px;border:1.5px solid var(--ink);font-weight:700;font-size:17px;background:#fff;color:var(--ink)}
+
+/* detail sheet */
+.sheet-bg{position:fixed;inset:0;background:rgba(34,34,34,.45);z-index:1500;opacity:0;pointer-events:none;transition:opacity .25s}
+.sheet-bg.on{opacity:1;pointer-events:auto}
+.sheet{position:fixed;z-index:1501;top:50%;left:50%;transform:translate(-50%,-50%) scale(.97);width:min(1040px,calc(100% - 48px));max-height:calc(100% - 48px);overflow:auto;background:var(--bg);border-radius:18px;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;scrollbar-width:none}
+.sheet::-webkit-scrollbar{display:none}
+.sheet.on{opacity:1;pointer-events:auto;transform:translate(-50%,-50%) scale(1)}
+.sheet .x{position:sticky;top:14px;float:right;margin:14px 14px -62px 0;width:48px;height:48px;border-radius:50%;background:#fff;display:grid;place-items:center;box-shadow:0 1px 6px rgba(34,34,34,.15);z-index:2}
+.sheet .x svg{width:20px;height:20px}
+.d-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;padding:40px 40px 36px}
+.sheet{position:fixed}
+.sheet-inner{position:relative}
+.d-photo{position:relative;aspect-ratio:1/1;border-radius:12px;overflow:hidden;background:#eeeeec}
+.d-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.d-photo .vid-btn{width:48px;height:48px;top:14px;left:14px}
+.d-info .brand{margin-top:6px}
+.d-name{font-family:var(--serif);font-weight:400;font-size:38px;line-height:1.12;margin:6px 0 0}
+.d-meta{margin:10px 0 0;color:var(--muted);font-size:16px}
+.d-note{margin:12px 0 0;font-size:17px;line-height:1.55}
+.h-small{font-family:var(--head);font-size:14px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;margin:28px 0 12px}
+.shop-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.shop-row{display:grid;grid-template-columns:56px 1fr auto;grid-template-rows:auto auto;column-gap:14px;align-items:center;padding:12px 14px;border-radius:14px;background:#fff;border:1px solid var(--line);text-decoration:none;color:inherit}
+.shop-row .th{grid-row:1/3;width:56px;height:56px;border-radius:10px;object-fit:cover;background:#f1ebe1}
+.shop-row .mono{grid-row:1/3;width:56px;height:56px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:20px;background:var(--blue)}
+.shop-txt{display:flex;flex-direction:column;line-height:1.3}
+.shop-txt b{font-size:17px}
+.shop-txt small{font-size:15px;color:var(--muted)}
+.shop-price{font-size:20px;font-weight:700;text-align:right}
+.shop-go{grid-column:2/4;margin-top:12px;display:flex;justify-content:center;align-items:center;gap:6px;height:48px;border-radius:999px;background:var(--ink);color:#fff;font-weight:700;font-size:16px}
+.shop-go svg{width:18px;height:18px}
+.disclose{margin:28px 24px 24px;font-size:12px;color:var(--muted);text-align:center}
+.video-card{display:flex;align-items:center;gap:14px;padding:12px;border-radius:14px;background:#fff;border:1px solid var(--line);text-decoration:none;color:inherit}
+.video-card .thumb{position:relative;width:96px;height:64px;border-radius:8px;overflow:hidden;background:#eeeeec;flex:none}
+.video-card .thumb img{width:100%;height:100%;object-fit:cover}
+.video-card .thumb svg{position:absolute;inset:0;margin:auto;width:26px;height:26px;color:#fff;filter:drop-shadow(0 1px 3px rgba(0,0,0,.5))}
+.video-card>span{flex:1;display:flex;flex-direction:column;line-height:1.3}
+.video-card b{font-size:16px}
+.video-card small{color:var(--muted);font-size:14px;margin-top:2px}
+.video-card .more-link{font-size:15px;font-weight:600;text-decoration:underline;text-underline-offset:3px;margin-top:10px;display:inline-block}
+.d-more{padding:0 0 10px}
+.d-more .sec-head{padding-top:6px}
+.d-more .rail{padding-left:40px;padding-right:40px;scroll-padding-inline:40px}
+.d-more .rail .card{flex:0 0 calc((100% - 2*22px)/3.2)}
+
+/* videos view */
+.vgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:34px 22px;padding:0 48px}
+.vcard{text-decoration:none;color:inherit;text-align:center}
+.vcard .thumb{position:relative;aspect-ratio:16/9;border-radius:10px;overflow:hidden;background:#eeeeec}
+.vcard .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.vcard .thumb .vid-btn{top:auto;bottom:12px;left:12px}
+.vcard h3{font-family:var(--serif);font-weight:400;font-size:21px;line-height:1.25;margin:12px 0 0}
+.vcard p{margin:4px 0 0;color:var(--muted);font-size:15px}
+.foot{margin:40px 48px 0;padding-top:26px;border-top:1px solid var(--line);color:var(--muted);font-size:12px;text-align:center}
+.foot p{margin:0 0 6px}
+
+/* mobile */
+@media (max-width:768px){
+  .mobile-header{background:#fff;border-bottom:1px solid var(--line)}
+  main.finds{margin-left:0;margin-top:60px;height:auto;overflow:visible;padding:0 0 40px}
+  .hero{padding:30px 20px 6px}
+  .hero h1{font-size:40px}
+  .lede{font-size:17px}
+  .toggle a{min-width:104px}
+  section.latest,section.all{padding:26px 0 6px}
+  .sec-head{padding:0 20px 14px}
+  .sec-head h2{font-size:27px}
+  .see-all{position:static;margin-top:4px}
+  .rail{gap:14px;padding:4px 20px 18px;scroll-padding-inline:20px}
+  .rail .card{flex:0 0 68%}
+  .filters{top:60px;display:block;padding:8px 0 14px}
+  .search{margin:0 20px}
+  .chips{padding:14px 20px 0}
+  .drops{padding:10px 20px 0}
+  .count{margin-left:auto}
+  .grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:26px 14px;padding:0 16px}
+  .grid .name{font-size:20px}
+  .grid .link-row{font-size:15px;padding:8px 12px}
+  .grid .link-row .price svg{display:none}
+  .sheet{top:auto;bottom:0;left:0;transform:translateY(100%);width:100%;max-height:92%;border-radius:22px 22px 0 0}
+  .sheet.on{transform:translateY(0)}
+  .d-grid{display:block;padding:0 0 24px}
+  .d-photo{border-radius:0;aspect-ratio:1/1}
+  .d-info{padding:16px 20px 0}
+  .d-name{font-size:30px}
+  .d-more .rail{padding-left:20px;padding-right:20px;scroll-padding-inline:20px}
+  .d-more .rail .card{flex:0 0 68%}
+  .d-more .sec-head{padding-left:20px;padding-right:20px}
+  .vgrid{grid-template-columns:1fr;gap:26px;padding:0 20px}
+  .foot{margin:30px 20px 0}
+  .empty{padding:30px 20px}
+}
+@media (min-width:769px) and (max-width:1180px){
+  .grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .rail .card{flex:0 0 calc((100% - 3*22px)/3.3)}
+  .filters{grid-template-columns:260px 1fr auto}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}html{scroll-behavior:auto}}
+
+.pill{display:inline-block;vertical-align:middle;margin-left:6px;padding:3px 0;border-radius:0;background:none;color:var(--muted);text-decoration:underline;text-underline-offset:3px;font-style:normal;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;line-height:1.3}
+.shop-row .shop-price:empty{display:none}
+.kind{display:inline-block;vertical-align:middle;padding:2px 8px;border-radius:999px;font-style:normal;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;line-height:1.35;white-space:nowrap}
+.kind.sh{background:#f39a4f;color:#222}
+.kind.nw{background:#fff;color:#222;border:1.2px solid #222}
+.link-row .kind{margin-left:8px}
+.links li:first-child .link-row .kind.nw{background:transparent;color:#fff;border-color:#fff}
+.shop-txt .kind{margin:6px 10px 0 0}
+.shop-txt .pill{margin-left:0}
+.more-link{display:inline-block;margin-top:12px;font-size:16px;font-weight:600;color:var(--ink);text-underline-offset:3px}
+a{color:var(--ink)}
+.sheet .x:focus{outline:none}.sheet .x:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+
+.nolink{margin:12px 0 0;font-size:15px;color:var(--muted);font-style:italic}
+.nolink.big{font-style:normal;font-size:17px;line-height:1.5;padding:14px 16px;border-radius:14px;background:#fff;border:1px solid var(--line)}
+    </style>
+</head>
+<body class="sleek">
+    <!-- Desktop sidebar -->
+    <aside class="sidebar">
+        <div>
+            <a href="/" class="logo">Alex<br>Bailey</a>
+            <nav>
+                <ul>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="film-tv.html">Film/TV</a></li>
+                    <li><a href="social.html">Social</a></li>
+                    <li><a href="videos.html">Videos</a></li>
+                    <li><a href="finds.html">My Finds</a></li>
+                    <li><a href="photography.html">Photography</a></li>
+                    <li><a href="commercial.html">Commercial</a></li>
+                    <li><a href="vocals-acting.html">Vocals + Acting</a></li>
+                    <li><a href="press.html">Press</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="links.html">Links</a></li>
+                </ul>
+            </nav>
+            <div class="social-icons">
+                <a href="https://www.tiktok.com/@alexfbailey" target="_blank" aria-label="TikTok"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.34-6.34V8.73a8.19 8.19 0 004.76 1.52V6.8a4.84 4.84 0 01-1-.11z"/></svg></a>
+                <a href="https://www.instagram.com/alexfbailey" target="_blank" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+                <a href="https://www.youtube.com/@alexfbailey" target="_blank" aria-label="YouTube"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+                <a href="https://www.facebook.com/share/17qSmUW3v4/?mibextid=wwXIfr" target="_blank" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+            </div>
+    </div>
+    <div class="sidebar-bottom">
+        <hr>
+        <p class="copyright">&copy; 2026 Alex Bailey.</p>
+    </div>
+    </aside>
+
+    <!-- Mobile header -->
+    <div class="mobile-header">
+        <a href="/" class="logo">Alex Bailey</a>
+        <button class="menu-toggle" aria-label="Menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+
+    <!-- Mobile menu overlay -->
+    <div class="menu-overlay">
+        <button class="close-btn" aria-label="Close menu">&times;</button>
+        <nav>
+            <ul>
+                <li><a href="about.html">About</a></li>
+                    <li><a href="film-tv.html">Film/TV</a></li>
+                <li><a href="social.html">Social</a></li>
+                    <li><a href="videos.html">Videos</a></li>
+                    <li><a href="finds.html">My Finds</a></li>
+                <li><a href="photography.html">Photography</a></li>
+                <li><a href="commercial.html">Commercial</a></li>
+                <li><a href="vocals-acting.html">Vocals + Acting</a></li>
+                <li><a href="press.html">Press</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                    <li><a href="links.html">Links</a></li>
+            </ul>
+        </nav>
+        <div class="overlay-social">
+            <a href="https://www.tiktok.com/@alexfbailey" target="_blank" aria-label="TikTok"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.34-6.34V8.73a8.19 8.19 0 004.76 1.52V6.8a4.84 4.84 0 01-1-.11z"/></svg></a>
+            <a href="https://www.instagram.com/alexfbailey" target="_blank" aria-label="Instagram"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+            <a href="https://www.youtube.com/@alexfbailey" target="_blank" aria-label="YouTube"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+            <a href="https://www.facebook.com/share/17qSmUW3v4/?mibextid=wwXIfr" target="_blank" aria-label="Facebook"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+        </div>
+    </div>
+
+        <main class="finds" id="top">
+      <section class="hero">
+        <h1>My Finds</h1>
+        <p class="lede">Everything I've thrifted on camera. Tap a piece to shop it.</p>
+        <nav class="toggle" aria-label="View">
+          <a href="#finds" class="on" data-view="finds">Finds</a>
+          <a href="#videos" data-view="videos">Videos</a>
+        </nav>
+      </section>
+
+      <div id="view-finds">
+        <section class="latest" aria-labelledby="latest-h">
+          <div class="sec-head">
+            <h2 id="latest-h">Latest finds</h2>
+            <p class="sub" id="latest-sub"></p>
+            <a class="see-all" href="#videos">All videos <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></a>
+          </div>
+          <div class="rail" id="latest-rail" aria-label="Latest finds, swipe to see more"></div>
+        </section>
+
+        <section class="all" aria-labelledby="all-h">
+          <div class="sec-head"><h2 id="all-h">All finds</h2></div>
+          <div class="filters" id="finds">
+            <label class="search" id="search">
+              <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+              <span class="sr">Search finds</span>
+              <input type="search" id="q" placeholder="Search brand or item" autocomplete="off">
+              <button class="clear btn-reset" id="clear" aria-label="Clear search"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+            </label>
+            <div class="chips" id="chips" role="group" aria-label="Category"></div>
+            <div class="drops">
+              <div class="drop" id="brand-drop"><span id="brand-label">Brand</span><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg><select id="brand" aria-label="Brand"></select></div>
+              <div class="drop" id="video-drop"><span id="video-label">Video</span><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg><select id="video" aria-label="Video"></select></div>
+              <span class="count" id="count" aria-live="polite"></span>
+            </div>
+          </div>
+          <div class="grid" id="grid"></div>
+          <div class="empty" id="empty" hidden><b>Nothing here yet</b>Try a different search, or clear the filters.</div>
+          <button class="load btn-reset" id="load" hidden>Show more finds</button>
+        </section>
+      </div>
+
+      <div id="view-videos" hidden>
+        <section class="all" aria-labelledby="videos-h">
+          <div class="sec-head"><h2 id="videos-h">Every video</h2><p class="sub">Tap a video to see what I found in it</p></div>
+          <div class="vgrid" id="vgrid"></div>
+        </section>
+      </div>
+
+      <footer class="foot">
+        <p>Some links are affiliate links; I may earn a small commission at no cost to you.</p>
+      </footer>
+    </main>
+
+    <div class="sheet-bg" id="sheet-bg"></div>
+    <div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="d-name" hidden>
+      <button class="x btn-reset" id="sheet-x" aria-label="Close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      <div class="sheet-inner"><div id="sheet-body"></div></div>
+    </div>
+
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const menuOverlay = document.querySelector('.menu-overlay');
+        const closeBtn = document.querySelector('.menu-overlay .close-btn');
+        const menuLinks = document.querySelectorAll('.menu-overlay nav a');
+
+        function openMenu() {
+            menuOverlay.classList.add('active');
+            menuToggle.classList.add('active');
+            menuToggle.setAttribute('aria-expanded', 'true');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeMenu() {
+            menuOverlay.classList.remove('active');
+            menuToggle.classList.remove('active');
+            menuToggle.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+        }
+
+        if (menuToggle) menuToggle.addEventListener('click', openMenu);
+        if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+        menuLinks.forEach(link => link.addEventListener('click', closeMenu));
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && menuOverlay.classList.contains('active')) {
+                menuToggle.classList.remove('active');
+                menuOverlay.classList.remove('active');
+                menuToggle.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+            }
+        });
+    </script>
+    <script>
+(function () {
+  const $ = (s, el) => (el || document).querySelector(s);
+  const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const ICON = {
+    play: '<svg viewBox="0 0 24 24" aria-hidden="true"><path class="f" d="M8 5l11 7-11 7z"/></svg>',
+    arrow: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>',
+    right: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>'
+  };
+  const PAGE = 12;
+  let DATA, items = [], videos = {}, byId = {};
+  let state = { q: '', cat: 'All', brand: '', video: '', shown: PAGE };
+
+  fetch('finds/finds.json').then(r => r.json()).then(init).catch(() => {
+    $('#grid').innerHTML = '<p class="empty">Couldn’t load the finds right now. Please refresh.</p>';
+  });
+
+  function init(d) {
+    DATA = d;
+    d.videos.forEach(v => videos[v.id] = v);
+    const order = d.videos.slice().sort((a, b) => b.sort.localeCompare(a.sort)).map(v => v.id);
+    items = d.items.slice().sort((a, b) => order.indexOf(a.video) - order.indexOf(b.video));
+    items.forEach(it => byId[it.id] = it);
+
+    // latest = items from newest video (fall back to next video until we have at least 4)
+    const latestVid = videos[order[0]];
+    let latest = [];
+    for (const vid of order) { latest = latest.concat(items.filter(i => i.video === vid)); if (latest.length >= 4) break; }
+    latest.forEach(i => i.isNew = i.video === order[0]);
+    $('#latest-rail').innerHTML = latest.map(card).join('');
+    $('#latest-sub').innerHTML = ICON.play + ' From <a href="' + esc(latestVid.page ? 'finds/' + latestVid.page : watchUrl(latestVid)) + '"' + (latestVid.page ? '' : ' target="_blank" rel="noopener"') + '>' + esc(shortTitle(latestVid.title)) + '</a> · ' + esc(latestVid.date);
+
+    // filters
+    const cats = ['All', ...[...new Set(items.map(i => i.category))].sort()];
+    $('#chips').innerHTML = cats.map(c => '<button class="chip btn-reset" data-cat="' + esc(c) + '" aria-pressed="' + (c === 'All') + '">' + esc(c) + '</button>').join('');
+    const brands = [...new Set(items.map(i => i.brand))].sort((a, b) => a.localeCompare(b));
+    $('#brand').innerHTML = '<option value="">All brands</option>' + brands.map(b => '<option>' + esc(b) + '</option>').join('');
+    $('#video').innerHTML = '<option value="">All videos</option>' + order.map(id => '<option value="' + esc(id) + '">' + esc(shortTitle(videos[id].title)) + ' · ' + esc(videos[id].date) + '</option>').join('');
+
+    $('#vgrid').innerHTML = order.map(id => videoCard(videos[id])).join('');
+
+    // events
+    $('#q').addEventListener('input', e => { state.q = e.target.value; state.shown = PAGE; render(); });
+    $('#clear').addEventListener('click', () => { $('#q').value = ''; state.q = ''; render(); $('#q').focus(); });
+    $('#chips').addEventListener('click', e => { const b = e.target.closest('.chip'); if (!b) return; state.cat = b.dataset.cat; state.shown = PAGE; render(); });
+    $('#brand').addEventListener('change', e => { state.brand = e.target.value; state.shown = PAGE; render(); });
+    $('#video').addEventListener('change', e => { state.video = e.target.value; state.shown = PAGE; render(); });
+    $('#load').addEventListener('click', () => { state.shown += PAGE; render(); });
+    document.addEventListener('click', e => {
+      const o = e.target.closest('[data-open]'); if (o) { e.preventDefault(); openItem(o.dataset.open); return; }
+      const v = e.target.closest('[data-video-filter]'); if (v) { e.preventDefault(); state.video = v.dataset.videoFilter; $('#video').value = state.video; state.shown = PAGE; setView('finds'); render(); $('#finds').scrollIntoView(); }
+    });
+    $('#sheet-x').addEventListener('click', closeItem);
+    $('#sheet-bg').addEventListener('click', closeItem);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && $('#sheet').classList.contains('on')) closeItem(); });
+    window.addEventListener('hashchange', route);
+
+    const u = new URLSearchParams(location.search);
+    if (u.get('q')) { $('#q').value = u.get('q'); state.q = u.get('q'); }
+    render(); route();
+  }
+
+  function watchUrl(v, it) { if (v.youtube) return 'https://www.youtube.com/watch?v=' + v.youtube + (it && it.youtube_t ? '&t=' + it.youtube_t + 's' : ''); if (v.tiktok) return v.tiktok; return v.page ? 'finds/' + v.page : '#'; }
+  function platformName(v) { return v.youtube ? 'YouTube' : v.tiktok ? 'TikTok' : 'the video'; }
+  function shortTitle(t) { return t.length > 48 ? t.slice(0, 46).replace(/\s+\S*$/, '') + '…' : t; }
+  function statusText(it) { return it.status || ''; }
+  function kindOf(s) { const c = (s.type || s.condition || '').trim(); if (!c) return ''; return /^new/i.test(c) ? 'New' : 'Secondhand'; }
+  function kindTag(s) { const k = kindOf(s); return k ? '<em class="kind ' + (k === 'New' ? 'nw' : 'sh') + '">' + k + '</em>' : ''; }
+  function tagText(t) { return t === 'closest+cheapest' ? 'Closest & cheapest' : t === 'closest' ? 'Closest match' : t === 'cheapest' ? 'Cheapest' : t; }
+  function storeName(l) { return l.replace(/^Similar on /, ''); }
+  function moneyShort(p) { return p ? p.replace(/\.\d\d$/, '') : ''; }
+
+  function card(it) {
+    const v = videos[it.video];
+    const yt = v.youtube ? 'https://www.youtube.com/watch?v=' + v.youtube + (it.youtube_t ? '&t=' + it.youtube_t + 's' : '') : 'finds/' + v.page;
+    const pick = it.shop.find(s => /closest/.test(s.tag || '')) || it.shop.find(s => /cheapest/.test(s.tag || '')) || it.shop[0];
+    const pickLabel = !pick ? '' : /closest/.test(pick.tag || '') ? 'Shop this piece' : /cheapest/.test(pick.tag || '') ? 'Shop the cheapest' : 'Shop this piece';
+    const links = pick ? '<li><a class="link-row" href="' + esc(pick.url) + '" target="_blank" rel="sponsored nofollow noopener"><span>' + pickLabel + kindTag(pick) + '</span><span class="price">' + ICON.arrow + '</span></a></li>' : '';
+    const more = it.shop.length > 1 ? '<button class="more btn-reset" data-open="' + esc(it.id) + '">' + it.shop.length + ' places to shop it</button>' : (!it.shop.length ? '<p class="nolink">Not for sale anywhere yet</p>' : '');
+    return '<article class="card">' +
+      '<a class="photo" href="#item=' + esc(it.id) + '" data-open="' + esc(it.id) + '"><img src="finds/' + esc(it.photo) + '" alt="' + esc(it.name) + '" loading="lazy" width="720" height="720">' +
+      '</a>' +
+      '<a class="vid-btn" href="' + esc(yt) + '" target="_blank" rel="noopener" aria-label="Watch the moment in the video' + (it.timestamp ? ' at ' + esc(it.timestamp) : '') + '">' + ICON.play + '</a>' +
+      '<div class="card-body"><p class="brand">' + esc(it.brand) + '</p><h3 class="name"><button data-open="' + esc(it.id) + '">' + esc(it.name) + '</button></h3>' +
+      (statusText(it) ? '<p class="status">' + esc(statusText(it)) + '</p>' : '') +
+      '<ul class="links">' + links + '</ul>' + more + '</div></article>';
+  }
+
+  function videoCard(v) {
+    const n = items.filter(i => i.video === v.id).length;
+    return '<a class="vcard" href="#finds" data-video-filter="' + esc(v.id) + '"><div class="thumb"><img src="finds/' + esc(v.card) + '" alt="" loading="lazy"><span class="vid-btn" aria-hidden="true">' + ICON.play + '</span></div>' +
+      '<h3>' + esc(v.title) + '</h3><p>' + esc(v.date) + ' · ' + (n ? n + ' shoppable find' + (n === 1 ? '' : 's') : 'No shop links yet') + '</p></a>';
+  }
+
+  function matches(it) {
+    const words = state.q.toLowerCase().trim().split(/\s+/).filter(Boolean);
+    const hay = (it.name + ' ' + it.brand + ' ' + it.category + ' ' + videos[it.video].title).toLowerCase();
+    return (state.cat === 'All' || it.category === state.cat) && (!state.brand || it.brand === state.brand) && (!state.video || it.video === state.video) && words.every(w => hay.includes(w));
+  }
+
+  function render() {
+    $('#search').classList.toggle('has', !!state.q);
+    document.querySelectorAll('.chip').forEach(c => c.setAttribute('aria-pressed', c.dataset.cat === state.cat));
+    $('#brand-drop').classList.toggle('set', !!state.brand); $('#brand-label').textContent = state.brand || 'Brand';
+    $('#video-drop').classList.toggle('set', !!state.video); $('#video-label').textContent = state.video ? 'Video ✓' : 'Video';
+    const list = items.filter(matches);
+    $('#grid').innerHTML = list.slice(0, state.shown).map(it => card(Object.assign({}, it, { isNew: false }))).join('');
+    $('#empty').hidden = list.length > 0;
+    $('#load').hidden = list.length <= state.shown;
+    $('#count').textContent = list.length + (list.length === 1 ? ' find' : ' finds');
+  }
+
+  function setView(v) {
+    $('#view-finds').hidden = v !== 'finds'; $('#view-videos').hidden = v !== 'videos';
+    document.querySelectorAll('.toggle a').forEach(a => a.classList.toggle('on', a.dataset.view === v));
+  }
+  function route() {
+    const h = location.hash.replace('#', '');
+    if (h.startsWith('item=')) { openItem(h.slice(5), true); return; }
+    if (h === 'videos') { setView('videos'); return; }
+    setView('finds');
+    if ($('#sheet').classList.contains('on')) closeItem(true);
+  }
+
+  function openItem(id, fromHash) {
+    const it = byId[id]; if (!it) return;
+    const v = videos[it.video];
+    const yt = watchUrl(v, it);
+    const shop = it.shop.slice(0, 4).map(s => '<li><a class="shop-row" href="' + esc(s.url) + '" target="_blank" rel="sponsored nofollow noopener">' +
+      (s.thumb ? '<img class="th" src="finds/' + esc(s.thumb) + '" alt="" loading="lazy">' : '<span class="mono">' + esc(s.label.replace(/^Similar on /, '').charAt(0)) + '</span>') +
+      '<span class="shop-txt"><b>' + esc(s.label) + (kindOf(s) ? '<br>' + kindTag(s) : '') + (s.tag ? ' <em class="pill">' + esc(tagText(s.tag)) + '</em>' : '') + '</b><small>' + esc([s.condition, s.size, s.country ? 'ships from ' + s.country : ''].filter(Boolean).join(' \u00b7 ') || (s.price ? 'Listed at ' + s.price : 'See current price')) + '</small></span>' +
+      '<span class="shop-price">' + esc(moneyShort(s.price)) + '</span><span class="shop-go">Shop ' + ICON.arrow + '</span></a></li>').join('');
+    const others = items.filter(i => i.video === it.video && i.id !== it.id).slice(0, 6);
+    $('#sheet-body').innerHTML = '<div class="d-grid"><div class="d-photo"><img src="finds/' + esc(it.photo) + '" alt="' + esc(it.name) + '">' +
+      '<a class="vid-btn" href="' + esc(yt) + '" target="_blank" rel="noopener" aria-label="Watch in the video">' + ICON.play + '</a></div>' +
+      '<div class="d-info"><p class="brand">' + esc(it.brand) + '</p><h2 class="d-name" id="d-name">' + esc(it.name) + '</h2>' +
+      '<p class="d-meta">' + esc(it.category) + (it.status ? ' · ' + esc(it.status) : '') + '</p>' + (it.note ? '<p class="d-note">' + esc(it.note) + '</p>' : '') +
+      '<h3 class="h-small">Where to buy</h3>' + (shop ? '<ul class="shop-list">' + shop + '</ul>' : '<p class="nolink big">I haven\u2019t found this exact piece for sale anywhere yet \u2014 check back.</p>') +
+      '<h3 class="h-small">Seen in</h3><a class="video-card" href="' + esc(yt) + '" target="_blank" rel="noopener"><span class="thumb"><img src="finds/' + esc(v.card) + '" alt="">' + ICON.play + '</span><span><b>' + esc(v.title) + '</b><small>Watch on ' + platformName(v) + ' · ' + esc(v.date) + (it.timestamp && v.youtube ? ' · jump to ' + esc(it.timestamp) : '') + '</small></span>' + ICON.right + '</a>' +
+      (v.page ? '<a class="more-link" href="finds/' + esc(v.page) + '">Everything from this video →</a>' : '') + '</div></div>' +
+      (others.length ? '<section class="d-more"><div class="sec-head"><h2>More from this video</h2></div><div class="rail">' + others.map(o => card(Object.assign({}, o, { isNew: false }))).join('') + '</div></section>' : '') +
+      (shop ? '<p class="disclose">Some links are affiliate links; I may earn a small commission at no cost to you.</p>' : '');
+    const sh = $('#sheet'); sh.hidden = false; requestAnimationFrame(() => { sh.classList.add('on'); $('#sheet-bg').classList.add('on'); });
+    sh.scrollTop = 0; document.body.style.overflow = 'hidden'; $('#sheet-x').focus();
+    if (!fromHash) history.pushState(null, '', '#item=' + id);
+  }
+  function closeItem(silent) {
+    const sh = $('#sheet'); sh.classList.remove('on'); $('#sheet-bg').classList.remove('on'); document.body.style.overflow = '';
+    setTimeout(() => { sh.hidden = true; }, 250);
+    if (!silent && location.hash.startsWith('#item=')) history.pushState(null, '', location.pathname + (state.cat !== 'All' ? '#finds' : ''));
+  }
+})();
+</script>
+</body>
+</html>
