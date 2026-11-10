@@ -189,6 +189,8 @@ def page_main(d, vids):
         chips.append('<button type="button" class="chip" data-f="new">New</button>')
     chips += [f'<button type="button" class="chip" data-f="{e(c)}">{e(c)}</button>' for c in cats]
     m = ['<h1 class="ttl">My Finds</h1>',
+         '<p class="note pad"><em>Details of my finds and outfits. Please note I don\u2019t resell so these are '
+         'links to postings from others \u2764\ufe0f</em></p>',
          '<div class="search"><input id="q" type="search" placeholder="Search my finds" '
          'aria-label="Search my finds" autocomplete="off"></div>',
          f'<div class="chips" role="group" aria-label="Filter finds">{"".join(chips)}</div>']
